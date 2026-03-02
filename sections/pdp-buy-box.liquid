@@ -1,0 +1,176 @@
+{{ 'pdp-buy-box.css' |  asset_url |  stylesheet_tag  }}
+<section class="new_pdp_buy_box">
+    <div class="buy_box_wrapper">
+        {% assign selected_product = section.settings.product %}
+        <div class="container">
+            <div class="buy_box_innerwrapper">
+                <div class="buy_box_image">
+                    <div class="img_slider js-for-image-slider">
+                        {% for image in selected_product.images %}
+                            <div class="for_item">
+                                <img src="{{  image.src | image_url: width: 580, height: 580 }}" alt="{{ product.title }}" width="" height="">                        
+                            </div>
+                        {% endfor %}                       
+                    </div>
+                    <div class="img_nav_slider js-nav-image-slider">
+                        {% for image in selected_product.images %}
+                            <div class="nav_item">
+                                <img src="{{  image.src | image_url: width: 60, height: 60 }}" alt="{{ product.title }}" width="60px" height="60px">
+                            </div>
+                        {% endfor %}               
+                    </div>
+                </div>
+                <div class="buy_box_content">
+                    <div class="bb_content_inner">
+                        <div class="dicount_lable">
+                            <p>⚠️ Limited Time Discount!</p>
+                        </div>
+                        <div class="sub_text">
+                            <p>🔥 <b>300+ bought</b> in past month</p>
+                        </div>
+                        <div class="title">
+                            <h2>HenHarmony™ - Stress Happens. Hydration & Digestion Don’t Have To Suffer.</h2>
+                        </div>
+                        <div class="bb_desc">
+                            <ul>
+                                <li><img src="https://assets.replocdn.com/projects/fdd5614c-e48f-4183-abe2-06ecde4315b2/96fd2f96-f752-4682-bc6f-4b98a5cb791d" alt="{{ prodcut.title }}" width="100px" height="100px"><span>Supports Gut Health</span></li>
+                                <li><img src="https://assets.replocdn.com/projects/fdd5614c-e48f-4183-abe2-06ecde4315b2/96fd2f96-f752-4682-bc6f-4b98a5cb791d" alt="{{ prodcut.title }}" width="100px" height="100px"><span>Strength During Stress</span></li>
+                                <li><img src="https://assets.replocdn.com/projects/fdd5614c-e48f-4183-abe2-06ecde4315b2/96fd2f96-f752-4682-bc6f-4b98a5cb791d" alt="{{ prodcut.title }}" width="100px" height="100px"><span>Made In USA</span></li>
+                            </ul>
+                        </div>
+                        <div class="product_reiews">
+                           <a href="#looxReviews"><div class="loox-rating" data-id="{{ product.id }}" data-rating="{{ product.metafields.loox.avg_rating }}" data-raters="{{ product.metafields.loox.num_reviews }}"></div></a>
+                        </div>
+                        <div class="product_info">
+                            <p>Environmental stress, temperature swings, and daily laying demands place constant strain on your hens’ internal systems. HenHarmony™ supports hydration, digestive function, and gut balance to help your flock remain resilient and consistent through seasonal and environmental stress.</p>
+                        </div>
+                        <div class="but_box_main">
+                            <div class="bb_title">
+                                <h2>1. Choose your flock size</h2>
+                                
+                                <div class="flock_size_wrapper">
+                                    <div class="flock_options one_time">
+                                        
+                                        {% for variant in selected_product.variants %}                                  
+                                            
+                                            <div class="gt-prod-var-box-sub">
+                                                <div class="flock_item">
+                                                    <div class="gt-prod-var-radio">
+                                                        <input type="radio" class="v_radio" name="flock-sizw" id="{{  variant.title |  downcase |  replace:  ' ','-' }}" {% if forloop.first %} checked{% endif %}
+                                                        data-v-title="{{ variant.title  }}"
+                                                        data-v-id="{{ variant.id }}"
+                                                        data-v-price="{{ variant.price }}"
+                                                        data-comp-price="{{ variant.compare_at_price }}"
+                                                        {% unless variant.available %} disabled {% endunless %}                                       
+                                                        >  
+                                                    </div>
+                                                    <div class="gt-prod-var-content">
+                                                        <label for="{{  variant.title |  downcase |  replace:  ' ','-' }}">
+                                                            <div class="flock_info">
+                                                                <div class="f_size">
+                                                                    <p>{{  variant.title }}</p>
+                                                                </div>
+                                                                <div class="p_size">
+                                                                   {% if forloop.first %}
+                                                                        <p>1 Pouch</p>
+                                                                    {% elsif forloop.index == 2 %}
+                                                                        <p>2 Pouches</p>
+                                                                    {% elsif forloop.index == 3 %}
+                                                                        <p>3 Pouches</p>
+                                                                    {% elsif forloop.index == 4 %}
+                                                                        <p>4 Pouches</p>
+                                                                    {% else %}
+                                                                        <p>1 Pouch every 5 chicken</p>
+                                                                    {% endif %}
+                                                                </div>
+                                                                {% if variant.compare_at_price > variant.price %}
+                                                                    <div class="save-price">
+                                                                        {% assign save_price = variant.compare_at_price  |  minus: variant.price  %}
+                                                                        <p>Save {{ save_price |  money_without_trailing_zeros }}</p>
+                                                                    </div>
+                                                                {% endif %}
+                                                            </div>
+                                                        </label>
+                                                    </div>                                            
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+
+                                     <div class="flock_options subscribe_save" style="display: none;">
+                                        
+                                        {% for variant in selected_product.variants %}                                  
+                                            {%- assign current_variant = selected_product.selected_or_first_available_variant -%}
+                                            <div class="gt-prod-var-box-sub">
+                                                <div class="flock_item">
+                                                    <div class="gt-prod-var-radio">
+                                                        <input type="radio" class="v_radio" name="flock-sizw" id="ss-{{  variant.title |  downcase |  replace:  ' ','-' }}" {% if forloop.first %} checked{% endif %}
+                                                        data-v-title="{{ variant.title  }}"
+                                                        data-v-id="{{ variant.id }}"
+                                                        data-v-price="{{ variant.price }}"
+                                                        data-comp-price="{{ variant.compare_at_price }}"                                                        
+                                                        {% unless variant.available %} disabled {% endunless %}                                       
+                                                        >  
+                                                    </div>
+                                                    <div class="gt-prod-var-content">
+                                                        <label for="ss-{{  variant.title |  downcase |  replace:  ' ','-' }}">
+                                                            <div class="flock_info">
+                                                                <div class="f_size">
+                                                                    <p>{{  variant.title }}</p>
+                                                                </div>
+                                                                <div class="p_size">
+                                                                   {% if forloop.first %}
+                                                                        <p>1 Pouch</p>
+                                                                    {% elsif forloop.index == 2 %}
+                                                                        <p>2 Pouches</p>
+                                                                    {% elsif forloop.index == 3 %}
+                                                                        <p>3 Pouches</p>
+                                                                    {% elsif forloop.index == 4 %}
+                                                                        <p>4 Pouches</p>
+                                                                    {% else %}
+                                                                        <p>1 Pouch every 5 chicken</p>
+                                                                    {% endif %}
+                                                                </div>
+                                                                 {% for allocation in variant.selling_plan_allocations %}
+                                                                    {% if forloop_index_count == forloop.index %}
+                                                                        {% assign savedPer_val = current_variant.price  | times: forloop_index_count %}
+                                                                        {% assign subscription_price_first = allocation.price_adjustments[0].price %}
+                                                                        <div class="save-price">
+                                                                            {% assign save_price = savedPer_val |  minus: allocation.price_adjustments[0].price  %}
+                                                                            <p>Save {{ save_price |  money_without_trailing_zeros }}</p>
+                                                                        </div>
+                                                                    {% endif %}
+                                                                {% endfor %}
+                                                            </div>
+                                                        </label>
+                                                    </div>                                            
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% schema %}
+{
+    "name": "PDP Buy Box",
+    "settings": [
+        {
+            "type": "product",
+            "id": "product",
+            "label": "product"
+        }
+    ],
+    "presets": [
+        {
+        "name": "PDP Buy Box"
+        }
+    ]
+}
+{% endschema %}

@@ -46,3 +46,24 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 });
+
+$(document).ready(function(){
+
+  $('.js-for-image-slider').slick({
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: true,
+    fade: false,
+    asNavFor: '.js-nav-image-slider'
+  });
+
+  $('.js-nav-image-slider').slick({
+    slidesToShow: 7,
+    slidesToScroll: 1,
+    asNavFor: '.js-for-image-slider',
+    dots: false,
+    focusOnSelect: true,
+    arrows: true
+  });
+
+});

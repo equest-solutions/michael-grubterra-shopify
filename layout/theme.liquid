@@ -63,7 +63,7 @@
         suffix: "{{ template.suffix }}"
     }
  
-
+    </script>
     <script async defer src="https://tools.luckyorange.com/core/lo.js?site-id=d54ec820"></script>
     {{ locksmith_initializations }}
     <meta charset="utf-8">
@@ -102,16 +102,14 @@
     {%- if settings.animations_reveal_on_scroll -%}
       <script src="{{ 'animations.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
-    <!-- Slick & Swiper Slider CSS CDNs -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
     <link
       rel="stylesheet"
       type="text/css"
-      href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"
+      href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"
     >
-    <!-- Jquery Slick & Swiper slider js CDNs -->
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-3.6.0.min.js" defer></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js" defer></script>
 
     {%- render 'header-scripts.zipifypages', apprxhbl: zp_apprxhbl, renderctx: 'thm' -%}
     {{ content_for_header }}
