@@ -1,0 +1,262 @@
+ {% style %}
+              .image-grid-section {
+                      background-size: cover;
+                  background-repeat: no-repeat;
+                  background-image: url("{{ section.settings.column_bg_image | img_url: 'master' }}");
+                  padding: 87px 0px 120px 0;
+                  background-position: center;
+                position:relative;
+  background-color: white;
+              }
+              .section-header_custom {
+                display:flex;
+                align-items:center;
+                flex-direction:column;
+                gap:30px;
+                margin-bottom:60px;
+              }
+              .section-header_custom h2 {
+                font-family: "Brother1816 Printed Bold";
+            font-size: 40px;
+            font-weight: 700;
+            line-height: 48px;
+            letter-spacing: -0.02em;
+            text-align: left;
+          color: #1F6223;
+              margin:0px;
+                text-transform:uppercase;
+
+              }
+
+              .section-header_custom p {
+               font-family: "Brother1816 Printed";
+            font-size: 20px;
+            font-weight: 400;
+            line-height: 28px;
+            text-align: center;
+            color:#000;
+              margin:0px;
+
+              }
+
+              /* Style for the grid container */
+             .image-grid-section .grid-container {
+              display: flex;
+              justify-content:space-between;
+              margin: auto;
+              }
+
+              /* Style for each grid item */
+              .grid-container .grid-item {
+              display: flex;
+                  max-width: 380px;
+                  flex-direction: column;
+                  justify-content: center;
+              }
+
+              .grid-item img {
+              max-width: 220px;
+              margin:auto;
+              border-radius: 8px;
+              margin-bottom: 0px;
+              }
+
+              .grid-item h3 {
+                font-family: "Brother1816 Printed Bold";
+          font-size: 20px;
+          font-weight: 700;
+          line-height: 28px;
+          text-align: center;
+            color:#000;
+              margin: 0px;
+      margin-bottom:24px;
+              }
+
+              .grid-item p {
+            font-family: "Brother1816 Printed";
+          font-size: 18px;
+              margin: 0px;
+          font-weight: 350;
+          line-height: 25.2px;
+          text-align: center;
+            color:#000;
+
+              }
+              .list-container{
+        width: 32px;
+        height: 32px;
+        border-radius:50px;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 22.4px;
+        text-align: left;
+                display:flex;
+                align-items:center;
+                justify-content:center;
+        background: #F87212;
+                    position: absolute;
+          top: 100%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          margin: 0;
+          color: #fff;
+
+              }
+              .grid-image-container{
+              position: relative;
+                  display:flex;
+                margin-bottom:30px;
+              }
+              .button-center-container{
+
+              }
+              .grid-item p a{
+
+
+              }
+      .column_inner_bottom_content{
+        display:flex;
+        align-items:center;
+        flex-direction:column;
+      }
+              @media(max-width: 600px){
+
+              .image-grid-section {
+                  background-image: url("{{ section.settings.column_bg_image_mobile | img_url: 'master' }}");
+                  padding: 40px 0px 40px 0;
+              }
+
+                    .section-header_custom h2 {
+            font-size: 24px;
+            line-height: 28.8px;
+            letter-spacing: -0.02em;
+            text-align: center;
+            max-width: 200px;
+        }
+                .section-header_custom p {
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 22.4px;
+            text-align: center;
+        }
+    .grid-item h3 {
+            font-size: 18px;
+            font-weight: 700;
+            line-height: 25.2px;
+            text-align: left;
+      margin-bottom:10px;
+        }
+                .section-header_custom{
+                  margin-bottom:30px;
+                  gap:10px;
+                }
+              .grid-item p {
+            font-size: 14px;
+            font-weight: 350;
+            line-height: 19.6px;
+            text-align: center;
+        }
+                .grid-container{
+                      gap: 30px;
+                  flex-direction:column;
+                }
+              }
+{% endstyle %}
+<div class="image-grid-section">
+  <div class="page-width">
+    <div class="section-header_custom">
+      {% if section.settings.heading != blank %}
+        <h2>{{ section.settings.heading }}</h2>
+      {% endif %}
+      {% if section.settings.subheading != blank %}
+        <p>{{ section.settings.subheading }}</p>
+      {% endif %}
+    </div>
+
+    <div class="grid-container">
+      {% for block in section.blocks %}
+        {% if block.type == 'grid_item' %}
+          <div class="grid-item">
+            <div class="grid-image-container">
+              <img src="{{ block.settings.image | img_url: 'medium' }}" alt="{{ block.settings.image_alt }}">
+              <div class="list-container">{{ block.settings['list-items'] }}</div>
+            </div>
+            <div class="column_inner_bottom_content">
+              <h3>{{ block.settings.heading }}</h3>
+              <p>{{ block.settings.content }}</p>
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{%- schema %}
+{
+"name": "MultiColumn Section",
+"settings": [
+  {
+      "type": "image_picker",
+      "id": "column_bg_image",
+      "label": "Column Hero image"
+    },
+    {
+      "type": "image_picker",
+      "id": "column_bg_image_mobile",
+      "label": "Column Hero image Mobile"
+    },
+    {
+    "type": "text",
+    "id": "heading",
+    "label": "Heading"
+    },
+    {
+    "type": "inline_richtext",
+    "id": "subheading",
+    "label": "Subheading"
+    }
+
+    ],
+    "blocks": [
+    {
+    "type": "grid_item",
+    "name": "Grid Item",
+    "settings": [
+    {
+    "type": "image_picker",
+    "id": "image",
+    "label": "Image"
+    },
+    {
+    "type": "text",
+    "id": "image_alt",
+    "label": "Image Alt Text"
+    },
+    {
+    "type": "text",
+    "id": "list-items",
+    "label": "list number"
+    },
+
+    {
+    "type": "text",
+    "id": "heading",
+    "label": "Heading"
+    },
+    {
+    "type": "inline_richtext",
+    "id": "content",
+    "label": "Content"
+    }
+    ]
+    }
+    ],
+    "presets": [
+    {
+    "name": "MultiColumn Section",
+    "category": "Content"
+    }
+    ]
+    }
+{%- endschema %}

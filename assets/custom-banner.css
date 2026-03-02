@@ -1,0 +1,97 @@
+.banner-image-wrapper {
+  position: relative;
+  border-radius:10px;
+}
+
+.banner-image-wrapper img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: bottom;
+    border-radius:10px;
+}
+
+.custom-banner-content-wrapper {
+    position: relative;
+}
+
+.custom-banner-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.ctm-banner-heading {
+    color: #000;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.custom-banner-content .custom-text {
+    color: #000;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 36px;
+}
+
+@media (min-width: 750px) {
+.banner-image-wrapper {
+  height: 470px;
+}
+  
+.ctm-banner-heading { 
+    font-size: 32px;
+}
+  
+.custom-banner-content {
+    width: 100%;
+    max-width: 800px;
+}
+  
+.custom-banner-content .custom-text { 
+ font-size: 18px;
+}
+  
+}
+
+@media (min-width: 1280px) {
+.custom-banner-content {
+    width: 100%;
+    max-width: 800px;
+}
+}
+
+@media (max-width: 750px) {
+.banner-image-wrapper {
+  height: 554px;
+} 
+  
+.banner-image-wrapper img {
+  object-fit: cover;
+  object-position: bottom;
+}
+  
+.banner-image-wrapper img {
+  border-radius: 10px;
+}
+  
+.custom-banner-content {
+    width: 80%;
+}
+
+.custom-banner-content .custom-text {
+  line-height: 150%;
+}
+}

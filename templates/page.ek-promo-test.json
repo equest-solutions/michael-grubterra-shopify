@@ -1,0 +1,252 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "image_banner_dVYgXX": {
+      "type": "image-banner",
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/Group_1000004202.png",
+        "image_overlay_opacity": 0,
+        "image_height": "adapt",
+        "desktop_content_position": "middle-center",
+        "show_text_box": false,
+        "desktop_content_alignment": "center",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
+    },
+    "featured_collection_hefckG": {
+      "type": "featured-collection",
+      "name": "t:sections.featured-collection.presets.name",
+      "settings": {
+        "title": "SAVE ON BEST SELLERS",
+        "heading_size": "h2",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "for-chickens",
+        "products_to_show": 3,
+        "columns_desktop": 3,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "enable_desktop_slider": false,
+        "color_scheme": "",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "enable_quick_add": false,
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "loox_reviews_landing1_mh6Bxi": {
+      "type": "loox-reviews-landing1",
+      "blocks": {
+        "loox_reviews_loox_agg_section_HGrqWF": {
+          "type": "shopify://apps/loox-reviews/blocks/loox-agg-section/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
+          "settings": {
+            "only_photos": true,
+            "hide_thumbnails": true,
+            "product_handle": "grubterra-5lb-black-soldier-fly-larvae-bundle-5",
+            "aggregated": false,
+            "data-limit": 3,
+            "maxwidth": 1080,
+            "is_sample": false
+          }
+        }
+      },
+      "block_order": [
+        "loox_reviews_loox_agg_section_HGrqWF"
+      ],
+      "settings": {
+        "Comparison_heading": "Here’s What Our Happy Customers Are Saying",
+        "Comparison_subheading": "Check out our customer reviews and see how much their poultry and pets adore Grubterra"
+      }
+    },
+    "custom_featured_product_L49rWG": {
+      "type": "custom-featured-product",
+      "blocks": {
+        "text_L3HjTh": {
+          "type": "text",
+          "settings": {
+            "text": "{{ section.settings.product.vendor }}",
+            "text_style": "uppercase"
+          }
+        },
+        "title_fRyBEP": {
+          "type": "title",
+          "settings": {
+            "heading_size": "h1"
+          }
+        },
+        "price_iaKyTB": {
+          "type": "price",
+          "settings": {}
+        },
+        "variant_picker_fPP44R": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button"
+          }
+        },
+        "quantity_selector_gQHnbh": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "buy_buttons_rqk7Nx": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": false,
+            "show_gift_card_recipient": true
+          }
+        },
+        "share_qFhpYg": {
+          "type": "share",
+          "settings": {
+            "share_label": "Share"
+          }
+        }
+      },
+      "block_order": [
+        "text_L3HjTh",
+        "title_fRyBEP",
+        "price_iaKyTB",
+        "variant_picker_fPP44R",
+        "quantity_selector_gQHnbh",
+        "buy_buttons_rqk7Nx",
+        "share_qFhpYg"
+      ],
+      "name": "t:sections.featured-product.presets.name",
+      "settings": {
+        "product": "grubterra-dried-black-soldier-fly-larvae-10lb-pdp-copy",
+        "color_scheme": "scheme-1e752d6e-95d1-4253-8e7f-00b2dea884e9",
+        "secondary_background": false,
+        "media_size": "small",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "media_position": "left",
+        "image_zoom": "lightbox",
+        "hide_variants": false,
+        "enable_video_looping": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "faq_section_6MUGEy": {
+      "type": "faq-section",
+      "blocks": {
+        "faq_RyBRky": {
+          "type": "faq",
+          "settings": {
+            "question": "What is the shelf life of  GrubTerra black soldier fly larvae?",
+            "answer": "The shelf life of GrubTerra is 24 months upon delivery.",
+            "answer_option": "default"
+          }
+        },
+        "faq_fxPRnb": {
+          "type": "faq",
+          "settings": {
+            "question": "Can GrubTerras larvae be used for all types of animals?",
+            "answer": "GrubTerra dried black soldier fly larvae are primarily for backyard poultry and wild birds. Other animals, such as dogs, cats, and livestock, can consume black soldier fly larvae in moderation.",
+            "answer_option": "default"
+          }
+        },
+        "faq_J4YfcB": {
+          "type": "faq",
+          "settings": {
+            "question": "Are GrubTerra products organic?",
+            "answer": "GrubTerra Products are not organic; however, we source from high-quality farmers around the world and focus on using the highest quality feed ingredients for our larvae.\n\nGrubTerra products are non GMO.",
+            "answer_option": "default"
+          }
+        },
+        "faq_tfYCfV": {
+          "type": "faq",
+          "settings": {
+            "question": "How can I incorporate GrubTerra’s larvae into my animal’s feed?",
+            "answer": "A few handfuls can be sprinkled into poultry and wild bird feed or around the coop daily to incorporate them into their diets.",
+            "answer_option": "default"
+          }
+        }
+      },
+      "block_order": [
+        "faq_RyBRky",
+        "faq_fxPRnb",
+        "faq_J4YfcB",
+        "faq_tfYCfV"
+      ],
+      "settings": {
+        "faq_image": "shopify://shop_images/Rectangle_1406_7.png",
+        "faq_image_mobile": "shopify://shop_images/Rectangle_1406_8.png",
+        "faqheading": "Frequently Asked Questions",
+        "faqsubheading": "Have any questions? We’re here to help."
+      }
+    },
+    "newsletter_TkWzRz": {
+      "type": "newsletter",
+      "blocks": {
+        "heading_NzLKNe": {
+          "type": "heading",
+          "settings": {
+            "heading": "Subscribe to our emails",
+            "heading_size": "h1"
+          }
+        },
+        "paragraph_th3Lcq": {
+          "type": "paragraph",
+          "settings": {
+            "text": "<p>Be the first to know about new collections and exclusive offers.</p>"
+          }
+        },
+        "email_form_R4HLPV": {
+          "type": "email_form",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "heading_NzLKNe",
+        "paragraph_th3Lcq",
+        "email_form_R4HLPV"
+      ],
+      "name": "t:sections.newsletter.presets.name",
+      "settings": {
+        "color_scheme": "scheme-1e752d6e-95d1-4253-8e7f-00b2dea884e9",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    }
+  },
+  "order": [
+    "image_banner_dVYgXX",
+    "featured_collection_hefckG",
+    "main",
+    "loox_reviews_landing1_mh6Bxi",
+    "custom_featured_product_L49rWG",
+    "faq_section_6MUGEy",
+    "newsletter_TkWzRz"
+  ]
+}

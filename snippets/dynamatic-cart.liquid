@@ -1,0 +1,180 @@
+
+<script>
+  const dynamaticTriggerBtn = `#cart-icon-bubble, #cart-icon-bubble *,data-replo-add-product-variant-to-cart,data-replo-add-product-variant-to-cart *`
+  const cartObserverNeeded = `true`
+  const cartCountClass = ``
+  const cartCountText = ``
+  const disabledCartPages = ``
+  let dynShopCurrency = "{{ shop.money_format | strip_html }}"
+  const useShopMoneyFormat = false
+  window.cartCount = cartCountClass
+
+</script>
+
+<script>
+  
+  let collectionSingle = []
+  {% for collection in product.collections %}
+    collectionSingle.push(`{{ collection.title | downcase }}`)
+  {% endfor %}
+  
+  let customerTags = [];
+  {% for tag in customer.tags %}
+    customerTags.push(`{{ tag | downcase }}`);
+  {% endfor %}
+  
+  let customerData = {
+    customerTags: customerTags,
+    ordersCount: `{{customer.orders_count}}`,
+    totalSpent: Number(`{{customer.total_spent}}`)/100,
+    email:`{{ customer.email }}`,
+    customerId:`{{ customer.id }}`,
+    phone:`{{ customer.phone }}`,
+    lastName:`{{ customer.last_name }}`,
+    firstName:`{{ customer.first_name }}`,
+    acceptsMarketing:`{{ customer.accepts_marketing }}`
+  }
+  let items = []
+  {% for item in cart.items %}
+    items.push(`{{ item }}`)
+  {% endfor %}
+
+
+  
+  let cartData = {
+    cart_subtotal: Number(`{{ cart.items_subtotal_price }}`),
+    cart_line_item: Number(`{{ cart.item_count }}`),
+    cart_item_count: items.length
+  }
+ 
+</script>
+<link rel="stylesheet" href="{{ 'dynamatic-cart-prd.css' | asset_url }}">
+<script src="{{ 'dynamatic-cart-prd.js' | asset_url }}" defer="defer"></script>
+<style>
+
+  .dyn-cart-area {
+  background: white;
+}
+.chakra-slide.dyn-main-cart-slide {
+    max-width: 500px !important;
+}
+div#dyn-cart-header-section {
+    max-height: 70px !important;
+    border-bottom: 1px solid #e0e0e0 !important;
+}
+span.dyn-heading-text-left {
+    font-weight: 500 !important;
+}
+p.chakra-text.dyn-cart-line-price.dyn-money-format.css-t8xi19 {
+    font-weight: 500 !important;
+}
+svg.quantity__delete {
+    border: none !important;
+    height: 17px !important;
+}
+svg.dyn-quantity-minus {
+    width: 18px !important;
+    height: 18px !important;
+}
+input.dyn-input {
+   width: 18px !important;
+    height: 18px !important;
+}
+svg.dyn-quantity-plus {
+    width: 18px !important;
+    height: 18px !important;
+}
+span.dyn-subtotal-items {
+    display: none !important;
+}
+.dyn-animated-cart-item {
+    padding-bottom: 20px !important;
+}
+:where(img, svg, video, canvas, audio, iframe, embed, object) {
+  display: inline ;
+}
+p.chakra-text.css-1vlcs38:hover {
+    text-decoration: underline !important;
+}
+.css-1y1xrex {
+    padding: 11px 18px !important;
+    text-align: center !important;
+}
+.dyn-announcement-title.css-1jc6ttt a {
+    text-decoration: none !important;
+   text-align: center !important;
+   padding: 11px 18px !important;
+}
+.dyn-cart-item.css-iggvoj {
+     border-bottom: 1px solid #eaeaea !important;
+     padding-bottom: 20px !important;
+}
+div#dyn-top-widgets {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+}
+img.dyn-empty-cart-image.css-v7v99c {
+    display: none !important;
+}
+a.chakra-button.dyn-empty-cart-btn.css-195tgxh {
+    font-size: 14px !important;
+    padding: 20px 55px;
+}
+a.chakra-button.dyn-empty-cart-btn.css-195tgxh:hover {
+    background-color: #121212 !important;
+    color: #fff !important;
+}
+.shopify-cleanslate .pGZsIynlCgQUe6S16lYw, .shopify-cleanslate .XLcXEW3RnM9fyU7k7fvC {
+    margin-top: 2px !important;
+}
+button#dyn-checkout {
+    margin-bottom: 14px !important;
+}
+.icons-wrapper img {
+    height: 60px;
+}
+.feature-list-blocks :where(blockquote, dl, dd, h1, h2, h3, h4, h5, h6, hr, figure, p, pre) {
+    margin: revert;
+}
+.product_top_text p {
+    margin-bottom: 15px;
+}
+.product_top_text a{
+    text-decoration:underline
+}
+body {
+    min-height: 100%;
+    margin: 0;
+    font-size: 1.5rem;
+    letter-spacing: 0.06rem;
+    line-height: calc(1 + 0.8 / var(--font-body-scale));
+    font-family: var(--font-body-family);
+    font-style: var(--font-body-style);
+    font-weight: var(--font-body-weight);
+}
+.drawer.active {
+    visibility: hidden !important;
+}
+p.chakra-text.dyn-milestone-icon {
+    width: 100px;
+}
+.overflow-hidden {
+    overflow: scroll !important;
+}
+.dyn-cart-line-item-zones .tieredBarContainer {
+    padding: 10px !important;
+    margin-bottom: 15px !important;
+}
+h2.chakra-heading.dyn-std-carousel-heading {
+    font-size: 18px !important;
+}
+.dyn-milestone-icon svg {
+    display: block;
+}
+cart-drawer {
+    display: none !important;
+}
+  div#dyn-cart-bottom-section {
+    padding-top: 0px !important;
+}
+</style>

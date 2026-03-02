@@ -1,0 +1,125 @@
+.alternate-text-wrapper-container {
+  background: #1f622333;
+}
+.alternate-text-header h2 {
+  font-size: 42px;
+  font-weight: 600;
+  line-height: 63px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: #333333;
+}
+.alternate-text-wrapper {
+  display: flex;
+}
+.alternate-text-content {
+  padding: 0px 20px;
+  border-right: 1px solid #1f6223;
+  position: relative;
+}
+.alternate-text-content:after {
+  content: "";
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+  background: #1f6223;
+  position: absolute;
+  top: 10px;
+  left: auto;
+  right: -11px;
+}
+.text-position-right .alternate-text-content:after {
+  right: auto;
+  left: -10.5px;
+}
+.text-position-right .alternate-text-content {
+  padding: 0px 20px;
+  border-right: 0px solid #1f6223;
+  border-left: 1px solid #1f6223;
+  flex: 0 0 50%;
+}
+.alternate-text-empty-div {
+  display: block !important;
+  flex: 0 0 50%;
+  padding: 0px 20px;
+  border-right: 0px solid #1f6223;
+  border-left: 1px solid #1f6223;
+}
+.text-position-right .alternate-text-empty-div {
+  border-right: 1px solid #1f6223;
+  border-left: 0px solid #1f6223;
+}
+.alternate-text-wrapper.text-position-right {
+  flex-direction: row-reverse;
+}
+.alternate-text-heading h3 {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 36px;
+  letter-spacing: 0em;
+  text-align: right;
+  margin: 0;
+}
+.text-position-right .alternate-text-heading h3 {
+  text-align: left;
+}
+.alternate-text-text * {
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 23px;
+  letter-spacing: 0em;
+  text-align: right;
+}
+.text-position-right .alternate-text-text * {
+  text-align: left;
+}
+.alternate-text-button {
+  text-align: center;
+  margin-top: 20px;
+}
+.alternate-text-button .button {
+  font-family: Poppins;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: #fff;
+  background: #1f6223;
+  min-width: 250px;
+}
+@media screen and (max-width: 749px) {
+  .alternate-text-header h2 {
+    font-size: 28px;
+    line-height: 42px;
+  }
+  .alternate-text-heading h3 {
+    font-size: 16px;
+    line-height: 24px;
+    text-align: left;
+  }
+  .alternate-text-text * {
+    font-size: 15px;
+    line-height: 18px;
+    text-align: left;
+  }
+  .alternate-text-content:after,
+  .text-position-right .alternate-text-content:after {
+    right: auto;
+    left: -12.5px;
+    top: 3px;
+  }
+  .alternate-text-empty-div {
+    display: none !important;
+  }
+  .alternate-text-content,
+  .text-position-right .alternate-text-content {
+    border-right: 0px;
+    border-left: 5px solid #1f6223;
+    flex: 0 0 100%;
+  }
+  .alternate-text-wrapper.text-position-right {
+    flex-direction: row;
+  }
+}

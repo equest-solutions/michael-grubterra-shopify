@@ -1,0 +1,106 @@
+<style>
+ .sticky-button-div {
+  display: none;
+}
+  /* Sticky button styles */
+ 
+
+/* Show the button only on mobile (max-width: 768px) */
+@media screen and (max-width: 768px) {
+       
+     .sticky-button-div {
+        position: fixed;
+        bottom: 0px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        flex-wrap:wrap;
+        gap:6px;
+        justify-content: center;
+        align-items: center;
+        background-color: #e9efe9;
+        padding: 10px 20px;
+        z-index: 9999;
+        width: 100%;
+    }
+
+      .sticky-product-button {
+        background-color: #1f6223;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        width: 100%;
+    }
+   .sticky-product-button span{
+     font-size:1.5rem;
+   }
+ .sticky-button-div .buttons_container {margin:0; width: -webkit-fill-available;}
+}
+
+</style>
+
+<div class='sticky-button-div'>
+  <div class="buttons_container">
+    <a href="#product-landing" class="btn btn-secondary sticky-product-button">Claim your 30% discount
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="17" viewBox="0 0 24 17" fill="none">
+        <path d="M15.0332 1.64355L22.0315 8.64357L15.0332 15.6436" stroke="white" stroke-width="2.33147" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+        <path d="M1.96875 8.64355H19.9448" stroke="white" stroke-width="2.33147" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+    </a>
+  </div>
+  <p style="margin:0 auto; font-size:12px; font-weight:700;">30 day money back guarantee</p>
+</div>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  // Select the sticky button div and the button itself
+  const stickyDiv = document.querySelector('.sticky-button-div');
+  const stickyButton = document.querySelector('.sticky-product-button');
+
+  // Select the product landing element
+  const productLanding = document.querySelector('#product-landing');
+
+  // Function to check if the element is in the viewport
+  function isElementInViewport(el) {
+    if (!el) {
+      return false; // Check if the element exists
+    }
+    const rect = el.getBoundingClientRect();
+    return (
+      rect.top < (window.innerHeight || document.documentElement.clientHeight) &&
+      rect.bottom > 0
+    );
+  }
+
+  // Function to check scroll position
+  function handleScroll() {
+    // Check if the screen width is less than or equal to 768px
+    if (window.innerWidth <= 768) {
+      if (window.scrollY > 1000) {
+        if (!isElementInViewport(productLanding)) {
+          stickyDiv.style.display = 'flex'; // Show the sticky div
+        } else {
+          stickyDiv.style.display = 'none'; // Hide when product landing is in view
+        }
+      } else {
+        stickyDiv.style.display = 'none'; // Hide when scrolled to the top
+      }
+    } else {
+      stickyDiv.style.display = 'none'; // Always hide on larger screens
+    }
+  }
+
+  // Ensure the div is hidden on page load
+  stickyDiv.style.display = 'none';
+
+  // Attach the scroll event listener
+  window.addEventListener('scroll', handleScroll);
+
+  // Hide the sticky div when the button is clicked
+  stickyButton.addEventListener('click', () => {
+    stickyDiv.style.display = 'none';
+  });
+});
+</script>

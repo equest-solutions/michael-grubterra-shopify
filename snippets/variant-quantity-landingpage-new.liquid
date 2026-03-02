@@ -1,0 +1,310 @@
+{% liquid
+  assign quantity = quantity | default: 1
+ assign variants-metafields = value.variant.metafields.custom.most_popular
+  if variant.title contains 'lb'
+    assign weight = variant.title | remove_first: 'lb' | strip | times: 1
+    assign unit_price = variant.price | divided_by: weight
+  endif
+%}
+
+<variant-quantity>
+  <div class="variant-quantity-wrapper">
+    <input
+      type="radio"
+      id="variant-quantity-{{ variant.id }}-{{ quantity }}"
+      name="variant-quantity"
+      class="js-variant-quantity"
+      value="{{ variant.id }}"
+      data-product="{{ variant.product.id }}"
+      data-quantity="{{ quantity }}"
+      data-price="{{ variant.price }}"
+      data-note="{% if quantity > 1%}({{ weight | times: quantity }}{{ quantity | pluralize: 'lb', 'lbs' }} = {{ quantity }} x {{ variant.title }}){% endif %}"
+      data-fulfillment-count="{% if quantity > 1%}1{% endif %}"
+data-variant-name="  {{ weight | times: quantity }}{{ quantity | pluralize: 'lb', 'lbs' }}"
+    >
+
+
+
+
+    <label
+      for="variant-quantity-{{ variant.id }}-{{ quantity }}"
+      class="variant-quantity-wrapper-variant-wrapper"
+    >
+  
+
+
+{% assign most_tag = false %}
+{% assign best_tag = false %}
+{% assign most_tag_text = '' %}
+{% assign best_tag_text = '' %}
+
+{% for tag in variant.product.tags %}
+  {% if tag contains 'Most' %}
+    {% assign most_tag = true %}
+    {% assign most_tag_text = tag %}
+  {% endif %}
+  {% if tag contains 'Best' %}
+    {% assign best_tag = true %}
+    {% assign best_tag_text = tag %}
+  {% endif %}
+{% endfor %}
+
+{% if most_tag or best_tag %}
+  <div class="best-deal-wrapper">
+    {% if most_tag %}
+      <div class="beast-deal" style="background-color:#800080;">
+        {{ most_tag_text | remove: 'badge:' | strip }}
+      </div>
+    {% elsif best_tag %}
+      <div class="beast-deal">
+        {{ best_tag_text | remove: 'badge:' | strip }}
+      </div>
+    {% endif %}
+  </div>
+{% endif %}
+{% if variant.metafields.custom.bundle_image %}
+<div class="variant-img"><img src="{{ variant.metafields.custom.bundle_image | img_url: '' }}" alt="Variant Image"></div>
+{% endif %}
+
+
+
+
+      <div class="variant-quantity-radio"></div>
+
+      <div class="variant-quantity-variant">
+
+          <div class="variant-quantity-variant-name">
+            {{ weight | times: quantity }}
+            {{ quantity | pluralize: 'lb', 'lbs' }}
+         <span class="variant-quantity-weight">({{ unit_price | money }} / lb)</span> </div> 
+         
+        
+
+        {% if variant.metafields.custom.subtitle != blank %}
+          <div class="variant-quantity-variant-month">{{ variant.metafields.custom.subtitle }}</div>
+        {% endif %}
+
+      <div class="variant-quantity-price-weight">
+        <div class="variant-quantity-price">
+        
+          <div class="variant-quantity-price-regular">{{ variant.price | times: quantity | money }}</div>
+  {% if variant.compare_at_price != blank and variant.compare_at_price > variant.price %}
+            <div class="variant-quantity-price-compare">{{ variant.compare_at_price | times: quantity | money }}</div>
+          {% endif %}
+        </div>
+       
+
+      </div>
+
+
+      </div>
+
+<div style="
+display: flex
+;
+    flex-direction: column;
+    gap: 5px;
+
+">
+{% if variant.compare_at_price > variant.price %} 
+
+<div class="variant-quantity-savings">
+  <span>Save</span>   {{ variant.compare_at_price | minus: variant.price | times: 100.0 | divided_by: variant.compare_at_price | money_without_currency | times: 100 | remove: '.0'}}%
+</div>
+{% endif %}
+
+ <div id="duration"></div>  
+
+</div>
+
+    </label>
+
+    {% if variant.compare_at_price != blank and variant.compare_at_price > variant.price %}
+      {% assign savings = variant.compare_at_price
+        | minus: variant.price
+        | times: 100
+        | divided_by: variant.compare_at_price
+      %}
+      <div class="discount-percent-wrapper">
+        <img
+          src="{{ 'tag.png' | asset_url }}"
+          class="w-100"
+          width="100%"
+          height="auto"
+          loading="lazy"
+        >
+        <div class="discout-percent">-{{ savings }}%</div>
+      </div>
+    {% endif %}
+  </div>
+
+
+
+
+
+
+
+
+
+</variant-quantity>
+
+{% if best_tag %}
+  <div class="free-wrapper">
+  <h1>Free One-Time Gift Included</h1>
+
+<div style="display:flex; align-items:center;">
+    <div class="product-img">
+      <img src="https://cdn.shopify.com/s/files/1/0046/3716/3633/files/Untitled_design_1.png?v=1733752452" alt="GrubTerra Coop Refresher">
+    </div>
+
+ <div id="wrapper21"stlye="display:flex; flex-direction:column; gap:5px;"> 
+    <h2>GrubTerra Coop Refresher</h2>
+    <h3><span>FREE</span> $18.95</h3>
+  </div>
+</div>
+  </div>
+{% endif %}
+
+
+
+<style>
+.desktop-hide {display:none;}
+#wrapper21 h3 {color:rgba(0,0,0, 0.35); font-size:16px; font-weight:600; font-family"poppins"; }
+
+#wrapper21 h3 span 
+
+{color:#FF0000; font-size:16px; font-weight:600; font-family"poppins";    text-decoration-line: underline;
+    font-style: italic;}
+
+
+
+.free-wrapper h2 {color:white; font-size:14px; font-weight:600; font-family"poppins";}
+.free-wrapper h1 {color:white; font-size:18px; font-weight:600; font-family"poppins";}
+.free-wrapper {border-radius:10px; border:1px solid black; background:#F7A205; color:white; padding:10px; display:flex; align-items: center; flex-direction:column; gap:10px; justify-content:center;}
+.free-wrapper img {height:60px;}
+
+.variant-quantity-wrapper-container {flex-direction:row; flex-wrap:wrap; justify-content:space-between; row-gap:20px; column-gap:0;}
+.discount-percent-wrapper {display:none;}
+.variant-quantity-wrapper-variant-wrapper {flex-direction:column;
+background:#FFFFFF;
+border-radius:10px;
+gap:10px;
+flex:1 1 33.33%;
+width: 160px;
+justify-content:center;
+min-height:200px;
+padding:10px;
+
+}
+  .beast-deal {background:#FFA500;}
+.best-deal-wrapper {width:160px !important;}
+
+.variant-img {width:max-content; display:flex; align-items:center; justify-content:center;}
+.variant-img img {width:50%;}
+.variant-quantity-radio {display:none !important;}
+.variant-quantity-wrapper input[type=radio]:checked+.variant-quantity-wrapper-variant-wrapper {background:white;}
+.variant-quantity-savings { 
+    text-align: center;
+    border-radius: 5px;
+    background: #C5DBC8;
+    line-height: normal;
+    font-size: 12px;
+    font-family: 'Brother1816 Printed';
+    font-weight: 600;
+    padding: 5px 0;
+width:100%;
+color:white;
+
+}
+.variant-quantity-wrapper{width:160px;}
+
+.best-deal-wrapper {
+    display: flex;
+    column-gap: 5px;
+    width: 140px;
+    position: relative;
+    top: -20px;
+}
+
+.beast-deal {
+font-family: "Brother1816 Printed";
+    font-size: 12px;
+    border-radius: 5px 5px 0 0;
+width:100%;
+}
+
+.variant-quantity-variant-name {
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #1f6223;
+
+}
+.variant-quantity-weight {font-weight:400;}
+.variant-quantity-price-regular {color:#1D1D1D;}
+.variant-quantity-price-compare {font-size:14px; color:#f7a205d1;}
+.variant-quantity-price {justify-content:center;}
+.variant-quantity-savings {width:140px; background-color:#1F6223;}
+
+
+
+
+@media (max-width: 480px) {
+
+
+.frequency-label, .chicken-label, .frequency-option, .chicken-count-options label {font-size:12px;}
+
+ .div-hen img,
+  .leaf-div img,
+  .egg-div img {width:25px; height:auto; }
+
+.hen-egg span {font-size:12px; line-height:130%;}
+
+    .featured-product-new .last-item {
+         flex-direction: column;  /* Add your styles for smaller screens here */
+    }
+
+.featured-product-new .product--medium:not(.product--no-media) .product__info-wrapper {margin-left:0 !important; padding:0 !important;}
+
+.last-item .variant-quantity-wrapper-variant-wrapper .best-deal-wrapper {
+        top: -10px !important;
+        left: 0 !important;
+        width:100% !important;
+        right: 0;
+
+
+}
+.variant-quantity-wrapper-variant-wrapper { min-height:40px; }
+.variant-img {flex-shrink:0;}
+.variant-quantity-variant {width:100%; flex:auto;}
+.last-item {margin-top:0 !important; position:relative}
+#duration {width:80px; font-size:12px;}
+.beast-deal {font-size:10px;}
+.variant-quantity-savings {width:80px;}
+.section-template--16102705725553__custom_featured_product_new_WRkw8q-padding {background:#F2F9F3;}
+.featured_product_bg .product__info-wrapper h2.product__title {margin-top:30px;}
+.variant-quantity-wrapper {width:100% !important; min-width:-webkit-fill-available; max-width:-webkit-fill-available;}
+.variant-quantity-wrapper-variant-wrapper {flex-direction:row; position:relative; margin:5px 0; padding: 15px !important;}
+.featured-product-new .last-item .variant-quantity-wrapper, .featured-product-new .last-item .variant-quantity-wrapper-variant-wrapper {width:-webkit-fill-available !important;}
+.variant-quantity-price {justify-content:left;}
+.variant-img img {width:50px; height:auto;}
+.best-deal-wrapper {position:absolute; top: -10px;
+    bottom: 0;
+    right: 0;
+    left: -1px; height: 20px; width: -webkit-fill-available !important;}
+.safe-shipping {flex-direction:column; gap:10px !important;}
+.variant-quantity-wrapper-container {flex-wrap:nowrap; flex-direction: column; row-gap:12px;}}
+</style>
+
+
+
+
+
+
+
+
+
+

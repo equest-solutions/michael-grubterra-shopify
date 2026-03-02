@@ -1,0 +1,272 @@
+{{ 'custom-grubterra-features.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+<div class="custom-grubterra-features">
+  <div class="page-width">
+    <div class="section-{{ section.id }}-padding">
+      <div class="section-title-wrapper center">
+        <h2 class="title">{{ section.settings.title }}</h2>
+      </div>
+      <div class="feature-block-wrapper">
+        <div class="feature-block {% if section.settings.image_position == 'right' %}image-right{% endif %}">
+          <div class="feature-image-wrapper">
+            {%- liquid
+              assign height = section.settings.image.width | divided_by: section.settings.image.aspect_ratio | round
+              assign sizes = '100vw'
+              assign widths = '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840'
+              assign fetch_priority = 'auto'
+            -%}
+            {%- liquid
+              assign height_mobile = section.settings.image_mobile.width | divided_by: section.settings.image_mobile.aspect_ratio | round
+              assign sizes_mobile = '100vw'
+              assign widths_mobile = '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840'
+              assign fetch_priority = 'auto'
+            -%}
+            {% if section.settings.image %}
+              {{
+                section.settings.image
+                | image_url: width: 510
+                | image_tag:
+                  height: 500,
+                  sizes: sizes,
+                  widths: widths,
+                  fetchpriority: fetch_priority,
+                  class: 'small-hide'
+              }}
+            {% endif %}
+            {% if section.settings.image_mobile %}
+              {{
+                section.settings.image_mobile
+                | image_url: width: 220
+                | image_tag:
+                  height: 500,
+                  sizes: sizes_mobile,
+                  widths: widths_mobile,
+                  fetchpriority: fetch_priority,
+                  class: 'large-up-hide medium-hide'
+              }}
+            {% endif %}
+          </div>
+          <div class="feature-list-blocks">
+            {% for block in section.blocks %}
+              {% case block.type %}
+                {% when 'title' %}
+                  <h2 class="list-block-title">{{ block.settings.title }}</h2>
+                {% when 'text' %}
+                  <div class="list-block-text">
+                    {{ block.settings.text }}
+                  </div>
+                {% when 'list-feature' %}
+                  <div class="feature-list-wrapper">
+                    {% if block.settings.point_1 != blank %}
+                      <div class="feature-inner">
+                        <div class="feature-check">
+                          {% render 'feature-check' %}
+                        </div>
+                        <div class="feature">{{ block.settings.point_1 }}</div>
+                      </div>
+                    {% endif %}
+                    {% if block.settings.point_2 != blank %}
+                      <div class="feature-inner">
+                        <div class="feature-check">
+                          {% render 'feature-check' %}
+                        </div>
+                        <div class="feature">{{ block.settings.point_2 }}</div>
+                      </div>
+                    {% endif %}
+                    {% if block.settings.point_3 != blank %}
+                      <div class="feature-inner">
+                        <div class="feature-check">
+                          {% render 'feature-check' %}
+                        </div>
+                        <div class="feature">{{ block.settings.point_3 }}</div>
+                      </div>
+                    {% endif %}
+                    {% if block.settings.point_4 != blank %}
+                      <div class="feature-inner">
+                        <div class="feature-check">
+                          {% render 'feature-check' %}
+                        </div>
+                        <div class="feature">{{ block.settings.point_4 }}</div>
+                      </div>
+                    {% endif %}
+                    {% if block.settings.point_5 != blank %}
+                      <div class="feature-inner">
+                        <div class="feature-check">
+                          {% render 'feature-check' %}
+                        </div>
+                        <div class="feature">{{ block.settings.point_5 }}</div>
+                      </div>
+                    {% endif %}
+                  </div>
+                {% when 'button' %}
+<span class='appstle_stand_alone_selector' data-product-handle='{{ product.handle }}' style="display:none;"></span>                  
+                <div class="button-wrapper">
+                    {% if block.settings.button_text != blank %}
+                      <a class="button feature-button" href="{{ block.settings.url }}">
+                        {{- block.settings.button_text -}}
+                      </a>
+                    {% endif %}
+                  </div>
+              {% endcase %}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Custom Grubterra Features",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image Desktop"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "Image Mobile"
+    },
+    {
+      "type": "radio",
+      "id": "image_position",
+      "label": "Image Position",
+      "default": "left",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 52
+    }
+  ],
+  "blocks": [
+   {
+     "type": "title",
+     "name": "Title",
+     "limit": 1,
+     "settings": [
+       {
+         "type": "text",
+         "id": "title",
+         "label": "Title"
+       }
+     ]
+   },
+   {
+     "type": "text",
+     "name": "Text",
+     "settings": [
+       {
+         "type": "richtext",
+         "id": "text",
+         "label": "Text"
+       }
+     ]
+   },
+   {
+     "type": "list-feature",
+     "name": "Feature Points",
+     "limit": 1,
+     "settings": [
+       {
+         "type": "inline_richtext",
+         "id": "point_1",
+         "label": "Point 1"
+       },
+       {
+         "type": "inline_richtext",
+         "id": "point_2",
+         "label": "Point 2"
+       },
+       {
+         "type": "inline_richtext",
+         "id": "point_3",
+         "label": "Point 3"
+       },
+       {
+         "type": "inline_richtext",
+         "id": "point_4",
+         "label": "Point 4"
+       },
+       {
+         "type": "inline_richtext",
+         "id": "point_5",
+         "label": "Point 5"
+       }
+     ]
+   },
+   {
+     "type": "button",
+     "name": "Button",
+     "settings": [
+       {
+         "type": "text",
+         "id": "button_text",
+         "label": "Button Text"
+       },
+       {
+         "type": "url",
+         "id": "url",
+         "label": "Url"
+       }
+     ]
+   }
+  ],
+  "presets": [
+    {
+      "name": "Custom Grubterra Features"
+    }
+  ]
+}
+{% endschema %}

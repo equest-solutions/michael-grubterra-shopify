@@ -1,0 +1,104 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "t:sections.footer.name",
+  "type": "footer",
+  "sections": {
+    "newsletter_wiVQ6x": {
+      "type": "newsletter",
+      "blocks": {
+        "heading_yD4dep": {
+          "type": "heading",
+          "settings": {
+            "heading": "GrubTerra Newsletter",
+            "heading_size": "h1"
+          }
+        },
+        "paragraph_9QCzer": {
+          "type": "paragraph",
+          "settings": {
+            "text": "<p>Stay updated on GrubTerra with great discounts and updates!</p>"
+          }
+        },
+        "email_form_3EJzpQ": {
+          "type": "email_form",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "heading_yD4dep",
+        "paragraph_9QCzer",
+        "email_form_3EJzpQ"
+      ],
+      "disabled": true,
+      "settings": {
+        "color_scheme": "background-2",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "link_list_YdbQwq": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Company",
+            "menu": "footer-support-2-0"
+          }
+        },
+        "link_list_aMctxh": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Support",
+            "menu": "footer-legal-2-0"
+          }
+        },
+        "social_eypz3J": {
+          "type": "Social",
+          "settings": {
+            "heading": "Social Links"
+          }
+        },
+        "brand_information_JCjK6W": {
+          "type": "brand_information",
+          "settings": {
+            "show_social": false
+          }
+        }
+      },
+      "block_order": [
+        "link_list_YdbQwq",
+        "link_list_aMctxh",
+        "social_eypz3J",
+        "brand_information_JCjK6W"
+      ],
+      "settings": {
+        "color_scheme": "background-1",
+        "newsletter_enable": false,
+        "newsletter_heading": "Subscribe to our emails",
+        "enable_follow_on_shop": false,
+        "show_social": true,
+        "enable_country_selector": false,
+        "enable_language_selector": false,
+        "payment_enable": true,
+        "show_policy": false,
+        "margin_top": 0,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "newsletter_wiVQ6x",
+    "footer"
+  ]
+}

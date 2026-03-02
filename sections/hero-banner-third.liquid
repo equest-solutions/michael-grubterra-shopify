@@ -1,0 +1,401 @@
+{% schema %}
+{
+  "name": "Hero Banner Third",
+  "settings": [
+            {
+      "type": "image_picker",
+      "id": "short_review_icon_two",
+      "label": "Short Icon Image"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "short_review_content_two",
+      "label": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Welcome to Our Shop"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "We're glad you're here"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "content",
+      "label": "Content"
+    },
+    {
+      "type": "url",
+      "id": "button1_url",
+      "label": "Button 1 URL"
+    },
+    {
+      "type": "text",
+      "id": "button1_text",
+      "label": "Button 1 Text",
+      "default": "Shop Now"
+    },
+    {
+      "type": "url",
+      "id": "button2_url",
+      "label": "Button 2 URL"
+    },
+    {
+      "type": "text",
+      "id": "button2_text",
+      "label": "Button 2 Text",
+      "default": "Learn More"
+    },
+ {
+      "type": "inline_richtext",
+      "id": "review_content_banner_third",
+      "label": "Review Content",
+      "default": "This is the best product I have ever used!"
+    },
+    {
+      "type": "text",
+      "id": "review_author_banner_third",
+      "label": "Review Author",
+      "default": "John Doe"
+    },
+    {
+      "type": "text",
+      "id": "verify_customer_banner_third",
+      "label": "Client Review",
+      "default": "Verified Customers"
+    },
+
+    {
+      "type": "image_picker",
+      "id": "short_review_author_icon_banner_third",
+      "label": "Author Icon Image"
+    },
+ {
+      "type": "image_picker",
+      "id": "short_review_stars_icon_banner_third",
+      "label": "Stars Icon Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "second_container_image",
+      "label": "Second Container Image"
+    }
+
+
+  ],
+"blocks": [
+    {
+      "type": "List_Items",
+      "name": "List",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "list_image",
+          "label": "List Image"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "list_content",
+          "label": "List content"
+        }
+      ]
+    }
+],
+  "presets": [
+    {
+      "name": "Hero Banner Third",
+      "category": "Custom Sections"
+    }
+  ]
+}
+{% endschema %}
+
+<section class="hero-banner-two-container hero_banner_third">
+  <div class="page-width">
+    <div class="hero-flex-container-1">
+      <div class="hero-flex-first_container">
+        <div class="short_review_container">
+          <img src="{{ section.settings.short_review_icon_two | img_url:'medium'}}" alt="">
+          <p>{{ section.settings.short_review_content_two }}</p>
+        </div>
+        <h1>{{ section.settings.heading }}</h1>
+        <h2>{{ section.settings.subheading }}</h2>
+        <p>{{ section.settings.content }}</p>
+        <div class="hero-banner-second_image-2 show_in_mobile">
+          <img src="{{ section.settings.second_container_image | img_url:'master'}}" alt="">
+        </div>
+        <div>
+          {% for block in section.blocks %}
+            {% if block.type == 'List_Items' %}
+              <div class="list_content_container_banner_third">
+                <img src="{{ block.settings.list_image | img_url:'medium'}}" alt="">
+                <p>{{ block.settings.list_content }}</p>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+        <div class="buttons_container">
+          {% if section.settings.button1_text != blank %}
+            <a href="{{ section.settings.button1_url }}" class="btn btn-primary">
+              {{- section.settings.button1_text }}
+              {% render 'arrow_right_custom' %}
+            </a>
+          {% endif %}
+          {% if section.settings.button2_text != blank %}
+            <a href="{{ section.settings.button2_url }}" class="btn btn-secondary">
+              {{- section.settings.button2_text }}
+              {% render 'arrow_right_custom' %}
+            </a>
+          {% endif %}
+        </div>
+
+        {% if section.settings.review_content_banner_third != blank %}
+          <div class="review-container">
+            <div class="author_icon_position">
+              <img src="{{ section.settings.short_review_author_icon_banner_third | img_url:'medium'}}" alt="">
+            </div>
+            <div>
+              <img src="{{ section.settings.short_review_stars_icon_banner_third | img_url:'medium'}}" alt="">
+              <p class="author_reviews_custom">{{ section.settings.review_content_banner_third }}</p>
+
+              <div class="author_sub_content_two">
+                <p class="author_name_content">
+                  <strong>{{ section.settings.review_author_banner_third }}</strong>
+                </p>
+                <p class="client_icon_verify">
+                  {% render 'verify_customer' %}
+                  {{ section.settings.verify_customer_banner_third }}
+                </p>
+              </div>
+            </div>
+          </div>
+        {% endif %}
+      </div>
+      <div class="hero-flex-second hide_in_mobile">
+        <div class="hero-banner-second_image-2">
+          <img src="{{ section.settings.second_container_image | img_url:'master'}}" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% style %}
+      .hero-banner-two-container {
+          background-color: #fff;
+          padding: 87px 0px 79px 0;
+      }
+      .hero-flex-container-1 {
+          display: flex;
+          align-items: center;
+          gap: 47px;
+      }
+      .hero-flex-first_container {
+          max-width: 50%;
+          width: 100%;
+          display: flex;
+          gap: 29px;
+          flex-direction: column;
+      }
+      .hero-flex-first_container .short_review_container {
+          justify-content: flex-start;
+          margin-bottom: 0px;
+      }
+      .hero-flex-first_container .short_review_container p {
+          font-size: 14px;
+          font-family: "Brother1816 Printed";
+          font-size: 16px;
+          font-weight: 350;
+          line-height: 20px;
+          text-align: left;
+
+      }
+
+      .hero-flex-first_container h1 {
+          margin: 0;
+          font-size: 45px;
+          font-weight: 700;
+          line-height: 54px;
+          letter-spacing: -0.02em;
+          text-align: left;
+          font-family: "Brother1816 Printed Bold";
+          color: rgba(31, 98, 35, 1);
+      }
+      .hero-flex-first_container h2 {
+           margin: 0;
+          font-size: 35px;
+          font-weight: 700;
+          line-height: 44px;
+          letter-spacing: -0.02em;
+          text-align: left;
+          font-family: "Brother1816 Printed Bold";
+          color: rgba(31, 98, 35, 1);
+      }
+      .hero-flex-first_container p {
+          color: #000;
+          margin: 0;
+          font-family: "Brother1816 Printed";
+          font-size: 18px;
+          font-weight: 350;
+          line-height: 25.2px;
+          text-align: left;
+
+      }
+      .buttons_container {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+      }
+      .buttons_container .btn-primary {
+          color: #f60;
+          font-family: "Brother1816 Printed Bold";
+          font-size: 22px;
+          font-style: normal;
+          font-weight: 700;
+          line-height: 22px;
+          text-transform: uppercase;
+          border-radius: 124px;
+          border: 2px solid #f60;
+          display: flex;
+          max-width: 290px;
+          height: 60px;
+          padding: 22px 30px;
+          justify-content: center;
+          align-items: center;
+          gap: 13px;
+          width: 100%;
+          text-decoration: none;
+      }
+      .buttons_container .btn-secondary {
+          display: flex;
+          max-width: 300px;
+          height: 60px;
+          padding: 22px 30px;
+          justify-content: center;
+          align-items: center;
+          gap: 13px;
+          color: #fff;
+          border-radius: 124px;
+          background: linear-gradient(0deg, #f60 0%, #f60 100%), #fff;
+                font-family: "Brother1816 Printed Bold";
+          font-size: 22px;
+          font-style: normal;
+          font-weight: 700;
+          line-height: 22px;
+          text-transform: uppercase;
+          width: 100%;
+          text-decoration: none;
+      }
+      .hero-flex-second {
+          max-width: 50%;
+          width: 100%;
+      }
+      .hero-flex-second img {
+          width: 100%;
+      }
+
+      .show__mobile_container {
+          display: none;
+      }
+      .icon_show_mobile {
+          display: none;
+      }
+      .list_content_container_banner_third {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          margin-bottom: 18px;
+      }
+      .list_content_container_banner_third p {
+          color: #000;
+          font-family: "Brother1816 Printed";
+          font-size: 18px;
+          font-style: normal;
+          margin: 0;
+          font-weight: 350;
+          line-height: 25.6px;
+      }
+  .hero_banner_third .review-container .author_reviews_custom{
+    font-weight:350;
+  }
+      @media (max-width: 600px) {
+          .icon_hide_mobile {
+              display: none;
+          }
+          .hero-flex-container-1 {
+              flex-direction: column;
+          }
+        .hero-flex-first_container .short_review_container p{
+          font-size:11px;
+          line-height:20px;
+        }
+          .hero-flex-first_container {
+              max-width: 100%;
+
+              gap:18px;
+          }
+          .hero-flex-first_container h1 {
+              font-size: 26px;
+            line-height: 28.8px;
+          }
+          .hero-flex-first_container h2 {
+              font-size: 24px;
+            line-height: 28.8px;
+          }
+          .hero-flex-first_container p {
+                      font-size: 16px;
+            line-height: 22.4px;
+          }
+          .buttons_container {
+              flex-direction: column;
+              gap: 17px;
+              margin-bottom: 20px;
+          }
+
+          .show__mobile_container {
+              display: block;
+          }
+
+          .icon_show_mobile {
+              display: inline-flex;
+          }
+          .buttons_container .btn-primary {
+              max-width: 100%;
+              width: 100%;
+              font-size: 14px;
+              padding: 12px 30px;
+              height: 48px;
+          }
+          .buttons_container .btn-secondary {
+              max-width: 100%;
+              width: 100%;
+              padding: 12px 30px;
+              font-size: 14px;
+              height: 48px;
+          }
+          .hero-flex-second {
+              max-width: 100%;
+              order: 1;
+          }
+          .hide__mobile_container {
+              display: none;
+          }
+        .hero-banner-second_image-2 img{
+          width:100%;
+        }
+        .list_content_container_banner_third{
+          margin-bottom:12px;
+        }
+    .list_content_container_banner_third p{
+            font-size: 16px;
+            line-height: 22.4px;
+    }
+        .hero-banner-two-container{
+          padding:40px 0;
+        }
+      }
+{% endstyle %}

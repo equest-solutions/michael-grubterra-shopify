@@ -1,0 +1,72 @@
+.custom-commitment {
+  background-color: #e9efe9;
+}
+.commitment-blocks-wrapper {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.commitment-block-content {
+  color: #000;
+  text-align: center;
+  font-family: Poppins;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.custom-commitment-title-wrapper .custom-title {
+  color: #333;
+  text-align: center;
+  font-family: Poppins;
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin-block: 0px;
+}
+.custom-commitment-title-wrapper {
+  margin-block: 5rem;
+}
+@media (min-width: 0px) and (max-width: 540px) {
+  .commitment-block {
+    width: calc(100% / 2 - 2rem);
+  }
+  .commitment-blocks-wrapper {
+    row-gap: 3rem;
+  }
+  .commitment-blocks-wrapper {
+    justify-content: space-between;
+  }
+}
+@media (min-width: 540px) {
+  .commitment-blocks-wrapper {
+    gap: 4rem;
+  }
+  .commitment-block {
+    width: calc(100% / 2 - 4rem);
+  }
+}
+@media (min-width: 750px) {
+  .commitment-blocks-wrapper {
+    gap: 4rem;
+  }
+  .commitment-block {
+    width: calc(100% / 4 - 4rem);
+  }
+  .commitment-block-content {
+    font-size: 16px;
+  }
+  .custom-commitment-title-wrapper .custom-title {
+    font-size: 3.6rem;
+  }
+}
+@media (min-width: 1280px) {
+  .commitment-blocks-wrapper {
+    gap: 6rem;
+  }
+  .commitment-block {
+    width: calc(100% / 4 - 6rem);
+  }
+}

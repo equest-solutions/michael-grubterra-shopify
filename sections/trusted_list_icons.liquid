@@ -1,0 +1,185 @@
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css">
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css"
+>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script
+  type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"
+></script>
+{% schema %}
+{
+  "name": "Icon Grid Marquee",
+  "settings": [
+  ],
+  "blocks": [
+    {
+      "type": "icon_text_block",
+      "name": "Icon with Text",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon_image",
+          "label": "Icon Image"
+        },
+        {
+          "type": "text",
+          "id": "icon_title",
+          "label": "Icon Title"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Icon Grid Marquee",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="icon-grid-marquee">
+  <div class="page-width">
+    <div class="icon-grid hide_in_mobile">
+      {% for block in section.blocks %}
+        <div class="icon-text-item">
+          {% if block.settings.icon_image != blank %}
+            <img src="{{ block.settings.icon_image | img_url: '200x' }}" alt="{{ block.settings.icon_title }}">
+          {% endif %}
+          <h3>{{ block.settings.icon_title }}</h3>
+        </div>
+      {% endfor %}
+    </div>
+    <div class="show_in_mobile">
+      <div class="responsive_slick_slider">
+        {% for block in section.blocks %}
+          <div>
+            <div class="icon-text-item">
+              {% if block.settings.icon_image != blank %}
+                <img src="{{ block.settings.icon_image | img_url: '200x' }}" alt="{{ block.settings.icon_title }}">
+              {% endif %}
+              <h3>{{ block.settings.icon_title }}</h3>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+
+ 
+
+{% style %}
+
+
+
+
+        .icon-grid-marquee {
+          text-align: center;
+          padding:5px 0;
+              background: #1F6223;
+        }
+
+        .icon-grid {
+          display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        }
+
+        .icon-text-item {
+          text-align: center;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        /* width: 100%; */
+        justify-content: center;
+        }
+
+        .icon-text-item img {
+          max-width: 100%;
+        }
+      .icon-text-item h3{
+      font-family: 'Brother1816 Printed';
+      font-size: 14px;
+      font-weight: 350;
+      line-height: 21.6px;
+      text-align: left;
+        margin:0 !important;
+      color:#fff;
+      }
+
+  .show_in_mobile{
+    display:none;
+  }
+      @media(max-width: 600px){
+        .chicken-landing-page  .icon-grid-marquee{
+          padding:4px !important;
+        }
+        .slick-slide div:nth-child(1){
+          display:flex;
+        }
+.icon-grid {display:none;}
+
+.icon-text-item img {width:25px !important; margin:0 !important;}
+
+    .responsive_slick_slider .icon-text-item{
+      display:flex !important;
+    }
+         .show_in_mobile{
+    display:block;
+  }
+      }
+{% endstyle %}
+
+<script>
+    $(document).ready(function () {
+        $('.responsive_slick_slider').on('init', function () {
+            $('.slick-frame, .responsive_slick_slider').css('visibility', 'visible');
+            console.log('init event fired'); // Log when the init event is fired
+        });
+
+        $('.responsive_slick_slider').slick({
+            dots: false,
+            infinite: true,
+            loop:true,
+            speed: 700,
+            slidesToShow: 1,
+            autoplay: true,
+            arrows: false,
+            autoplaySpeed: 2000,
+            slidesToScroll: 1,
+            nextArrow: '<i class="next-one"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M7.42773 16.6062L12.8611 11.1729C13.5027 10.5312 13.5027 9.48125 12.8611 8.83958L7.42773 3.40625" stroke="white" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/></svg></i>',
+            prevArrow: '<i class="next-one-next"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M12.5723 16.6062L7.13893 11.1729C6.49726 10.5312 6.49726 9.48125 7.13893 8.83958L12.5723 3.40625" stroke="white" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/></svg></i>',
+            responsive: [
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                        infinite: true,
+                        dots: false
+                    }
+                },
+                {
+                    breakpoint: 600,
+                    settings: {
+                      autoplay: false,
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                        dots: false,
+                        arrows: false,
+  nextArrow: '<i class="next-one"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M7.42773 16.6062L12.8611 11.1729C13.5027 10.5312 13.5027 9.48125 12.8611 8.83958L7.42773 3.40625" stroke="white" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/></svg></i>',
+            prevArrow: '<i class="next-one-next"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M12.5723 16.6062L7.13893 11.1729C6.49726 10.5312 6.49726 9.48125 7.13893 8.83958L12.5723 3.40625" stroke="white" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/></svg></i>',
+
+
+                    }
+                }
+            ]
+        });
+    });
+</script>

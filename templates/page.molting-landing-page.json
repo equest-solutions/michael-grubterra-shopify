@@ -1,0 +1,839 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "first_hero_banner_QUALTe": {
+      "type": "first_hero_banner",
+      "blocks": {
+        "list_items_eg4DDB": {
+          "type": "List_Items",
+          "settings": {
+            "list_image": "shopify://shop_images/fi_129998_50917891-da25-4bfb-96c5-0f88f7d2f72c.svg",
+            "list_content": "<strong>Stronger Eggshells</strong>"
+          }
+        },
+        "list_items_xLWmAH": {
+          "type": "List_Items",
+          "settings": {
+            "list_image": "shopify://shop_images/fi_9213049_56fbfc45-129d-477e-99af-9b1099c08784.svg",
+            "list_content": "<strong>Decrease Molting Times</strong>"
+          }
+        },
+        "list_items_Xqkcnn": {
+          "type": "List_Items",
+          "settings": {
+            "list_image": "shopify://shop_images/fi_4185805_ca8d6f2c-98c5-423f-8d33-454b4caf1a55.svg",
+            "list_content": "<strong>Increased Egg Production</strong>"
+          }
+        },
+        "list_items_one_PFejHK": {
+          "type": "List_Items_one",
+          "disabled": true,
+          "settings": {
+            "list_content_heading": "36-42%",
+            "list_content_subheading": "Rich In Protein"
+          }
+        },
+        "list_items_one_meX8pd": {
+          "type": "List_Items_one",
+          "disabled": true,
+          "settings": {
+            "list_content_heading": "+75%",
+            "list_content_subheading": "More Calcium Than Mealworms"
+          }
+        },
+        "list_items_one_rwLx89": {
+          "type": "List_Items_one",
+          "disabled": true,
+          "settings": {
+            "list_content_heading": "30-40%",
+            "list_content_subheading": "Healthy Fat"
+          }
+        },
+        "logo_slider_iEfFj7": {
+          "type": "logo-slider",
+          "settings": {
+            "text": "Featured In :",
+            "logo1": "shopify://shop_images/2Asset_1214.svg",
+            "logo2": "shopify://shop_images/Yahoo__Finance_logo_2021.png",
+            "logo3": "shopify://shop_images/Benzinga-Logo.png",
+            "logo4": "shopify://shop_images/morningstar.d826858.svg",
+            "logo5": "shopify://shop_images/business-insider.svg"
+          }
+        }
+      },
+      "block_order": [
+        "list_items_eg4DDB",
+        "list_items_xLWmAH",
+        "list_items_Xqkcnn",
+        "list_items_one_PFejHK",
+        "list_items_one_meX8pd",
+        "list_items_one_rwLx89",
+        "logo_slider_iEfFj7"
+      ],
+      "settings": {
+        "short_review_icon_two": "shopify://shop_images/Group_1.svg",
+        "short_review_content_two": "Rated <strong>4.9/5 </strong>Based on <strong>1500+</strong> Happy Customers",
+        "heading": "Boost Feather Growth During Molting!",
+        "content": "Help your chickens molt faster and stay healthy with GrubTerra black soldier fly larvae. With 75X more calcium then mealworms!",
+        "button2_url": "#product-landing",
+        "button2_text": "Claim your 30% discount",
+        "review_content": "“My chickens were going through an awful molt! They stopped laying and they were all so ugly! After feeding them GrubTerra they re grew there feathers in under a week! ”",
+        "review_author": "Andre A.",
+        "verify_customer": "Verified Customer",
+        "short_review_author_icon": "shopify://shop_images/Ellipse_3_1.png",
+        "short_review_stars_icon": "shopify://shop_images/Group_1.svg",
+        "second_container_image": "shopify://shop_images/Group_1484578273_1_c685ab53-e94b-43ff-8a31-52e48d27df94.png",
+        "hero_overlay_image": "shopify://shop_images/Vector_340_6.png",
+        "hero_overlay_image_mobile": "shopify://shop_images/Vector_340_12.png"
+      }
+    },
+    "multi_columns_container_9W4re9": {
+      "type": "multi_columns_container",
+      "blocks": {
+        "grid_item_bpxPb4": {
+          "type": "grid_item",
+          "settings": {
+            "image": "shopify://shop_images/Ellipse_197_3.png",
+            "image_alt": "",
+            "list-items": "1",
+            "heading": "Choose Your Bundle",
+            "content": "You can subscribe and save an additional 10% on any order"
+          }
+        },
+        "grid_item_YwCaXp": {
+          "type": "grid_item",
+          "settings": {
+            "image": "shopify://shop_images/Ellipse_197_4.png",
+            "image_alt": "",
+            "list-items": "2",
+            "heading": "Get Fast & Free Delivery",
+            "content": "There’s no delivery charge and we aim to deliver within 5 days."
+          }
+        },
+        "grid_item_N3VaLi": {
+          "type": "grid_item",
+          "settings": {
+            "image": "shopify://shop_images/Ellipse_197_5.png",
+            "image_alt": "",
+            "list-items": "3",
+            "heading": "See The Difference",
+            "content": "<strong> </strong>Your birds will love it, and you'll see the benefits, strong eggshells, increased egg production, and healthier feathers."
+          }
+        }
+      },
+      "block_order": [
+        "grid_item_bpxPb4",
+        "grid_item_YwCaXp",
+        "grid_item_N3VaLi"
+      ],
+      "disabled": true,
+      "settings": {
+        "column_bg_image": "shopify://shop_images/Vector_340_13.png",
+        "column_bg_image_mobile": "shopify://shop_images/Vector_340_14.png",
+        "heading": "Get Yours In 3 Easy Steps",
+        "subheading": "Ready to order? We make it easy for you."
+      }
+    },
+    "hero_banner_container_two_dWtVjt": {
+      "type": "hero-banner-container-two",
+      "blocks": {
+        "grid_image_list_QVQHAJ": {
+          "type": "grid_image_list",
+          "disabled": true,
+          "settings": {
+            "list_image": "shopify://shop_images/images_1.png"
+          }
+        },
+        "grid_image_list_jWWJHn": {
+          "type": "grid_image_list",
+          "disabled": true,
+          "settings": {
+            "list_image": "shopify://shop_images/Mask_group.png"
+          }
+        },
+        "grid_image_list_weQYYb": {
+          "type": "grid_image_list",
+          "disabled": true,
+          "settings": {
+            "list_image": "shopify://shop_images/Mask_group_1.png"
+          }
+        }
+      },
+      "block_order": [
+        "grid_image_list_QVQHAJ",
+        "grid_image_list_jWWJHn",
+        "grid_image_list_weQYYb"
+      ],
+      "settings": {
+        "hero_banner_with_image": "shopify://shop_images/Rectangle_1408_5.png",
+        "hero_banner_with_image_mobile": "shopify://shop_images/Frame_1484583916_1_b9ab154a-370e-4fa2-bd6d-5d28ea341d2f.svg",
+        "grid_heading": "Why Give GrubTerra to your flock?",
+        "grid_content": "Molting can be a challenging time for chickens, as they lose feathers, use up extra energy, and may stop laying eggs. Without the right nutrients, molting can take even longer, leaving chickens stressed, tired, and vulnerable. Feathers regrow slowly, eggshells can become weak, and overall health can suffer, making this period tough on your flock.",
+        "grid_content_sub": "",
+        "grid_content_subtwo": "",
+        "grid_content_subthree": "GrubTerra Black Soldier Fly Larvae provide the essential nutrition chickens need to shorten molting time and support healthy feather regrowth providing essential nutrition that mealworms and other supplements do not provide. Packed with protein, calcium, and healthy fats, our larvae help your hens stay strong, energetic, and productive even during molting season.",
+        "full_image_hero": "shopify://shop_images/Group_1484578281_1.png",
+        "button_text": "Claim your 30% discount",
+        "button_link": "#product-landing",
+        "short_review_hero_banner": "shopify://shop_images/Group_1.svg",
+        "short_review_hero_banner_content": "Rated 4.9/5 Based on 1500+ Happy Customers",
+        "heading_featured_one": ""
+      }
+    },
+    "multi_row_landing_keCfMi": {
+      "type": "multi-row-landing",
+      "blocks": {
+        "short_review_container_c4HCKa": {
+          "type": "short_review_container",
+          "settings": {
+            "short_author_image": "shopify://shop_images/Ellipse_3_1.png",
+            "short_review_image_three": "shopify://shop_images/Group_1.svg",
+            "short_review_cont_three": "“My chickens are obsessed with these grubs! Egg production has increased, and the shells are thicker. Definitely worth it!”",
+            "short_author_name": "<strong>Andre A.</strong>",
+            "short_author_client": "<strong>Verified Customer</strong>"
+          }
+        },
+        "short_review_container4_KcV38R": {
+          "type": "short_review_container4",
+          "settings": {
+            "short_author_image4": "shopify://shop_images/Ellipse_3_1.png",
+            "short_review_image_three4": "shopify://shop_images/Group_1.svg",
+            "short_review_cont_three4": "“My chickens are obsessed with these grubs! Egg production has increased, and the shells are thicker. Definitely worth it!”",
+            "short_author_name4": "<strong>Andre A.</strong>",
+            "short_author_client4": "<strong>Verified Customer</strong>"
+          }
+        },
+        "list_with_text_WXJnPz": {
+          "type": "list_with_text",
+          "settings": {
+            "list_image_icon": "shopify://shop_images/Vector.svg",
+            "list_image_icon_content": "Rich in proteins and minerals",
+            "list_image_icon1": "shopify://shop_images/Vector.svg",
+            "list_image_icon_content1": "75X more calcium then mealworms!",
+            "list_image_icon2": "shopify://shop_images/Vector.svg",
+            "list_image_icon_content2": "Boosts overall health"
+          }
+        },
+        "list_with_text3_y8LKRp": {
+          "type": "list_with_text3",
+          "settings": {
+            "list_image_icon3": "shopify://shop_images/Vector.svg",
+            "list_image_icon_content3": "Reduces food waste",
+            "list_image_icon31": "shopify://shop_images/Vector.svg",
+            "list_image_icon_content31": "Supports small farming, globally",
+            "list_image_icon32": "shopify://shop_images/Vector.svg",
+            "list_image_icon_content32": "Eco-friendly and sustainable"
+          }
+        },
+        "list_with_text_box5_RazDCa": {
+          "type": "list_with_text_box5",
+          "settings": {
+            "list_image_icon5": "shopify://shop_images/Vector.svg",
+            "list_image_icon_content5": "Gives your poultry essential nutrients",
+            "list_image_icon51": "shopify://shop_images/Vector.svg",
+            "list_image_icon_content51": "Promotes overall health and well-being",
+            "list_image_icon52": "shopify://shop_images/Vector.svg",
+            "list_image_icon_content52": "Great supplement during molting season"
+          }
+        }
+      },
+      "block_order": [
+        "short_review_container_c4HCKa",
+        "short_review_container4_KcV38R",
+        "list_with_text_WXJnPz",
+        "list_with_text3_y8LKRp",
+        "list_with_text_box5_RazDCa"
+      ],
+      "settings": {
+        "multirow_with_image": "shopify://shop_images/Rectangle_1409_5.png",
+        "multirow_with_image_mobile": "shopify://shop_images/Rectangle_1409_6.png",
+        "MainHeading": "5 Reasons Why GrubTerra's Grubs can help with your flocks molt!",
+        "subHeading": "GrubTerra is good for the environment and great for your flock!",
+        "Box1image": "shopify://shop_images/Rectangle_244_5.png",
+        "box1Heading": "Decrease Molting Times!",
+        "box1content": "<p>GrubTerra dried black soldier fly larvae can help your chickens molt faster and stay healthy! Packed with protein and calcium, they give chickens the important nutrients they need for strong new feathers and a smooth molting season.</p>",
+        "Box2image": "shopify://shop_images/Rectangle_244_6.png",
+        "box2Heading": "Speeds Up Feather Regrowth",
+        "box2content": "<p>Molting requires extra protein to regrow feathers, which chickens often seek out while foraging. Black soldier fly larvae provide a concentrated protein source to help feathers grow back faster, even when free-ranging isn’t possible.</p><p></p>",
+        "Box3image": "shopify://shop_images/Rectangle_244_7.png",
+        "box3Heading": "Sustainably Raised",
+        "box3content": "<p>Grubterra’s Black Soldier Fly Larvae are raised on food waste, in farms located around the globe. Every 1 pound of grubs purchased diverts 20 pounds of waste from landfills.</p>",
+        "Box4image": "shopify://shop_images/Rectangle_244_8.png",
+        "box4Heading": "Supports Immune Health When Chickens Are More Vulnerable",
+        "box4content": "<p>Chickens are more susceptible to stress and illness during molting. Black soldier fly larvae support immune health with essential nutrients, giving them the boost they need to stay resilient through this taxing period without the added stress of free-ranging.</p>",
+        "Box5image": "shopify://shop_images/Rectangle_244_9.png",
+        "box5Heading": "Boosts Calcium for Feather Health and Eggshell Strength! 75X more calcium then mealworms!",
+        "box5content": "<p>During molting, chickens need calcium for feather health and eggshell strength as they return to laying. Black soldier fly larvae deliver a natural source of calcium, supporting both healthy feather regrowth and strong eggshells.</p>"
+      }
+    },
+    "featured_compare_section_U7rCd8": {
+      "type": "featured-compare-section",
+      "blocks": {
+        "trust_icon_content_KXdiYj": {
+          "type": "trust_icon_content",
+          "settings": {
+            "trust_icon_image": "shopify://shop_images/Group_1484578284.svg",
+            "turst_icon_heading": "Increased Egg Production",
+            "trust_icon_content": "<p>Recent studies show that black soldier fly larvae can increase egg production when added to the diets of laying hens 2-3 times per week. </p>"
+          }
+        },
+        "trust_icon_content_W8DKbr": {
+          "type": "trust_icon_content",
+          "settings": {
+            "trust_icon_image": "shopify://shop_images/Group_1484578282.svg",
+            "turst_icon_heading": "High In Calcium",
+            "trust_icon_content": "<p>Contains 75% more calcium than mealworms, providing your birds with essential nutrients.</p>"
+          }
+        },
+        "trust_right_AfwTUT": {
+          "type": "trust_right",
+          "settings": {
+            "trust_icon_image_right": "shopify://shop_images/Group_1484578285.svg",
+            "turst_icon_heading_right": "Good For The Environment",
+            "trust_icon_content_right": "<p>Fed on food waste, each 1 pound you buy diverts 20 pounds from land-fill.</p>"
+          }
+        },
+        "trust_right_UndfXt": {
+          "type": "trust_right",
+          "settings": {
+            "trust_icon_image_right": "shopify://shop_images/Group_1484578282_2.svg",
+            "turst_icon_heading_right": "Supports Small Farmers",
+            "trust_icon_content_right": "<p>Our larvae are farm-raised in Canada, the US, Costa Rica and Indonesia, but never from China.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "trust_icon_content_KXdiYj",
+        "trust_icon_content_W8DKbr",
+        "trust_right_AfwTUT",
+        "trust_right_UndfXt"
+      ],
+      "disabled": true,
+      "settings": {
+        "background_image_custom": "shopify://shop_images/Frame_1484583918.png",
+        "background_color_sec": "rgba(0,0,0,0)",
+        "headingone_main": "WHY GRUBTERRA IS GREAT FOR YOUR BIRDS AND GREAT FOR THE PLANET",
+        "contentone_main": "We’re serious about sustainability and we don’t compromise on quality.",
+        "full_icon_image": "shopify://shop_images/Group_1484578294.png",
+        "mobile_image": "shopify://shop_images/Group_1484578294.png",
+        "heading2_label": "",
+        "button_link_compare_text": "Get mine now",
+        "button_link_compare": "#product-landing",
+        "short_review_comparison_compare": "shopify://shop_images/Group_1.svg",
+        "short_review_comparison_compare_content": "Rated <strong>4.9/5</strong> Based on <strong>1000+</strong> Happy Customers"
+      }
+    },
+    "testamonials_section_9wU6GK": {
+      "type": "testamonials-section",
+      "blocks": {
+        "testimonial_CeiFti": {
+          "type": "testimonial",
+          "settings": {
+            "author_heading": "TRUSTED BY CHICKEN AND BIRD-OWNERS, LOVED BY POULTRY!",
+            "testimonial_stars": "shopify://shop_images/Group_1484580842.svg",
+            "content": "I've been feeding my hens GrubTerra's black soldier fly larvae for a few months now and have seen amazing results! I have 9 hens, and before we started using GrubTerra, we were only getting about 1 egg a day. After just one month, we were up to 4-5 eggs a day! GrubTerra is an absolute must if you have chickens.",
+            "author_image": "shopify://shop_images/Ellipse_202_1.png",
+            "author_name": "Mallory and scott N.",
+            "verified": "Verified Customer"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_CeiFti"
+      ],
+      "settings": {
+        "testimonial_bg": "shopify://shop_images/Rectangle_1406_6.png",
+        "heading": ""
+      }
+    },
+    "second_hero_section_kcMnKF": {
+      "type": "second_hero_section",
+      "blocks": {
+        "list_item_GC9TzY": {
+          "type": "list_item",
+          "settings": {
+            "list_heading": "Sourced From Small Farms Globally",
+            "list_subheading": "We source our Larvae from small farmers. In turn, they source their food waste from local breweries, supermarkets, farmer's markets, and large agriculture farms."
+          }
+        },
+        "list_item_UAPzKK": {
+          "type": "list_item",
+          "settings": {
+            "list_heading": "Balanced & Nutritious Diet",
+            "list_subheading": "Our larvaes are fed a 100% natural diet of vegetables, fruit and carbohydrates. That means they’re rich in protein, with balanced calcium and phosphorus levels and contain 30-40% healthy fat. They contain no additives or preservatives."
+          }
+        },
+        "list_item_iCNKaz": {
+          "type": "list_item",
+          "settings": {
+            "list_heading": "Rigorous Quality Control",
+            "list_subheading": "We implement and uphold rigorous quality control measures in our larvae farming, ensuring that the larvae thrive in a healthy and controlled environment. This includes regular monitoring of their diet, living conditions, and overall well-being."
+          }
+        },
+        "list_item_image_MgjyVk": {
+          "type": "list_item_image",
+          "settings": {
+            "block_image": "shopify://shop_images/fi_10590178.svg",
+            "block_text": "Chickens"
+          }
+        },
+        "list_item_image_7CjdDQ": {
+          "type": "list_item_image",
+          "settings": {
+            "block_image": "shopify://shop_images/fi_2683086.svg",
+            "block_text": "Reptiles"
+          }
+        },
+        "list_item_image_8khPVb": {
+          "type": "list_item_image",
+          "settings": {
+            "block_image": "shopify://shop_images/fi_15730616.svg",
+            "block_text": "Fish"
+          }
+        },
+        "list_item_image_4YMbzC": {
+          "type": "list_item_image",
+          "settings": {
+            "block_image": "shopify://shop_images/fi_1883774.svg",
+            "block_text": "Birds"
+          }
+        }
+      },
+      "block_order": [
+        "list_item_GC9TzY",
+        "list_item_UAPzKK",
+        "list_item_iCNKaz",
+        "list_item_image_MgjyVk",
+        "list_item_image_7CjdDQ",
+        "list_item_image_8khPVb",
+        "list_item_image_4YMbzC"
+      ],
+      "settings": {
+        "second-hero-section_bg": "shopify://shop_images/Rectangle_1408_5.png",
+        "image_grid_1": "shopify://shop_images/Group_1484578294.png",
+        "heading_grid_2": "Product facts",
+        "subheading_grid_2": "Learn About Our Black Soldier Fly Larvae",
+        "content_grid_2": "",
+        "block_list_heading": "Great For:"
+      }
+    },
+    "comparison_QfFibp": {
+      "type": "comparison",
+      "blocks": {
+        "row_MXbWdN": {
+          "type": "row",
+          "settings": {
+            "myBrandImage_icon": "shopify://shop_images/fi_129998_50917891-da25-4bfb-96c5-0f88f7d2f72c.svg",
+            "feature": "Increased Egg Production",
+            "myBrandImage": "shopify://shop_images/fi_1828739_60b6db45-2c08-4842-93c8-e0021d10da0f.svg",
+            "othersImage": "shopify://shop_images/fi_1828843_8d38e122-303e-4461-8b55-f59a0d2b9e1b.svg"
+          }
+        },
+        "row_NCRYkW": {
+          "type": "row",
+          "settings": {
+            "myBrandImage_icon": "shopify://shop_images/fi_2391086_9a4f797e-c345-4440-ac25-1c285a368a4b.svg",
+            "feature": "Decrease Molting Times",
+            "myBrandImage": "shopify://shop_images/fi_1828739_60b6db45-2c08-4842-93c8-e0021d10da0f.svg",
+            "othersImage": "shopify://shop_images/fi_1828843_8d38e122-303e-4461-8b55-f59a0d2b9e1b.svg"
+          }
+        },
+        "row_Xy3PRn": {
+          "type": "row",
+          "settings": {
+            "myBrandImage_icon": "shopify://shop_images/Group_1_d398620e-878e-4957-b07d-31e74889e829.svg",
+            "feature": "Strengthens Eggshells",
+            "myBrandImage": "shopify://shop_images/fi_1828739_60b6db45-2c08-4842-93c8-e0021d10da0f.svg",
+            "othersImage": "shopify://shop_images/fi_1828843_8d38e122-303e-4461-8b55-f59a0d2b9e1b.svg"
+          }
+        },
+        "row_r9wdWE": {
+          "type": "row",
+          "settings": {
+            "myBrandImage_icon": "shopify://shop_images/fi_7559821_46fd977f-20a8-4abd-bf47-63b3e745e9d5.svg",
+            "feature": "Suitable For Poultry, Wild Birds, Ducks",
+            "myBrandImage": "shopify://shop_images/fi_1828739_60b6db45-2c08-4842-93c8-e0021d10da0f.svg",
+            "othersImage": "shopify://shop_images/fi_1828739_60b6db45-2c08-4842-93c8-e0021d10da0f.svg"
+          }
+        },
+        "row_xRh8ch": {
+          "type": "row",
+          "settings": {
+            "myBrandImage_icon": "shopify://shop_images/fi_2329903_b3cb93e0-e3c0-4eac-b442-946769b78c29.svg",
+            "feature": "Raised On Nutritious 100% GMO-free diet",
+            "myBrandImage": "shopify://shop_images/fi_1828739_60b6db45-2c08-4842-93c8-e0021d10da0f.svg",
+            "othersImage": "shopify://shop_images/fi_1828843_8d38e122-303e-4461-8b55-f59a0d2b9e1b.svg"
+          }
+        }
+      },
+      "block_order": [
+        "row_MXbWdN",
+        "row_NCRYkW",
+        "row_Xy3PRn",
+        "row_r9wdWE",
+        "row_xRh8ch"
+      ],
+      "settings": {
+        "Comparison_bg": "shopify://shop_images/Rectangle_1408_6.png",
+        "Comparison_heading": "Here’s How We Compare",
+        "Comparison_subheading": "Grubterra stands out from the crowd, because we care about the details.",
+        "thead_content": "Others",
+        "thead_image": "shopify://shop_images/Group_1484581286_1.png",
+        "thead_image_2": "shopify://shop_images/Frame_1484581286_1.png",
+        "thead_content2": "Mealworms",
+        "heading2_label": "",
+        "button_label_col_two": "Claim your 30% discount",
+        "button_link_cust_two": "#product-landing",
+        "short_review_comparison": "shopify://shop_images/Group_1.svg",
+        "short_review_comparison_content": "Rated<strong> 4.9/5 </strong>Based on<strong> 1500+</strong> Happy Customers"
+      }
+    },
+    "loox_reviews_landing1_mh6Bxi": {
+      "type": "loox-reviews-landing1",
+      "blocks": {
+        "loox_reviews_loox_agg_section_HGrqWF": {
+          "type": "shopify://apps/loox-reviews/blocks/loox-agg-section/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
+          "settings": {
+            "only_photos": false,
+            "hide_thumbnails": false,
+            "product_handle": "grubterra-5lb-black-soldier-fly-larvae-bundle-5",
+            "aggregated": false,
+            "data-limit": 12,
+            "maxwidth": 1080,
+            "is_sample": false
+          }
+        }
+      },
+      "block_order": [
+        "loox_reviews_loox_agg_section_HGrqWF"
+      ],
+      "settings": {
+        "Comparison_heading": "Here’s What Our Happy Customers Are Saying",
+        "Comparison_subheading": "Check out our customer reviews and see how much their poultry and pets adore Grubterra"
+      }
+    },
+    "banner_guarrantee_GQwjJj": {
+      "type": "banner-guarrantee",
+      "settings": {
+        "background_image": "shopify://shop_images/Vector_340_8.png",
+        "background_image_mobile": "shopify://shop_images/Vector_340_9.png",
+        "heading_image": "shopify://shop_images/Group_1_cafd11cc-8888-4458-a6e6-578fbb11e4a7.png",
+        "subHeading_content": "THE GRUBTERRA 30-DAY GUARANTEE",
+        "sub_content": "<p>We are confident that your flock will love our grubs! That is why we give every customer 30 days to contact us and get a full refund no questions asked. </p><p>If your flock is not completely in love with the product or if your not 100% satisfied simply reach out to us for a courteous refund. Yes even if the product is already used!</p>"
+      }
+    },
+    "custom_featured_product_new_4iEWqR": {
+      "type": "custom-featured-product-new",
+      "blocks": {
+        "text_xb7jkR": {
+          "type": "text",
+          "settings": {
+            "text": "{{ section.settings.product.vendor }}",
+            "text_style": "uppercase"
+          }
+        },
+        "title_8RfxPW": {
+          "type": "title",
+          "settings": {
+            "heading_size": "h1"
+          }
+        },
+        "price_j7JNnG": {
+          "type": "price",
+          "settings": {}
+        },
+        "variant_picker_cF3jyP": {
+          "type": "variant_picker",
+          "disabled": true,
+          "settings": {
+            "picker_type": "button"
+          }
+        },
+        "variant_quantity_ih9rt7": {
+          "type": "variant-quantity",
+          "settings": {}
+        },
+        "quantity_selector_AQk4WD": {
+          "type": "quantity_selector",
+          "disabled": true,
+          "settings": {}
+        },
+        "buy_buttons_WzWBq9": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": false,
+            "show_gift_card_recipient": false
+          }
+        },
+        "share_7jNhFR": {
+          "type": "share",
+          "settings": {
+            "share_label": "Share"
+          }
+        }
+      },
+      "block_order": [
+        "text_xb7jkR",
+        "title_8RfxPW",
+        "price_j7JNnG",
+        "variant_picker_cF3jyP",
+        "variant_quantity_ih9rt7",
+        "quantity_selector_AQk4WD",
+        "buy_buttons_WzWBq9",
+        "share_7jNhFR"
+      ],
+      "disabled": true,
+      "settings": {
+        "product": "grubterra-5lb-black-soldier-fly-larvae",
+        "color_scheme": "",
+        "secondary_background": false,
+        "media_size": "medium",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "media_position": "left",
+        "image_zoom": "lightbox",
+        "hide_variants": false,
+        "enable_video_looping": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "custom_featured_product_WR3Upi": {
+      "type": "custom-featured-product",
+      "blocks": {
+        "custom_liquid_4BTP6H": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div class=\"short_review_container\">\n        <img src=\"//grubterra.com/cdn/shop/files/Group_1_medium.svg?v=1720157348\" alt=\"\">\n        <p style=\"color:#000000;\">Rated <strong>4.9/5 </strong>Based on <strong>1000+</strong> Happy Customers</p>\n      </div>"
+          }
+        },
+        "title_AqTzfM": {
+          "type": "title",
+          "settings": {
+            "heading_size": "h1"
+          }
+        },
+        "text_F3tTf9": {
+          "type": "text",
+          "settings": {
+            "text": "For loving chicken owners who want to Increase egg production naturally!",
+            "text_style": "subtitle"
+          }
+        },
+        "icon_with_text_4HWNAV": {
+          "type": "icon-with-text",
+          "settings": {
+            "layout": "vertical",
+            "icon_1": "none",
+            "image_1": "shopify://shop_images/Vector.svg",
+            "heading_1": "Proven to increase egg production",
+            "icon_2": "none",
+            "image_2": "shopify://shop_images/Vector.svg",
+            "heading_2": "Decrease molting times.",
+            "icon_3": "none",
+            "image_3": "shopify://shop_images/Vector.svg",
+            "heading_3": "Stronger eggshells",
+            "heading_4": ""
+          }
+        },
+        "variant_quantity_KnRUb4": {
+          "type": "variant-quantity",
+          "settings": {}
+        },
+        "quantity_selector_NGzXUU": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "buy_buttons_8irQ7p": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": false,
+            "show_gift_card_recipient": false
+          }
+        },
+        "icon_with_text_3VF76c": {
+          "type": "icon-with-text",
+          "settings": {
+            "layout": "horizontal",
+            "icon_1": "none",
+            "image_1": "shopify://shop_images/Group_1484578282_3.svg",
+            "heading_1": "<strong>Farm Raised</strong>",
+            "icon_2": "return",
+            "image_2": "shopify://shop_images/Group_1484578282_4.svg",
+            "heading_2": "<strong>Eco-Friendly & Sustainable</strong>",
+            "icon_3": "truck",
+            "image_3": "shopify://shop_images/Group_1484578285_1.svg",
+            "heading_3": "<strong>High Calcium & Nutrient Rich</strong>",
+            "image_4": "shopify://shop_images/Group_1484578284_1.svg",
+            "heading_4": "<strong>Increases Egg Production</strong>"
+          }
+        },
+        "custom_review_Tn7AhC": {
+          "type": "custom-review",
+          "settings": {
+            "review-text": "<p>“My chickens are obsessed with these grubs! Egg production has increased, and the shells are thicker. Definitely worth it!”</p>",
+            "review-author": "Andre A.",
+            "review-img": "shopify://shop_images/Ellipse_3_1.png"
+          }
+        }
+      },
+      "block_order": [
+        "custom_liquid_4BTP6H",
+        "title_AqTzfM",
+        "text_F3tTf9",
+        "icon_with_text_4HWNAV",
+        "variant_quantity_KnRUb4",
+        "quantity_selector_NGzXUU",
+        "buy_buttons_8irQ7p",
+        "icon_with_text_3VF76c",
+        "custom_review_Tn7AhC"
+      ],
+      "settings": {
+        "featured_product_background_image": "shopify://shop_images/Rectangle_1408_7.png",
+        "featured_product_background_image_mobile": "shopify://shop_images/Rectangle_1408_7.png",
+        "product": "grubterra-5lb-black-soldier-fly-larvae",
+        "color_scheme": "scheme-bb77b7c2-6068-4940-9c0b-44ec503f27a5",
+        "secondary_background": false,
+        "media_size": "medium",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "media_position": "left",
+        "image_zoom": "lightbox",
+        "hide_variants": false,
+        "enable_video_looping": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "faq_section_6MUGEy": {
+      "type": "faq-section",
+      "blocks": {
+        "faq_RyBRky": {
+          "type": "faq",
+          "settings": {
+            "question": "What is the shelf life of  GrubTerra black soldier fly larvae?",
+            "answer": "The shelf life of GrubTerra is 24 months upon delivery.",
+            "answer_option": "default"
+          }
+        },
+        "faq_fxPRnb": {
+          "type": "faq",
+          "settings": {
+            "question": "Can GrubTerras larvae be used for all types of animals?",
+            "answer": "GrubTerra dried black soldier fly larvae are primarily for backyard poultry and wild birds. Other animals, such as dogs, cats, and livestock, can consume black soldier fly larvae in moderation.",
+            "answer_option": "default"
+          }
+        },
+        "faq_J4YfcB": {
+          "type": "faq",
+          "settings": {
+            "question": "Are GrubTerra products organic?",
+            "answer": "GrubTerra Products are not organic; however, we source from high-quality farmers around the world and focus on using the highest quality feed ingredients for our larvae.\n\nGrubTerra products are non GMO.",
+            "answer_option": "default"
+          }
+        },
+        "faq_tfYCfV": {
+          "type": "faq",
+          "settings": {
+            "question": "How can I incorporate GrubTerra’s larvae into my animal’s feed?",
+            "answer": "A few handfuls can be sprinkled into poultry and wild bird feed or around the coop daily to incorporate them into their diets.",
+            "answer_option": "default"
+          }
+        }
+      },
+      "block_order": [
+        "faq_RyBRky",
+        "faq_fxPRnb",
+        "faq_J4YfcB",
+        "faq_tfYCfV"
+      ],
+      "settings": {
+        "faq_image": "shopify://shop_images/Rectangle_1406_7.png",
+        "faq_image_mobile": "shopify://shop_images/Rectangle_1406_8.png",
+        "faqheading": "Frequently Asked Questions",
+        "faqsubheading": "Have any questions? We’re here to help."
+      }
+    },
+    "hero_banner_third_aMa7fM": {
+      "type": "hero-banner-third",
+      "blocks": {
+        "list_items_CrWg8a": {
+          "type": "List_Items",
+          "settings": {
+            "list_image": "shopify://shop_images/Vector.svg",
+            "list_content": "See increased egg productivity in your poultry"
+          }
+        },
+        "list_items_mkRrL3": {
+          "type": "List_Items",
+          "settings": {
+            "list_image": "shopify://shop_images/Vector.svg",
+            "list_content": "Support sustainable farming"
+          }
+        },
+        "list_items_9xiH3F": {
+          "type": "List_Items",
+          "settings": {
+            "list_image": "shopify://shop_images/Vector.svg",
+            "list_content": "Risk-Free, with a 30-day money back guarantee."
+          }
+        }
+      },
+      "block_order": [
+        "list_items_CrWg8a",
+        "list_items_mkRrL3",
+        "list_items_9xiH3F"
+      ],
+      "settings": {
+        "short_review_icon_two": "shopify://shop_images/Group_1.svg",
+        "short_review_content_two": "Rated <strong>4.9/5 </strong>by <strong>1000+</strong> happy customers",
+        "heading": "SUSTAINABLY RAISED, HEALTHIER & 100% GMO-FREE - WHAT ARE YOU WAITING FOR?",
+        "subheading": "",
+        "content": "Our sustainably-raised treats are perfectly balanced in calcium and phosphorus, for happier, more productive poultry and birds.",
+        "button1_url": "#product-landing",
+        "button1_text": "",
+        "button2_url": "#product-landing",
+        "button2_text": "Claim your 30% discount",
+        "review_content_banner_third": "“My chickens are obsessed with these grubs! Egg production has increased, and the shells are thicker. Definitely worth it!”",
+        "review_author_banner_third": "Andre A.",
+        "verify_customer_banner_third": "Verified Customer",
+        "short_review_author_icon_banner_third": "shopify://shop_images/Ellipse_3_1.png",
+        "short_review_stars_icon_banner_third": "shopify://shop_images/Group_1.svg",
+        "second_container_image": "shopify://shop_images/Group_1484581306_2_8216d2d6-19f3-4c83-913d-be176df8afc3.png"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "first_hero_banner_QUALTe",
+    "multi_columns_container_9W4re9",
+    "hero_banner_container_two_dWtVjt",
+    "multi_row_landing_keCfMi",
+    "featured_compare_section_U7rCd8",
+    "testamonials_section_9wU6GK",
+    "second_hero_section_kcMnKF",
+    "comparison_QfFibp",
+    "loox_reviews_landing1_mh6Bxi",
+    "banner_guarrantee_GQwjJj",
+    "custom_featured_product_new_4iEWqR",
+    "custom_featured_product_WR3Upi",
+    "faq_section_6MUGEy",
+    "hero_banner_third_aMa7fM"
+  ]
+}

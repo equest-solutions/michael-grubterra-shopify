@@ -1,0 +1,81 @@
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css">
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css"
+>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script
+  type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"
+></script>
+
+<style>
+  .slick-slide img{
+    width: 90%;
+    margin:auto;
+    border-radius: 16px;
+  } 
+</style>
+ 
+
+<div class="thumbnail-images-slider">
+  {% for media in product.media %}
+        <div class="thumbnail-image">
+           <div class="thumbImg slider-image-{{ media }}">
+               <img src="{{ media | product_img_url:'' }}" alt="Car-Image">
+           </div>
+      </div>
+  {% endfor %}
+</div>
+
+
+
+
+
+<script>
+    $(document).ready(function () {
+        $('.thumbnail-images-slider').on('init', function () {
+            $('.slick-frame, .thumbnail-images-slider').css('visibility', 'visible');
+            console.log('init event fired'); // Log when the init event is fired
+        });
+
+        $('.thumbnail-images-slider').slick({
+            dots: false,
+            infinite: true,
+            loop:true,
+            speed: 700,
+            slidesToShow: 1,
+            autoplay: false,
+            arrows: true,
+            autoplaySpeed: 2000,
+            slidesToScroll: 1,
+            nextArrow: '<i class="next-one"><svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="20" r="18.8889" fill="#1F6223" stroke="#F2F9F3" stroke-width="2.22222"/><path d="M22.1191 15.4551L26.6635 20.0005L22.1191 24.546" stroke="white" stroke-width="1.51394" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/><path d="M13.6357 20H25.3085" stroke="white" stroke-width="1.51394" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/></svg></i>',
+            prevArrow: '<i class="next-one-next"><svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="20" r="18.8889" transform="matrix(-1 0 0 1 40 0)" fill="#1F6223" stroke="#F2F9F3" stroke-width="2.22222"/><path d="M17.8809 15.4551L13.3365 20.0005L17.8809 24.546" stroke="white" stroke-width="1.51394" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/><path d="M26.3643 20H14.6915" stroke="white" stroke-width="1.51394" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/></svg></i>',
+            responsive: [
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                        infinite: true,
+                        dots: false
+                    }
+                },
+                {
+                    breakpoint: 600,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                        dots: false,
+                        arrows: true,
+  nextArrow: '<i class="next-one"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M7.42773 16.6062L12.8611 11.1729C13.5027 10.5312 13.5027 9.48125 12.8611 8.83958L7.42773 3.40625" stroke="white" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/></svg></i>',
+            prevArrow: '<i class="next-one-next"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M12.5723 16.6062L7.13893 11.1729C6.49726 10.5312 6.49726 9.48125 7.13893 8.83958L12.5723 3.40625" stroke="white" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/></svg></i>',
+
+
+                    }
+                }
+            ]
+        });
+    });
+</script>

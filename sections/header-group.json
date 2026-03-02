@@ -1,0 +1,139 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "t:sections.header.name",
+  "type": "header",
+  "sections": {
+    "17631269198c181dab": {
+      "type": "_blocks",
+      "settings": {}
+    },
+    "trusted_list_icons_nTKVYj": {
+      "type": "trusted_list_icons",
+      "blocks": {
+        "icon_text_block_pLLY4H": {
+          "type": "icon_text_block",
+          "disabled": true,
+          "settings": {
+            "icon_image": "shopify://shop_images/fi_10173933.svg",
+            "icon_title": "Trusted by 1000+ Customers"
+          }
+        },
+        "icon_text_block_w8AWzt": {
+          "type": "icon_text_block",
+          "disabled": true,
+          "settings": {
+            "icon_image": "shopify://shop_images/fi_9293554.svg",
+            "icon_title": "Environmentally focused"
+          }
+        },
+        "icon_text_block_niAahY": {
+          "type": "icon_text_block",
+          "disabled": true,
+          "settings": {
+            "icon_image": "shopify://shop_images/fi_497393.svg",
+            "icon_title": "100% Natural"
+          }
+        },
+        "icon_text_block_RpW89x": {
+          "type": "icon_text_block",
+          "disabled": true,
+          "settings": {
+            "icon_image": "shopify://shop_images/fi_11402758.svg",
+            "icon_title": "Free shipping on all orders"
+          }
+        },
+        "icon_text_block_xXgHV8": {
+          "type": "icon_text_block",
+          "settings": {
+            "icon_image": "shopify://shop_images/fi_10173933.svg",
+            "icon_title": "Our Black Friday sale is now live!!!! Use Code BF30 for 20% off our entire store! Also 30% off any subscription purchases! When you purchase over $200, you will receive 3 free coop refreshers for FREE!"
+          }
+        }
+      },
+      "block_order": [
+        "icon_text_block_pLLY4H",
+        "icon_text_block_w8AWzt",
+        "icon_text_block_niAahY",
+        "icon_text_block_RpW89x",
+        "icon_text_block_xXgHV8"
+      ],
+      "disabled": true,
+      "settings": {}
+    },
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "blocks": {
+        "announcement_FJYeeK": {
+          "type": "announcement",
+          "settings": {
+            "text": "HenHarmony Just Launched — Secure Your Lifetime Discount Before It’s Gone (Up to 45% Off)",
+            "link": "shopify://products/hen-harmony"
+          }
+        },
+        "announcement-bar-0": {
+          "type": "announcement",
+          "settings": {
+            "text": "HenHarmony Just Launched — Secure Your Lifetime Discount Before It’s Gone (Up to 45% Off)",
+            "link": "shopify://products/hen-harmony"
+          }
+        },
+        "announcement_7Mmk4A": {
+          "type": "announcement",
+          "settings": {
+            "text": "HenHarmony Just Launched — Secure Your Lifetime Discount Before It’s Gone (Up to 45% Off)",
+            "link": "shopify://products/hen-harmony"
+          }
+        },
+        "announcement_jVxXTp": {
+          "type": "announcement",
+          "settings": {
+            "text": "HenHarmony Just Launched — Secure Your Lifetime Discount Before It’s Gone (Up to 45% Off)",
+            "link": "shopify://products/hen-harmony"
+          }
+        }
+      },
+      "block_order": [
+        "announcement_FJYeeK",
+        "announcement-bar-0",
+        "announcement_7Mmk4A",
+        "announcement_jVxXTp"
+      ],
+      "settings": {
+        "padding_top": 12,
+        "padding_bottom": 12
+      }
+    },
+    "header": {
+      "type": "header",
+      "settings": {
+        "logo_position": "middle-left",
+        "menu": "main-menu-new",
+        "menu_type_desktop": "dropdown",
+        "sticky_header_type": "on-scroll-up",
+        "show_line_separator": true,
+        "color_scheme": "background-1",
+        "menu_color_scheme": "background-1",
+        "enable_country_selector": true,
+        "enable_language_selector": true,
+        "mobile_logo_position": "center",
+        "margin_bottom": 0,
+        "padding_top": 20,
+        "padding_bottom": 20
+      }
+    }
+  },
+  "order": [
+    "17631269198c181dab",
+    "trusted_list_icons_nTKVYj",
+    "announcement-bar",
+    "header"
+  ]
+}

@@ -1,0 +1,751 @@
+{% style %}
+    .author_reviews_custom {font-weight:600;}
+
+    .author_name_content {font-size:16px;} .client_icon_verify {font-size:14px;}
+
+                      .multi_row_section {
+  background-color:#F2F9F3;
+                background-size: cover;
+                 background-repeat: no-repeat;
+                 background-image: url("{{ section.settings.multirow_with_image | img_url: 'master' }}");
+                padding: 121px 0px 119px 0;
+
+            }
+            .center-container {
+                max-width: 750px;
+                margin:0px  auto 60px auto;
+            }
+            .center-container h2 {
+                font-family: "Brother1816 Printed Bold";
+                font-size: 40px;
+                font-weight: 700;
+                line-height: 48px;
+                letter-spacing: -0.02em;
+                text-align: center;
+                color: #1f6223;
+                margin: 0 auto;
+              max-width:640px;
+            }
+            .center-container p {
+                font-family: "Brother1816 Printed";
+                font-size: 20px;
+                font-weight: 400;
+                line-height: 28px;
+                text-align: center;
+                color: #000;
+                margin: 0;
+            }
+            .box-one-container {
+                display: flex;
+                position: relative;
+                margin-bottom: 50px;
+                align-items: center;
+            }
+
+            .col-custom-one-image img {
+                border-radius: 15px;
+                width: 100%;
+            }
+
+            .col-custom-one-image {
+                max-width: 51%;
+                width: 100%;
+                padding: 0px;
+                position: relative;
+            }
+            .col-custom-one {
+                max-width: 49%;
+                width: 100%;
+                position: relative;
+                padding: 50px;
+            }
+      .col-custom-content-one{
+            padding: 50px 0px 50px 87px;
+      }
+
+            .box-oneheading {
+                font-family: "Brother1816 Printed Bold";
+                font-size: 32px;
+                font-weight: 700;
+                line-height: 44.8px;
+                text-align: left;
+                margin: 0;
+                color: #1f6223;
+              margin-bottom:28px;
+            }
+            .box-onecontent {
+                font-family: "Brother1816 Printed";
+                font-size: 18px;
+                font-weight: 350;
+                line-height: 25.2px;
+                text-align: left;
+
+                margin: 0;
+                color: #000;
+              margin-bottom:28px;
+            }
+            .box-onecontent p {
+                font-family: "Brother1816 Printed";
+                font-size: 18px;
+                font-weight: 350;
+                line-height: 25.2px;
+                text-align: left;
+
+                margin: 0;
+                color: #000;
+            }
+
+            .list_with_text {
+                display: flex;
+                align-items: center;
+              flex-direction:column;
+              gap:10px;
+            }
+            .list_with_text p{
+              margin:0;
+                    font-family: "Brother1816 Printed";
+          font-size: 18px;
+          font-weight: 350;
+          line-height: 25.2px;
+          text-align: left;
+                color: #000;
+
+            }
+          .list_with_text_inner{
+             display: flex;
+                align-items: center;
+            gap:15px;
+            width:100%;
+            flex-direction:column;
+          }
+        .list_nested_container{
+              display: flex;
+          align-items: center;
+            width:100%;
+          gap: 10px;
+        }
+          .full_review_container{ display:flex;
+                                align-items:center;
+        gap:20px;
+                                }
+          .full_review_container p{
+            margin:0;
+          }
+          .author_name_container{
+            display:flex;
+            align-items:center;
+            gap:10px;
+
+          }
+        .col-order-space{
+          padding-left:0;
+        }
+        .multi_row_section .author_reviews_custom{
+    color:#000000;
+    font-size: 16px;
+    font-weight: 350;
+    line-height: 22.4px;
+    text-align: left;
+
+      }
+            @media (max-width: 600px) {
+
+    .author_name_content {font-size:14px;} .client_icon_verify {font-size:12px;}
+
+
+              .multi_row_section{
+                background-image: url("{{ section.settings.multirow_with_image_mobile | img_url: 'master' }}");
+                        background:#F2F9F3;
+
+                  padding:40px 0;
+              }
+                .box-one-container {
+                    flex-direction: column;
+                    margin-bottom: 30px;
+                }
+                .col-custom-one-image {
+                    padding: 0;
+                    width: 100%;
+                    max-width: 100%;
+                    margin-bottom: 10px;
+                }
+                .col-custom-one {
+                    padding: 0px;
+                    width: 100%;
+                    max-width: 100%;
+                }
+
+                .box-oneheading {
+                font-size: 20px;
+                line-height: 28px;
+                margin-bottom:20px;
+                }
+                .box-onecontent {
+                      margin-bottom: 16px;
+                }
+                .box-onecontent p {
+                    font-size: 14px;
+                  line-height:19.6px;
+                }
+      .center-container{
+        margin-bottom:20px;
+      }
+                .center-container h2 {
+                    font-size: 26px;
+                    line-height: 28.8px;
+                          margin-bottom: 16px;
+                }
+                .center-container p {
+                    font-size: 16px;
+                    line-height: 22.4px;
+                }
+              .list_with_text p{
+                font-size:16px;
+              }
+              .list_with_text_inner{
+                gap:10px;
+              }
+                 .multi_row_section .author_reviews_custom{
+
+    font-size: 14px;
+    font-weight: 350;
+    line-height: 19.6px;
+    text-align: left;
+
+
+      }
+            }
+{% endstyle %}
+<div class="multi_row_section">
+  <div class="page-width" id="why-choose-us">
+    <div class="">
+      <div class="center-container">
+        <h2>{{ section.settings.MainHeading }}</h2>
+        <p>{{ section.settings.subHeading }}</p>
+      </div>
+      <!-- box 1 container -->
+      <div class="">
+        <div class="box-one-container">
+          <div class="col-custom-one-image hide_in_mobile">
+            <img src="{{ section.settings.Box1image | img_url: 'master' }}">
+          </div>
+          <div class="col-custom-one col-custom-content-one">
+            <h2 class="box-oneheading">{{ section.settings.box1Heading }}</h2>
+            <div class="col-custom-one-image show_in_mobile">
+              <img src="{{ section.settings.Box1image | img_url: 'master' }}">
+            </div>
+            <div class="box-onecontent">{{ section.settings.box1content }}</div>
+            <div class="list_with_text">
+              <div class="list_with_text_inner">
+                {% for block in section.blocks %}
+                  {% if block.type == 'list_with_text' %}
+                    <div class="list_nested_container">
+                      <img src="{{ block.settings.list_image_icon | img_url: 'medium' }}" alt="icon">
+                      <p>{{ block.settings.list_image_icon_content }}</p>
+                    </div>
+                    <div class="list_nested_container">
+                      <img src="{{ block.settings.list_image_icon1 | img_url: 'medium' }}" alt="icon">
+                      <p>{{ block.settings.list_image_icon_content1 }}</p>
+                    </div>
+                    <div class="list_nested_container">
+                      <img src="{{ block.settings.list_image_icon2 | img_url: 'medium' }}" alt="icon">
+                      <p>{{ block.settings.list_image_icon_content2 }}</p>
+                    </div>
+                  {% endif %}
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- box 2 container -->
+      <div class="">
+        <div class="box-one-container">
+          <div class="col-custom-one col-order-space">
+            <div class="box-two-inner">
+              <h2 class="box-oneheading">{{ section.settings.box2Heading }}</h2>
+              <div class="col-custom-one-image show_in_mobile">
+                <img src="{{ section.settings.Box2image | img_url: 'master' }}">
+              </div>
+              <div class="box-onecontent">{{ section.settings.box2content }}</div>
+              <div class="full_review_container">
+                {% for block in section.blocks %}
+                  {% if block.type == 'short_review_container' %}
+                    <div class="author_icon_position">
+                      <img src="{{ block.settings.short_author_image | img_url: 'medium' }}" alt="icon">
+                    </div>
+                    <div class="">
+                      <img src="{{ block.settings.short_review_image_three | img_url: 'small' }}" alt="icon">
+                      <p class="author_reviews_custom">{{ block.settings.short_review_cont_three }}</p>
+                      <div class="author_name_container">
+                        <p class="author_name_content">{{ block.settings.short_author_name }}</p>
+                        <p class="client_icon_verify">
+                          {% render 'verify_customer' %}
+                          {{ block.settings.short_author_client }}
+                        </p>
+                      </div>
+                    </div>
+                  {% endif %}
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+          <div class="col-custom-one-image hide_in_mobile">
+            <img src="{{ section.settings.Box2image | img_url: 'master' }}">
+          </div>
+        </div>
+      </div>
+      <!-- box 3 container -->
+      <div class="">
+        <div class="box-one-container">
+          <div class="col-custom-one-image hide_in_mobile">
+            <img src="{{ section.settings.Box3image | img_url: 'master' }}">
+          </div>
+          <div class="col-custom-one col-custom-content-one">
+            <h2 class="box-oneheading">{{ section.settings.box3Heading }}</h2>
+            <div class="col-custom-one-image show_in_mobile">
+              <img src="{{ section.settings.Box3image | img_url: 'master' }}">
+            </div>
+            <div class="box-onecontent">{{ section.settings.box3content }}</div>
+
+            <div class="list_with_text">
+              <div class="list_with_text_inner">
+                {% for block in section.blocks %}
+                  {% if block.type == 'list_with_text3' %}
+                    <div class="list_nested_container">
+                      <img src="{{ block.settings.list_image_icon3 | img_url: 'medium' }}" alt="icon">
+                      <p>{{ block.settings.list_image_icon_content3 }}</p>
+                    </div>
+                    <div class="list_nested_container">
+                      <img src="{{ block.settings.list_image_icon31 | img_url: 'medium' }}" alt="icon">
+                      <p>{{ block.settings.list_image_icon_content31 }}</p>
+                    </div>
+                    <div class="list_nested_container">
+                      <img src="{{ block.settings.list_image_icon32 | img_url: 'medium' }}" alt="icon">
+                      <p>{{ block.settings.list_image_icon_content32 }}</p>
+                    </div>
+                  {% endif %}
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- box 4 container -->
+      <div class="">
+        <div class="box-one-container">
+          <div class="col-custom-one col-order-space">
+            <h2 class="box-oneheading">{{ section.settings.box4Heading }}</h2>
+            <div class="col-custom-one-image show_in_mobile">
+              <img src="{{ section.settings.Box4image | img_url: 'master' }}">
+            </div>
+            <div class="box-onecontent">{{ section.settings.box4content }}</div>
+            <div class="full_review_container">
+              {% for block in section.blocks %}
+                {% if block.type == 'short_review_container4' %}
+                  <div class="author_icon_position">
+                    <img src="{{ block.settings.short_author_image4 | img_url: 'medium' }}" alt="icon">
+                  </div>
+                  <div class="">
+                    <img src="{{ block.settings.short_review_image_three4 | img_url: 'small' }}" alt="icon">
+                    <p class="author_reviews_custom">{{ block.settings.short_review_cont_three4 }}</p>
+                    <div class="author_name_container">
+                      <p class="author_name_content">{{ block.settings.short_author_name4 }}</p>
+                      <p class="client_icon_verify">
+                        {% render 'verify_customer' %}
+                        {{ block.settings.short_author_client4 }}
+                      </p>
+                    </div>
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+          <div class="col-custom-one-image hide_in_mobile">
+            <img src="{{ section.settings.Box4image | img_url: 'master' }}">
+          </div>
+        </div>
+      </div>
+
+      <!-- box 5 container -->
+      <div class="">
+        <div class="box-one-container">
+          <div class="col-custom-one-image hide_in_mobile">
+            <img src="{{ section.settings.Box5image | img_url: 'master' }}">
+          </div>
+          <div class="col-custom-one col-custom-content-one">
+            <h2 class="box-oneheading">{{ section.settings.box5Heading }}</h2>
+            <div class="col-custom-one-image show_in_mobile">
+              <img src="{{ section.settings.Box5image | img_url: 'master' }}">
+            </div>
+            <div class="box-onecontent">{{ section.settings.box5content }}</div>
+            <div class="list_with_text">
+              <div class="list_with_text_inner">
+                {% for block in section.blocks %}
+                  {% if block.type == 'list_with_text_box5' %}
+                    <div class="list_nested_container">
+                      <img src="{{ block.settings.list_image_icon5 | img_url: 'medium' }}" alt="icon">
+                      <p>{{ block.settings.list_image_icon_content5 }}</p>
+                    </div>
+                    <div class="list_nested_container">
+                      <img src="{{ block.settings.list_image_icon51 | img_url: 'medium' }}" alt="icon">
+                      <p>{{ block.settings.list_image_icon_content51 }}</p>
+                    </div>
+                    <div class="list_nested_container">
+                      <img src="{{ block.settings.list_image_icon52 | img_url: 'medium' }}" alt="icon">
+                      <p>{{ block.settings.list_image_icon_content52 }}</p>
+                    </div>
+                  {% endif %}
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Multi Block Section",
+  "settings": [
+   {
+      "type": "image_picker",
+      "id": "multirow_with_image",
+      "label": "Column Hero image"
+    },
+    {
+      "type": "image_picker",
+      "id": "multirow_with_image_mobile",
+      "label": "Column Hero image Mobile"
+    },
+    {
+      "type": "text",
+      "id": "MainHeading",
+      "label": "Main Heading",
+      "default": "Main Heading"
+    },
+    {
+      "type": "text",
+      "id": "subHeading",
+      "label": "Sub Heading",
+      "default": "Sub Heading"
+    },
+{
+  "type": "header",
+  "content": "box 1"
+},
+    {
+      "type": "image_picker",
+      "id": "Box1image",
+      "label": "First Box Image"
+    },
+
+    {
+      "type": "text",
+      "id": "box1Heading",
+      "label": "First Box Heading",
+      "default": "Multi-Names Premium Canvas"
+    },
+      {
+      "type": "richtext",
+      "id": "box1content",
+      "label": "First Box Content"
+    },
+{
+  "type": "header",
+  "content": "box 2"
+},
+{
+      "type": "image_picker",
+      "id": "Box2image",
+      "label": "Second Box Image"
+    },
+    {
+      "type": "text",
+      "id": "box2Heading",
+      "label": "Second Box Heading",
+      "default": "Multi-Names Premium Canvas"
+    },
+      {
+      "type": "richtext",
+      "id": "box2content",
+      "label": "Second Box Content"
+
+    },
+    {
+  "type": "header",
+  "content": "box 3"
+},
+    {
+      "type": "image_picker",
+      "id": "Box3image",
+      "label": "Third Box Image"
+    },
+
+    {
+      "type": "text",
+      "id": "box3Heading",
+      "label": "Third Box Heading",
+      "default": "Multi-Names Premium Canvas"
+    },
+      {
+      "type": "richtext",
+      "id": "box3content",
+      "label": "Third Box Content"
+    },
+     {
+  "type": "header",
+  "content": "box 4"
+},
+    {
+      "type": "image_picker",
+      "id": "Box4image",
+      "label": "Fourth Box Image"
+    },
+    {
+      "type": "text",
+      "id": "box4Heading",
+      "label": "Fourth Box Heading",
+      "default": "Multi-Names Premium Canvas"
+    },
+      {
+      "type": "richtext",
+      "id": "box4content",
+      "label": "Fourth Box Content"
+    },
+        {
+  "type": "header",
+  "content": "box 5"
+},
+    {
+      "type": "image_picker",
+      "id": "Box5image",
+      "label": "Fifth Box Image"
+    },
+
+    {
+      "type": "text",
+      "id": "box5Heading",
+      "label": "Fifth Box Heading",
+      "default": "Multi-Names Premium Canvas"
+    },
+      {
+      "type": "richtext",
+      "id": "box5content",
+      "label": "Fifth Box Content"
+    }
+
+  ],
+  "blocks": [
+    {
+    "type": "short_review_container",
+    "name": "Short Review",
+    "settings": [
+
+       {
+          "type": "image_picker",
+          "id": "short_author_image",
+          "label": "Author image"
+
+        },
+    {
+          "type": "image_picker",
+          "id": "short_review_image_three",
+          "label": "Short Review"
+
+        },
+    {
+          "type": "inline_richtext",
+          "id": "short_review_cont_three",
+          "default": "Content label",
+          "label": "Review Content"
+        },
+      {
+          "type": "inline_richtext",
+          "id": "short_author_name",
+          "label": "Review Content"
+        },
+      {
+          "type": "inline_richtext",
+          "id": "short_author_client",
+          "label": "Review Content"
+        }
+
+
+    ]
+    },
+    {
+    "type": "short_review_container4",
+    "name": "Short Review Box 4",
+    "settings": [
+
+       {
+          "type": "image_picker",
+          "id": "short_author_image4",
+          "label": "Author image"
+
+        },
+      {
+          "type": "image_picker",
+          "id": "short_review_image_three4",
+          "label": "Short Review"
+
+        },
+    {
+          "type": "inline_richtext",
+          "id": "short_review_cont_three4",
+          "default": "Content label",
+          "label": "Review Content"
+        },
+      {
+          "type": "inline_richtext",
+          "id": "short_author_name4",
+          "label": "Review Content"
+        },
+      {
+          "type": "inline_richtext",
+          "id": "short_author_client4",
+          "label": "Review Content"
+        }
+
+
+    ]
+    },
+    {
+    "type": "list_with_text",
+    "name": "List",
+    "settings": [
+
+       {
+          "type": "image_picker",
+          "id": "list_image_icon",
+          "label": "list image"
+
+        },
+      {
+          "type": "inline_richtext",
+          "id": "list_image_icon_content",
+          "label": "list Content"
+        },
+      {
+          "type": "image_picker",
+          "id": "list_image_icon1",
+          "label": "list image"
+
+        },
+       {
+          "type": "inline_richtext",
+          "id": "list_image_icon_content1",
+          "label": "list Content"
+        },
+            {
+          "type": "image_picker",
+          "id": "list_image_icon2",
+          "label": "list image"
+
+        },
+        {
+          "type": "inline_richtext",
+          "id": "list_image_icon_content2",
+          "label": "list Content"
+        }
+
+
+    ]
+    },
+    {
+    "type": "list_with_text3",
+    "name": "List Three Box ",
+    "settings": [
+
+       {
+          "type": "image_picker",
+          "id": "list_image_icon3",
+          "label": "list image"
+
+        },
+      {
+          "type": "inline_richtext",
+          "id": "list_image_icon_content3",
+          "label": "list Content"
+        },
+           {
+          "type": "image_picker",
+          "id": "list_image_icon31",
+          "label": "list image"
+
+        },
+      {
+          "type": "inline_richtext",
+          "id": "list_image_icon_content31",
+          "label": "list Content"
+        },           {
+          "type": "image_picker",
+          "id": "list_image_icon32",
+          "label": "list image"
+
+        },
+      {
+          "type": "inline_richtext",
+          "id": "list_image_icon_content32",
+          "label": "list Content"
+        }
+
+
+    ]
+    },
+    {
+  "type": "list_with_text_box5",
+  "name": "List Five Box",
+  "settings": [
+
+     {
+        "type": "image_picker",
+        "id": "list_image_icon5",
+        "label": "list image"
+
+      },
+    {
+        "type": "inline_richtext",
+        "id": "list_image_icon_content5",
+        "label": "list Content"
+      },
+         {
+        "type": "image_picker",
+        "id": "list_image_icon51",
+        "label": "list image"
+
+      },
+    {
+        "type": "inline_richtext",
+        "id": "list_image_icon_content51",
+        "label": "list Content"
+      },
+         {
+        "type": "image_picker",
+        "id": "list_image_icon52",
+        "label": "list image"
+
+      },
+    {
+        "type": "inline_richtext",
+        "id": "list_image_icon_content52",
+        "label": "list Content"
+      }
+
+
+  ]
+  }
+    ],
+
+
+  "presets": [
+    {
+      "category": "Custom",
+      "name": "Multi Block Section"
+    }
+  ]
+}
+{% endschema %}

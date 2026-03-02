@@ -1,0 +1,472 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "image_banner": {
+      "type": "image-banner",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Premium Products for Healthier, Happier Hens.",
+            "heading_size": "h1"
+          }
+        },
+        "icons_8RTfzp": {
+          "type": "icons",
+          "settings": {
+            "icon_1": "shopify://shop_images/image_28_3.png",
+            "icon_1_width": "50",
+            "icon_1_height": "60",
+            "icon_2": "shopify://shop_images/image_29.png",
+            "icon_2_width": "50",
+            "icon_2_height": "60",
+            "icon_3_width": "50",
+            "icon_3_height": "60"
+          }
+        },
+        "text_MVmtJ6": {
+          "type": "text",
+          "settings": {
+            "text": "<p>GrubTerra up cycles food waste using black soldier fly larvae to produce a healthy feed for chickens, reptiles, dogs and birds!</p>",
+            "text_style": "body"
+          }
+        },
+        "icons_t6N3Ki": {
+          "type": "icons",
+          "disabled": true,
+          "settings": {
+            "icon_1": "shopify://shop_images/image_31.png",
+            "icon_1_width": "50",
+            "icon_1_height": "60",
+            "icon_2_width": "",
+            "icon_2_height": "",
+            "icon_3_width": "",
+            "icon_3_height": ""
+          }
+        },
+        "custom_subheading_bnq9pD": {
+          "type": "custom-subheading",
+          "settings": {
+            "subheading": "<strong>Proud to be an American Run Business</strong>",
+            "icon": "shopify://shop_images/image_66.svg"
+          }
+        },
+        "button": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Shop Now",
+            "button_link_1": "shopify://collections/shop-2-0",
+            "button_style_secondary_1": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "icons_8RTfzp",
+        "text_MVmtJ6",
+        "icons_t6N3Ki",
+        "custom_subheading_bnq9pD",
+        "button"
+      ],
+      "custom_css": [
+        "@media screen and (max-width: 749px) {.banner__box {padding: 2rem 1.5rem; gap: 1rem; } .banner__box > * + .banner__text {margin-top: 0px; }}"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/Rectangle_41_82f855df-2238-49e4-868a-82bbef7d11c0.png",
+        "image_overlay_opacity": 0,
+        "image_height": "adapt",
+        "desktop_content_position": "middle-left",
+        "show_text_box": false,
+        "desktop_content_alignment": "left",
+        "color_scheme": "inverse",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
+    },
+    "recycle_wRWJpM": {
+      "type": "recycle",
+      "settings": {
+        "recycle_icon": "shopify://shop_images/image_90.svg",
+        "text": "<p>Grubterra <strong>recycles 20 lbs</strong>  of food waste <strong>per 1 lb</strong>  of chicken feed.</p>",
+        "icon_1": "shopify://shop_images/image_92.svg",
+        "number_of_waste_recycle": "12,749,730+ lbs",
+        "waste_recycle": "Of Food Waste Recycled Since 2022",
+        "padding_top": 40,
+        "padding_bottom": 52,
+        "color_scheme": "background-2"
+      }
+    },
+    "custom_banner_3ANc4e": {
+      "type": "custom-banner",
+      "blocks": {
+        "heading_gq3zGq": {
+          "type": "heading",
+          "settings": {
+            "heading": "High Quality & Environmentally friendly  feeds/treats for poultry and pets"
+          }
+        },
+        "text_8yyJLy": {
+          "type": "text",
+          "settings": {
+            "text": "<p>GrubTerra is a social impact company that focuses on creating a sustainable feed source for livestock and pets. While also helping to reduce landfill waste. Our black soldier fly larvae are sourced from the USA, Canada, Costa Rica, and Indonesia. All our farms source their food waste from local breweries, supermarkets, farmer's markets, and large agriculture farms. We operate out of New Jersey, where we spend every day focusing on how to make the world healthier with every product we sell!</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_gq3zGq",
+        "text_8yyJLy"
+      ],
+      "custom_css": [
+        ".ctm-banner-heading {color: #fff;}",
+        ".custom-banner-content .custom-text {color: #fff;}"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/Green_1.png",
+        "image_Mobile": "shopify://shop_images/Green_1.png",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "custom_commitment_69HfRY": {
+      "type": "custom-commitment",
+      "blocks": {
+        "commitment_PX9aLF": {
+          "type": "commitment",
+          "settings": {
+            "image": "shopify://shop_images/Group_71.png",
+            "text": "<p>75x more calcium than mealworms for stronger eggs and faster feather growth.</p>"
+          }
+        },
+        "commitment_73Rd9L": {
+          "type": "commitment",
+          "settings": {
+            "image": "shopify://shop_images/Group_71.svg",
+            "text": "<p>GrubTerra's larvae are farm raised in the USA, Canada, Indonesia, and Costa Rica. Supporting small farms around the world.</p>"
+          }
+        },
+        "commitment_WB7RYU": {
+          "type": "commitment",
+          "settings": {
+            "image": "shopify://shop_images/Group_71_2.png",
+            "text": "<p>GrubTerra upcycles local food waste, reducing landfill impact and cutting methane emissions for a greener world.</p>"
+          }
+        },
+        "commitment_MPjXxy": {
+          "type": "commitment",
+          "settings": {
+            "image": "shopify://shop_images/Group_71_3.png",
+            "text": "<p>Unadulterated Purity. No Additives.' in place of Naturally Pure. No Preservatives.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "commitment_PX9aLF",
+        "commitment_73Rd9L",
+        "commitment_WB7RYU",
+        "commitment_MPjXxy"
+      ],
+      "settings": {
+        "title": "Grub Terra’s Commitment",
+        "padding_top": 24,
+        "padding_bottom": 24
+      }
+    },
+    "custom_grub_terra_features_xBDiny": {
+      "type": "custom-grub-terra-features",
+      "blocks": {
+        "title_NbkJM3": {
+          "type": "title",
+          "settings": {
+            "title": "Grubb Terra Dried Larvae - For Chicken"
+          }
+        },
+        "list_feature_ke97Cf": {
+          "type": "list-feature",
+          "settings": {
+            "point_1": "Global Sustainably Raised Larvae",
+            "point_2": "Nutrient-Rich Balanced Diet",
+            "point_3": "Stronger Eggs & Healthy Feathers",
+            "point_4": "Preservative-Free <strong>100% Natural Nutrition</strong>",
+            "point_5": ""
+          }
+        },
+        "button_DBC8jh": {
+          "type": "button",
+          "settings": {
+            "button_text": "Shop Now!",
+            "url": "shopify://products/grubterra-5lb-black-soldier-fly-larvae"
+          }
+        }
+      },
+      "block_order": [
+        "title_NbkJM3",
+        "list_feature_ke97Cf",
+        "button_DBC8jh"
+      ],
+      "settings": {
+        "title": "Buy the best from GRUB TERRA",
+        "image": "shopify://shop_images/New_1lb_b1a6af38-ebed-43ca-b749-9261af6332cd.png",
+        "image_mobile": "shopify://shop_images/Group_264.png",
+        "image_position": "left",
+        "padding_top": 24,
+        "padding_bottom": 24
+      }
+    },
+    "custom_grub_terra_features_tNNNxk": {
+      "type": "custom-grub-terra-features",
+      "blocks": {
+        "title_NewxxU": {
+          "type": "title",
+          "settings": {
+            "title": "Grubb Terra Fresh Black Soldier  Fly Larvae - For Reptiles"
+          }
+        },
+        "list_feature_GgJzC6": {
+          "type": "list-feature",
+          "settings": {
+            "point_1": "Safe Substrate for Reptiles",
+            "point_2": "Cold Weather Preparedness",
+            "point_3": "Weather - Smart Delivery",
+            "point_4": "Sustainable Packing",
+            "point_5": "Safe substrate for reptiles"
+          }
+        },
+        "button_hTafa7": {
+          "type": "button",
+          "settings": {
+            "button_text": "Shop Now !",
+            "url": "shopify://products/fresh-black-soldier-fly-larvae-large-and-medium-sizes"
+          }
+        }
+      },
+      "block_order": [
+        "title_NewxxU",
+        "list_feature_GgJzC6",
+        "button_hTafa7"
+      ],
+      "settings": {
+        "title": "",
+        "image": "shopify://shop_images/Group_67_6cd950f4-470f-4cb4-af1b-0a4ad38e34cc.png",
+        "image_mobile": "shopify://shop_images/Group_67_6cd950f4-470f-4cb4-af1b-0a4ad38e34cc.png",
+        "image_position": "right",
+        "padding_top": 24,
+        "padding_bottom": 24
+      }
+    },
+    "custom_grub_terra_features_eJUMag": {
+      "type": "custom-grub-terra-features",
+      "blocks": {
+        "title_Gh37Hk": {
+          "type": "title",
+          "settings": {
+            "title": "GrubTerra Dog Treats"
+          }
+        },
+        "list_feature_BP76iK": {
+          "type": "list-feature",
+          "settings": {
+            "point_1": "Sourced from the USA!",
+            "point_2": "Nutrient-Rich! Big treats!",
+            "point_3": "Easy to chew",
+            "point_4": "Preservative-Free! Freeze dried for freshness!",
+            "point_5": ""
+          }
+        },
+        "button_rmyEHC": {
+          "type": "button",
+          "settings": {
+            "button_text": "Shop Now !",
+            "url": "shopify://products/grubterra-dog-treats"
+          }
+        }
+      },
+      "block_order": [
+        "title_Gh37Hk",
+        "list_feature_BP76iK",
+        "button_rmyEHC"
+      ],
+      "disabled": true,
+      "settings": {
+        "title": "",
+        "image": "shopify://shop_images/Group_67_1.png",
+        "image_mobile": "shopify://shop_images/Group_67_1.png",
+        "image_position": "left",
+        "padding_top": 20,
+        "padding_bottom": 20
+      }
+    },
+    "alternate_text_zbAh7X": {
+      "type": "alternate-text",
+      "blocks": {
+        "text_MHwT8A": {
+          "type": "text",
+          "settings": {
+            "heading": "Sourcing Quality Ingredients",
+            "text": "<p>Grub Terra begins by sourcing high-quality, sustainable ingredients from local farmers and suppliers, ensuring the freshness and nutritional value of the feed.</p>",
+            "text_position": "left"
+          }
+        },
+        "text_wF3n4w": {
+          "type": "text",
+          "settings": {
+            "heading": "Sustainable Larvae Farming",
+            "text": "<p>Once sourced, the ingredients, especially black soldier fly larvae, are carefully raised on sustainable farms in locations such as the U.S.A, Canada, Costa Rica, and Indonesia. These larvae are fed a balanced diet consisting of fruits, vegetables, and carbohydrates derived from local food waste, promoting sustainability and reducing environmental impact.</p>",
+            "text_position": "right"
+          }
+        },
+        "text_Lrtacb": {
+          "type": "text",
+          "settings": {
+            "heading": "Rigorous Quality Control",
+            "text": "<p>Throughout the larvae farming process, Grub Terra implements rigorous quality control measures, ensuring that the larvae thrive in a  healthy and controlled environment. This includes regular monitoring of their diet, living conditions, and overall well-being.</p>",
+            "text_position": "left"
+          }
+        },
+        "text_NLHQPj": {
+          "type": "text",
+          "settings": {
+            "heading": "Harvesting and Processing",
+            "text": "<p>The larvae are harvested at optimal stages of development, ensuring peak nutritional content. The harvesting process is followed by careful processing,</p>",
+            "text_position": "right"
+          }
+        },
+        "text_qKJEeF": {
+          "type": "text",
+          "settings": {
+            "heading": "Packaging with Care",
+            "text": "<p>Grub Terra takes pride in its commitment to delivering fresh and high quality products. The larvae are packaged thoughtfully, often in small tubs containing 500+ fresh larvae. The packaging may include coconut husk substrate, providing a safe and comfortable environment for the larvae.</p>",
+            "text_position": "left"
+          }
+        },
+        "text_R7EN76": {
+          "type": "text",
+          "settings": {
+            "heading": "Shipping and Delivery",
+            "text": "<p>We offer fast and free shipping. We have shipping times <br/>of under 7 days.</p>",
+            "text_position": "right"
+          }
+        },
+        "text_VyEWgx": {
+          "type": "text",
+          "settings": {
+            "heading": "Happy Chicken = Healthy Eggs",
+            "text": "<p>once the grubs are delivered you will see feel and notice a difference in your chickens feathers, eggs and lives.</p>",
+            "text_position": "left"
+          }
+        }
+      },
+      "block_order": [
+        "text_MHwT8A",
+        "text_wF3n4w",
+        "text_Lrtacb",
+        "text_NLHQPj",
+        "text_qKJEeF",
+        "text_R7EN76",
+        "text_VyEWgx"
+      ],
+      "settings": {
+        "heading": "Grub Terra's Nurturing Journey: From Sourcing to  Your Pet's Bowl",
+        "padding_top": 40,
+        "padding_bottom": 52,
+        "btn_label": "Shop Now",
+        "btn_link": "shopify://collections/all"
+      }
+    },
+    "testimonial_6jrX6i": {
+      "type": "testimonial",
+      "blocks": {
+        "testimonial_jFXae6": {
+          "type": "testimonial",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/Rectangle_775.png",
+            "stars": "shopify://shop_images/image_41.svg",
+            "author": "Mallory And Scott N.",
+            "text": "<p>This was my first time ordering from GrubTerra, and I thought the customer service was excellent.  The bugs arrived quickly, and all the larvae were alive and good sized! Ms. Olive my box turtle is a very satisfied customer.</p>"
+          }
+        },
+        "testimonial_Y9McMA": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify://shop_images/Rectangle_775.png",
+            "stars": "shopify://shop_images/image_41.svg",
+            "author": "Mallory And Scott N.",
+            "text": "<p>I love that my girls (hens) love this amazing product so much! I love even more how Grub Terra is helping our planet by reducing food waste. USA product! And our dog's even love their Bully Bites. My husband and I proudly support this company, and we think you should as well!</p>"
+          }
+        },
+        "testimonial_zeNaGc": {
+          "type": "testimonial",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/Rectangle_775.png",
+            "stars": "shopify://shop_images/image_41.svg",
+            "author": "Mallory And Scott N.",
+            "text": "<p>I love that my girls (hens) love this amazing product so much! I love even more how Grub Terra is helping our planet by reducing food waste. USA product! And our dog's even love their Bully Bites. My husband and I proudly support this company, and we think you should as well!</p>"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_jFXae6",
+        "testimonial_Y9McMA",
+        "testimonial_zeNaGc"
+      ],
+      "settings": {
+        "heading": "Trusted by many chicken lovers!",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "video_testimonial_q3GhT3": {
+      "type": "video-testimonial",
+      "blocks": {
+        "video_testimonial_qaCFaY": {
+          "type": "video-testimonial",
+          "settings": {
+            "text": "<p>See What’s the Experts are Saying About Grub Terra</p>",
+            "video": "shopify://files/videos/x2mate.com-Grub Terra Review - Black Soldier Fly Larvae Chicken Treats-(480p).mp4"
+          }
+        },
+        "video_testimonial_pH7LPe": {
+          "type": "video-testimonial",
+          "settings": {
+            "text": "<p>See What’s the Experts are Saying About Grub Terra</p>",
+            "video": "shopify://files/videos/x2mate.com-Grub Terra Review - Black Soldier Fly Larvae Chicken Treats-(480p).mp4"
+          }
+        }
+      },
+      "block_order": [
+        "video_testimonial_qaCFaY",
+        "video_testimonial_pH7LPe"
+      ],
+      "settings": {
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    }
+  },
+  "order": [
+    "image_banner",
+    "recycle_wRWJpM",
+    "custom_banner_3ANc4e",
+    "custom_commitment_69HfRY",
+    "custom_grub_terra_features_xBDiny",
+    "custom_grub_terra_features_tNNNxk",
+    "custom_grub_terra_features_eJUMag",
+    "alternate_text_zbAh7X",
+    "testimonial_6jrX6i",
+    "video_testimonial_q3GhT3"
+  ]
+}

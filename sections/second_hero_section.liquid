@@ -1,0 +1,339 @@
+{% schema %}
+{
+  "name": "Second Hero Section",
+  "settings": [
+
+    {
+      "type": "image_picker",
+      "id": "second-hero-section_bg",
+      "label": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_grid_1",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "heading_grid_2",
+      "label": "Heading",
+      "default": "Your Heading Here"
+    },
+    {
+      "type": "text",
+      "id": "subheading_grid_2",
+      "label": "Subheading",
+      "default": "Your Subheading Here"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "content_grid_2",
+      "label": "Content"
+    },
+    {
+      "type": "text",
+      "id": "block_list_heading",
+      "label": "Heading"
+    }
+
+
+  ],
+  "blocks": [
+    {
+      "type": "list_item",
+      "name": "List Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "list_heading",
+          "label": "List Heading",
+          "default": "List Heading"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "list_subheading",
+          "label": "List Subheading",
+          "default": "List Subheading"
+        }
+      ]
+    },
+     {
+      "type": "list_item_image",
+      "name": "List Item Image",
+      "settings": [
+           {
+      "type": "image_picker",
+      "id": "block_image",
+      "label": "Block Image"
+    },
+    {
+      "type": "text",
+      "id": "block_text",
+      "label": "Block Text",
+      "default": "Block Text"
+    }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Second Hero Section",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="second-hero-section">
+  <div class="page-width">
+    <div class="columns">
+      <!-- First Column: Image -->
+      <div class="column is-half hide_in_mobile">
+        {% if section.settings.image_grid_1 %}
+          <img src="{{ section.settings.image_grid_1 | img_url: 'master' }}" alt="Hero Image">
+        {% endif %}
+      </div>
+
+      <!-- Second Column: Text Content -->
+      <div class="column is-half column_container_heading">
+        <h1>{{ section.settings.heading_grid_2 }}</h1>
+
+        <h2>{{ section.settings.subheading_grid_2 }}</h2>
+        <div class="column is-half show_in_mobile">
+          {% if section.settings.image_grid_1 %}
+            <img src="{{ section.settings.image_grid_1 | img_url: 'master' }}" alt="Hero Image">
+          {% endif %}
+        </div>
+        <p>{{ section.settings.content_grid_2 }}</p>
+
+        <!-- List Block -->
+        <!-- List Block -->
+        {% if section.blocks.size > 0 %}
+          <div class="list-block">
+            {% for block in section.blocks %}
+              {% if block.type == 'list_item' %}
+                <div class="list-item">
+                  <h3>{{ block.settings.list_heading }}</h3>
+                  <p>{{ block.settings.list_subheading }}</p>
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        {% endif %}
+        <div class="image_heading_list">
+          <h2>{{ section.settings.block_list_heading }}</h2>
+        </div>
+        <div class="image_text_block_list">
+          <!-- Block with Image and Text -->
+
+          {% for block in section.blocks %}
+            {% if block.type == 'list_item_image' %}
+              <div class="image-text-block">
+                {% if block.settings.block_image %}
+                  <img src="{{ block.settings.block_image | img_url: 'master' }}" alt="Block Image">
+                {% endif %}
+                <p>{{ block.settings.block_text }}</p>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+                              .second-hero-section{
+                                position:relative;
+                                background-size: contain;
+                                background-repeat: repeat-x;
+                                background-image: url("{{ section.settings.second-hero-section_bg | img_url: 'master' }}");
+                                padding: 100px 0px 100px 0;
+                                background-position: center;
+                              }
+
+
+
+  .second-hero-section::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(to bottom, #FFFFFF 0%, #F2F9F3 100%);
+      z-index: -1;
+  }
+
+
+                            .second-hero-section .columns {
+                              display: flex;
+                              align-items:center;
+                              gap:107px;
+                            }
+                            .second-hero-section .column {
+                              flex: 1;
+                              padding: 0px;
+                            }
+                    .column_container_heading h1{
+                      font-family: Brother 1816 Printed;
+                  font-size: 40px;
+                  font-weight: 700;
+                  line-height: 48px;
+                  letter-spacing: -0.02em;
+                  text-align: left;
+                  font-family: "Brother1816 Printed Bold";
+                       margin:0 auto 20px auto;
+                          color:#fff;
+                      text-transform: uppercase;
+                    }
+                    .column_container_heading h2{
+                           font-family: "Brother1816 Printed";
+                  font-size: 20px;
+                  font-weight: 400;
+                  line-height: 28px;
+                  text-align: left;
+                   margin:0;
+                          color:#fff;
+                    }
+                    .column_container_heading p{
+                font-family: "Brother1816 Printed";
+                  font-size: 16px;
+                  font-weight: 400;
+                  line-height: 28px;
+                  text-align: left;
+                   margin:0;
+                          color:#fff;
+                    }
+                            .second-hero-section img {
+                              max-width: 100%;
+                              height: auto;
+                            }
+                            .image_text_block_list{
+                                  display: flex;
+                              justify-content: space-between;
+                              align-items: center;
+                            }
+                            .image-text-block{
+                                  display: flex;
+                              align-items: center;
+                              gap: 10px;
+
+                            }
+              .list-block{
+                margin:50px 0;
+              }
+                        .list-block .list-item{
+                    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+                              padding: 26px 0;
+                        }
+
+                        .list-block .list-item h3{
+                       font-family: "Brother1816 Printed Bold";
+                      font-size: 20px;
+                      font-weight: 700;
+                      line-height: 28px;
+                      text-align: left;
+                        margin:0 auto 20px auto;
+                          color:#fff;
+
+                        }
+                          .list-block .list-item p{
+                           font-family: "Brother1816 Printed";
+                      font-size: 18px;
+                      font-weight: 350;
+                      line-height: 25.2px;
+                      text-align: left;
+                        margin:0;
+                          color:#fff;
+
+                        }
+                    .image_heading_list h2{
+                              font-size: 20px;
+                          font-weight: 500;
+                          line-height: 28px;
+                          text-align: left;
+                        margin:0;
+                      margin-bottom:20px;
+                       font-family: "Brother1816 Printed Bold";
+
+                          color:#fff;
+                    }
+                            .image-text-block p{
+                          font-family: "Brother1816 Printed";
+                          font-size: 20px;
+                          font-weight: 500;
+                          line-height: 28px;
+                          text-align: left;
+                        margin:0;
+                          color:#fff;
+
+                            }
+                .list-block .list-item:first-child{
+                      padding: 0px 0 26px 0;
+                }
+              .list-block .list-item:last-child{
+                border-bottom:none;
+                padding-bottom:0;
+              }
+              @media(max-width: 600px){
+                .second-hero-section{
+                  padding:40px 0;
+   background-size: cover;
+  background-image: url("https://cdn.shopify.com/s/files/1/0046/3716/3633/t/60/assets/Frame%201484583917.svg?v=1721137876");
+                }
+                .second-hero-section .columns{
+                  flex-direction:column;
+                }
+                .column_container_heading h1{
+                  font-size:26px;
+                  line-height: 28.8px;
+                  margin-bottom:20px;
+                }
+                .column_container_heading h2{
+                     font-size:16px;
+                  line-height: 22.4px;
+                  margin-bottom:20px;
+
+                }
+                .list-block {
+                margin: 30px 0;
+            }
+                .list-block .list-item h3 {
+              font-size: 16px;
+              line-height: 22.4px;
+              margin: 0 auto 15px auto;
+
+          }
+                .list-block .list-item p {
+              font-size: 14px;
+              line-height: 19.6px;
+
+          }
+                .image_text_block_list {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            align-items: flex-start;
+        }
+                .image-text-block {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          justify-content: flex-start;
+          width: 50%;
+          margin-bottom:10px;
+      }
+                .image-text-block img {
+        width: 36px;
+    }
+                .image-text-block p {
+
+          font-size: 18px;
+
+          line-height: 25.2px;
+
+      }
+              }
+</style>

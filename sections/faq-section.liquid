@@ -1,0 +1,275 @@
+{% style %}
+     .faq-main-container {
+  position:relative;
+        background-size: contain;
+        background-repeat: repeat-x;
+        background-image: url("{{ section.settings.faq_image | img_url: 'master' }}");
+        padding: 87px 0px 120px 0;
+
+        /* background-position: bottom; */
+    }
+
+
+  .faq-main-container::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(to bottom, #F2F9F3, #fff);
+      z-index: -1;
+  }
+
+    .faq_heading_container h3 {
+        font-family: "Brother1816 Printed Bold";
+        font-size: 40px;
+        font-weight: 700;
+        line-height: 48px;
+        letter-spacing: -0.02em;
+        text-align: center;
+        margin: 0px auto 32px auto;
+        text-transform: uppercase;
+        color: rgba(31, 98, 35, 1);
+    }
+    .faq_heading_container p {
+        font-family: "Brother1816 Printed";
+        font-size: 20px;
+        font-weight: 400;
+        margin: 0px auto 0px auto;
+
+        line-height: 28px;
+        text-align: center;
+    }
+    .faq-accordion {
+        margin-top: 60px;max-width: 994px;
+      margin: 60px auto 0;
+    }
+    .margin-top {
+        margin-top: 50px;
+    }
+
+    .accordion-item {
+        margin-bottom: 0px;
+        border-bottom: 1px solid rgba(33, 45, 66, 0.3);
+        padding: 25px 30px 25px 30px;
+        gap: 24px;
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 1);
+        margin-bottom: 12px;
+    }
+
+    .accordion-toggle {
+        display: none;
+    }
+    .accordion-item input[type="checkbox"] {
+        display: none;
+    }
+    .accordion-title {
+        display: block;
+        position: relative;
+        cursor: pointer;
+        width: 100%;
+        font-family: "Brother1816 Printed Bold";
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 21.6px;
+        text-align: left;
+    }
+
+    .accordion-title label {
+        max-width: 280px;
+    }
+
+    .accordion-title::after {
+        content: "+";
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .accordion-content {
+        display: none;
+        padding: 12px 0px 0px 0px;
+        border-top: none;
+        font-family: "Brother1816 Printed";
+        font-size: 18px;
+        font-weight: 350;
+        line-height: 25.2px;
+        text-align: left;
+    }
+
+    .accordion-toggle:checked ~ .accordion-title::after {
+        content: "-";
+        transform: translateY(-50%);
+    }
+
+    .accordion-toggle:checked ~ .accordion-content {
+        display: block;
+    }
+    .faq_heading_container {
+    }
+
+    .custom-button-st a {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    .custom-button-st svg.icon-arrow {
+        width: 2.5rem;
+    }
+    @media (max-width: 600px) {
+        .faq_heading_container h3 {
+            font-size: 26px;
+            line-height: 28.8px;
+        }
+        .faq_heading_container p {
+            font-size: 16px;
+            line-height: 22.4px;
+        }
+        .accordion-item {
+            padding: 18px 14px 18px 14px;
+          margin-bottom:20px;
+        }
+        .accordion-title {
+            font-size: 16px;
+            max-width: 100%;
+            padding: 0px 0px;
+            line-height: 19.2px;
+        }
+
+        .accordion-title::after {
+            right: 0;
+        }
+
+        .accordion-content {
+            font-size: 14px;
+            line-height: 19.6px;
+            padding: 10px 0px 0px 0px;
+        }
+        .faq-main-container {
+            padding-top: 40px;
+            padding-bottom: 40px;
+            background-image: url("{{ section.settings.faq_image_mobile | img_url: 'master' }}");
+        }
+        .faq-accordion {
+            margin-top: 30px;
+        }
+        .faq_heading_container {
+            margin-bottom: 40px;
+        }
+    }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "FAQ Section",
+  "settings": [
+        {
+      "type": "image_picker",
+      "id": "faq_image",
+      "label": "Column Hero image"
+    },
+    {
+      "type": "image_picker",
+      "id": "faq_image_mobile",
+      "label": "Column Hero image Mobile"
+    },
+    {
+      "type": "text",
+      "id": "faqheading",
+      "label": "Heading",
+      "default": "Frequently Asked Questions"
+    },
+    {
+      "type": "text",
+      "id": "faqsubheading",
+      "label": "Subheading",
+      "default": "Here are some common questions about our products."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq",
+      "name": "FAQ",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "Question 1"
+        },
+        {
+          "type": "textarea",
+          "id": "answer",
+          "label": "Answer",
+          "default": "Answer 1"
+        },
+        {
+          "type": "select",
+          "id": "answer_option",
+          "label": "Answer Option",
+          "options": [
+            { "value": "default", "label": "Default Answer" },
+            { "value": "page_content", "label": "Page Content" }
+          ],
+          "default": "default"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "category": "Custom",
+      "name": "FAQ Section"
+    }
+  ]
+}
+{% endschema %}
+
+<div class=" faq-main-container">
+  <div class="page-width">
+    <div class="">
+      <div class="faq_heading_container">
+        <h3>{{ section.settings.faqheading }}</h3>
+        <p>{{ section.settings.faqsubheading }}</p>
+      </div>
+    </div>
+
+    <div class="faq-accordion">
+      {% for block in section.blocks %}
+        <div class="accordion-item">
+          <input type="checkbox" id="faq{{ forloop.index }}" class="accordion-toggle">
+          <label for="faq{{ forloop.index }}" class="accordion-title">{{ block.settings.question }}</label>
+          <div class="accordion-content">
+            {% if block.settings.answer_option == 'page_content' %}
+              {{ my_page.content }}
+            {% else %}
+              {{ block.settings.answer }}
+            {% endif %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+<script>
+  $('.accordion-title').click(function(e) {
+      // Prevent the default action
+      e.preventDefault();
+
+      // Get the associated accordion toggle
+      var accordionToggle = $(this).prev('.accordion-toggle');
+
+      // Check if the accordion is already open
+      if (accordionToggle.prop('checked')) {
+          // If it's open, close it
+          accordionToggle.prop('checked', false);
+      } else {
+          // If it's closed, close all accordions and open this one
+          $('.accordion-toggle').prop('checked', false);
+          accordionToggle.prop('checked', true);
+      }
+  });
+</script>

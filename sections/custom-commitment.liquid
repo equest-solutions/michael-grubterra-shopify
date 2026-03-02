@@ -1,0 +1,117 @@
+{{ 'custom-commitment.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+<div class="custom-commitment ">
+  <div class="{% unless section.settings.full_width %} page-width{% endunless %}">
+  <div class="section-{{ section.id }}-padding">
+     <div class="custom-commitment-content">
+        <div class="custom-commitment-content-inner">
+           <div class="custom-commitment-title-wrapper">
+               <h2 class="custom-title">{{ section.settings.title }}</h2>
+           </div>
+           <div class="commitment-blocks-wrapper">
+              {% for block in section.blocks %}
+                <div class="commitment-block">
+               <div class="commitment-image-wrapper">
+                   {%- liquid
+                     assign height = block.settings.image.width | divided_by: block.settings.image.aspect_ratio | round
+                     assign sizes = '100vw'
+                     assign widths = '90, 375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840'
+                     assign fetch_priority = 'auto'
+                   -%}
+                    {{
+                      block.settings.image
+                      | image_url: width: 120
+                      | image_tag: height: 120, class: 'commitment-image small-hide'
+                    }}
+                    {{
+                      block.settings.image
+                      | image_url: width: 90
+                      | image_tag: height: 90, sizes: sizes, widths: widths, fetchpriority: fetch_priority, class: 'commitment-image medium-hide large-up-hide'
+                    }}
+               </div>
+               <div class="commitment-block-content">
+                 {{ block.settings.text }}
+               </div>
+             </div>
+              {% endfor %}
+           </div>
+        </div>
+     </div>
+  </div>
+</div>
+</div>
+{% schema %}
+{
+  "name": "Custom Commitment",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 52
+    }
+  ],
+  "blocks": [
+    {
+      "type": "commitment",
+      "name": "Commitment",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text Content"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Commitment"
+    }
+  ]
+}
+{% endschema %}
+

@@ -1,0 +1,440 @@
+{% schema %}
+{
+  "name": "Grid Full Banner",
+  "settings": [
+     {
+      "type": "image_picker",
+      "id": "background_image_custom",
+      "label": "Select Section Background Image"
+
+    },
+    {
+      "type": "color",
+      "id": "background_color_sec",
+      "label": "Select Section Background Color",
+      "default":"transparent"
+
+    },
+    {
+      "type": "text",
+      "id": "headingone_main",
+      "label": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "contentone_main",
+      "label": "Subheading"
+    },{
+          "type": "image_picker",
+          "id": "full_icon_image",
+          "label": "Desktop Image"
+        },
+    {
+          "type": "image_picker",
+          "id": "mobile_image",
+          "label": "Mobile Image"
+        },
+    {
+"type": "text",
+"id": "heading2_label",
+"label": "Heading"
+},
+{
+"type": "text",
+"id": "button_link_compare_text",
+"default": "Button label",
+"label": "Button text"
+},
+{
+"type": "url",
+"id": "button_link_compare",
+"label": "Button url"
+},
+ {
+      "type": "image_picker",
+      "id": "short_review_comparison_compare",
+      "label": "Short Icon Image"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "short_review_comparison_compare_content",
+      "label": "Content"
+    }
+
+
+  ],
+  "blocks": [
+    {
+      "type": "trust_icon_content",
+      "name": "Icon Block",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "trust_icon_image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "turst_icon_heading",
+          "label": "Heading Text"
+        },
+        {
+          "type": "richtext",
+          "id": "trust_icon_content",
+          "label": "Content"
+        }
+      ]
+    },
+    {
+      "type": "trust_right",
+      "name": "Icon Block Right",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "trust_icon_image_right",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "turst_icon_heading_right",
+          "label": "Heading Text"
+        },
+        {
+          "type": "richtext",
+          "id": "trust_icon_content_right",
+          "label": "Content"
+        }
+      ]
+    }
+
+
+
+
+  ],
+  "presets": [
+    {
+      "name": "Grid Full Banner"
+    }
+  ]
+
+}
+{% endschema %}
+{% style %}
+
+.background-color-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:linear-gradient(to top, #FFFFFF 0%, #F2F9F3 100%);
+    z-index: -1;
+}
+
+    .background-color-section {
+position:relative;
+        padding: 100px 0;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-image: url("{{ section.settings.background_image_custom | img_url: 'master' }}");
+    }
+
+    .flex-main-container {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        width: 100%;
+        gap: 40px;
+    }
+
+    .flex-container-inner {
+        max-width: 25%;
+        display: flex;
+        flex-direction: column;
+        gap: 60px;
+        align-items: flex-start;
+        align-self: flex-start;
+
+    }
+
+    .flex-container-big {
+        max-width: 50%;
+    }
+
+    .flex-container-big img {
+        width: 100%;
+    }
+
+    .center-contain-heading p {
+
+        text-align: center;
+        margin: 0;
+        font-family: "Brother1816 Printed";
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 28px;
+        text-align: center;
+        color: #000;
+        margin-bottom: 10px;
+    }
+
+    .center-contain-heading h2 {
+        line-height: 100%;
+        margin: 0;
+        font-family: "Brother1816 Printed Bold";
+        font-size: 40px;
+        font-weight: 700;
+        color: #1F6223;
+
+        line-height: 48px;
+        letter-spacing: -0.02em;
+        text-align: center;
+
+        max-width: 900px;
+        margin: 0px auto 20px auto;
+
+        text-transform: capitalize;
+    }
+
+    .flex-container-inner p {
+        margin: 0;
+        font-family: "Brother1816 Printed";
+        font-size: 18px;
+        font-weight: 350;
+        line-height: 25.2px;
+
+    }
+
+    .trust-heading-inner {
+        margin: 0;
+        font-family: "Brother1816 Printed Bold";
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 28px;
+    }
+
+    .center-contain-heading {
+        margin-bottom: 60px;
+    }
+
+    .show-in-mobile {
+        display: none;
+    }
+
+    .trust_list_one {
+        text-align: right;
+    }
+
+    .flex-trust-icon img {
+        margin-bottom: 18px;
+    }
+
+    .flex-trust-icon h3 {
+        margin-bottom: 15px;
+    }
+  .btn-container-custom{
+    text-decoration:none;
+  }
+    @media(max-width: 600px) {
+
+
+.col-custom-one, .box-two-inner {display:flex; flex-direction:column;}
+.box-oneheading {order:2;}
+.col-custom-one-image {order:1;}
+      .box-onecontent {order:3;}
+.list_with_text {order:4;}
+.full_review_container {order:5;}
+
+
+        .flex-main-container {
+
+            width: 100%;
+            gap: 0px;
+            flex-direction: column;
+        }
+
+        .flex-container-inner {
+            max-width: 100%;
+            gap: 20px;
+            order: 2;
+        }
+
+        .flex-container-big {
+            max-width: 100%;
+            order: 1;
+        }
+
+
+        .center-contain-heading p {
+            font-size: 16px;
+        }
+
+        .trust-heading-inner {
+            font-size: 16px;
+        }
+
+        .flex-container-inner p {
+            font-size: 14px;
+
+        }
+
+        .center-contain-heading {
+            margin-bottom: 30px;
+        }
+
+        .show-in-mobile {
+            display: block;
+        }
+
+        .hide-in-mobile {
+            display: none;
+        }
+
+        .background-color-section {
+            padding: 30px 0;
+        }
+
+        .trust_list_one {
+            text-align: left;
+        }
+
+        .center-contain-heading p {
+
+
+            font-size: 16px;
+            line-height: 22.4px;
+            margin-bottom: 0px;
+        }
+
+        .center-contain-heading h2 {
+
+            font-size: 26px;
+            line-height: 28.8px;
+        }
+
+        .flex-container-inner p {
+
+            font-size: 18px;
+            line-height: 25.2px;
+
+        }
+
+        .trust-heading-inner {
+            margin-bottom:10px;
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 28px;
+        }
+      .mobile_flex_wrap{
+       display: flex;
+          align-items: center;
+          gap: 20px;
+      }
+      .mobile_flex_wrap img{
+        width:72px;
+        height:72px;
+        margin-bottom:10px;
+      }
+
+.background-color-section {
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-image: url("https://cdn.shopify.com/s/files/1/0046/3716/3633/t/60/assets/Frame%201484583914.png?v=1721135268");
+
+
+
+
+
+    }
+{% endstyle %}
+<div class="background-color-section">
+  <div class="page-width">
+    <div class="center-contain-heading">
+      <h2>{{ section.settings.headingone_main }}</h2>
+      <p>{{ section.settings.contentone_main }}</p>
+    </div>
+    <div class="flex-main-container">
+      <div class="flex-container-inner ">
+        {% for block in section.blocks %}
+          {% if block.type == 'trust_icon_content' %}
+            <div class="flex-trust-icon trust_list_one">
+              <div class="mobile_flex_wrap">
+                <img src="{{ block.settings.trust_icon_image | img_url: 'medium' }}">
+                <h3 class="trust-heading-inner">{{ block.settings.turst_icon_heading }}</h3>
+              </div>
+              <div>
+                <p class="trust-content-inner">{{ block.settings.trust_icon_content }}</p>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+        <div class="show-in-mobile ">
+          <div class="flex-container-inner">
+            {% for block in section.blocks %}
+              {% if block.type == 'trust_right' %}
+                <div class="flex-trust-icon">
+                  <div class="mobile_flex_wrap">
+                    <img src="{{ block.settings.trust_icon_image_right | img_url: 'medium' }}">
+                    <h3 class="trust-heading-inner">{{ block.settings.turst_icon_heading_right }}</h3>
+                  </div>
+                  <div>
+                    <p class="trust-content-inner">{{ block.settings.trust_icon_content_right }}</p>
+                  </div>
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+
+      <div class="flex-container-big">
+        <div class="hide-in-mobile">
+          <img src="{{ section.settings.full_icon_image | img_url: 'master' }}">
+        </div>
+        {% if section.settings.mobile_image != blank %}
+          <div class="show-in-mobile">
+            <img src="{{ section.settings.mobile_image | img_url: 'master' }}">
+          </div>
+        {% endif %}
+      </div>
+      <div class="flex-container-inner hide-in-mobile">
+        {% for block in section.blocks %}
+          {% if block.type == 'trust_right' %}
+            <div class="flex-trust-icon">
+              <div class="mobile_flex_wrap">
+                <img src="{{ block.settings.trust_icon_image_right | img_url: 'medium' }}">
+                <h3 class="trust-heading-inner">{{ block.settings.turst_icon_heading_right }}</h3>
+              </div>
+              <div>
+                <p class="trust-content-inner">{{ block.settings.trust_icon_content_right }}</p>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="custom-comp">
+      {% if section.settings.heading2_label != blank %}
+        <div class="heading-col">
+          <h1>{{ section.settings.heading2_label }}</h1>
+        </div>
+      {% endif %}
+
+      <a
+                  href="{{ section.settings.button_link_compare }}"
+       
+        class="btn-container-custom"
+      >
+        {{ section.settings.button_link_compare_text }}
+        {% render 'arrow_right_custom' %}
+      </a>
+
+      <div class="short_review_container">
+        <img src="{{ section.settings.short_review_comparison_compare | img_url:'medium'}}" alt="">
+        <p>{{ section.settings.short_review_comparison_compare_content }}</p>
+      </div>
+    </div>
+  </div>
+</div>

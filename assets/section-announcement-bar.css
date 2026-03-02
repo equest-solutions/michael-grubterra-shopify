@@ -1,0 +1,32 @@
+.announcement-background {
+    background-color: #1F6223;
+    color: #ffffff;
+    padding: 1rem;
+}
+.announcement-background .page-width {
+    max-width: 140rem;
+}
+announcement-bar.announcement-bar-swiper {
+    max-width: 1300px;
+    width: 100%;
+    display: block;
+    line-height: normal;
+    overflow: hidden;
+}
+.announcement-bar-swiper .swiper-slide {
+    justify-content: center;
+    display: flex;
+}
+span.announcement-text {
+    color: #FFF;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+display: flex;
+    align-items: center;
+    gap: 5px;
+}
+

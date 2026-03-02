@@ -1,0 +1,470 @@
+{% liquid
+  assign is_bundle = false
+  for tag in product.tags
+    if tag contains "bundle"
+      assign is_bundle = true
+    endif
+  endfor
+
+  if is_bundle
+
+    assign bundle_handle1 = product.handle | append: "-bundle-1"
+    assign bundle_handle2 = product.handle | append: "-bundle-2"
+    assign bundle_handle5 = product.handle | append: "-bundle-5"
+
+    assign bundle_product_1 = all_products[bundle_handle1]
+    assign bundle_product_2 = all_products[bundle_handle2]
+    assign bundle_product_5 = all_products[bundle_handle5]
+  
+
+
+
+
+endif
+%}
+
+<!-- Added Chicken Count UI -->
+<div class="chicken-count-selector">
+<div class="chicken-wrap">
+  <label for="chicken-count" class=chicken-label>How many chickens do you have?</label>
+<!-- Add the "How do I choose?" link and modal popup above variant-quantities -->
+<div class="how-to-choose-container">
+  <a href="#" id="how-to-choose-link">How do I choose?</a>
+</div>
+</div>
+
+<!-- Modal structure -->
+<div id="how-to-choose-popup" class="popup-overlay">
+  <div class="popup-content">
+    <h2>How do I choose my quantity?</h2>
+    <p>
+      The quantities below are recommended estimates. We are basing these estimates on a 16% layer feed diet. We estimate that each chicken will consume .352oz per day or roughly 10 grams of black soldier fly larvae. If you want a more exact estimate on how much larvae your chickens will consume per day, you can find this by multiplying the per day by the number of chickens you have.
+    </p>
+    <button id="close-popup">Close</button>
+  </div>
+</div>
+
+<!-- Add some CSS for styling the popup -->
+<style>
+
+.product--medium:not(.product--no-media) .product__info-wrapper {max-width: max-content;
+    padding: 0 7rem !important;
+background: #F2F9F3;
+    margin: 20px;}
+
+
+
+#how-to-choose-link {
+  color: #1f6223;
+  text-decoration: underline;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.popup-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 400px;
+  text-align: center;
+}
+
+.popup-content h2 {
+  color: #1f6223;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.popup-content p {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.popup-content button {
+  margin-top: 15px;
+  padding: 10px 20px;
+  background: #1f6223;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.popup-content button:hover {
+  background: #145516;
+}
+</style>
+
+<!-- Add JavaScript to handle the popup -->
+<script>
+document.getElementById('how-to-choose-link').addEventListener('click', function(event) {
+  event.preventDefault();
+  document.getElementById('how-to-choose-popup').style.display = 'flex';
+});
+
+document.getElementById('close-popup').addEventListener('click', function() {
+  document.getElementById('how-to-choose-popup').style.display = 'none';
+});
+</script>
+
+
+<div class="chicken-count-options">
+  {% assign chicken_counts = "5-10,11-20,21-30,31-40+" | split: "," %}
+  {% for count in chicken_counts %}
+    <input type="radio" id="count-{{ count }}" name="chicken-count" value="{{ count }}">
+    <label for="count-{{ count }}">{{ count }}</label>
+  {% endfor %}
+</div>
+
+
+<!-- <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const durationDiv = document.getElementById("duration");
+    const chickenCountRadios = document.querySelectorAll('input[name="chicken-count"]');
+
+    chickenCountRadios.forEach((radio) => {
+      radio.addEventListener("change", function () {
+        let optionText = "";
+        let optionValue = "";
+
+        switch (this.value) {
+          case "5-10":
+            optionText = "Delivery Every Month";
+            optionValue = "898760817";
+            break;
+          case "11-20":
+            optionText = "Delivery Every 2 Week";
+            optionValue = "898826353";
+            break;
+          case "21-30":
+            optionText = "Delivery Every 1 Week";
+            optionValue = "898793585";
+            break;
+          case "31-40+":
+            optionText = "Delivery Every 1 Week";
+            optionValue = "898793585";
+            break;
+          default:
+            optionText = "No matching option found";
+            optionValue = "";
+        }
+
+        durationDiv.textContent = `${optionText} (Value: ${optionValue})`;
+      });
+    });
+  });
+</script>
+ -->
+
+
+<style>
+.chicken-count-selector {
+  margin:5px;
+}
+
+.chicken-count-options {
+  display: flex;
+  gap: 10px;
+}
+
+.chicken-count-options input[type="radio"] {
+  display: none;
+}
+
+
+
+.chicken-count-options input[type="radio"]:checked + label, .frequency-option.active  {
+  background-color: #bca8a4; /* Adjusted based on the color in the screenshot */
+  color: #fff;
+  border-color: #000;
+}
+</style>
+
+
+
+<div class="frequency-selector">
+  <p class="frequency-label">Select Your Frequency</p>
+  <div class="frequency-options">
+    <button class="frequency-option one-time">One Time Purchase</button>
+    <button class="frequency-option subscribe">Subscribe & Save Up to 30%</button>
+  </div>
+</div>
+
+<span class="appstle_stand_alone_selector" data-product-handle="{{ product.handle }}" style="display:none;"></span>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    // Preselect the "Subscribe" option on page load
+    const subscribeButton = document.querySelector('.frequency-option.subscribe');
+    if (subscribeButton) {
+      subscribeButton.classList.add('active');
+      console.log('Subscribe pre-selected');
+    }
+
+    // Add event listeners to the "One Time Purchase" and "Subscribe" buttons
+    document.querySelectorAll('.frequency-option').forEach((button) => {
+      button.addEventListener('click', function () {
+        // Remove the active class from all buttons
+        document.querySelectorAll('.frequency-option').forEach((btn) => btn.classList.remove('active'));
+
+        // Add the active class to the clicked button
+        this.classList.add('active');
+
+        // Perform specific actions based on which button is clicked
+        if (this.classList.contains('one-time')) {
+          console.log('One Time Purchase selected');
+          // Add your logic for "One Time Purchase" here
+        } else if (this.classList.contains('subscribe')) {
+          console.log('Subscribe selected');
+          // Add your logic for "Subscribe" here
+        }
+      });
+    });
+  });
+</script>
+
+
+<style>
+#appstle_subscription_widget0 .appstle_subscription_wrapper {display:none !important;}
+.variant-quantity-wrapper-container {margin-top:20px;}
+
+
+
+.frequency-selector {
+  font-family: Arial, sans-serif; /* You can use your preferred font */
+  margin: 5px 0;
+}
+
+.frequency-label, .chicken-label{
+  font-size: 16px;
+  color: #000;
+ font-weight:600;
+}
+
+.frequency-options {
+  display: flex;
+  gap: 10px;
+}
+
+.frequency-option, .chicken-count-options label {
+  flex: 1;
+  padding: 5px 0;
+  text-align: center;
+  font-size: 14px;
+  font-weight: bold;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+background-color: #fff;
+    color: #000;
+}
+
+
+
+.frequency-option:hover {
+  opacity: 0.9;
+}
+
+.last-item {    display: flex
+;
+    gap: 10px;
+    background: white;
+    border-radius: 10px;
+    padding: 20px;}
+
+
+#duration {
+font-size: 16px;
+    font-weight: 800;
+    color: green;
+    line-height: 115%;
+    text-align: center;
+
+}
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Existing Variant Quantities Block -->
+<div id="product-render"></div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const defaultValue = '5-10';
+  let isSubscribeSelected = true; // Tracks whether "Subscribe" is active
+
+  // Update variant durations based on chicken count and frequency selection
+  function updateVariantDurations(chickenCount) {
+    const durationMapping = {
+      '5-10': {
+        '5lb': 'Every 1 Month',
+        '10lb': 'Every 2 Months',
+        '20lbs': 'Every 4 Months',
+        '50lbs': 'Every 5 Months',
+      },
+      '11-20': {
+        '5lb': 'Every 2 Weeks',
+        '10lb': 'Every 1 Month',
+        '20lbs': 'Every 2 Months',
+        '50lbs': 'Every 5 Months',
+      },
+      '21-30': {
+        '5lb': 'Every 1 Week',
+        '10lb': 'Every 2 Weeks',
+        '20lbs': 'Every 1 Month',
+        '50lbs': 'Every 3 Months',
+      },
+      '31-40+': {
+        '5lb': 'Every 1 Week',
+        '10lb': 'Every 2 Weeks',
+        '20lbs': 'Every 1 Month',
+        '50lbs': 'Every 2 Months',
+      },
+    };
+
+    const durationInfo = durationMapping[chickenCount];
+    if (!durationInfo) {
+      console.warn('No duration mapping found for chicken count:', chickenCount);
+      return;
+    }
+
+    document.querySelectorAll('.variant-quantity-wrapper').forEach((wrapper) => {
+      const variantId = wrapper.querySelector('.js-variant-quantity')?.getAttribute('data-variant-name')?.trim();
+      const durationDiv = wrapper.querySelector('#duration');
+      if (durationDiv) {
+        if (isSubscribeSelected && variantId && durationInfo[variantId]) {
+          durationDiv.textContent = `1 Bag: ${durationInfo[variantId]}`;
+        } else {
+          durationDiv.textContent = ''; // Clear the text if "One Time Purchase" is selected
+        }
+      }
+    });
+  }
+
+  // Render the product variants dynamically
+  function renderProductVariants(selectedValue) {
+    const productRenderDiv = document.getElementById('product-render');
+    productRenderDiv.innerHTML = `
+      <variant-quantities class="variant-quantity-wrapper-container">
+        <input type="hidden" name="properties[note]" class="js-note" form="{{ product_form_id }}">
+        <input type="hidden" name="properties[_fulfillments-count]" class="js-fulfillment-count" form="{{ product_form_id }}">
+        <input type="hidden" name="properties[_sales-unit]" class="js-sales-unit" form="{{ product_form_id }}">
+        {% for variant in product.variants %}
+          {% render "variant-quantity-landingpage-new", variant: variant %}
+        {% endfor %}
+        {% if bundle_product_1 != blank %}
+          {% render "variant-quantity-landingpage-new", variant: bundle_product_1.selected_or_first_available_variant, quantity: 1 %}
+        {% endif %}
+        {% if bundle_product_2 != blank %}
+          {% render "variant-quantity-landingpage-new", variant: bundle_product_2.selected_or_first_available_variant, quantity: 2 %}
+        {% endif %}
+        {% if bundle_product_5 != blank %}
+          <div class="last-item">
+            {% render "variant-quantity-landingpage-new", variant: bundle_product_5.selected_or_first_available_variant, quantity: 5 %}
+          </div>
+        {% endif %}
+      </variant-quantities>`;
+    setTimeout(() => updateVariantDurations(selectedValue), 0);
+  }
+
+  // Preselect "5-10" chicken count on page load
+  document.querySelectorAll('input[name="chicken-count"]').forEach((input) => {
+    if (input.value === defaultValue) {
+      input.checked = true;
+      renderProductVariants(defaultValue); // Explicitly render for the default chicken count
+    }
+  });
+
+  // Handle chicken count changes
+  document.querySelectorAll('input[name="chicken-count"]').forEach((input) => {
+    input.addEventListener('change', (event) => {
+      const selectedValue = event.target.value;
+      renderProductVariants(selectedValue);
+    });
+  });
+
+  // Preselect the "Subscribe" option on page load
+  const subscribeButton = document.querySelector('.frequency-option.subscribe');
+  if (subscribeButton) {
+    subscribeButton.classList.add('active');
+    isSubscribeSelected = true; // Ensure "Subscribe" is active by default
+  }
+
+  // Handle "One Time Purchase" and "Subscribe" selection
+  document.querySelectorAll('.frequency-option').forEach((button) => {
+    button.addEventListener('click', function () {
+      document.querySelectorAll('.frequency-option').forEach((btn) => btn.classList.remove('active'));
+      this.classList.add('active');
+
+      if (this.classList.contains('one-time')) {
+        console.log('One Time Purchase selected');
+        isSubscribeSelected = false;
+      } else if (this.classList.contains('subscribe')) {
+        console.log('Subscribe selected');
+        isSubscribeSelected = true;
+      }
+
+      // Update the variant durations based on the selected frequency
+      const selectedChickenCount = document.querySelector('input[name="chicken-count"]:checked')?.value;
+      if (selectedChickenCount) {
+        updateVariantDurations(selectedChickenCount);
+      }
+    });
+  });
+});
+</script>
+
+
+
+
+
+<script src="{{ 'variant-quantities-new.js' | asset_url }}" defer></script>
+
+<style>
+.chicken-wrap {
+display:flex; gap:10px; align-items:center;
+
+}
+
+@media (max-width: 480px) {.chicken-wrap {flex-direction:column; gap:0; align-items: baseline; }
+.frequency-option, .chicken-count-options label {font-size:11px;}
+.hen-egg span {width:80px; font-size:12px;    line-height: 130%;}
+.frequency-label, .chicken-label, #how-to-choose-link {font-size:12px;}
+.variant-quantity-wrapper-container {margin-top:5px; row-gap:0;}
+.hero-flex-first .hero-para-one {line-height:130%;}
+                          }
+
+.appstle_subscription_amount_wrapper.span appstle_subscription_amount transcy-money {color:white;}
+
+
+</style>
+
+

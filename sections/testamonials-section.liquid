@@ -1,0 +1,254 @@
+{% schema %}
+{
+  "name": "Testimonial Section",
+  "settings": [
+     {
+      "type": "image_picker",
+      "id": "testimonial_bg",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        {
+      "type": "text",
+      "id": "author_heading",
+      "label": "Heading"
+    },
+ {
+          "type": "image_picker",
+          "id": "testimonial_stars",
+          "label": "Stars"
+        },
+
+        {
+          "type": "inline_richtext",
+          "id": "content",
+          "label": "Content"
+        },
+        {
+          "type": "image_picker",
+          "id": "author_image",
+          "label": "Author Image"
+        },
+        {
+          "type": "text",
+          "id": "author_name",
+          "label": "Author Name"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "verified",
+          "label": "Verified"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Testimonial Section",
+      "category": "Testimonials"
+    }
+  ]
+}
+{% endschema %}
+<div class="testimonial-section">
+  <div class="page-width">
+    <div class="">
+      <h2>{{ section.settings.heading }}</h2>
+      <div class="testimonials">
+        {% for block in section.blocks %}
+          {% if block.type == 'testimonial' %}
+            <div class="testimonial">
+              <h2>{{ block.settings.author_heading }}</h2>
+
+  <div class="testimonial_stars" style="display:flex; justify-content:center;">
+                {% if block.settings.testimonial_stars %}
+                  <img src="{{ block.settings.testimonial_stars | img_url: '100x100' }}" alt="Stars">
+                {% endif %}
+              </div>
+
+
+              <div class="svg_left_icon">
+                <svg
+                  class="hide_in_mobile"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="34"
+                  height="26"
+                  viewBox="0 0 34 26"
+                  fill="none"
+                >
+                  <path d="M3.61641 2.54792C1.78307 4.56458 0.683071 6.76458 0.683071 10.4313C0.683071 16.8479 5.26641 22.5312 11.6831 25.4646L13.3331 23.0813C7.28307 19.7812 5.99974 15.5646 5.63307 12.8146C6.54974 13.3646 7.83307 13.5479 9.11641 13.3646C12.4164 12.9979 14.9831 10.4313 14.9831 6.94792C14.9831 5.29792 14.2497 3.64792 13.1497 2.36458C11.8664 1.08125 10.3997 0.53125 8.5664 0.53125C6.54974 0.53125 4.71641 1.44792 3.61641 2.54792ZM21.9497 2.54792C20.1164 4.56458 19.0164 6.76458 19.0164 10.4313C19.0164 16.8479 23.5997 22.5312 30.0164 25.4646L31.6664 23.0813C25.6164 19.7812 24.3331 15.5646 23.9664 12.8146C24.8831 13.3646 26.1664 13.5479 27.4497 13.3646C30.7497 12.9979 33.3164 10.2479 33.3164 6.94792C33.3164 5.29792 32.5831 3.64792 31.4831 2.36458C30.1997 1.08125 28.7331 0.53125 26.8997 0.53125C24.8831 0.53125 23.0497 1.44792 21.9497 2.54792Z" fill="#1F6223"/>
+                </svg>
+                <svg
+                  class="show_in_mobile"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="32"
+                  height="32"
+                  viewBox="0 0 32 32"
+                  fill="none"
+                >
+                  <path d="M6.26719 23.6007C4.93385 22.134 4.13385 20.534 4.13385 17.8674C4.13385 13.2007 7.46719 9.06738 12.1339 6.93405L13.3339 8.66738C8.93385 11.0674 8.00052 14.134 7.73385 16.134C8.40052 15.734 9.33385 15.6007 10.2672 15.734C12.6672 16.0007 14.5339 17.8674 14.5339 20.4007C14.5339 21.6007 14.0005 22.8007 13.2005 23.734C12.2672 24.6674 11.2005 25.0674 9.86719 25.0674C8.40052 25.0674 7.06719 24.4007 6.26719 23.6007ZM19.6005 23.6007C18.2672 22.134 17.4672 20.534 17.4672 17.8674C17.4672 13.2007 20.8005 9.06738 25.4672 6.93405L26.6672 8.66738C22.2672 11.0674 21.3339 14.134 21.0672 16.134C21.7339 15.734 22.6672 15.6007 23.6005 15.734C26.0005 16.0007 27.8672 18.0007 27.8672 20.4007C27.8672 21.6007 27.3339 22.8007 26.5339 23.734C25.6005 24.6674 24.5339 25.0674 23.2005 25.0674C21.7339 25.0674 20.4005 24.4007 19.6005 23.6007Z" fill="#1F6223"/>
+                </svg>
+              </div>
+
+
+
+
+
+              <div class="testimonial_content">
+                <p>{{ block.settings.content }}</p>
+              </div>
+              <div class="author-info">
+                {% if block.settings.author_image %}
+                  <img src="{{ block.settings.author_image | img_url: '100x100' }}" alt="">
+                {% endif %}
+                <div class="author_content">
+                  <p>{{ block.settings.author_name }}</p>
+                  {% if block.settings.verified %}
+                    <p class="verified">
+                      <b class="show_in_mobile">{% render 'verify_customer' %}</b>
+                      <b class="hide_in_mobile">{% render 'verify_customer_black' %}</b>
+                      {{ block.settings.verified }}
+                    </p>
+                  {% endif %}
+                </div>
+              </div>
+              <div class="svg_right_icon hide_in_mobile">
+                <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 44 44" fill="none">
+                  <path d="M35.3836 11.5479C37.2169 13.5646 38.3169 15.7646 38.3169 19.4313C38.3169 25.8479 33.7336 31.5312 27.3169 34.4646L25.6669 32.0813C31.7169 28.7812 33.0003 24.5646 33.3669 21.8146C32.4503 22.3646 31.1669 22.5479 29.8836 22.3646C26.5836 21.9979 24.0169 19.4313 24.0169 15.9479C24.0169 14.2979 24.7503 12.6479 25.8503 11.3646C27.1336 10.0813 28.6003 9.53125 30.4336 9.53125C32.4503 9.53125 34.2836 10.4479 35.3836 11.5479ZM17.0503 11.5479C18.8836 13.5646 19.9836 15.7646 19.9836 19.4313C19.9836 25.8479 15.4003 31.5312 8.98359 34.4646L7.33359 32.0813C13.3836 28.7812 14.6669 24.5646 15.0336 21.8146C14.1169 22.3646 12.8336 22.5479 11.5503 22.3646C8.25026 21.9979 5.68359 19.2479 5.68359 15.9479C5.68359 14.2979 6.41693 12.6479 7.51693 11.3646C8.80026 10.0813 10.2669 9.53125 12.1003 9.53125C14.1169 9.53125 15.9503 10.4479 17.0503 11.5479Z" fill="#1F6223"/>
+                </svg>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+{% style %}
+
+.testimonial_stars img {width:100px; height:auto; margin:15px 0;}
+
+
+                .testimonial-section {
+  background-color:#ffffff;
+              padding:100px 0;
+                               background-size: cover;
+                  background-repeat: no-repeat;
+                  background-image: url("{{ section.settings.testimonial_bg | img_url: 'master' }}");
+
+                }
+            .testimonial{
+              position:relative;
+            }
+                .testimonial h2 {
+              font-family: "Brother1816 Printed Bold";
+              font-size: 40px;
+              font-weight: 700;
+              line-height: 48px;
+              letter-spacing: -0.02em;
+              text-align: center;
+                 margin:0 auto 20px auto;
+            color: #1F6223;
+
+                }
+          .testimonial_content
+            {
+              max-width:990px;
+              margin:auto;
+            }
+                .testimonial_content p{
+                          font-family: "Brother1816 Printed";
+                      margin:0 auto 25px auto;
+              font-size: 24px;
+              font-weight: 400;
+              line-height: 33.6px;
+              text-align: center;
+
+                }
+                .author-info {
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  gap:20px;
+                }
+            .svg_right_icon{
+              position:absolute;
+              right:0;
+              display:inline-block;
+            }
+            .svg_left_icon{
+              position:absolute;
+
+            }
+                .author-info img {
+                  border-radius: 50%;
+                }
+                .author_content p{
+                          font-family: "Brother1816 Printed";
+                 margin:0;
+              font-size: 16px;
+              font-weight: 600;
+              line-height: 22.4px;
+              text-align: left;
+
+                }
+                .author-info .verified {
+                          font-family: "Brother1816 Printed";
+                 margin:0;
+              font-size: 16px;
+              font-weight: 600;
+              line-height: 22.4px;
+              text-align: left;
+                display: flex;
+                  align-items: center;
+                  gap:8px;
+                }
+          @media(max-width: 600px){
+            .testimonial-section {
+            padding: 30px 0;
+        }
+            .testimonial h2 {
+            font-size: 26px;
+            line-height: 28.8px;
+            margin: 0 auto 10px auto;
+        }
+            .svg_left_icon {
+            position: relative;
+              text-align: center;
+              margin:0 auto 16px auto;
+        }
+            .testimonial_content p {
+          margin: 0 auto 25px auto;
+          font-size: 16px;
+          line-height: 25.6px;
+
+      }
+            .svg_left_icon svg{
+              margin:auto;
+            }
+            .author_content p {
+        font-size: 14px;
+        line-height: 16.8px;
+              margin-bottom:8px;
+
+    }
+            .author-info .verified{
+        font-size: 12px;
+        line-height: 16.8px;
+
+    }
+            .svg_right_icon{
+              display:none;
+            }
+          }
+{% endstyle %}

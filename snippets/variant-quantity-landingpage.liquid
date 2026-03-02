@@ -1,0 +1,157 @@
+{% liquid
+  assign quantity = quantity | default: 1
+ assign variants-metafields = value.variant.metafields.custom.most_popular
+  if variant.title contains 'lb'
+    assign weight = variant.title | remove_first: 'lb' | strip | times: 1
+    assign unit_price = variant.price | divided_by: weight
+  endif
+%}
+
+<variant-quantity>
+  <div class="variant-quantity-wrapper">
+    <input
+      type="radio"
+      id="variant-quantity-{{ variant.id }}-{{ quantity }}"
+      name="variant-quantity"
+      class="js-variant-quantity"
+      value="{{ variant.id }}"
+      data-product="{{ variant.product.id }}"
+      data-quantity="{{ quantity }}"
+      data-price="{{ variant.price }}"
+      data-note="{% if quantity > 1%}({{ weight | times: quantity }}{{ quantity | pluralize: 'lb', 'lbs' }} = {{ quantity }} x {{ variant.title }}){% endif %}"
+      data-fulfillment-count="{% if quantity > 1%}1{% endif %}"
+    >
+
+    <label
+      for="variant-quantity-{{ variant.id }}-{{ quantity }}"
+      class="variant-quantity-wrapper-variant-wrapper"
+    >
+  
+
+
+{% assign most_tag = false %}
+{% assign best_tag = false %}
+{% assign most_tag_text = '' %}
+{% assign best_tag_text = '' %}
+
+{% for tag in variant.product.tags %}
+  {% if tag contains 'Most' %}
+    {% assign most_tag = true %}
+    {% assign most_tag_text = tag %}
+  {% endif %}
+  {% if tag contains 'Best' %}
+    {% assign best_tag = true %}
+    {% assign best_tag_text = tag %}
+  {% endif %}
+{% endfor %}
+
+{% if most_tag or best_tag %}
+  <div class="best-deal-wrapper">
+    {% if most_tag %}
+      <div class="beast-deal" style="background-color:#9F45CA;">
+        {{ most_tag_text | remove: 'badge:' | strip }}
+      </div>
+    {% elsif best_tag %}
+      <div class="beast-deal">
+        {{ best_tag_text | remove: 'badge:' | strip }}
+      </div>
+    {% endif %}
+  </div>
+{% endif %}
+{% if variant.metafields.custom.bundle_image %}
+<div class="variant-img"><img src="{{ variant.metafields.custom.bundle_image | img_url: '' }}" alt="Variant Image"></div>
+{% endif %}
+
+
+
+
+      <div class="variant-quantity-radio"></div>
+
+      <div class="variant-quantity-variant">
+
+          <div class="variant-quantity-variant-name">
+            {{ weight | times: quantity }}
+            {{ quantity | pluralize: 'lb', 'lbs' }}
+          </div>
+         
+        
+
+        {% if variant.metafields.custom.subtitle != blank %}
+          <div class="variant-quantity-variant-month">{{ variant.metafields.custom.subtitle }}</div>
+        {% endif %}
+
+      <div class="variant-quantity-price-weight">
+        <div class="variant-quantity-price">
+          {% if variant.compare_at_price != blank and variant.compare_at_price > variant.price %}
+            <div class="variant-quantity-price-compare">{{ variant.compare_at_price | times: quantity | money }}</div>
+          {% endif %}
+          <div class="variant-quantity-price-regular">{{ variant.price | times: quantity | money }}</div>
+        </div>
+        <div class="variant-quantity-weight">({{ unit_price | money }} / lb)</div>
+
+      </div>
+
+
+      </div>
+
+
+{% if variant.compare_at_price > variant.price %} 
+
+<div class="variant-quantity-savings">
+  <span>Save</span>   {{ variant.compare_at_price | minus: variant.price | times: 100.0 | divided_by: variant.compare_at_price | money_without_currency | times: 100 | remove: '.0'}}%
+</div>
+{% endif %}
+    </label>
+
+    {% if variant.compare_at_price != blank and variant.compare_at_price > variant.price %}
+      {% assign savings = variant.compare_at_price
+        | minus: variant.price
+        | times: 100
+        | divided_by: variant.compare_at_price
+      %}
+      <div class="discount-percent-wrapper">
+        <img
+          src="{{ 'tag.png' | asset_url }}"
+          class="w-100"
+          width="100%"
+          height="auto"
+          loading="lazy"
+        >
+        <div class="discout-percent">-{{ savings }}%</div>
+      </div>
+    {% endif %}
+  </div>
+</variant-quantity>
+
+<style>
+
+
+
+.variant-quantity-savings { 
+    text-align: center;
+    border-radius: 100px;
+    background: #C5DBC8;
+    line-height: normal;
+    font-size: 12px;
+    font-family: 'Brother1816 Printed';
+    font-weight: 600;
+    padding: 5px 0;
+width:100%;
+
+}
+
+.best-deal-wrapper {
+    display: flex;
+    column-gap: 5px;
+    width: 140px;
+    position: relative;
+    top: -8px;
+}
+
+.beast-deal {
+font-family: "Brother1816 Printed";
+    font-size: 12px;
+    border-radius: 5px 5px 0 0;
+width:100%;
+}
+</style>

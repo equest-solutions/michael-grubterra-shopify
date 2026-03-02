@@ -1,0 +1,107 @@
+{{ 'recycle.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+<div
+  class="recycle_wrapper_container page-width section-{{ section.id }}-padding color-{{ section.settings.color_scheme }} gradient"
+>
+  <div class="recycle_wrapper">
+    <div class="recycle_left_side">
+      <div class="recycle_recycle_image">
+        <img src="{{ section.settings.recycle_icon | image_url }}">
+      </div>
+      <div class="recycle_recycle_text">
+        {{ section.settings.text }}
+      </div>
+    </div>
+    <div class="recycle_right_side">
+      <div class="recycle_icon_1">
+        <img src="{{ section.settings.icon_1 | image_url }}">
+      </div>
+      <div class="recycle_waste_number">
+        <h3>{{ section.settings.number_of_waste_recycle }}</h3>
+      </div>
+      <div class="recycle_waste_text">
+        <p>{{ section.settings.waste_recycle }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Recycle",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "recycle_icon",
+      "label": "Recycle Icon"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text"
+    },
+    {
+      "type": "image_picker",
+      "id": "icon_1",
+      "label": "Icon 1"
+    },
+    {
+      "type": "text",
+      "id": "number_of_waste_recycle",
+      "label": "Number of waste recycle"
+    },
+    {
+      "type": "text",
+      "id": "waste_recycle",
+      "label": "Waste Recycle"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 52
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "background-1"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Recycle"
+    }
+  ]
+}
+{% endschema %}

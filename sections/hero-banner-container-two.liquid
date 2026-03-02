@@ -1,0 +1,351 @@
+{% schema %}
+{
+"name": "Hero Banner With Image",
+"settings": [
+    {
+      "type": "image_picker",
+      "id": "hero_banner_with_image",
+      "label": "Column Hero image"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_banner_with_image_mobile",
+      "label": "Column Hero image Mobile"
+    },
+{
+"type": "text",
+"id": "grid_heading",
+"label": "Heading"
+},
+{
+"type": "inline_richtext",
+"id": "grid_content",
+"label": "Subheading"
+},
+{
+"type": "inline_richtext",
+"id": "grid_content_sub",
+"label": "Grid Content"
+},
+{
+"type": "inline_richtext",
+"id": "grid_content_subtwo",
+"label": "Grid Content"
+},
+  {
+"type": "inline_richtext",
+"id": "grid_content_subthree",
+"label": "Grid Content"
+},
+{
+"type": "header",
+"content": "Video "
+},
+
+{
+"type": "image_picker",
+"id": "full_image_hero",
+"label": "Hero Image"
+},
+  {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Click Me"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+  {
+      "type": "image_picker",
+      "id": "short_review_hero_banner",
+      "label": "Short Icon Image"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "short_review_hero_banner_content",
+      "label": "Content"
+    },{
+      "type": "text",
+      "id": "heading_featured_one",
+      "label": "Heading Text"
+    }
+
+],
+  "blocks": [
+    {
+    "type": "grid_image_list",
+    "name": "Grid Item image",
+    "settings": [
+    {
+    "type": "image_picker",
+    "id": "list_image",
+    "label": "Image"
+    }
+
+    ]
+    }
+    ],
+"presets": [
+{
+"name": "Hero Banner With Image",
+"category": "Content"
+}
+]
+}
+{% endschema %}
+<section class="hero_banner_with_image">
+  <div class="page-width">
+    <div class="grid-container-full">
+      <div class="grid-item-first">
+        <div class="flex-container-hero">
+          <h1>
+            {{ section.settings.grid_heading }}
+          </h1>
+          <p class="content-one">{{ section.settings.grid_content }}</p>
+          <div class=" grid-item-second show_in_mobile">
+            {% if section.settings.full_image_hero %}
+              <img src="{{ section.settings.full_image_hero | img_url:'master'}}" alt="">
+            {% endif %}
+          </div>
+          <p class="content-two">{{ section.settings.grid_content_sub }}</p>
+          <p class="content-three">{{ section.settings.grid_content_subtwo }}</p>
+          <p class="content-three">{{ section.settings.grid_content_subthree }}</p>
+        </div>
+        <div class="custom-button-section">
+          {% if section.settings.button_text != blank %}
+            <a href="{{ section.settings.button_link }}" class="custom-button">
+              {{- section.settings.button_text }}
+              {% render 'arrow_right_custom' %}
+            </a>
+          {% endif %}
+        </div>
+        <div class="short_review_container">
+          <img src="{{ section.settings.short_review_hero_banner | img_url:'medium'}}" alt="">
+          <p>{{ section.settings.short_review_hero_banner_content }}</p>
+        </div>
+      </div>
+      <div class=" grid-item-second hide_in_mobile">
+        {% if section.settings.full_image_hero %}
+          <img src="{{ section.settings.full_image_hero | img_url:'master'}}" alt="">
+        {% endif %}
+      </div>
+    </div>
+    <div class="list_container_one">
+      <h1>{{ section.settings.heading_featured_one }}</h1>
+      <div class="list_container_one_image">
+        {% for block in section.blocks %}
+          {% if block.type == 'grid_image_list' %}
+            <div class="list_image">
+              <img src="{{ block.settings.list_image | img_url: 'medium' }}" alt="{{ block.settings.image_alt }}">
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% render 'sticky-button' %}
+
+{% style %}
+    .hero_banner_with_image {
+      position:relative;
+        background-size: contain;
+        background-repeat: repeat-x;
+        background-image: url("{{ section.settings.hero_banner_with_image | img_url: 'master' }}");
+        padding: 87px 0px 120px 0;
+        /* background-position: bottom; */
+    }
+
+  .hero_banner_with_image::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(to bottom, #C6DBC9 0%, #F2F9F3 100%);
+      z-index: -1;
+  }
+
+    .grid-container-full {
+        display: flex;
+        gap: 56px;
+    }
+
+    .grid-item-first {
+        width: 100%;
+        max-width: 566px;
+    }
+    .flex-container-hero {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 32px;
+    }
+
+    .flex-container-hero h1 {
+        font-family: "Brother1816 Printed Bold";
+        font-size: 40px;
+        font-weight: 700;
+        line-height: 48px;
+        text-align: left;
+        margin: 0;
+        color: #fff;
+    }
+
+    .flex-container-hero .content-one {
+        font-family: "Brother1816 Printed";
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 28px;
+        text-align: left;
+        margin: 0;
+        color: #fff;
+    }
+    .flex-container-hero .content-two {
+        font-family: "Brother1816 Printed";
+        font-size: 18px;
+        font-weight: 350;
+        line-height: 25.2px;
+        text-align: left;
+        margin: 0;
+        color: #fff;
+    }
+    .flex-container-hero .content-three {
+        font-family: "Brother1816 Printed";
+        font-size: 18px;
+        font-weight: 350;
+        line-height: 25.2px;
+        text-align: left;
+        margin: 0;
+        color: #fff;
+    }
+    .custom-button-section .custom-button {
+        width: 282px;
+        height: 60px;
+        padding: 18px 31px 18px 31px;
+        gap: 12px;
+        border-radius: 100px;
+        background: #f87212;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-family: "Brother1816 Printed Bold";
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 22px;
+        text-align: center;
+        justify-content: center;
+        text-decoration: none;
+        color: #fff;
+        text-transform: uppercase;
+    }
+    .custom-button-section {
+        margin: 32px 0px 20px 0px;
+    }
+
+    .grid-item-second {
+        width: 100%;
+        max-width: 624px;
+    }
+
+    .grid-item-second img {
+        width: 100%;
+        max-width: 100%;
+    }
+    .grid-item-first .short_review_container p {
+        font-family: "Brother1816 Printed";
+        font-size: 16px;
+        font-weight: 350;
+        line-height: 20px;
+        text-align: left;
+        color: #fff;
+    }
+    .list_container_one {
+        display: flex;
+        align-items: center;
+        margin: 60px auto 0px auto;
+        max-width: 1000px;
+        gap: 50px;
+      justify-content:center;
+    }
+    .list_container_one_image .list_image{
+          max-width: 164px;
+    }
+    .list_container_one h1 {
+        font-family: "Brother1816 Printed Bold";
+        font-size: 22px;
+        font-weight: 500;
+        line-height: 30.8px;
+        text-align: center;
+        margin: 0;
+        color: #fff;
+    }
+    .list_container_one_image {
+        display: flex;
+        align-items: center;
+        gap: 70px;
+    }
+    .list_container_one_image img {
+        width: 100%;
+    }
+    @media (max-width: 600px) {
+        .hero_banner_with_image {
+  background-size: cover;
+            padding: 60px 0;
+   background-image: url("https://cdn.shopify.com/s/files/1/0046/3716/3633/files/Frame_1484583916_1_b9ab154a-370e-4fa2-bd6d-5d28ea341d2f_430x.svg?v=1725989554");
+
+        }
+        .grid-container-full {
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .flex-container-hero {
+            gap: 20px;
+        }
+        .custom-button-section {
+            margin: 20px auto;
+        }
+        .custom-button-section .custom-button {
+            width: 100%;
+            height: 48px;
+            padding: 0px 31px;
+        }
+        .flex-container-hero h1 {
+            font-size: 26px;
+            line-height: 28.8px;
+        }
+        .flex-container-hero .content-one {
+            font-size: 16px;
+            line-height: 22.4px;
+        }
+        .flex-container-hero .content-two {
+            font-size: 16px;
+            line-height: 19.6px;
+        }
+        .flex-container-hero .content-three {
+            font-size: 16px;
+            line-height: 19.6px;
+        }
+        .grid-item-first .short_review_container p {
+            font-size: 11px;
+        }
+        .list_container_one {
+            flex-direction: column;
+            gap: 20px;
+            margin: 32px auto 0 auto;
+        }
+        .list_container_one h1 {
+            font-size: 16px;
+            line-height: 22.4px;
+        }
+        .list_container_one_image {
+            gap: 20px;
+        }
+    }
+{% endstyle %}

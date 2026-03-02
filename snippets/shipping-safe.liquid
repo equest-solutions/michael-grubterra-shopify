@@ -1,0 +1,31 @@
+<style>
+  .safe-shipping{
+    display:flex;
+        align-items: center;
+    gap:24px;
+  }
+  .safe-div,
+  .div-shipping{
+    display:flex;
+        align-items: center;
+    gap:8px;
+  }
+   .safe-shipping span{
+     font-family: 'Poppins';
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 16.8px;
+     color:#1D1D1D;
+   }
+</style>
+<div class="safe-shipping">
+  
+  <div class="div-shipping">
+    {% render 'shipping-truck' %}<span>Free shipping on all subscriptions</span>
+  </div>
+  
+  <div class="safe-div">
+    {% render 'safe-shield' %}<span>30-Day Moneyback Guarantee</span>
+  </div>
+  
+</div>

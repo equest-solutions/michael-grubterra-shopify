@@ -1,0 +1,515 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "zp-product-header-content": {
+      "type": "product-header-content-zipifypages",
+      "settings": {}
+    },
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "vendor": {
+          "type": "text",
+          "settings": {
+            "text": "{{ product.vendor }}",
+            "text_style": "uppercase"
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "loox_reviews_loox_rating_iAMNp7": {
+          "type": "shopify://apps/loox-reviews/blocks/loox-rating/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
+          "settings": {
+            "contentSize": 16,
+            "pattern": "",
+            "hideText": false,
+            "alignment": "",
+            "layout": "",
+            "textColor": "",
+            "starColor": "",
+            "showAllReviews": false,
+            "looxOpenFloatingWidget": false,
+            "emptyRatingWidget": false
+          }
+        },
+        "icon_text_3ngqfd": {
+          "type": "icon-text",
+          "settings": {
+            "icon": "shopify://shop_images/image_34.svg",
+            "text": "Single ingredient treats"
+          }
+        },
+        "icon_text_fCwzkj": {
+          "type": "icon-text",
+          "settings": {
+            "icon": "shopify://shop_images/image_34.svg",
+            "text": "Beef + Salmon raised/caught in the USA"
+          }
+        },
+        "icon_text_4wQHqU": {
+          "type": "icon-text",
+          "settings": {
+            "icon": "shopify://shop_images/image_34.svg",
+            "text": "Freeze dried to preserve freshness!"
+          }
+        },
+        "icon_text_QV4rzE": {
+          "type": "icon-text",
+          "settings": {
+            "icon": "shopify://shop_images/image_34.svg",
+            "text": "Rich in protein, vitamins, and healthy fats."
+          }
+        },
+        "icon_text_epUWHP": {
+          "type": "icon-text",
+          "disabled": true,
+          "settings": {
+            "icon": "shopify://shop_images/image_34.svg",
+            "text": "Packaged in USA"
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button"
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "appstle_subscriptions_app_appstle_subscription_product_page_widget_eTBTVQ": {
+          "type": "shopify://apps/appstle-subscription/blocks/appstle-subscription-product-page-widget/fe257d39-6f88-4f35-ab08-bd437e3aa94e",
+          "settings": {}
+        },
+        "text_77MLMf": {
+          "type": "text",
+          "settings": {
+            "text": "<strong>Use code GrubSub for 20% off first subscription purchases!</strong>",
+            "text_style": "body"
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": false,
+            "show_gift_card_recipient": false
+          }
+        },
+        "wonderment_pdp_etas_YgXpyf": {
+          "type": "shopify://apps/wonderment/blocks/pdpEtas/89d63369-6ee7-4097-ac41-8229c6f90001",
+          "settings": {
+            "eta_text_font_size": 16,
+            "hint_text_font_size": 12,
+            "custom_css": ""
+          }
+        },
+        "icon_with_text_jkfH4r": {
+          "type": "icon-with-text",
+          "settings": {
+            "layout": "horizontal",
+            "icon_1": "heart",
+            "image_1": "shopify://shop_images/image_36.svg",
+            "heading_1": "<strong>Free Shipping</strong>",
+            "icon_2": "return",
+            "image_2": "shopify://shop_images/image_37.svg",
+            "heading_2": "<strong>Fast Delivery within 5 days</strong>",
+            "icon_3": "truck",
+            "image_3": "shopify://shop_images/image_38.svg",
+            "heading_3": "<strong>30-day money-back guarantee</strong>"
+          }
+        },
+        "share": {
+          "type": "share",
+          "settings": {
+            "share_label": "Share"
+          }
+        },
+        "collapsible_tab_icon_Tqc9xH": {
+          "type": "collapsible_tab_icon",
+          "settings": {
+            "heading": "Our Promise",
+            "icon": "none",
+            "content": "",
+            "page": "",
+            "icon1": "shopify://shop_images/image_46.svg",
+            "text1": "SUSTAINABLY RAISED",
+            "icon2": "shopify://shop_images/image_61.svg",
+            "text2": "NUTRITIOUS DIET",
+            "icon3": "shopify://shop_images/image_62.svg",
+            "text3": "STRONGER EGGSHELLS",
+            "icon4": "shopify://shop_images/image_49.svg",
+            "text4": "HEALTHIER FEATHER PRODUCTION",
+            "icon5": "shopify://shop_images/image_50.svg",
+            "text5": "NO PRESERVATIVES"
+          }
+        },
+        "collapsible_tab_B6fbKT": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Description",
+            "icon": "none",
+            "content": "",
+            "page": "",
+            "show_description": true
+          }
+        },
+        "collapsible_tab_DxH9tH": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Ingredients",
+            "icon": "none",
+            "content": "{{ product.metafields.custom.ingredients | metafield_tag }}",
+            "page": "",
+            "show_description": false
+          }
+        },
+        "collapsible_tab_9Vyn6z": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "100% Pet Happiness Guaranteed",
+            "icon": "none",
+            "content": "{{ product.metafields.custom.happiness_guaranteed | metafield_tag }}",
+            "page": "",
+            "show_description": false
+          }
+        },
+        "collapsible_tab_JEmw3T": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "FAQs",
+            "icon": "none",
+            "content": "{{ product.metafields.custom.faq | metafield_tag }}",
+            "page": "",
+            "show_description": false
+          }
+        }
+      },
+      "block_order": [
+        "vendor",
+        "title",
+        "loox_reviews_loox_rating_iAMNp7",
+        "icon_text_3ngqfd",
+        "icon_text_fCwzkj",
+        "icon_text_4wQHqU",
+        "icon_text_QV4rzE",
+        "icon_text_epUWHP",
+        "price",
+        "variant_picker",
+        "quantity_selector",
+        "appstle_subscriptions_app_appstle_subscription_product_page_widget_eTBTVQ",
+        "text_77MLMf",
+        "buy_buttons",
+        "wonderment_pdp_etas_YgXpyf",
+        "icon_with_text_jkfH4r",
+        "share",
+        "collapsible_tab_icon_Tqc9xH",
+        "collapsible_tab_B6fbKT",
+        "collapsible_tab_DxH9tH",
+        "collapsible_tab_9Vyn6z",
+        "collapsible_tab_JEmw3T"
+      ],
+      "settings": {
+        "product_top": "",
+        "enable_sticky_info": true,
+        "color_scheme": "background-1",
+        "media_size": "medium",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "gallery_layout": "thumbnail_slider",
+        "media_position": "left",
+        "image_zoom": "lightbox",
+        "mobile_thumbnails": "hide",
+        "hide_variants": true,
+        "enable_video_looping": false,
+        "padding_top": 36,
+        "padding_bottom": 12
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "disabled": true,
+      "settings": {
+        "heading": "You may also like",
+        "heading_size": "h2",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "color_scheme": "background-1",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "columns_mobile": "2",
+        "padding_top": 36,
+        "padding_bottom": 28
+      }
+    },
+    "custom_commitment_phBQXp": {
+      "type": "custom-commitment",
+      "blocks": {
+        "commitment_GDYMyx": {
+          "type": "commitment",
+          "settings": {
+            "image": "shopify://shop_images/Farm_graphic_image_6.png",
+            "text": "<p>High in protein and Omega 3s to help build muscle and promote a healthy coat.</p>"
+          }
+        },
+        "commitment_aAbQWw": {
+          "type": "commitment",
+          "settings": {
+            "image": "shopify://shop_images/Group_71_1.png",
+            "text": "<p>Beef + Salmon raised/caught in the USA.</p>"
+          }
+        },
+        "commitment_L33UBH": {
+          "type": "commitment",
+          "settings": {
+            "image": "shopify://shop_images/Farm_graphic_image_5.png",
+            "text": "<p>Freeze dried to retain freshness for up to 12 months unopened.</p>"
+          }
+        },
+        "commitment_QbTcrD": {
+          "type": "commitment",
+          "settings": {
+            "image": "shopify://shop_images/Group_71_3.png",
+            "text": "<p>Made with fresh ingredients for optimal nutrition</p>"
+          }
+        }
+      },
+      "block_order": [
+        "commitment_GDYMyx",
+        "commitment_aAbQWw",
+        "commitment_L33UBH",
+        "commitment_QbTcrD"
+      ],
+      "settings": {
+        "title": "",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "custom_grub_terra_features_WJqKT3": {
+      "type": "custom-grub-terra-features",
+      "blocks": {
+        "text_V44abN": {
+          "type": "text",
+          "settings": {
+            "text": "<h3><strong>All Ingredients sourced in the USA</strong></h3><p>All our salmon and beef used in our Moo Munches, Bully Bites, and Salmon Snacks are sourced from the USA. </p><h3><strong>Nutritious Treat</strong></h3><p>High in protein, Healthy fats and a single ingredient treat! Made to have your dog licking there lips every time you pull the bag out. </p><h3><strong>Freeze Dried for freshness!</strong></h3><p>These three treats are all freeze dried to save the freshness. This gives your dog a great chewing experience when they take there first bite into this fresh single ingredient treat. </p>"
+          }
+        }
+      },
+      "block_order": [
+        "text_V44abN"
+      ],
+      "settings": {
+        "title": "Sustainably manufactured and sourced in the USA",
+        "image": "shopify://shop_images/POSTED_2.15.2023.jpg",
+        "image_position": "left",
+        "padding_top": 40,
+        "padding_bottom": 20
+      }
+    },
+    "custom_grub_terra_features_Gd8Wnq": {
+      "type": "custom-grub-terra-features",
+      "blocks": {
+        "text_zUxAJX": {
+          "type": "text",
+          "settings": {
+            "text": "<h3><strong>NO PRESERVATIVES</strong></h3><p>No additives. No preservatives. Great for large and medium sized dogs. Also good for small dogs but please monitor your dogs when chewing.</p><h3><strong>STRONGER EGGSHELLS</strong></h3><p>With 75x more calcium than mealworms, GrubTerra grubs will help your flock lay strong and consistent eggs.</p><h3><strong>HEALTHIER FEATHER PRODUCTION</strong></h3><p>GrubTerras Grubs promote stronger eggshells and help hens increase their energy levels and egg production. Grubterra Grubs are also a great supplement during molting season and in the cold winter months!</p>"
+          }
+        }
+      },
+      "block_order": [
+        "text_zUxAJX"
+      ],
+      "settings": {
+        "title": "",
+        "image": "shopify://shop_images/Rectangle_16.png",
+        "image_position": "right",
+        "padding_top": 0,
+        "padding_bottom": 20
+      }
+    },
+    "testimonial_XFGeCf": {
+      "type": "testimonial",
+      "blocks": {
+        "testimonial_GwCXVi": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify://shop_images/grubterra3.jpg",
+            "stars": "shopify://shop_images/image_41.svg",
+            "author": "Michael S.",
+            "text": "<p>My dogs go crazy for these treats, they are obsessed more than I've seen them with any dog treat. I also love the positive environmental impact of this company and they are great for their coat!</p>"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_GwCXVi"
+      ],
+      "settings": {
+        "heading": "Trusted by many dog owners!",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "1706692698bffb5f53": {
+      "type": "apps",
+      "blocks": {
+        "loox_reviews_loox_card_carousel_section_eDwt3d": {
+          "type": "shopify://apps/loox-reviews/blocks/loox-card-carousel-section/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
+          "settings": {
+            "maxWidth": 1100,
+            "borderRadius": 8,
+            "itemsPerView": 5,
+            "mobileItemsPerView": 1,
+            "maxNumberOfCharacters": 100,
+            "imageRatio": "1",
+            "reviewerNameColor": "#000000",
+            "textColor": "#000000",
+            "itemBackgroundColor": "#ffffff",
+            "starsColor": "",
+            "starsBackgroundColor": "#ffffff",
+            "arrows_backgroundColor": "#ffffff",
+            "arrows_iconColor": "#9a9a9a",
+            "shadow": "offset-dark",
+            "border_active": false,
+            "border_width": 2,
+            "border_color": "#000000",
+            "productIds": ""
+          }
+        }
+      },
+      "block_order": [
+        "loox_reviews_loox_card_carousel_section_eDwt3d"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "1706683844dc4fcd2a": {
+      "type": "apps",
+      "blocks": {
+        "loox_reviews_loox_dynamic_section_pP8iaL": {
+          "type": "shopify://apps/loox-reviews/blocks/loox-dynamic-section/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
+          "settings": {
+            "only_photos": false,
+            "aggregated": false,
+            "limit": 20,
+            "hide_thumbnails": false,
+            "maxwidth": 1080,
+            "is_sample": true
+          }
+        }
+      },
+      "block_order": [
+        "loox_reviews_loox_dynamic_section_pP8iaL"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "collapsible_content_Mx9UfD": {
+      "type": "collapsible-content",
+      "blocks": {
+        "collapsible_row_79FQif": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "What is the shelf life of GrubTerra black soldier fly larvae?",
+            "icon": "none",
+            "row_content": "",
+            "page": ""
+          }
+        },
+        "collapsible_row_r86hb7": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Can GrubTerras larvae be used for all types of animals, or are they specifically for certain species?",
+            "icon": "none",
+            "row_content": "",
+            "page": ""
+          }
+        },
+        "collapsible_row_7xc6j9": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Are GrubTerras products organic?",
+            "icon": "none",
+            "row_content": "",
+            "page": ""
+          }
+        },
+        "collapsible_row_xjajKw": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "How can I incorporate GrubTerras larvae into my pet's diet?",
+            "icon": "none",
+            "row_content": "",
+            "page": ""
+          }
+        },
+        "collapsible_row_kCeEQP": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Is GrubTerras involved in any community or environmental initiatives?",
+            "icon": "none",
+            "row_content": "",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_row_79FQif",
+        "collapsible_row_r86hb7",
+        "collapsible_row_7xc6j9",
+        "collapsible_row_xjajKw",
+        "collapsible_row_kCeEQP"
+      ],
+      "settings": {
+        "caption": "",
+        "heading": "Frequently Asked Questions",
+        "heading_size": "h1",
+        "heading_alignment": "center",
+        "layout": "row",
+        "color_scheme": "",
+        "container_color_scheme": "",
+        "open_first_collapsible_row": false,
+        "image_ratio": "adapt",
+        "desktop_layout": "image_second",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "zp-product-footer-content": {
+      "type": "product-footer-content-zipifypages",
+      "settings": {}
+    }
+  },
+  "order": [
+    "zp-product-header-content",
+    "main",
+    "related-products",
+    "custom_commitment_phBQXp",
+    "custom_grub_terra_features_WJqKT3",
+    "custom_grub_terra_features_Gd8Wnq",
+    "testimonial_XFGeCf",
+    "1706692698bffb5f53",
+    "1706683844dc4fcd2a",
+    "collapsible_content_Mx9UfD",
+    "zp-product-footer-content"
+  ]
+}

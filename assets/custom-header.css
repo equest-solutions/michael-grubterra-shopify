@@ -1,0 +1,22 @@
+.header__menu-item {
+    color: #000;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.header__inline-menu .list-menu--inline {
+    display: inline-flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+}
+@media screen and (min-width: 990px) {
+.header--middle-left {
+    grid-template-areas: "heading navigation icons";
+    grid-template-columns: auto 1fr auto;
+    column-gap: 2rem;
+}
+}

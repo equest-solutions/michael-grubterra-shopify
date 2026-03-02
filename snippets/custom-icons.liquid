@@ -1,0 +1,38 @@
+<style>
+  .hen-egg{
+    display:flex;
+    align-items: center;
+    gap:10px;
+    padding-bottom:18px;
+    border-bottom: 1px solid #00000059;
+  }
+  .div-hen,
+  .leaf-div,
+  .egg-div{
+    display:flex;
+    align-items: center;
+    gap:8px;
+  }
+   .hen-egg span{
+     font-family: 'Poppins';
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 19.8px;
+     color:#1D1D1D;
+   }
+</style>
+<div class="hen-egg">
+  
+  <div class="div-hen">
+    {% render 'hen-icon' %}<span>Increase egg production</span>
+  </div>
+  
+  <div class="leaf-div">
+    {% render 'leaf-icon' %}<span>Decrease Molting Times</span>
+  </div>
+
+  <div class="egg-div">
+    {% render 'egg-icon' %}<span>Produces Stronger Eggshells</span>
+  </div>
+  
+</div>

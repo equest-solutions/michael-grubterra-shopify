@@ -1,0 +1,112 @@
+{% schema %}
+{
+  "name": "loox Reviews Landing-2",
+  "blocks": [
+    {
+      "type": "@app"
+    }
+  ],
+  "settings": [
+    {
+      "type": "text",
+      "id": "Comparison_heading",
+      "label": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "Comparison_subheading",
+      "label": "Subheading"
+    }
+  ],
+  "presets": [
+    {
+      "name": "loox Reviews Landing-2"
+    }
+  ]
+}
+{% endschema %}
+
+{% style %}
+  .loox-reviews-landing {
+      background:#ffffff;
+      padding: 100px 0px 0px 0;
+      background-position: center;
+  }
+  .loox-reviews-landing h1 {
+      font-family: "Brother1816 Printed Bold";
+      font-size: 40px;
+      font-weight: 700;
+      line-height: 48px;
+      letter-spacing: -0.02em;
+      text-align: center;
+      color: #1f6223;
+      text-transform: uppercase;
+      margin: 0 auto 30px auto;
+  }
+  .loox-reviews-landing p {
+      font-family: "Brother1816 Printed";
+      font-size: 20px;
+      font-weight: 400;
+      line-height: 28px;
+      text-align: center;
+      margin: 0 auto 50px auto;
+
+      color: #000000;
+  }
+  .loox-reviews-landing .content {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      margin-top: 80px;
+  }
+
+  @media (max-width: 600px) {
+      .space-wrapper-container {
+          margin: 0px;
+      }
+      .loox-reviews-landing .content {
+          flex-direction: column;
+          margin-top: 30px;
+      }
+
+      .loox-reviews-landing p {
+          font-size: 16px;
+          line-height: 22.4px;
+          margin-bottom: 0px;
+      }
+      .loox-reviews-landing h1 {
+          font-size: 26px;
+          line-height: 28.8px;
+          margin-bottom: 20px;
+      }
+      .loox-reviews-landing {
+          padding: 48px 0px;
+      }
+
+  }
+{% endstyle %}
+
+<div class="loox-reviews-landing">
+  <div class="page-width space-wrapper-container">
+    <h1>{{ section.settings.Comparison_heading }}</h1>
+    <p>{{ section.settings.Comparison_subheading }}</p>
+  </div>
+  {%- for block in section.blocks -%}
+    {%- case block.type -%}
+      {%- when '@app' -%}
+        {% render block %}
+    {%- endcase -%}
+  {%- endfor -%}
+
+  {%- for block in section.blocks -%}
+    {%- case block.type -%}
+      {%- when '@app' -%}
+        <!-- Debugging output -->
+
+        {% render block %}
+      {%- else -%}
+        <!-- Handle other block types if necessary -->
+        <p>Unknown block type: {{ block.type }}</p>
+    {%- endcase -%}
+  {%- endfor -%}
+</div>

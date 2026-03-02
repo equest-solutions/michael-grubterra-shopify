@@ -1,0 +1,42 @@
+{% liquid
+  assign is_bundle = false
+  for tag in product.tags
+    if tag contains "bundle"
+      assign is_bundle = true
+    endif
+  endfor
+
+  if is_bundle
+    assign bundle_handle1 = product.handle | append: "-bundle-1"
+    assign bundle_handle2 = product.handle | append: "-bundle-2"
+    assign bundle_handle5 = product.handle | append: "-bundle-5"
+
+    assign bundle_product_1 = all_products[bundle_handle1]
+    assign bundle_product_2 = all_products[bundle_handle2]
+    assign bundle_product_5 = all_products[bundle_handle5]
+  endif
+%}
+
+<variant-quantities class="variant-quantity-wrapper-container">
+  <input type="hidden" name="properties[note]" class="js-note" form="{{ product_form_id }}">
+  <input type="hidden" name="properties[_fulfillments-count]" class="js-fulfillment-count" form="{{ product_form_id }}">
+  <input type="hidden" name="properties[_sales-unit]" class="js-sales-unit" form="{{ product_form_id }}">
+
+  {% for variant in product.variants %}
+    {% render "variant-quantity", variant: variant %}
+  {% endfor %}
+
+  {% if bundle_product_1 != blank %}
+    {% render "variant-quantity", variant: bundle_product_1.selected_or_first_available_variant, quantity: 1 %}
+  {% endif %}
+
+  {% if bundle_product_2 != blank %}
+    {% render "variant-quantity", variant: bundle_product_2.selected_or_first_available_variant, quantity: 2 %}
+  {% endif %}
+
+  {% if bundle_product_5 != blank %}
+    {% render "variant-quantity", variant: bundle_product_5.selected_or_first_available_variant, quantity: 5 %}
+  {% endif %}
+</variant-quantities>
+
+<script src="{{ 'variant-quantities.js' | asset_url }}" defer></script>

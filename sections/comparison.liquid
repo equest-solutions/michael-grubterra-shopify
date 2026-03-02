@@ -1,0 +1,481 @@
+{% schema %}
+{
+"name": "Comparison Section",
+"settings": [
+ {
+      "type": "image_picker",
+      "id": "Comparison_bg",
+      "label": "Image"
+    },
+{
+"type": "text",
+"id": "Comparison_heading",
+"label": "Heading"
+},
+{
+"type": "text",
+"id": "Comparison_subheading",
+"label": "Subheading"
+},
+{
+"type": "text",
+"id": "thead_content",
+"label": "Table Header"
+},
+{
+"type": "image_picker",
+"id": "thead_image",
+"label": "Image"
+},
+  {
+"type": "image_picker",
+"id": "thead_image_2",
+"label": "Image"
+},
+{
+"type": "text",
+"id": "thead_content2",
+"label": "Table Header"
+},
+{
+"type": "text",
+"id": "heading2_label",
+"label": "Heading"
+},
+{
+"type": "text",
+"id": "button_label_col_two",
+"default": "Button label",
+"label": "Button text"
+},
+{
+"type": "url",
+"id": "button_link_cust_two",
+"label": "Button url"
+},
+ {
+      "type": "image_picker",
+      "id": "short_review_comparison",
+      "label": "Short Icon Image"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "short_review_comparison_content",
+      "label": "Content"
+    }
+],
+"blocks": [
+{
+"type": "row",
+"name": "Comparison Row",
+"settings": [
+
+{
+"type": "image_picker",
+"id": "myBrandImage_icon",
+"label": "MyBrand Image"
+},
+{
+"type": "text",
+"id": "feature",
+"label": "Feature"
+},
+
+{
+"type": "image_picker",
+"id": "myBrandImage",
+"label": "MyBrand Image"
+},
+
+
+{
+"type": "image_picker",
+"id": "othersImage",
+"label": "Others Image"
+}
+]
+}
+],
+"presets": [
+{
+"name": "Comparison Section"
+}
+]
+}
+{% endschema %}
+
+{% style %}
+  .comparison-table tr:first-child td:first-child {
+      border-radius: 10px 0 0 0;
+  }
+
+  .comparison-table tr:first-child td:last-child {
+      border-radius: 0 10px 0 0;
+  }
+
+  .comparison-table tr:last-child td:first-child {
+      border-radius: 0 0 0 10px;
+  border-bottom:0;
+  }
+
+  .comparison-table tr:last-child td:last-child {
+      border-radius: 0 0 10px 0;
+  border-bottom:0;
+  }
+
+  .comparison-section::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background:linear-gradient(to top, #FFFFFF 0%, #F2F9F3 100%);
+      z-index: -1;
+  }
+
+    .comparison-section {
+  position:relative;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-image: url("{{ section.settings.Comparison_bg | img_url: 'master' }}");
+        padding: 100px 0px 100px 0;
+        background-position: center;
+    }
+    .comparison-section h1 {
+        font-family: "Brother1816 Printed Bold";
+        font-size: 40px;
+        font-weight: 700;
+        line-height: 48px;
+        letter-spacing: -0.02em;
+        text-align: center;
+        color: #1f6223;
+        text-transform: uppercase;
+        margin: 0 auto 30px auto;
+    }
+    .comparison-section p {
+        font-family: "Brother1816 Printed";
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 28px;
+        text-align: center;
+        margin: 0 auto 0px auto;
+
+        color: #000000;
+    }
+    .comparison-section .content {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        margin-top: 80px;
+    }
+    .comparison-section .table-container {
+        width: 100%;
+        padding: 0px 0px;
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .comparison-table {
+        width: 100%;
+        border-collapse: collapse;
+        border-spacing: 0;
+        max-width: 1000px;
+        margin: 0;
+    }
+    .comparison-table th,
+    .comparison-table td {
+        width: 15%;
+        padding: 0.5rem;
+        text-align: center;
+        text-transform: capitalize;
+        border-bottom: 1px solid rgba(31, 98, 35, 0.25);
+    }
+    .comparison-table th {
+        border: none;
+        color: #000;
+        text-transform: uppercase;
+        font-family: "Brother1816 Printed Bold";
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 25.2px;
+        text-align: left;
+        vertical-align: bottom;
+        text-align: center;
+        background: transparent;
+    }
+    .comparison-table th:nth-child(2n) {
+        background: transparent;
+        /* position:relative; */
+    }
+    /* .comparison-table th:nth-child(2n) img{
+                  position:absolute;
+                    } */
+    .comparison-table td p {
+        text-transform: capitalize;
+    }
+    .comparison-table td:nth-child(2n) {
+        background: #fff;
+        color: #fff;
+        border-bottom: 1px solid rgba(31, 98, 35, 0.25);
+    }
+    .comparison-table td:nth-child(3n) p {
+    }
+    .comparison-table th:nth-child(2) {
+        font-size: larger;
+        color: black;
+    }
+    .comparison-table td:nth-child(1) {
+        padding: 25px 0;
+    }
+    .comparison-table td:nth-child(1),
+    .comparison-table td:nth-child(1),
+    .comparison-table td:nth-child(4),
+    .comparison-table td:nth-child(3) {
+        width: 20%;
+        text-align: center;
+        border-right: none;
+        border-left: none;
+        border-top: none;
+    }
+    .comparison-table th img,
+    .comparison-table td img {
+        width: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: auto;
+        padding: 1rem;
+    }
+    .custom-comp {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        margin-top: 60px;
+        gap: 20px;
+    }
+
+    .custom-comp .heading-col h1 {
+    }
+    .custom-comp .short_review_container {
+        justify-content: center;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    .custom-comp .short_review_container p {
+        font-size: 16px;
+    }
+
+    .tbl_body {
+        background: #c5dbc8;
+    }
+    .tblfirst_container {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 25.2px;
+        font-family: "Brother1816 Printed Bold";
+        text-align: left;
+    }
+    .btn-container-custom {
+        background: #f87212;
+        width: 282px;
+        height: 60px;
+        padding: 18px 31px 18px 31px;
+        gap: 12px;
+
+        font-size: 22px;
+        font-weight: 700;
+        line-height: 22px;
+        text-align: center;
+        justify-content: center;
+        color: #fff;
+        text-transform: uppercase;
+        border-radius: 100px;
+        font-family: "Brother1816 Printed Bold";
+        display: flex;
+        cursor: pointer !important;
+        align-items: center;
+        gap: 10px;
+    }
+    .comparison-table td .tblfirst_container img {
+        margin: 0;
+    }
+    .table_header_image {
+        position: relative;
+    }
+    .table_header_image img {
+        position: absolute;
+        top: -70px;
+    }
+    @media (max-width: 600px) {
+        .space-wrapper-container {
+            margin: 0px;
+        }
+        .comparison-section .content {
+            flex-direction: column;
+            margin-top: 30px;
+        }
+        .comparison-section .table-container {
+            width: 100%;
+            padding: 0;
+            overflow: scroll;
+        }
+        .comparison-table th img {
+            width: 88px;
+            padding: 0rem;
+        }
+        .comparison-table td {
+            width: 30%;
+            font-size: 14px;
+            table-layout: fixed;
+        }
+        .comparison-section p {
+            font-size: 16px;
+            line-height: 22.4px;
+            margin-bottom: 0px;
+        }
+        .comparison-section h1 {
+            font-size: 26px;
+            line-height: 28.8px;
+            margin-bottom: 20px;
+        }
+        .comparison-section {
+            padding: 48px 0px;
+        }
+        .comparison-table th {
+            font-size: 16px;
+            font-weight: 600;
+        }
+        .comparison-table td p {
+            width: 115px;
+            font-size: 12px;
+        }
+        .comparison-table td:nth-child(1) {
+
+        }
+        .comparison-table td:nth-child(1) {
+            padding: 16px 10px;
+        }
+
+        .comparison-table td:nth-child(3n) p {
+            font-size: 13px;
+        }
+
+        .comparison-table td img {
+            width: 18px;
+            height: 18px;
+            padding: 0px;
+        }
+        .tblfirst_container {
+            display: flex;
+            align-items: center;
+            gap: 3px;
+            font-size: 11px;
+            font-weight: 500;
+            line-height: 12.6px;
+            font-family: "Brother1816 Printed Bold";
+            text-align: left;
+            color: #000;
+        }
+        .comparison-table td .tblfirst_container img {
+            margin: 0;
+            width: 20px;
+            padding: 0;
+        }
+        .custom-comp {
+            margin-top: 30px;
+        }
+        .btn-container-custom {
+            width: 100%;
+            height: 48px;
+            font-size: 18px;
+            line-height: 18px;
+        }
+        .custom-comp .short_review_container {
+            gap: 5px;
+        }
+        .custom-comp .short_review_container p {
+            font-size: 11px;
+        }
+        .table_header_image img {
+            position: unset;
+            top: unset;
+        }
+    }
+{% endstyle %}
+
+<div class="comparison-section">
+  <div class="page-width space-wrapper-container">
+    <h1>{{ section.settings.Comparison_heading }}</h1>
+    <p>{{ section.settings.Comparison_subheading }}</p>
+    <div class="content">
+      <div class="table-container">
+        <table class="comparison-table">
+          <tr>
+            <th></th>
+            <th>
+              <div class="hide_in_mobile table_header_image">
+                <img src="{{ section.settings.thead_image | img_url: 'medium' }}" alt="">
+              </div>
+              <div class="show_in_mobile table_header_image">
+                <img src="{{ section.settings.thead_image_2 | img_url: 'medium' }}" alt="">
+              </div>
+            </th>
+            <th>{{ section.settings.thead_content2 }}</th>
+          </tr>
+          <tbody class="tbl_body">
+            {% for block in section.blocks %}
+              <tr>
+                <td>
+                  <div class="tblfirst_container">
+                    <img src="{{ block.settings.myBrandImage_icon | img_url: 'small' }}" alt="">
+                    {{ block.settings.feature }}
+                  </div>
+                </td>
+                <td>
+                  <img
+                    src="{{ block.settings.myBrandImage | img_url: '30x' }}"
+                    alt="{{ block.settings.myBrand }}"
+                  >
+                </td>
+
+                <td>
+                  <img
+                    src="{{ block.settings.othersImage | img_url: '30x' }}"
+                    alt="{{ block.settings.others }}"
+                  >
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="custom-comp">
+      {% if section.settings.heading2_label != blank %}
+        <div class="heading-col">
+          <h1>{{ section.settings.heading2_label }}</h1>
+        </div>
+      {% endif %}
+
+      <a
+        href="{{ section.settings.button_link_cust_two }}"
+
+        class="btn-container-custom"
+      >
+        {{ section.settings.button_label_col_two }}
+        {% render 'arrow_right_custom' %}
+      </a>
+
+      <div class="short_review_container">
+        <img src="{{ section.settings.short_review_comparison | img_url:'medium'}}" alt="">
+        <p>{{ section.settings.short_review_comparison_content }}</p>
+      </div>
+    </div>
+  </div>
+</div>

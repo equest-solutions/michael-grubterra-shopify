@@ -1,0 +1,114 @@
+.footer__list-social {
+    flex-direction: column;
+    align-items: flex-start;
+}
+a.link.list-social__link {
+    padding-left: 0px;
+}
+.footer-block__heading {
+    color: #6ECF24;
+    font-weight: 500;
+    font-family: 'poppins';
+    text-transform: uppercase;
+}
+.footer {
+    background-color: #1F6223;
+    border: unset;
+    color: #ffffff;
+}
+.footer-block__details-content .list-menu__item--link  {
+    font-family: 'poppins';
+    color: #ffffff;
+    font-size: 15px;
+    letter-spacing: 0px;
+}
+.list-social__link svg path {
+    fill: #ffffff;
+}
+.footer .rte p{
+  font-family: 'poppins';
+  font-size: 15px;
+  color: #ffffff;
+}
+.footer-block__details-content .list-menu__item--link:hover, .copyright__content a:hover {
+    color: #6ECF24;
+    text-decoration: unset;
+}
+a.link.list-social__link {
+    text-decoration: unset;
+    display: flex;
+    gap: 0.5rem;
+    color: #ffffff;
+    font-family: 'poppins';
+    font-weight: 500;
+}
+.footer__content-bottom {
+    border: unset;
+}
+.footer__payment , .list.list-payment{
+    width: 100%;
+}
+small.copyright__content {
+    font-size: 1.5rem;
+    color: #62ad2990;
+    font-family: 'poppins';
+    font-weight: 500;
+}
+@media (min-width: 750px) {
+ .footer-block__heading {
+    font-size: 16px;
+ }  
+.footer__payment .list-payment {
+    justify-content: flex-start;
+    gap: 0.5rem;
+}
+.footer__content-bottom-wrapper--center {
+    justify-content: left;
+}
+}
+@media (min-width: 1441px) {
+  .footer__content-top.page-width {
+    padding-inline: unset;
+  }
+.footer__content-bottom-wrapper--center, .footer__content-bottom-wrapper.page-width{
+    padding-inline: unset;
+}
+}
+@media (max-width: 749px) {
+  .footer-block__heading {
+    text-align: center;
+  }
+  .footer-block__details-content .list-menu__item--link {
+    justify-content: center;
+    padding: unset;
+}
+ul.footer-block__details-content {
+    display: flex;
+    column-gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    line-height: normal;
+}
+.footer__list-social {
+    flex-direction: row;
+}
+.footer .rte p {
+    text-align: center;
+    line-height: normal;
+}
+.footer__content-top {
+  padding-bottom: unset;
+}
+.footer-block__details-content > span, .footer-block__details-content {
+    line-height: normal;
+    align-items: center;
+}
+li.list-social__item > span, .footer__list-social {
+    align-items: center;
+    line-height: normal;
+    gap: 0.5rem;
+}
+.custom-slash:last-of-type {
+  display: none;
+}
+}

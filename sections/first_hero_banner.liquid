@@ -1,0 +1,649 @@
+{% schema %}
+{
+  "name": "Hero Banner Grid",
+  "settings": [
+            {
+      "type": "image_picker",
+      "id": "short_review_icon_two",
+      "label": "Short Icon Image"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "short_review_content_two",
+      "label": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Welcome to Our Shop"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "content",
+      "label": "Content"
+    },
+
+    {
+      "type": "url",
+      "id": "button2_url",
+      "label": "Button 2 URL"
+    },
+    {
+      "type": "text",
+      "id": "button2_text",
+      "label": "Button 2 Text",
+      "default": "Learn More"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "review_content",
+      "label": "Review Content",
+      "default": "This is the best product I have ever used!"
+    },
+    {
+      "type": "text",
+      "id": "review_author",
+      "label": "Review Author",
+      "default": "John Doe"
+    },
+    {
+      "type": "text",
+      "id": "verify_customer",
+      "label": "Client Review",
+      "default": "Verified Customers"
+    },
+
+    {
+      "type": "image_picker",
+      "id": "short_review_author_icon",
+      "label": "Author Icon Image"
+    },
+ {
+      "type": "image_picker",
+      "id": "short_review_stars_icon",
+      "label": "Stars Icon Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "second_container_image",
+      "label": "Second Container Image"
+    },
+{
+      "type": "image_picker",
+      "id": "hero_overlay_image",
+      "label": "Hero image"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_overlay_image_mobile",
+      "label": "Hero image Mobile"
+    }
+
+  ],
+  "blocks": [
+    {
+      "type": "List_Items",
+      "name": "List",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "list_image",
+          "label": "List Image"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "list_content",
+          "label": "List content"
+        }
+      ]
+    },
+     {
+      "type": "List_Items_one",
+      "name": "List Two",
+      "settings": [
+        {
+          "type": "text",
+          "id": "list_content_heading",
+          "label": "List Heading"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "list_content_subheading",
+          "label": "List content Two"
+        }
+      ]
+    },
+     {
+      "type": "logo-slider",
+      "name": "logo slider",
+      "settings": [
+       {
+          "type": "text",
+          "id": "text",
+          "label": "Heading"
+        },
+        {
+          "type": "image_picker",
+          "id": "logo1",
+          "label": "logo"
+        },
+        {
+          "type": "image_picker",
+          "id": "logo2",
+          "label": "logo"
+        },
+        {
+          "type": "image_picker",
+          "id": "logo3",
+          "label": "logo"
+        },
+        {
+          "type": "image_picker",
+          "id": "logo4",
+          "label": "logo"
+        },
+        {
+          "type": "image_picker",
+          "id": "logo5",
+          "label": "logo"
+        }
+      ]
+    }
+],
+  "presets": [
+    {
+      "name": "Hero Banner Grid",
+      "category": "Custom Sections"
+    }
+  ]
+}
+{% endschema %}
+
+<section class="hero-banner-two">
+  <div class="hero-flex-container">
+    <div class="hero-flex-first">
+      <div class="short_review_container">
+        <img src="{{ section.settings.short_review_icon_two | img_url:'medium'}}" alt="">
+        <p>{{ section.settings.short_review_content_two }}</p>
+      </div>
+      <h1>{{ section.settings.heading }}</h1>
+      <p class="hero-para-one">{{ section.settings.content }}</p>
+      <div class="hero-banner-second_image show_in_mobile">
+        <img src="{{ section.settings.second_container_image | img_url:'master'}}" alt="">
+      </div>
+      <div class="hero_first_list">
+        {% for block in section.blocks %}
+          {% if block.type == 'List_Items' %}
+            <div class="list_content_container">
+              <img src="{{ block.settings.list_image | img_url:'medium'}}" alt="">
+              <p>{{ block.settings.list_content }}</p>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+      <div class="buttons_container">
+        {% if section.settings.button2_text != blank %}
+          <a href="{{ section.settings.button2_url }}" class="btn btn-secondary">
+            {{- section.settings.button2_text }}
+            {% render 'arrow_right_custom' %}
+          </a>
+
+  <div class="safe-secure">
+          {% render 'safe-secure' %}
+        </div>
+
+        {% endif %}
+      </div>
+
+      {% if section.settings.review_content != blank %}
+        <div class="review-container">
+          <div class="author_icon_position">
+            <img src="{{ section.settings.short_review_author_icon | img_url:'medium'}}" alt="">
+          </div>
+          <div>
+            <img src="{{ section.settings.short_review_stars_icon | img_url:'medium'}}" alt="">
+            <p class="author_reviews_custom">{{ section.settings.review_content }}</p>
+
+            <div class="author_sub_content_two">
+              <p class="author_name_content">
+                <strong>{{ section.settings.review_author }}</strong>
+              </p>
+              <p class="client_icon_verify">
+                {% render 'verify_customer' %}
+                {{ section.settings.verify_customer }}
+              </p>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+    </div>
+    <div class="hero-flex-second hide_in_mobile">
+      <div class="hero-banner-second_image">
+        <img src="{{ section.settings.second_container_image | img_url:'master'}}" alt="">
+      </div>
+    </div>
+  </div>
+
+  <section class="hero_overlay_section">
+    <div class="page-width">
+      <div class="hero_overlay_flex">
+        {% for block in section.blocks %}
+          {% if block.type == 'logo-slider' %}
+            {% render 'logo-slider-banner', block: block %}
+          {% endif %}
+        {% endfor %}
+
+        <!--
+          {% for block in section.blocks %}
+            {% if block.type == 'List_Items_one' %}
+              <div class="hero_overlay_flex_container">
+                <h2>{{ block.settings.list_content_heading }}</h2>
+                <p>{{ block.settings.list_content_subheading }}</p>
+              </div>
+            {% endif %}
+          {% endfor %}
+        -->
+      </div>
+    </div>
+  </section>
+</section>
+
+{% style %}
+       body.landing-page {
+        background:#f2f9f3 !important;
+      }
+        .hero-banner-two {
+          background: linear-gradient(to bottom,  #F2F9F3 0%, #C5DBC8 100%);
+          position: relative;
+          height:900px;
+      }
+      .hero-flex-container {
+          display: flex;
+          gap: 20px;
+      background: #F2F9F3;
+      }
+      .hero-flex-first {
+          max-width: 50%;
+          width: 100%;
+          padding: 50px 0px 0px 127px;
+          display: flex;
+          flex-direction: column;
+          gap: 29px;
+      }
+      .short_review_container {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+      }
+      .short_review_container p {
+          font-family: "Brother1816 Printed";
+          font-size: 16px;
+          font-weight: 350;
+          line-height: 20px;
+          text-align: left;
+          margin: 0px;
+      }
+      .hero-flex-second {
+          max-width: 50%;
+          width: 100%;
+      }
+      .hero-flex-first h1 {
+          font-family: "Brother1816 Printed Bold";
+          font-size: 45px;
+          font-weight: 700;
+          line-height: 54px;
+          letter-spacing: -0.02em;
+          text-align: left;
+          margin: 0px;
+
+          color: #1f6223;
+      }
+      .hero-flex-first .hero-para-one {
+          font-family: "Brother1816 Printed";
+          font-size: 18px;
+          font-weight: 350;
+          line-height: 25.2px;
+          text-align: left;
+          color: #000;
+          margin: 0px;
+      }
+      .hero_first_list {
+          display: flex;
+          align-items: center;
+          gap: 28px;
+      }
+      .list_content_container {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+      }
+      .list_content_container p {
+          font-family: "Brother1816 Printed Bold";
+          margin: 0px;
+          font-size: 15px;
+          font-weight: 700;
+          line-height: 21.6px;
+          text-align: left;
+      }
+      .buttons_container .btn-secondary {
+          width: 100%;
+          max-width: 282px;
+          height: 60px;
+          padding: 18px 31px 18px 31px;
+          gap: 12px;
+          border-radius: 100px;
+          justify-content: center;
+          display: flex;
+          align-items: center;
+          background: #f87212;
+          font-family: "Brother1816 Printed Bold";
+          font-size: 22px;
+          font-weight: 700;
+          text-transform: uppercase;
+          line-height: 22px;
+          text-align: center;
+          color: #ffffff;
+          text-decoration: none;
+      }
+      .review-container {
+          display: flex;
+          align-items: center;
+          gap: 20px;
+      }
+    .review-container  .author_reviews_custom {
+          font-family: "Brother1816 Printed";
+          font-size: 16px;
+          font-weight: 350;
+          line-height: 22.4px;
+          text-align: left;
+          margin: 0;
+          margin-bottom: 12px;
+      font-weight:600;
+      }
+     .review-container .author_sub_content_two {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+      }
+      .review-container .author_name_content {
+          font-family: "Brother1816 Printed Bold";
+          font-size: 16px;
+          font-weight: 500;
+          line-height: 22.4px;
+          text-align: left;
+          margin: 0;
+      }
+      .review-container .client_icon_verify {
+          display: flex;
+          align-items: center;
+          gap: 5px;
+          font-family: "Brother1816 Printed Bold";
+          font-size: 12px;
+          font-weight: 500;
+          line-height: 19.6px;
+          text-align: left;
+          margin: 0;
+      }
+      .show_in_mobile {
+          display: none;
+      }
+      .hero-banner-second_image img {
+          width: 100%;
+      }
+
+      .hero_overlay_section {
+          background-size: cover;
+          background-repeat: no-repeat;
+          background-image: url("{{ section.settings.hero_overlay_image | img_url: 'master' }}");
+          padding: 96px 0px 60px 0;
+          background-position: center;
+          position: relative;
+  top: -175px;
+
+      }
+      .hero_overlay_flex {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+      }
+      .hero_overlay_flex_container {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 10px;
+      }
+      .hero_overlay_flex_container h2 {
+          font-family: "Brother1816 Printed Bold";
+          font-size: 60px;
+          font-weight: 700;
+          line-height: 84px;
+          text-align: left;
+          color: #1f6223;
+          margin: 0;
+      }
+      .hero_overlay_flex_container p {
+          font-family: "Brother1816 Printed Bold";
+          font-size: 20px;
+          font-weight: 500;
+          line-height: 24px;
+          text-align: center;
+          color: #000;
+          margin: 0;
+      }
+      .hero-banner-second_image {
+          position: relative;
+          padding:50px 0;
+          z-index: 2;
+      }
+    .short_review_container img{
+          height: 16px;
+    }
+        .author_icon_position img {
+          width: 90px;
+          height: 90px;
+          max-width:90px;
+      }
+
+
+      @media (max-width: 1500px) {
+
+  .hero_overlay_section {top: -100px;}}
+
+      @media (max-width: 600px) {
+
+
+  .buttons_container {margin-top:20px;}
+
+  .hero-banner-two {height:auto;}
+          .hero-flex-container {
+              gap: 20px;
+              flex-direction: column;
+          }
+          .hero-flex-first {
+              max-width: 100%;
+
+              padding: 10px 20px 20px 20px;
+              flex-direction: column;
+              gap: 10px;
+          }
+          .short_review_container p {
+              font-size: 11px;
+              line-height: 20px;
+              margin: 0px;
+          }
+          .short_review_container {
+              display: flex;
+              align-items: center;
+              gap: 4px;
+          }
+          .hero-banner-second_image {
+              bottom: unset;
+              position: unset;
+            padding:0;
+          }
+          .short_review_container img {
+              height: 13px;
+          }
+          .hero-flex-first h1 {
+              font-size: 24px;
+              line-height: 28.8px;
+          }
+          .hero-flex-first .hero-para-one {
+              font-size: 14px;
+              line-height: 19.6px;
+          }
+          .hero_first_list {
+              gap: 20px;
+              justify-content: center;
+          }
+          .list_content_container {
+              gap: 10px;
+              flex-direction: column;
+              justify-content: center;
+          }
+          .list_content_container p {
+              font-size: 16px;
+              line-height: 19.2px;
+              text-align: center;
+          }
+
+          .buttons_container .btn-secondary {
+              max-width: 100%;
+              height: 48px;
+              padding: 18px 31px 18px 31px;
+              gap: 12px;
+              font-size: 18px;
+              line-height: 18px;
+              text-align: center;
+          }
+          .review-container {
+              align-items: center;
+              gap: 12px;
+          }
+        .review-container  .author_name_content {
+              font-size: 14px;
+              line-height: 19.6px;
+          }
+          .hide_in_mobile {
+              display: none;
+          }
+          .show_in_mobile {
+              display: block;
+          }
+          .hero-banner-second_image img {
+              width: 100%;
+          }
+          .author_icon_position img {
+              width: 56px;
+              height: 56px;
+          }
+       .review-container   .author_reviews_custom {
+              margin-bottom: 8px;
+
+              font-size: 14px;
+              line-height: 19.6px;
+          }
+          .hero-banner-second_image {
+              bottom: unset;
+              position: unset;
+          }
+          .hero_overlay_section {
+  background-color:#F2F9F3;
+            top:0;
+              padding: 45px 0px 45px 0;
+              background-position: top;
+              position: relative;
+              top: unset;
+              background-image: url("{{ section.settings.hero_overlay_image_mobile | img_url: 'master' }}");
+          }
+          .hero_overlay_flex {
+              align-items: unset;
+              justify-content: space-evenly;
+              flex-direction: column;
+              gap: 20px;
+          }
+          .hero_overlay_flex_container {
+              flex-direction: row;
+              justify-content: space-between;
+              align-items: center;
+              width: 100%;
+          }
+          .hero_overlay_flex_container h2 {
+              font-size: 25px;
+
+              line-height: 46.2px;
+              text-align: left;
+
+              width: 100%;
+          }
+          .hero_overlay_flex_container p {
+              font-size: 18px;
+              width: 100%;
+              text-align: left;
+          }
+
+          .hero-banner-second_image img {
+              width: 70%;
+              margin: auto;
+          }
+        .hero-banner-second_image.show_in_mobile{
+              order: 3;
+          text-align:center;
+        }
+        .hero-banner-two .short_review_container{
+          order: 1;
+        }
+        .hero-flex-first h1{
+          order: 2;
+          font-size: 26px;
+          text-align:center;
+        line-height: 24.8px;
+        }
+      .hero-flex-first .hero-para-one {
+          order: 4;
+          font-size: 16px;
+          line-height: 16.6px;
+         text-align:center;
+        }
+            .review-container .author_name_content {
+        font-size: 12px;
+        line-height: 19.6px;
+    }
+        .hero-banner-two .buttons_container{
+          order: 5;
+          margin: 10px 0;
+        }
+        .hero-banner-two .hero_first_list{
+          order: 6;
+        }
+        .review-container .author_reviews_custom {
+        margin-bottom: 3px;
+        font-size: 12px;
+        line-height: 14.6px;
+          font-weight:300;
+    }
+        .hero-banner-two .review-container{
+          order: 7;
+                  margin-top: 10px;
+        }
+        .icon-grid-marquee {
+            padding: 6px 0 !important;
+        }
+        .icon-text-item h3 {
+          font-size: 12px !important;
+          line-height: 21.6px !important;
+        }
+        .short_review_container {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        justify-content: center;
+    }
+
+      }
+{% endstyle %}
+
+
+

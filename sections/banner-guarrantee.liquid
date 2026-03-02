@@ -1,0 +1,130 @@
+{% schema %}
+{
+  "name": "Gurented Container",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image_mobile",
+      "label": "Background Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "heading_image",
+      "label": "Heading Image"
+    },
+    {
+      "type": "text",
+      "id": "subHeading_content",
+      "label": "Heading Content",
+      "default": "Your subcontent goes here."
+    },
+    {
+      "type": "richtext",
+      "id": "sub_content",
+      "label": "Sub Content",
+
+    }
+  ],
+  "presets": [
+    {
+      "name": "Gurented Container",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="gurented-container">
+  <div class="page-width">
+    <div class="gurented-content">
+      <div>
+        <img class="heading-image" src="{{ section.settings.heading_image | img_url: 'large' }}" alt="Heading Image">
+      </div>
+      <div>
+        <h1 class="">{{ section.settings.subHeading_content }}</h1>
+        <p class="sub-content">{{ section.settings.sub_content }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% style %}
+        .gurented-container {
+          background-size: cover;
+          background-position: center;
+          padding: 79px 0 84px 0;
+          text-align: center;
+          background-image: url("{{ section.settings.background_image | img_url: 'master' }}");
+
+        }
+            .gurented-content{
+              display:flex;
+            align-items:center;
+            gap:54px;
+              max-width: 1000px;
+              margin:auto;
+            }
+      .gurented-content h1{
+            font-family: "Brother1816 Printed Bold";
+      font-size: 40px;
+      font-weight: 700;
+      line-height: 48px;
+      text-align: left;
+    margin:0;
+        color:#fff;
+            margin-bottom: 20px;
+      }
+
+
+        .gurented-content p {
+            font-family: "Brother1816 Printed";
+      font-size: 20px;
+      font-weight: 400;
+      line-height: 28px;
+      text-align: left;
+    margin:0;
+        color:#fff;
+    margin-bottom: 5px;
+        }
+            @media(max-width: 600px){
+         .gurented-container {
+           padding:40px 0;
+           background-image: url("{{ section.settings.background_image_mobile | img_url: 'master' }}");
+
+        }
+      .gurented-content {
+        flex-direction: column;
+        align-items: center;
+        gap: 26px;
+    }
+              .gurented-content p {
+      font-family: "Brother1816 Printed";
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 22.6px;
+      text-align: center;
+      margin: 0;
+      color: #fff;
+    margin-bottom: 5px;
+  }
+              .heading-image {
+      width: 160px;
+      height: 160px;
+  }
+              .gurented-content h1 {
+      font-family: "Brother1816 Printed Bold";
+      font-size: 26px;
+      font-weight: 700;
+      line-height: 28.8px;
+      text-align: center;
+      margin: 0;
+      color: #fff;
+      margin-bottom: 20px;
+  }
+            }
+{% endstyle %}
