@@ -183,19 +183,17 @@
     row-gap: 10px;
     column-gap: 5px;
 }
-.but_box_main .flock_size_wrapper .flock_options .gt-prod-var-box-sub .flock_item{
-    padding: 10px;
+.but_box_main .flock_size_wrapper .flock_options .gt-prod-var-box-sub .flock_item{   
     height: 100%;
-    min-height: auto;
-    border-radius: 14px;
-}
-.but_box_main .flock_size_wrapper .flock_options .gt-prod-var-box-sub .flock_item .gt-prod-var-radio {
-    display: none;
 }
 
-.but_box_main .flock_size_wrapper .flock_options .gt-prod-var-box-sub .flock_item:has(.gt-prod-var-radio input[type=radio]:checked) .flock_info *{
+.but_box_main .flock_size_wrapper .flock_options .gt-prod-var-box-sub .flock_item:has(input[type=radio]:checked) .flock_info *{
     color: #fff;
 }
+
+/* .but_box_main .flock_size_wrapper .flock_options .gt-prod-var-box-sub .flock_item:has(input[type=radio]:checked){
+    background-color: #1F6223;
+} */
 
 .but_box_main .flock_size_wrapper .flock_options .gt-prod-var-box-sub{
     border: 2px solid #1F6223;
@@ -207,24 +205,39 @@
     border-radius: 17px;
 }
 
-.but_box_main .flock_size_wrapper .flock_options .gt-prod-var-box-sub .flock_item:has(.gt-prod-var-radio input[type=radio]:checked){
-    background-color: #1F6223;
+.but_box_main .flock_size_wrapper {
+    margin-bottom: 20px;
 }
 
-.but_box_main .flock_size_wrapper .flock_options .gt-prod-var-box-sub .flock_item .gt-prod-var-radio input[type="radio"]{
+.but_box_main .flock_size_wrapper .flock_options .gt-prod-var-box-sub .flock_item  input[type="radio"]{
     position: unset !important;
     width: 16px !important;
     height: 16px !important;
-    display: flex !important;
+    display: none;
     margin: 0 auto;
     accent-color: black;
 }
+
+.but_box_main .flock_size_wrapper .flock_options .gt-prod-var-box-sub.active{
+ background-color: #1F6223;
+}
+
+.but_box_main .flock_size_wrapper .flock_options .gt-prod-var-box-sub.active .gt-prod-var-content .flock_info *{
+    color: #fff;
+}
+/* .gt-prod-var-box-sub:has(.v_radio:checked) {
+    background-color: #1F6223;
+} */
 
 .gt-prod-var-content{
     width: 100%;
     display: flex;
     align-items: center;
     gap: 10px;
+    padding: 10px;
+    height: 100%;
+    min-height: auto;
+    border-radius: 14px;
 }
 
 .gt-prod-var-content label{
@@ -246,9 +259,9 @@
 
 .gt-prod-var-content label .flock_info .f_size p{
     letter-spacing: 0px;
-    font-size: 16px;
+    font-size: 15px;
     text-align: center;
-    font-weight: 400;
+    font-weight: 600;
     font-family: Poppins, "sans-serif";
     color: #000;
     line-height: 1;
@@ -256,7 +269,7 @@
 
 .gt-prod-var-content label .flock_info .p_size p{
     letter-spacing: 0px;
-    font-size: 12px;
+    font-size: 13px;
     text-align: center;
     font-weight: 400;
     font-family: Poppins, "sans-serif";
@@ -268,14 +281,28 @@
     letter-spacing: 0px;
     font-size: 12px;
     text-align: center;
-    font-weight: 400;
+    font-weight: 500;
     font-family: Poppins, "sans-serif";
-    color: #1F6223;
+    color: #2ca95b;
     line-height: 1;
 }
 
 .gt-prod-var-content label .flock_info *{
     margin: 0;
+}
+
+/* Frquancy css */
+.bb_frequancy_wrapper .bb_frequancy_inner .bbfreq_radio_wrapper{
+    align-items: center !important;
+    display: flex;
+    position: relative;
+    padding: 10px 10px 10px;
+    transition: border-color 0.2s ease;
+    border: var(--skio-group-border-width, 1px) solid var(--skio-group-border-color, #ccc);
+    border-radius: var(--skio-group-border-radius, 0);
+    background-color: var(--skio-group-background-color, transparent);
+    color: var(--skio-group-text-color, #000);
+    box-shadow: 0px 4px 13px 0px #00000033;
 }
 @media (max-width: 768px) {
   .buy_box_image{
