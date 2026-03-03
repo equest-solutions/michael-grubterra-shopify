@@ -83,7 +83,11 @@
                                                         {% endif %}
                                                     {% endfor %}
                                                     data-comp-price="{{ variant.compare_at_price | money_without_trailing_zeros  }}" 
-                                                    {% unless variant.available %} {% endunless %}>  
+                                                    {% if variant.available %}
+                                                        data-instock="true"
+                                                    {% else %}
+                                                         data-instock="false"
+                                                    {% endif %} >  
                                                 <div class="gt-prod-var-content">
                                                     <label for="{{  variant.title |  downcase |  replace:  ' ','-' }}">
                                                         <div class="flock_info">
@@ -143,7 +147,11 @@
                                                     {% endfor %}
 
                                                     data-comp-price="{{ variant.compare_at_price | money_without_trailing_zeros  }}"                                                        
-                                                    {% unless variant.available %} {% endunless %}                                       
+                                                     {% if variant.available %}
+                                                        data-instock="true"
+                                                    {% else %}
+                                                         data-instock="false"
+                                                    {% endif %}                              
                                                     >  
                                                 <div class="gt-prod-var-content">
                                                     <label for="ss-{{  variant.title |  downcase |  replace:  ' ','-' }}">

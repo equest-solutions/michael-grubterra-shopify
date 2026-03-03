@@ -291,6 +291,14 @@
     line-height: 1;
 }
 
+.gt-prod-var-content label .flock_info .save-price{
+    position: relative;
+}
+
+.bb_frequancy_wrapper {
+    margin-top: 35px;
+}
+
 .gt-prod-var-content label .flock_info .save-price p{
     letter-spacing: 0px;
     font-size: 12px;

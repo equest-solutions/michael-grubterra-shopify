@@ -97,7 +97,13 @@ $(document).ready(function(){
       $('.bbfreq_radio_wrapper .subscribe-label .frq_info .ss-comp-price').text(com_p);
       $('.product-form__buttons .product-form__submit .product-price .price').text(sub_p);
       $('.product-form__buttons .product-form__submit .product-price .compare-price').text(com_p);
-      $('.bbfreq_radio_wrapper .frq_info .ot-price').text(s_price);      
+      $('.bbfreq_radio_wrapper .frq_info .ot-price').text(s_price);   
+      let instock = $(this).attr('data-instock');
+      if(instock == 'true'){
+        $('.product-form__submit').attr('disabled');
+      }else{
+        $('.product-form__submit').removeAttr('disabled');
+      }
   });
 
   $('.bb_frequancy_inner .bbfreq_radio_wrapper input').on('click',function(){
