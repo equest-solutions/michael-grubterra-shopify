@@ -9,6 +9,13 @@
  */
 {
   "sections": {
+    "pdp_buy_box_4HQ7Ez": {
+      "type": "pdp-buy-box",
+      "name": "PDP Buy Box",
+      "settings": {
+        "product": "peck-purity-chicken-dewormer"
+      }
+    },
     "zp-product-header-content": {
       "type": "product-header-content-zipifypages",
       "settings": {}
@@ -502,11 +509,6 @@
     },
     "zp-product-footer-content": {
       "type": "product-footer-content-zipifypages",
-      "settings": {}
-    },
-    "pdp_buy_box_4HQ7Ez": {
-      "type": "pdp-buy-box",
-      "name": "PDP Buy Box",
       "settings": {}
     }
   },
