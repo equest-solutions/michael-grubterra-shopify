@@ -32,8 +32,8 @@
                                                         {% assign price_diff = original_price | minus: selling_price %}
                                                         {% assign discount_percentage = price_diff | times: 100 | divided_by: original_price %}
                                                         data-discount="{{ discount_percentage }}%"  
-                                                        {% assign sav_price = variant.compare_at_price |  minus: variant.price  %}
-                                                        data-save-price="{{ sav_price |  money }}"
+                                                        {% assign sub_sav_price = variant.compare_at_price |  minus: selling_price  %}
+                                                        data-save-price="{{ sub_sav_price |  money }}"                                                        
                                                     {% endif %}
                                                 {% endfor %}
                                                 data-comp-price="{{ variant.compare_at_price | money_without_trailing_zeros  }}" 
@@ -41,7 +41,9 @@
                                                     data-instock="true"
                                                 {% else %}
                                                         data-instock="false"
-                                                {% endif %} >  
+                                                {% endif %}
+                                                data-quantity="{{ forloop_index_count1 }}"    
+                                                >  
                                             <div class="gt-prod-var-content">
                                                 <label for="{{  variant.title |  downcase |  replace:  ' ','-' }}">
                                                     <div class="flock_info">
@@ -105,7 +107,8 @@
                                                     data-instock="true"
                                                 {% else %}
                                                         data-instock="false"
-                                                {% endif %}                              
+                                                {% endif %}    
+                                                data-quantity="{{ forloop_index_count }}"                          
                                                 >  
                                             <div class="gt-prod-var-content">
                                                 <label for="ss-{{  variant.title |  downcase |  replace:  ' ','-' }}">
@@ -203,7 +206,7 @@
                     <form method="post" action="{{ routes.cart_url }}" id="buy_box_form" accept-charset="UTF-8" class="form" enctype="multipart/form-data" novalidate="novalidate" data-type="add-to-cart-form">
                         <input type="hidden" name="form_type" value="product">
                         <input type="hidden" name="utf8" value="✓">
-                        <input type="hidden" name="id" value="{{  current_variant.id }}" class="product-variant-id">
+                        <input type="hidden" name="id" value="{{  current_variant.id }}" class="product-variant-id" data-quantity="1">
                         <div class="product-form__buttons ">
                             <button id="ProductSubmitButton-template--19995845492930__main" type="submit" name="add" class="product-form__submit button button--full-width button--primary" aria-haspopup="dialog">
                                 {% if current_variant.available %} 
@@ -277,27 +280,35 @@ $(document).ready(function(){
 
   // On subscribe button chnage prices
   $('.flock_options .gt-prod-var-box-sub .flock_item input').on('click', function(){
-      let com_p = $(this).attr('data-comp-price');
-      let sub_p = $(this).attr('data-subs-price');
-      let save_p = $(this).attr('data-save-price');
-      let s_price = $(this).attr('data-v-price');
-      let original_price = $('.flock_options.subscribe_save .gt-prod-var-box-sub .flock_item input:checked').attr('data-original-price');
-      let v_id = $(this).attr('data-v-id');
-       $('#buy_box_form .product-variant-id').val(v_id);
-      $('.bbfreq_radio_wrapper .subscribe-label .frq_info .save-price').text(save_p);
-      $('.bbfreq_radio_wrapper .subscribe-label .frq_info .ss-price').text(sub_p);
-      $('.bbfreq_radio_wrapper .subscribe-label .frq_info .ss-comp-price').text(com_p);
-      $('.product-form__buttons .product-form__submit .product-price .price').text(sub_p);
-      $('.product-form__buttons .product-form__submit .product-price .compare-price').text(com_p);
-      $('.bbfreq_radio_wrapper .frq_info .ot-price').text(s_price);   
-      let instock = $(this).attr('data-instock');
-      if(instock == 'false'){
-        $('.product-form__submit').attr('disabled','disabled');
-        $('.product-form__submit span').text('Sold Out-');
-      }else{
-        $('.product-form__submit').removeAttr('disabled');
-        $('.product-form__submit span').text('Add to cart-');
-      }
+        let com_p = $(this).attr('data-comp-price');
+        let sub_p = $(this).attr('data-subs-price');
+        let save_p = $(this).attr('data-save-price');
+        let s_price = $(this).attr('data-v-price');
+        let original_price = $('.flock_options.subscribe_save .gt-prod-var-box-sub .flock_item input:checked').attr('data-original-price');
+        let v_id = $(this).attr('data-v-id');
+        let update_quanityt = $(this).attr('data-quantity');
+        $('#buy_box_form .product-variant-id').val(v_id);
+        $('#buy_box_form .product-variant-id').attr('data-quantity', update_quanityt);
+        $('.bbfreq_radio_wrapper .subscribe-label .frq_info .save-price').text(save_p);
+        $('.bbfreq_radio_wrapper .subscribe-label .frq_info .ss-price').text(sub_p);
+        $('.bbfreq_radio_wrapper .subscribe-label .frq_info .ss-comp-price').text(com_p);
+        let check_name = $('.bb_frequancy_inner .bbfreq_radio_wrapper input:checked').val();
+        if(check_name == 'onetime'){
+            $('.product-form__buttons .product-form__submit .product-price .price').text(s_price);
+        }else{
+            $('.product-form__buttons .product-form__submit .product-price .price').text(sub_p);
+        }     
+        $('.product-form__buttons .product-form__submit .product-price .compare-price').text(com_p);
+        $('.bbfreq_radio_wrapper .frq_info .ot-price').text(s_price);   
+        let instock = $(this).attr('data-instock');
+        if(instock == 'false'){
+            $('.product-form__submit').attr('disabled','disabled');
+            $('.product-form__submit span').text('Sold Out-');
+        }else{
+            $('.product-form__submit').removeAttr('disabled');
+            $('.product-form__submit span').text('Add to cart-');
+        }
+
   });
 
   $('.bb_frequancy_inner .bbfreq_radio_wrapper input').on('click',function(){
@@ -307,6 +318,7 @@ $(document).ready(function(){
       $('.flock_options.subscribe_save').hide();
       let ot_c_price = $('.flock_options.one_time .gt-prod-var-box-sub .flock_item input:checked').attr('data-comp-price');
       let ot_original_price = $('.flock_options.one_time .gt-prod-var-box-sub .flock_item input:checked').attr('data-v-price');
+      console.log('ot_original_price',ot_original_price);
       let ot_save_price = $('.flock_options.one_time .gt-prod-var-box-sub .flock_item input:checked').attr('data-save-price');
       let sub_original_price = $('.flock_options.one_time .gt-prod-var-box-sub .flock_item input:checked').attr('data-subs-price');
       $('.bbfreq_radio_wrapper .subscribe-label .frq_info .save-price').text(ot_save_price);
@@ -342,13 +354,13 @@ $(document).ready(function(){
     $this.find('.loader').addClass('show');
     var itemsArray = [];
     let var_id = $('.product-variant-id').val();
-
+    let qnty = $('.product-variant-id').attr('data-quantity');
     var fre_op =  $('.bb_frequancy_inner .bbfreq_radio_wrapper input:checked').val();
     if(fre_op == 'onetime'){
         var customItem = [
           {
             id: var_id,
-            quantity: 1
+            quantity: qnty
           }
         ];
       itemsArray.push(...customItem);
@@ -356,7 +368,7 @@ $(document).ready(function(){
         var selling_plan_id = $('#frquancy option:selected').val();     
         var customItem = [{
           id: var_id,
-          quantity: 1,
+          quantity: qnty,
           selling_plan: selling_plan_id
         }];
         itemsArray.push(...customItem);
@@ -450,7 +462,7 @@ $(document).ready(function(){
             "type": "textarea",
             "id": "subsbenifit",
             "label": "Subscription benifit Info",
-            "default": "<p>🎁Bonus First Order Discount, Then 10% Off For Life</p><p>🔄 No Contract – Easily Pause Or Cancel</p><p>🚚 Free Shipping Protection</p><p>📙 Free Health Guide & $10 Gift Card</p><p>📱 Free Egg Tracker App</p><p>🐔 Exclusive Access To New Products</p><p>💰 30 Day Money-Back Guarantee</p>"
+            "default": "<p>🎁 Bonus First Order Discount, Then 10% Off For Life</p><p>🔄 No Contract – Easily Pause Or Cancel</p><p>🚚 Free Shipping Protection</p><p>🐔 Exclusive Access To New Products</p><p>💰 30 Day Money-Back Guarantee</p>"
         }
     ],
     "presets": [
