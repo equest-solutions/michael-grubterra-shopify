@@ -53,7 +53,8 @@ $(document).ready(function(){
     slidesToShow: 1,
     slidesToScroll: 1,
     arrows: true,
-    fade: false,
+    fade: true,
+    cssEase: 'linear',
     asNavFor: '.js-nav-image-slider'
   });
 
@@ -72,9 +73,6 @@ $(document).ready(function(){
   let subs_price =$('.flock_options.subscribe_save .gt-prod-var-box-sub .flock_item input:checked').attr('data-subs-price');
   let sav_price = $('.flock_options.subscribe_save .gt-prod-var-box-sub .flock_item input:checked').attr('data-save-price');
   let original_price = $('.flock_options.subscribe_save .gt-prod-var-box-sub .flock_item input:checked').attr('data-original-price');
-  console.log('compare at price-', subs_com_price);
-  console.log('Subscription price-', subs_price);
-  console.log('Save price-', sav_price);
   $('.bbfreq_radio_wrapper .subscribe-label .frq_info .save-price').text(sav_price);
   $('.bbfreq_radio_wrapper .subscribe-label .frq_info .ss-price').text(subs_price);
   $('.bbfreq_radio_wrapper .subscribe-label .frq_info .ss-comp-price').text(subs_com_price);
@@ -99,10 +97,12 @@ $(document).ready(function(){
       $('.product-form__buttons .product-form__submit .product-price .compare-price').text(com_p);
       $('.bbfreq_radio_wrapper .frq_info .ot-price').text(s_price);   
       let instock = $(this).attr('data-instock');
-      if(instock == 'true'){
-        $('.product-form__submit').attr('disabled');
+      if(instock == 'false'){
+        $('.product-form__submit').attr('disabled','disabled');
+        $('.product-form__submit span').text('Sold Out-');
       }else{
         $('.product-form__submit').removeAttr('disabled');
+        $('.product-form__submit span').text('Add to cart-');
       }
   });
 
@@ -121,6 +121,8 @@ $(document).ready(function(){
       $('.product-form__buttons .product-form__submit .product-price .price').text(ot_original_price);
       $('.product-form__buttons .product-form__submit .product-price .compare-price').text(ot_c_price);
       $('.bbfreq_radio_wrapper .frq_info .ot-price').text(ot_original_price);
+      $('.flock_options.one_time .gt-prod-var-box-sub:first-child .flock_item input').trigger('click');
+      $('.flock_options.one_time .gt-prod-var-box-sub:first-child').addClass('active');
     }else{
       $('.flock_options.one_time').hide();
       $('.flock_options.subscribe_save').show();
@@ -134,13 +136,16 @@ $(document).ready(function(){
       $('.product-form__buttons .product-form__submit .product-price .price').text(ot_original_price);
       $('.product-form__buttons .product-form__submit .product-price .compare-price').text(ot_c_price);
       $('.bbfreq_radio_wrapper .frq_info .ot-price').text(ot_original_price);
+      $('.flock_options.subscribe_save .gt-prod-var-box-sub:first-child .flock_item input').trigger('click');
+      $('.flock_options.subscribe_save .gt-prod-var-box-sub:first-child').addClass('active');
     }
   });
 
   $('.product-form__submit').on('click',function(e){
     e.preventDefault();
     let $this = $(this);
-    $this.attr('disabled');
+    $this.attr('disabled','disabled');
+    $this.find('.loader').addClass('show');
     var itemsArray = [];
     let var_id = $('.product-variant-id').val();
 
@@ -160,7 +165,7 @@ $(document).ready(function(){
           quantity: 1,
           selling_plan: selling_plan_id
         }];
-        itemsArray.push(customItem);
+        itemsArray.push(...customItem);
     }
 
     $.ajax({
@@ -169,6 +174,23 @@ $(document).ready(function(){
         dataType: "JSON",
         data: { items: itemsArray },
         success: function (data) {
+           fetch(`${window.location.pathname}?sections=cart-drawer,cart-icon-bubble`)
+              .then(response => response.json())
+              .then((sections) => {
+
+                const cartDrawer = document.querySelector('cart-drawer');
+
+                cartDrawer.renderContents({
+                  id: data.id,
+                  sections: {
+                    'cart-drawer': sections['cart-drawer'],
+                    'cart-icon-bubble': sections['cart-icon-bubble']
+                  }
+                });
+
+            });
+
+          $this.find('.loader').removeClass('show');
           $this.removeAttr('disabled');
         },
           error: function (data) {
