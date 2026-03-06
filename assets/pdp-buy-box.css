@@ -220,6 +220,14 @@ span.ss-comp-price {
     width: 70%;
 }
 
+.frq_info .save-price{
+    display: none !important;
+}
+
+#buy_box_form{
+    width: 100%;
+}
+
 .frq_info {
     display: flex;
     align-items: flex-start;
@@ -431,5 +439,13 @@ body .product-form__buttons {
     }
     .frq_info p{
         font-size: 16px;
+    }
+
+    .but_box_main .flock_size_wrapper .flock_options .gt-prod-var-box-sub{
+        width: calc(49% - 5px);
+    }
+    .but_box_main .flock_size_wrapper .flock_options{
+        row-gap: 12px;
+        column-gap: 12px;
     }
 }

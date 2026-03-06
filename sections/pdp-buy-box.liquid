@@ -47,10 +47,20 @@
                                             <div class="gt-prod-var-content">
                                                 <label for="{{  variant.title |  downcase |  replace:  ' ','-' }}">
                                                     <div class="flock_info">
+                                                         {% assign words = variant.title | split: ' ' %}
+                                                        {% assign last_two = words | slice: -2, 2 | join: ' ' %}
+                                                        {% assign first_part = variant.title | remove: last_two %}
+
                                                         <div class="f_size">
-                                                            <p>{{  variant.title }}</p>
+                                                            <p>{{ first_part }}</p>
                                                         </div>
                                                         <div class="p_size">
+                                                            <p>{{ last_two }}</p>
+                                                         </div>
+                                                        {% comment %} <div class="f_size">
+                                                            <p>{{  variant.title | replace: 'Birds ', 'Birds<br>' }}</p>
+                                                        </div> {% endcomment %}
+                                                        {% comment %} <div class="p_size">
                                                             {% if forloop.first %}
                                                                 <p>1 Pouch</p>
                                                             {% elsif forloop.index == 2 %}
@@ -62,7 +72,7 @@
                                                             {% else %}
                                                                 <p>1 Pouch every 5 chicken</p>
                                                             {% endif %}
-                                                        </div>
+                                                        </div> {% endcomment %}
                                                         {% if variant.compare_at_price > variant.price %}
                                                             <div class="save-price">
                                                                 {% assign save_price = variant.compare_at_price  |  minus: variant.price  %}
@@ -113,8 +123,18 @@
                                             <div class="gt-prod-var-content">
                                                 <label for="ss-{{  variant.title |  downcase |  replace:  ' ','-' }}">
                                                     <div class="flock_info">
+                                                        {% assign words = variant.title | split: ' ' %}
+                                                        {% assign last_two = words | slice: -2, 2 | join: ' ' %}
+                                                        {% assign first_part = variant.title | remove: last_two %}
+
                                                         <div class="f_size">
-                                                            <p>{{  variant.title }}</p>
+                                                            <p>{{ first_part }}</p>
+                                                        </div>
+                                                        <div class="p_size">
+                                                            <p>{{ last_two }}</p>
+                                                         </div>
+                                                        {% comment %} <div class="f_size">
+                                                             <p>{{  variant.title | replace: 'Birds ', 'Birds<br>' }}</p>
                                                         </div>
                                                         <div class="p_size">
                                                             {% if forloop.first %}
@@ -128,7 +148,7 @@
                                                             {% else %}
                                                                 <p>1 Pouch every 5 chicken</p>
                                                             {% endif %}
-                                                        </div>
+                                                        </div> {% endcomment %}
                                                         {% for allocation in variant.selling_plan_allocations %}
                                                             {% if forloop_index_count == forloop.index %}
                                                                 
@@ -286,9 +306,9 @@ $(document).ready(function(){
         let s_price = $(this).attr('data-v-price');
         let original_price = $('.flock_options.subscribe_save .gt-prod-var-box-sub .flock_item input:checked').attr('data-original-price');
         let v_id = $(this).attr('data-v-id');
-        let update_quanityt = $(this).attr('data-quantity');
+        //let update_quanityt = $(this).attr('data-quantity');
         $('#buy_box_form .product-variant-id').val(v_id);
-        $('#buy_box_form .product-variant-id').attr('data-quantity', update_quanityt);
+        //$('#buy_box_form .product-variant-id').attr('data-quantity', update_quanityt);
         $('.bbfreq_radio_wrapper .subscribe-label .frq_info .save-price').text(save_p);
         $('.bbfreq_radio_wrapper .subscribe-label .frq_info .ss-price').text(sub_p);
         $('.bbfreq_radio_wrapper .subscribe-label .frq_info .ss-comp-price').text(com_p);
@@ -354,13 +374,13 @@ $(document).ready(function(){
     $this.find('.loader').addClass('show');
     var itemsArray = [];
     let var_id = $('.product-variant-id').val();
-    let qnty = $('.product-variant-id').attr('data-quantity');
+    //let qnty = $('.product-variant-id').attr('data-quantity');
     var fre_op =  $('.bb_frequancy_inner .bbfreq_radio_wrapper input:checked').val();
     if(fre_op == 'onetime'){
         var customItem = [
           {
             id: var_id,
-            quantity: qnty
+            quantity: 1
           }
         ];
       itemsArray.push(...customItem);
@@ -368,7 +388,7 @@ $(document).ready(function(){
         var selling_plan_id = $('#frquancy option:selected').val();     
         var customItem = [{
           id: var_id,
-          quantity: qnty,
+          quantity: 1,
           selling_plan: selling_plan_id
         }];
         itemsArray.push(...customItem);
@@ -407,6 +427,16 @@ $(document).ready(function(){
 });
 
 </script>
+ <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const sectionToMove = document.querySelector('#buy_box_form');
+        const targetSection = document.querySelector('[data-extra-section="add-on"]');
+
+        if (sectionToMove && targetSection) {
+            targetSection.after(sectionToMove);
+        }
+    });
+</script> 
 {% schema %}
 {
     "name": "PDP Buy Box",
