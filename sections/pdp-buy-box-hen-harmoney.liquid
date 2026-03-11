@@ -1,0 +1,431 @@
+{{ 'pdp-buy-box-hen-harmoney.css' |  asset_url |  stylesheet_tag  }}
+
+<style>
+    #buy_box_form #appstle_subscription_widget0{
+        display: none;
+    }
+    #buy_box_form .appstle_subscription_final_price,
+    #buy_box_form .appstle_subscription_save{
+        display: none;
+    }
+    
+</style>
+<section class="new_pdp_buy_box">
+    <div class="buy_box_wrapper">
+        {% assign selected_product = all_products['hen-harmony-the-daily-all-in-one-supplement-for-flock-resilience-test-product'] %}
+        {%- assign current_variant = selected_product.selected_or_first_available_variant -%}
+        <div class="buy_box_innerwrapper">
+            <div class="buy_box_content">
+                <div class="bb_content_inner">                        
+                    <div class="but_box_main">
+                        <div class="bb_title">
+                            <h2>1. How many chickens do you have?</h2>
+                        </div>                            
+                         <div class="flock_size_wrapper">
+                            {% for option in selected_product.options_with_values  %}                               
+                                {% if option.name == 'Chicken Size' %}
+                                    <div class="flock_options">                               
+                                        {% for value in option.values %}                     
+                                            {% assign forloop_index_count1 = forloop.index %}
+                                            <div class="gt-prod-var-box-sub {% if forloop.first %}active{% endif %}">
+                                                <div class="flock_item">
+                                                    <input 
+                                                    type="radio"
+                                                    class="v_radio"
+                                                    name="{{ option.name | replace: ' ','-' |  downcase }}"
+                                                    id="{{ value | downcase | replace: ' ','-' }}"
+                                                    value="{{ value }}"
+                                                    {% if forloop.first %}checked{% endif %}
+                                                    >
+
+                                                    <div class="gt-prod-var-content">
+                                                    <label for="{{ value | downcase | replace: ' ','-' }}">
+                                                        <div class="flock_info">
+                                                        <div class="f_size">
+                                                            <p>{{ value }}</p>
+                                                        </div>
+                                                        </div>
+                                                    </label>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>             
+                        <div class="bb_title">
+                            <h2>2. Select Your Flock Size</h2>
+                        </div>       
+                          <div class="flock_size_wrapper bag_size">
+                            {% for option in selected_product.options_with_values  %}    
+                                {% if option.name == 'Flock Size' %}
+                                     <div class="flock_options">                               
+                                        {% for value in option.values %}                     
+                                            {% assign forloop_index_count1 = forloop.index %}
+                                            <div class="gt-prod-var-box-sub {% if forloop.first %}active{% endif %}">
+                                                <div class="flock_item">
+                                                    <input 
+                                                    type="radio"
+                                                    class="v_radio"
+                                                    name="{{ option.name | replace: ' ','-' |  downcase }}"
+                                                    id="{{ value | downcase | replace: ' ','-' }}"
+                                                    value="{{ value }}"
+                                                    {% if forloop.first %}checked{% endif %}
+                                                    >
+
+                                                    <div class="gt-prod-var-content">
+                                                    <label for="{{ value | downcase | replace: ' ','-' }}">
+                                                        <div class="flock_info">
+                                                        <div class="f_size">
+                                                            <p>{{ value }}</p>
+                                                        </div>
+                                                        </div>
+                                                    </label>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>            
+                        <select class="select-variant"> 
+                            {% for variant in selected_product.variants %}
+                                <option value="{{ variant.id }}" {% if forloop.first %}selected="selected"{% endif %}>{{ variant.title }}</option>
+                            {% endfor %}
+                        </select>
+                        
+                        <div class="bb_title">
+                            <h2>2. Choose your frequency</h2>
+                        </div>
+                        <div class="bb_frequancy_wrapper">
+                            <div class="bb_frequancy_inner">
+                                <div class="bbfreq_radio_wrapper">
+                                    <div class="subs_label_inner">
+                                        <img class="best_val_img" width="21" height="21" src="//cdn.shopify.com/s/files/1/0046/3716/3633/files/chicken-img.webp?v=1772692433">  
+                                    <span>Best Value</span>
+                                    </div>
+                                    <input type="radio" id="subcribe" name="frequancy-radio" checked="checked" value="subscribe">
+                                    <label for="subcribe" class="subscribe-label">
+                                        <div class="frq_info">
+                                            <p>Subscribe & save 20%                                                    
+                                                <div class="save-price">Save $6.56</div>
+                                            </p>
+                                            <span class="ss-price">{{ current_variant.price |  money_without_trailing_zeros }}</span>
+                                            <span class="ss-comp-price">{{ current_variant.compare_at_price |  money_without_trailing_zeros }}</span>
+
+                                        </div>
+                                        <div class="frequancy_details">
+                                            <select name="select_frequancy" id="frquancy">
+                                                    {% for group in selected_product.selling_plan_groups %}
+                                                    {% for plan in group.selling_plans %}
+                                                        {% assign subloop = forloop.index %}
+                                                            <option value="{{ plan.id }}" {% if subloop == 1 %} selected="selected"{% endif %}>
+                                                                {{ plan.name }}
+                                                            </option>
+                                                    {% endfor %}
+                                                {% endfor %}
+                                            </select>
+                                            {% if section.settings.subsbenifit != blank %}
+                                                <div class="ss_info_wrapper">
+                                                    {{ section.settings.subsbenifit  }}
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                    </label>
+                                </div>
+                                <div class="bbfreq_radio_wrapper">
+                                    <input type="radio" id="one-time" name="frequancy-radio" value="onetime">
+                                    <label for="one-time" class="one-time-label">
+                                        <div class="frq_info">
+                                            <p>One Time Purchase</p>
+                                            <span class="ot-price">{{ current_variant.price |  money_without_trailing_zeros }}</span>
+                                        </div>
+                                    </label>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div> 
+                    <form method="post" action="{{ routes.cart_url }}" id="buy_box_form" accept-charset="UTF-8" class="form" enctype="multipart/form-data" novalidate="novalidate" data-type="add-to-cart-form">
+                        <input type="hidden" name="form_type" value="product">
+                        <input type="hidden" name="utf8" value="✓">
+                        <input type="hidden" name="id" value="{{  current_variant.id }}" class="product-variant-id" data-quantity="1">
+                        <div class="product-form__buttons ">
+                            <button id="ProductSubmitButton-template--19995845492930__main" type="submit" name="add" class="product-form__submit button button--full-width button--primary" aria-haspopup="dialog">
+                                {% if current_variant.available %} 
+                                    <span>Add to cart- </span>
+                                            {% else %}
+                                    <span>Sold Out-</span>
+                                {% endif %}
+                                <div class="product-price">                                            
+                                    <div class="compare-price">{{ current_variant.compare_at_price |  money_without_trailing_zeros }}</div>                                                                                          
+                                    <div class="price">{{ current_variant.price |  money_without_trailing_zeros }}</div>                                                                                            
+                                </div> 
+                                <div class="loader">
+                                    <img src="//cdn.shopify.com/s/files/1/0046/3716/3633/files/loader.gif?v=1772538563" alt="" width="" height="">
+                                </div>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.addEventListener("change", function(e) {
+        if (e.target.classList.contains("v_radio")) {
+
+            document.querySelectorAll(".gt-prod-var-box-sub")
+            .forEach(box => box.classList.remove("active"));
+
+            e.target.closest(".gt-prod-var-box-sub")
+            .classList.add("active");
+        }
+    });
+</script>
+
+<script>
+$(document).ready(function(){
+
+  $('.js-for-image-slider').slick({
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: true,
+    fade: true,
+    cssEase: 'linear',
+    asNavFor: '.js-nav-image-slider'
+  });
+
+  $('.js-nav-image-slider').slick({
+    slidesToShow: 7,
+    slidesToScroll: 1,
+    asNavFor: '.js-for-image-slider',
+    dots: false,
+    focusOnSelect: true,
+    arrows: true
+  });
+
+
+  // On load fill the check value
+  let subs_com_price =$('.flock_options.subscribe_save .gt-prod-var-box-sub .flock_item input:checked').attr('data-comp-price');
+  let subs_price =$('.flock_options.subscribe_save .gt-prod-var-box-sub .flock_item input:checked').attr('data-subs-price');
+  let sav_price = $('.flock_options.subscribe_save .gt-prod-var-box-sub .flock_item input:checked').attr('data-save-price');
+  let original_price = $('.flock_options.subscribe_save .gt-prod-var-box-sub .flock_item input:checked').attr('data-original-price');
+  $('.bbfreq_radio_wrapper .subscribe-label .frq_info .save-price').text(sav_price);
+  $('.bbfreq_radio_wrapper .subscribe-label .frq_info .ss-price').text(subs_price);
+  $('.bbfreq_radio_wrapper .subscribe-label .frq_info .ss-comp-price').text(subs_com_price);
+  $('.product-form__buttons .product-form__submit .product-price .price').text(subs_price);
+  $('.product-form__buttons .product-form__submit .product-price .compare-price').text(subs_com_price);
+  $('.bbfreq_radio_wrapper .frq_info .ot-price').text(original_price);
+
+
+  // On subscribe button chnage prices
+  $('.flock_options .gt-prod-var-box-sub .flock_item input').on('click', function(){
+        let com_p = $(this).attr('data-comp-price');
+        let sub_p = $(this).attr('data-subs-price');
+        let save_p = $(this).attr('data-save-price');
+        let s_price = $(this).attr('data-v-price');
+        let original_price = $('.flock_options.subscribe_save .gt-prod-var-box-sub .flock_item input:checked').attr('data-original-price');
+        let v_id = $(this).attr('data-v-id');
+        //let update_quanityt = $(this).attr('data-quantity');
+        $('#buy_box_form .product-variant-id').val(v_id);
+        //$('#buy_box_form .product-variant-id').attr('data-quantity', update_quanityt);
+        $('.bbfreq_radio_wrapper .subscribe-label .frq_info .save-price').text(save_p);
+        $('.bbfreq_radio_wrapper .subscribe-label .frq_info .ss-price').text(sub_p);
+        $('.bbfreq_radio_wrapper .subscribe-label .frq_info .ss-comp-price').text(com_p);
+        let check_name = $('.bb_frequancy_inner .bbfreq_radio_wrapper input:checked').val();
+        if(check_name == 'onetime'){
+            $('.product-form__buttons .product-form__submit .product-price .price').text(s_price);
+        }else{
+            $('.product-form__buttons .product-form__submit .product-price .price').text(sub_p);
+        }     
+        $('.product-form__buttons .product-form__submit .product-price .compare-price').text(com_p);
+        $('.bbfreq_radio_wrapper .frq_info .ot-price').text(s_price);   
+        let instock = $(this).attr('data-instock');
+        if(instock == 'false'){
+            $('.product-form__submit').attr('disabled','disabled');
+            $('.product-form__submit span').text('Sold Out-');
+        }else{
+            $('.product-form__submit').removeAttr('disabled');
+            $('.product-form__submit span').text('Add to cart-');
+        }
+
+  });
+
+  $('.bb_frequancy_inner .bbfreq_radio_wrapper input').on('click',function(){
+    let check_name  = $(this).val();
+    if(check_name == 'onetime'){
+      $('.flock_options.one_time').show();
+      $('.flock_options.subscribe_save').hide();
+      let ot_c_price = $('.flock_options.one_time .gt-prod-var-box-sub .flock_item input:checked').attr('data-comp-price');
+      let ot_original_price = $('.flock_options.one_time .gt-prod-var-box-sub .flock_item input:checked').attr('data-v-price');
+      console.log('ot_original_price',ot_original_price);
+      let ot_save_price = $('.flock_options.one_time .gt-prod-var-box-sub .flock_item input:checked').attr('data-save-price');
+      let sub_original_price = $('.flock_options.one_time .gt-prod-var-box-sub .flock_item input:checked').attr('data-subs-price');
+      $('.bbfreq_radio_wrapper .subscribe-label .frq_info .save-price').text(ot_save_price);
+      $('.bbfreq_radio_wrapper .subscribe-label .frq_info .ss-price').text(sub_original_price);
+      $('.bbfreq_radio_wrapper .subscribe-label .frq_info .ss-comp-price').text(ot_c_price);
+      $('.product-form__buttons .product-form__submit .product-price .price').text(ot_original_price);
+      $('.product-form__buttons .product-form__submit .product-price .compare-price').text(ot_c_price);
+      $('.bbfreq_radio_wrapper .frq_info .ot-price').text(ot_original_price);
+      $('.flock_options.one_time .gt-prod-var-box-sub:first-child .flock_item input').trigger('click');
+      $('.flock_options.one_time .gt-prod-var-box-sub:first-child').addClass('active');
+    }else{
+      $('.flock_options.one_time').hide();
+      $('.flock_options.subscribe_save').show();
+       let ot_c_price = $('.flock_options.subscribe_save .gt-prod-var-box-sub .flock_item input:checked').attr('data-comp-price');
+      let ot_original_price = $('.flock_options.subscribe_save .gt-prod-var-box-sub .flock_item input:checked').attr('data-v-price');
+      let ot_save_price = $('.flock_options.subscribe_save .gt-prod-var-box-sub .flock_item input:checked').attr('data-save-price');
+      let sub_original_price = $('.flock_options.subscribe_save .gt-prod-var-box-sub .flock_item input:checked').attr('data-subs-price');
+      $('.bbfreq_radio_wrapper .subscribe-label .frq_info .save-price').text(ot_save_price);
+      $('.bbfreq_radio_wrapper .subscribe-label .frq_info .ss-price').text(sub_original_price);
+      $('.bbfreq_radio_wrapper .subscribe-label .frq_info .ss-comp-price').text(ot_c_price);
+      $('.product-form__buttons .product-form__submit .product-price .price').text(ot_original_price);
+      $('.product-form__buttons .product-form__submit .product-price .compare-price').text(ot_c_price);
+      $('.bbfreq_radio_wrapper .frq_info .ot-price').text(ot_original_price);
+      $('.flock_options.subscribe_save .gt-prod-var-box-sub:first-child .flock_item input').trigger('click');
+      $('.flock_options.subscribe_save .gt-prod-var-box-sub:first-child').addClass('active');
+    }
+  });
+
+  $('.product-form__submit').on('click',function(e){
+    e.preventDefault();
+    let $this = $(this);
+    $this.attr('disabled','disabled');
+    $this.find('.loader').addClass('show');
+    var itemsArray = [];
+    let var_id = $('.product-variant-id').val();
+    //let qnty = $('.product-variant-id').attr('data-quantity');
+    var fre_op =  $('.bb_frequancy_inner .bbfreq_radio_wrapper input:checked').val();
+    if(fre_op == 'onetime'){
+        var customItem = [
+          {
+            id: var_id,
+            quantity: 1
+          }
+        ];
+      itemsArray.push(...customItem);
+    }else{
+        var selling_plan_id = $('#frquancy option:selected').val();     
+        var customItem = [{
+          id: var_id,
+          quantity: 1,
+          selling_plan: selling_plan_id
+        }];
+        itemsArray.push(...customItem);
+    }
+
+    $.ajax({
+        url: '/cart/add.js',
+        method: "POST",
+        dataType: "JSON",
+        data: { items: itemsArray },
+        success: function (data) {
+           fetch(`${window.location.pathname}?sections=cart-drawer,cart-icon-bubble`)
+              .then(response => response.json())
+              .then((sections) => {
+
+                const cartDrawer = document.querySelector('cart-drawer');
+
+                cartDrawer.renderContents({
+                  id: data.id,
+                  sections: {
+                    'cart-drawer': sections['cart-drawer'],
+                    'cart-icon-bubble': sections['cart-icon-bubble']
+                  }
+                });
+
+            });
+
+          $this.find('.loader').removeClass('show');
+          $this.removeAttr('disabled');
+        },
+          error: function (data) {
+        }
+    });
+
+  });
+});
+
+</script>
+ <script>
+    window.addEventListener("load", function () {
+        const sectionToMove = document.querySelector('#buy_box_form');
+        const targetSection = document.querySelector('[data-extra-section="add-on"]');
+
+        if (sectionToMove && targetSection) {
+            targetSection.after(sectionToMove);
+        }
+    });
+</script> 
+{% schema %}
+{
+    "name": "PDP Buy Box Hen harmoney",
+    "settings": [
+        {
+            "type": "product",
+            "id": "product",
+            "label": "product"
+        },
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Product Title",
+            "default": "Peck Purity Chicken Dewormer"
+        },
+        {
+            "type": "text",
+            "id": "limitedtitle",
+            "label": "Limited Text",
+            "default": "⚠️ Limited Time Discount!"
+        },
+        {
+            "type": "textarea",
+            "id": "past_bought",
+            "label": "Past Bought Text",
+            "default": "<p>🔥<strong>300+ bought</strong> in past month</p>"
+        },
+        {
+            "type": "text",
+            "id": "point1",
+            "label": "Point 1",
+            "default": "Supports Gut Health"
+        },
+        {
+            "type": "text",
+            "id": "point2",
+            "label": "Point 2",
+            "default": "Strength During Stress"
+        },
+        {
+            "type": "text",
+            "id": "point3",
+            "label": "Point 3",
+            "default": "Made In USA"
+        },
+        {
+            "type": "textarea",
+            "id": "description",
+            "label": "Prouct Description",
+            "default": "<p>Environmental stress, temperature swings, and daily laying demands place constant strain on your hens’ internal systems. HenHarmony™ supports hydration, digestive function, and gut balance to help your flock remain resilient and consistent through seasonal and environmental stress.</p>"
+        },
+        {
+            "type": "textarea",
+            "id": "subsbenifit",
+            "label": "Subscription benifit Info",
+            "default": "<p>🎁 Bonus First Order Discount, Then 10% Off For Life</p><p>🔄 No Contract – Easily Pause Or Cancel</p><p>🚚 Free Shipping Protection</p><p>🐔 Exclusive Access To New Products</p><p>💰 30 Day Money-Back Guarantee</p>"
+        }
+    ],
+    "presets": [
+        {
+        "name": "PDP Buy Box Hen harmoney"
+        }
+    ]
+}
+{% endschema %}
