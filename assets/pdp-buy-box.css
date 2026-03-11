@@ -205,6 +205,7 @@ span.ss-comp-price {
     display: flex;
     align-items: center;
     gap: 11px;
+    text-decoration: none !important;
 }
 
 #buy_box_form .product-price .compare-price {
