@@ -26,8 +26,8 @@
                                 {% if option.name == 'Chicken Size' %}
                                     <div class="flock_options">                               
                                         {% for value in option.values %}                     
-                                            {% assign forloop_index_count1 = forloop.index %}
-                                            <div class="gt-prod-var-box-sub {% if forloop.first %}active{% endif %}">
+                                            {% assign forloop_index_count = forloop.index %}
+                                            <div class="gt-prod-var-box-sub {% if forloop_index_count == 1 %}active{% endif %}">
                                                 <div class="flock_item">
                                                     <input 
                                                     type="radio"
@@ -63,12 +63,12 @@
                                 {% if option.name == 'Flock Size' %}
                                      <div class="flock_options">                               
                                         {% for value in option.values %}                     
-                                            {% assign forloop_index_count1 = forloop.index %}
-                                            <div class="gt-prod-var-box-sub {% if forloop.first %}active{% endif %}">
+                                            {% assign forloop_index_count = forloop.index %}
+                                            <div class="gt-prod-var-box-sub {% if forloop_index_count == 1 %}active{% endif %}">
                                                 <div class="flock_item">
                                                     <input 
                                                     type="radio"
-                                                    class="v_radio"
+                                                    class="f_radio"
                                                     name="{{ option.name | replace: ' ','-' |  downcase }}"
                                                     id="{{ value | downcase | replace: ' ','-' }}"
                                                     value="{{ value }}"
@@ -76,13 +76,20 @@
                                                     >
 
                                                     <div class="gt-prod-var-content">
-                                                    <label for="{{ value | downcase | replace: ' ','-' }}">
-                                                        <div class="flock_info">
-                                                        <div class="f_size">
-                                                            <p>{{ value }}</p>
-                                                        </div>
-                                                        </div>
-                                                    </label>
+                                                        <label for="{{ value | downcase | replace: ' ','-' }}">
+                                                            <div class="flock_info">
+                                                                <div class="f_size">
+                                                                    <p>{{ value }}</p>
+                                                                </div>
+                                                                <div class="f_price">
+                                                                    <p class="save-price">$20.00</p>
+                                                                    <p class="price">$10.00</p>
+                                                                </div>
+                                                                <div class="save_price">
+                                                                    <p>Save <span>$10.00</span></p>
+                                                                </div>
+                                                            </div>
+                                                        </label>
                                                     </div>
 
                                                 </div>
@@ -179,11 +186,10 @@
 
 <script>
     document.addEventListener("change", function(e) {
-        if (e.target.classList.contains("v_radio")) {
-
-            document.querySelectorAll(".gt-prod-var-box-sub")
+       if (e.target.matches(".v_radio, .f_radio")) {
+            const parentWrapper = e.target.closest(".flock_options");
+            parentWrapper.querySelectorAll(".gt-prod-var-box-sub")
             .forEach(box => box.classList.remove("active"));
-
             e.target.closest(".gt-prod-var-box-sub")
             .classList.add("active");
         }

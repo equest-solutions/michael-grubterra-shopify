@@ -1,6 +1,8 @@
 
 /* bb Css start */
-
+.new_pdp_buy_box{
+        max-width: 600px;
+}
 .but_box_main .bb_title h2{
     margin: 0 0 20px 0;
     font-size: 16px;
@@ -33,9 +35,9 @@
 
 .but_box_main .flock_size_wrapper .flock_options .gt-prod-var-box-sub{
     border: 2px solid #1F6223;
-    width: calc(33% - 5px);
+    width: auto;
     position: relative;
-    padding: 0px;
+    padding: 0;
     height: auto;
     min-height: auto;
     border-radius:999px;
@@ -67,7 +69,7 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    padding: 10px;
+    padding: 0;
     height: 100%;
     min-height: auto;
     border-radius: 14px;
@@ -79,6 +81,7 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    padding: 10px 30px;
 }
 
 .gt-prod-var-content label .flock_info{
@@ -419,6 +422,46 @@ body .product-form__buttons {
     position: relative;
 }
 
+.flock_size_wrapper.bag_size{
+
+}
+
+.but_box_main .flock_size_wrapper.bag_size .flock_options .gt-prod-var-box-sub{
+    width: 100%;
+    border-radius: 13px;
+}
+
+/* .but_box_main .flock_size_wrapper.bag_size .flock_options .gt-prod-var-box-sub.active .gt-prod-var-content .flock_info * */
+
+.but_box_main .flock_size_wrapper.bag_size .flock_options .gt-prod-var-box-sub .gt-prod-var-content .flock_info .f_price{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.but_box_main .flock_size_wrapper.bag_size .flock_options .gt-prod-var-box-sub .gt-prod-var-content .flock_info .f_price .save-price{
+    font-size: 16px;
+    text-decoration: line-through;
+    line-height: 1;
+}
+
+.but_box_main .flock_size_wrapper.bag_size .flock_options .gt-prod-var-box-sub .gt-prod-var-content .flock_info .f_price .price{
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 1;
+}
+.but_box_main .flock_size_wrapper.bag_size .flock_options .gt-prod-var-box-sub .gt-prod-var-content .flock_info .save_price p{
+    line-height: 1;
+    font-size: 14px;
+    background-color: rgb(255 255 255 / 70%);
+    color: #000;
+    padding: 5px 10px;
+    border-radius: 12px;
+}
+
+.but_box_main .flock_size_wrapper.bag_size .flock_options .gt-prod-var-box-sub .gt-prod-var-content .flock_info .save_price p span{
+     color: #000;
+}
 @media (max-width: 768px) {  
     .gt-prod-var-content label .flock_info .f_size p{
         font-size: 12px;
@@ -443,7 +486,7 @@ body .product-form__buttons {
     }
 
     .but_box_main .flock_size_wrapper .flock_options .gt-prod-var-box-sub{
-        width: calc(49% - 5px);
+        width: auto;
     }
     .but_box_main .flock_size_wrapper .flock_options{
         row-gap: 12px;
