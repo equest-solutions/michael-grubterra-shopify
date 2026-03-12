@@ -1,8 +1,5 @@
 
 /* bb Css start */
-.new_pdp_buy_box{
-        max-width: 600px;
-}
 .but_box_main .bb_title h2{
     margin: 0 0 20px 0;
     font-size: 16px;
@@ -14,8 +11,9 @@
 .but_box_main .flock_size_wrapper .flock_options{
     display: flex;
     flex-wrap: wrap;
-    row-gap: 13px;
-    column-gap: 20px;
+    row-gap: 10px;
+    column-gap: 10px;
+    justify-content: space-between;
 }
 .but_box_main .flock_size_wrapper .flock_options .gt-prod-var-box-sub .flock_item{   
     height: 100%;
@@ -41,6 +39,7 @@
     height: auto;
     min-height: auto;
     border-radius:999px;
+    width: calc(100% / 5 - 10px);
 }
 
 .but_box_main .flock_size_wrapper {
@@ -81,19 +80,41 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    padding: 10px 30px;
+    padding: 17px 30px;
 }
 
+.flock_size_wrapper.chicken_size .gt-prod-var-content label{
+    padding: 10px 20px;
+}
 .gt-prod-var-content label .flock_info{
     display: flex;
     align-items: center;
     gap: 8px;
     width: 100%;
     justify-content: space-between;
-    flex-direction: column;
+    flex-direction: row;
 }
 
 .gt-prod-var-content label .flock_info .f_size p{
+    letter-spacing: 0px;
+    font-size: 15px;
+    text-align: center;
+    font-weight: 600;
+    font-family: Poppins, "sans-serif";
+    color: #000;
+    line-height: 1;
+}
+
+.flock_size_wrapper.chicken_size .gt-prod-var-content label .flock_info .f_size{
+    justify-content: center;
+    width: 100%;
+}
+
+.gt-prod-var-content label .flock_info .f_size{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 4px;
     letter-spacing: 0px;
     font-size: 15px;
     text-align: center;
@@ -117,9 +138,17 @@
     position: relative;
 }
 
+.info_wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
 .bb_frequancy_wrapper {
     margin-top: 35px;
 }
+
+
 
 .gt-prod-var-content label .flock_info .save-price p{
     letter-spacing: 0px;
@@ -221,7 +250,7 @@ span.ss-comp-price {
     letter-spacing: 0px;
     vertical-align: middle;
     margin: 0;
-    width: 70%;
+    width: 100%;
 }
 
 .frq_info .save-price{
@@ -238,7 +267,7 @@ span.ss-comp-price {
     width: 100%;
     gap: 8px;
     position: relative;
-    height: 35px;
+    height: 30px;
 }
 
 .bb_frequancy_wrapper .bb_frequancy_inner .bbfreq_radio_wrapper label {
@@ -275,6 +304,8 @@ span.ss-price, .save-price {
 .bb_frequancy_wrapper .bb_frequancy_inner .bbfreq_radio_wrapper {
     align-items: start !important;
     margin-bottom: 12px;
+    width: 100%;
+        border-radius: 12px;
 }
 
 .frequancy_details {
@@ -337,9 +368,11 @@ span.ss-price, .save-price {
     height: unset;
 }
 
-.bb_frequancy_wrapper .bb_frequancy_inner .bbfreq_radio_wrapper:has(.one-time-label) .frq_info p {.bb_frequancy_wrapper .bb_frequancy_inner .bbfreq_radio_wrapper: has(.one-time-label);line-height: 1;}
-
-span.ot-price {
+.bb_frequancy_wrapper .bb_frequancy_inner .bbfreq_radio_wrapper:has(.one-time-label) .frq_info p {
+    line-height: 1;
+}
+    
+.bb_frequancy_wrapper .bb_frequancy_inner .bbfreq_radio_wrapper:has(.one-time-label) span.ot-price {
     color: rgb(126, 126, 126) !important;
     flex-direction: column-reverse;
     display: flex !important;
@@ -363,14 +396,7 @@ span.ot-price {
 }
 .bb_frequancy_inner {
     display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-bottom: 12px;
-}
-
-.bb_frequancy_inner {
-    display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: 12px;
     margin-bottom: 12px;
 }
@@ -453,6 +479,13 @@ body .product-form__buttons {
 .but_box_main .flock_size_wrapper.bag_size .flock_options .gt-prod-var-box-sub .gt-prod-var-content .flock_info .save_price p{
     line-height: 1;
     font-size: 14px;
+    background-color: #3f9345;
+    color: #000;
+    padding: 5px 10px;
+    border-radius: 12px;
+}
+
+.but_box_main .flock_size_wrapper .flock_options .gt-prod-var-box-sub .flock_item:has(input[type=radio]:checked) .flock_info .save_price p{
     background-color: rgb(255 255 255 / 70%);
     color: #000;
     padding: 5px 10px;
@@ -463,7 +496,8 @@ body .product-form__buttons {
      color: #000;
 }
 @media (max-width: 768px) {  
-    .gt-prod-var-content label .flock_info .f_size p{
+    .gt-prod-var-content label .flock_info .f_size p,
+    .gt-prod-var-content label .flock_info .f_size span{
         font-size: 12px;
     }
     .gt-prod-var-content label .flock_info{
@@ -483,13 +517,15 @@ body .product-form__buttons {
     }
     .frq_info p{
         font-size: 16px;
+        display: block;
+        width: 100%;
     }
 
     .but_box_main .flock_size_wrapper .flock_options .gt-prod-var-box-sub{
         width: auto;
     }
     .but_box_main .flock_size_wrapper .flock_options{
-        row-gap: 12px;
-        column-gap: 12px;
+        row-gap: 8px;
+        column-gap: 8px;
     }
 }
