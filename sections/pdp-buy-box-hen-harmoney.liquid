@@ -338,20 +338,16 @@
 
 <script>
    
-   function filterFlockOptions(){
+    function filterFlockOptions(){
 
         let chicken = $('.chicken_size input:checked').val();
-
-        $('.bag_size .gt-prod-var-box-sub').hide();
-
+        $('.bag_size .flock_options:visible .gt-prod-var-box-sub').hide();
         let freqType = $('.bb_frequancy_inner input:checked').val();
-
         let radios;
-
         if(freqType == 'subscribe'){
-            radios = $('.flock_options.subscribe input');
+            radios = $('.bag_size .flock_options.subscribe input');
         }else{
-            radios = $('.flock_options.one_time input');
+            radios = $('.bag_size .flock_options.one_time input');
         }
 
         let firstVisible = null;
@@ -374,9 +370,7 @@
         if(firstVisible){
             $(firstVisible).prop('checked', true);
             $('.bag_size .gt-prod-var-box-sub').removeClass('active');
-            $(firstVisible)
-            .closest('.gt-prod-var-box-sub')
-            .addClass('active');
+            $(firstVisible).closest('.gt-prod-var-box-sub').addClass('active');
         }
     }
 
@@ -480,19 +474,24 @@
             }
         }
     }
-    $(document).ready(function(){
+window.addEventListener("load", function(){
+    setTimeout(function(){
+        // default state
+        $('.flock_options.one_time').hide();
+        $('.flock_options.subscribe').show();
+        console.log('FULL PAGE LOADED');
         filterFlockOptions();
         updateProductUI();
-        $('.f_radio').on('change', function(){
+        $(document).on('change', '.f_radio', function(){
             updateProductUI();
         });
 
-        $('.v_radio').on('change', function(){
+        $(document).on('change', '.v_radio', function(){
             filterFlockOptions();
             updateProductUI();
         });
                                     
-        $('.bb_frequancy_inner .bbfreq_radio_wrapper input').on('click',function(){
+        $(document).on('click', '.bb_frequancy_inner .bbfreq_radio_wrapper input', function(){
             let type = $(this).val();
 
             if(type == 'onetime'){
@@ -502,11 +501,10 @@
                 $('.flock_options.one_time').hide();
                 $('.flock_options.subscribe').show();
             }
-            
+            filterFlockOptions();
             updateVariant();
             updatePrice();
-            updateProductUI(); // important
-            filterFlockOptions();
+            updateProductUI(); // important            
         });
 
         $('.product-form__submit').on('click',function(e){
@@ -576,10 +574,11 @@
             });
 
         });
+    },200);
     });
 
 </script>
- {% comment %} <script>
+ <script>
     window.addEventListener("load", function () {
         const sectionToMove = document.querySelector('#buy_box_form');
         const targetSection = document.querySelector('[data-extra-section="add-on"]');
@@ -588,7 +587,7 @@
             targetSection.after(sectionToMove);
         }
     });
-</script>  {% endcomment %}
+</script>
 {% schema %}
 {
     "name": "PDP Buy Box Hen harmoney",
