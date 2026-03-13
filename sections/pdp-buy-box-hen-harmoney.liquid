@@ -61,151 +61,185 @@
                           <div class="flock_size_wrapper bag_size">
                             {% for option in selected_product.options_with_values  %}    
                                 {% if option.name == 'Flock Size' %}
-                                     <div class="flock_options one_time" style="display: none;">                               
-                                        {% for value in option.values %}                     
-                                            {% assign forloop_index_count = forloop.index %}
-                                            {% assign matched_variant = nil %}
-                                            {% for variant in selected_product.variants %}
-                                                {% if variant.option2 == value %}
-                                                    {% assign matched_variant = variant %}
-                                                {% endif %}
-                                            {% endfor %}
-                                            {% assign selling_plan = selected_product.selling_plan_groups.first.selling_plans[forloop.index0] %}
-                                            {% assign subscription_price = matched_variant.price %}
-                                             {% if selling_plan.price_adjustments.first.value_type == 'percentage' %}
-                                                {% assign discount = matched_variant.price | times: selling_plan.price_adjustments.first.value | divided_by: 100 %}
-                                                {% assign subscription_price = matched_variant.price | minus: discount %}
-                                            {% elsif selling_plan.price_adjustments.first.value_type == 'fixed_amount' %}
-                                                {% assign subscription_price = matched_variant.price | minus: selling_plan.price_adjustments.first.value %}
-                                            {% endif %}
-
-                                            <div class="gt-prod-var-box-sub {% if forloop_index_count == 1 %}active{% endif %}">
-                                                <div class="flock_item">
-                                                    <input 
-                                                    type="radio"
-                                                    class="f_radio"
-                                                    name="{{ option.name | replace: ' ','-' |  downcase }}-one"
-                                                    id="{{ value | downcase | replace: ' ','-' }}"
-                                                    value="{{ value }}"
-                                                    {% if forloop.first %}checked{% endif %}
-                                                    data-original-price="{{ matched_variant.price | money }}"   
-                                                    data-selling-price="{{ subscription_price | money }}"    
-                                                    {% if matched_variant.compare_at_price > subscription_price %}
-                                                        data-compareat-price="{{ matched_variant.compare_at_price | money }}"
-                                                    {% endif %}
-                                                    {% if matched_variant.available   %}
-                                                       data-instock="true" 
-                                                    {% else %}
-                                                        data-instock="false" 
-                                                    {% endif %}
-                                                    >
-
-                                                    <div class="gt-prod-var-content">
-                                                        <label for="{{ value | downcase | replace: ' ','-' }}">
-                                                            <div class="flock_info">
-                                                                <div class="info_wrap">
-                                                                    <div class="f_size">
-                                                                        <p>{{ value }}</p>
-                                                                    </div>
-                                                                    <div class="f_price">
-                                                                        {% if matched_variant.compare_at_price > matched_variant.price %}
-                                                                            <p class="save-price">{{ matched_variant.compare_at_price | money }}</p>
-                                                                        {% endif %}
-                                                                            <p class="price">{{ matched_variant.price | money }}</p>
-                                                                    </div>  
-                                                                </div>                                                              
-                                                                {% if matched_variant.compare_at_price > matched_variant.price %}
-                                                                    <div class="save_price">
-                                                                    <p>
-                                                                        Save 
-                                                                        <span>
-                                                                        {{ matched_variant.compare_at_price | minus: matched_variant.price | money }}
-                                                                        </span>
-                                                                    </p>
-                                                                    </div>
-                                                                {% endif %}
-                                                            </div>
-                                                        </label>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                        {% endfor %}
-                                    </div>
-                                     <div class="flock_options subscribe">                               
-                                        {% for value in option.values %}                     
-                                            {% assign forloop_index_count = forloop.index %}
-                                               {% assign matched_variant = nil %}
+                                     <div class="flock_options one_time" style="display: none;">     
+                                        {% assign chicken_values = selected_product.options_with_values[0].values %}
+                                        {% for chicken in chicken_values %}
+                                            {% for value in option.values %}       
+                                                {% assign forloop_index_count = forloop.index %}
                                                 {% for variant in selected_product.variants %}
-                                                    {% if variant.option2 == value %}
+                                                    {% if variant.option1 == chicken and variant.option2 == value %}
                                                         {% assign matched_variant = variant %}
+                                                        {% break %}
                                                     {% endif %}
                                                 {% endfor %}
-                                                {% assign selling_plan = selected_product.selling_plan_groups.first.selling_plans[forloop.index0] %}
-
-                                                {% assign subscription_price = matched_variant.price %}
-
-                                                {% if selling_plan.price_adjustments.first.value_type == 'percentage' %}
-                                                    {% assign discount = matched_variant.price | times: selling_plan.price_adjustments.first.value | divided_by: 100 %}
-                                                    {% assign subscription_price = matched_variant.price | minus: discount %}
-                                                {% elsif selling_plan.price_adjustments.first.value_type == 'fixed_amount' %}
-                                                    {% assign subscription_price = matched_variant.price | minus: selling_plan.price_adjustments.first.value %}
-                                                {% endif %}
-
-                                            <div class="gt-prod-var-box-sub {% if forloop_index_count == 1 %}active{% endif %}">
-                                                <div class="flock_item">
-                                                    <input 
-                                                    type="radio"
-                                                    class="f_radio"
-                                                    name="{{ option.name | replace: ' ','-' |  downcase }}-sub"
-                                                    id="ss-{{ value | downcase | replace: ' ','-' }}"
-                                                    value="{{ value }}"
-                                                    {% if forloop.first %}checked{% endif %}
-                                                    data-original-price="{{ matched_variant.price | money }}"   
-                                                    data-selling-price="{{ subscription_price | money }}"    
-                                                    {% if matched_variant.compare_at_price > subscription_price %}
-                                                        data-compareat-price="{{ matched_variant.compare_at_price | money }}"
-                                                    {% endif %}
-                                                    {% if matched_variant.available   %}
-                                                       data-instock="true" 
-                                                    {% else %}
+                                                <div class="gt-prod-var-box-sub {% if forloop_index_count == 1 %}active{% endif %}">
+                                                    <div class="flock_item">
+                                                        <input 
+                                                        type="radio"
+                                                        class="f_radio"
+                                                        name="{{ option.name | replace: ' ','-' |  downcase }}-one"
+                                                        id="{{ chicken | handle }}-{{ value | handle }}"
+                                                        value="{{ value }}"        
+                                                        data-original-price="{{ matched_variant.price | money }}"
+                                                        {% if matched_variant.compare_at_price > matched_variant.price %}
+                                                            data-compareat-price="{{ matched_variant.compare_at_price | money }}"
+                                                        {% endif %}
+                                                        {% if chicken == chicken_values.first and forloop.first %}checked{% endif %}                                            
+                                                        {% if matched_variant.available   %}
+                                                        data-instock="true" 
+                                                        {% else %}
                                                         data-instock="false" 
-                                                    {% endif %}
-                                                    data-selling-plan="{{ selling_plan.id  }}"
-                                                    >
+                                                        {% endif %}
+                                                        data-chicken="{{ matched_variant.option1 }}"
+                                                        >
 
-                                                    <div class="gt-prod-var-content">
-                                                        <label for="ss-{{ value | downcase | replace: ' ','-' }}">
-                                                            <div class="flock_info">
-                                                                <div class="info_wrap">
-                                                                    <div class="f_size">
-                                                                        <p>{{ value }}</p> /
-                                                                        <span class="frequency">{{ selling_plan.name | remove: 'Delivery '  }}</span> 
-                                                                    </div>
-                                                                    <div class="f_price">
-                                                                        {% if matched_variant.compare_at_price > subscription_price %}
-                                                                            <p class="save-price">{{ matched_variant.compare_at_price | money }}</p>
-                                                                        {% endif %}
-                                                                            <p class="price">{{ subscription_price | money }}</p>
-                                                                    </div>
+                                                        <div class="gt-prod-var-content">
+                                                            <label for="{{ chicken | handle }}-{{ value | handle }}">
+                                                                <div class="flock_info">
+                                                                    <div class="info_wrap">
+                                                                        <div class="f_size">
+                                                                            <div class="val_wrap">
+                                                                                <p>{{ value }}</p>
+                                                                                <span>{{ matched_variant.option1 }} Flocks</span>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="f_price">  
+                                                                        {% assign parts = value | split: ' ' %}
+                                                                            {% assign weight_part = parts[1] %}
+                                                                            {% assign weight = weight_part | split: 'lbs' | first | plus: 0 %}
+                                                                            {% assign multiplier = weight | divided_by: 5 %}
+                                                                            {% assign price_per_5lbs = matched_variant.price | divided_by: multiplier %}
+                                                                            <p class="price">{{ price_per_5lbs | money }} <span>for 5lbs</span></p>
+                                                                        </div>  
+                                                                    </div>                                                              
+                                                                    {% if matched_variant.compare_at_price > matched_variant.price %}
+                                                                        {% assign discount_amount = matched_variant.compare_at_price | minus: matched_variant.price %}
+                                                                        {% assign discount_percent = discount_amount | times: 100 | divided_by: matched_variant.compare_at_price %}
+
+                                                                        <div class="save_price">
+                                                                            <p>
+                                                                                Save 
+                                                                                <span>
+                                                                                {{ discount_percent | round }}%
+                                                                                </span>
+                                                                            </p>
+                                                                            {% if forloop.index == 2 %}
+                                                                                <span class="populer">Most popular</span>
+                                                                            {% elsif forloop.index == 3 %}
+                                                                                <span class="populer">Best Value</span>
+                                                                            {% elsif forloop.index == 4 %}
+                                                                                <span class="populer">Super Value</span>     
+                                                                            {% endif %}
+                                                                        </div>
+                                                                    {% endif %}
                                                                 </div>
-                                                                
-                                                                {% if matched_variant.compare_at_price > subscription_price %}
-                                                                    <div class="save_price">
-                                                                        <p>
-                                                                        Save 
-                                                                        <span>
-                                                                            {{ matched_variant.compare_at_price | minus: subscription_price | money }}
-                                                                        </span>
-                                                                        </p>
-                                                                    </div>
-                                                                {% endif %}
-                                                            </div>
-                                                        </label>
-                                                    </div>
+                                                            </label>
+                                                        </div>
 
+                                                    </div>
                                                 </div>
-                                            </div>
+                                            {% endfor %}
+                                        {% endfor %}
+                                        </div>
+                                     <div class="flock_options subscribe">    
+                                           {% assign chicken_values = selected_product.options_with_values[0].values %}
+                                            {% for chicken in chicken_values %}                               
+                                            {% for value in option.values %}                     
+                                                {% assign forloop_index_count = forloop.index %}
+                                                    {% for variant in selected_product.variants %}
+                                                        {% if variant.option1 == chicken and variant.option2 == value %}
+                                                            {% assign matched_variant = variant %}
+                                                            {% break %}
+                                                        {% endif %}
+                                                    {% endfor %}                                                
+
+                                                    {% assign selling_plan_group = blank %}
+
+                                                    {% for group in selected_product.selling_plan_groups %}
+                                                    {% for allocation in matched_variant.selling_plan_allocations %}
+                                                        {% if allocation.selling_plan_group_id == group.id %}
+                                                        {% assign selling_plan_group = group %}
+                                                        {% break %}
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                    {% endfor %}
+
+                                                    {% assign selling_plan = selling_plan_group.selling_plans[forloop.index0] %}
+
+                                                    {% assign subscription_price = matched_variant.price %}
+
+                                                    {% if selling_plan.price_adjustments.first.value_type == 'percentage' %}
+                                                        {% assign discount = matched_variant.price | times: selling_plan.price_adjustments.first.value | divided_by: 100 %}
+                                                        {% assign subscription_price = matched_variant.price | minus: discount %}
+                                                    {% elsif selling_plan.price_adjustments.first.value_type == 'fixed_amount' %}
+                                                        {% assign subscription_price = matched_variant.price | minus: selling_plan.price_adjustments.first.value %}
+                                                    {% endif %}
+
+                                                <div class="gt-prod-var-box-sub {% if forloop_index_count == 1 %}active{% endif %}">
+                                                    <div class="flock_item">
+                                                        <input 
+                                                        type="radio"
+                                                        class="f_radio"
+                                                        name="{{ option.name | replace: ' ','-' |  downcase }}-sub"
+                                                        id="ss-{{ chicken | handle }}-{{ value | handle }}"
+                                                        value="{{ value }}"
+                                                        {% if chicken == chicken_values.first and forloop.first %}checked{% endif %}
+                                                        data-original-price="{{ matched_variant.price | money }}"   
+                                                        data-selling-price="{{ subscription_price | money }}"    
+                                                        {% if matched_variant.compare_at_price > subscription_price %}
+                                                            data-compareat-price="{{ matched_variant.compare_at_price | money }}"
+                                                        {% endif %}
+                                                        {% if matched_variant.available   %}
+                                                        data-instock="true" 
+                                                        {% else %}
+                                                            data-instock="false" 
+                                                        {% endif %}
+                                                        data-selling-plan="{{ selling_plan.id  }}"
+                                                        data-chicken="{{ matched_variant.option1 }}"
+                                                        >
+
+                                                        <div class="gt-prod-var-content">
+                                                            <label for="ss-{{ chicken | handle }}-{{ value | handle }}">
+                                                                <div class="flock_info">
+                                                                    <div class="info_wrap">
+                                                                        <div class="f_size">
+                                                                            <div class="val_wrap">
+                                                                                <p>{{ value }}</p> 
+                                                                                <span>{{ matched_variant.option1 }} Flocks</span>
+                                                                            </div>
+                                                                            <span class="frequency">{{ selling_plan.name | remove: 'Delivery '  }}</span> 
+                                                                        </div>
+                                                                        <div class="f_price">  
+                                                                            {% assign parts = value | split: ' ' %}
+                                                                            {% assign weight_part = parts[1] %}
+                                                                            {% assign weight = weight_part | split: 'lbs' | first | plus: 0 %}
+                                                                            {% assign multiplier = weight | divided_by: 5 %}
+                                                                            {% assign price_per_5lbs = subscription_price | divided_by: multiplier %}
+                                                                            <p class="price">{{ price_per_5lbs | money }} <span>for 5lbs</span></p>
+                                                                        </div>  
+                                                                    </div>
+                                                                    
+                                                                    {% if matched_variant.compare_at_price > subscription_price %}
+                                                                        {% assign discount_amount = matched_variant.compare_at_price | minus: subscription_price %}
+                                                                        {% assign discount_percent = discount_amount | times: 100 | divided_by: matched_variant.compare_at_price %}
+                                                                        <div class="save_price">
+                                                                            <p>Save <span>{{ discount_percent | round }}%</span></p>
+                                                                            {% if forloop.index == 2 %}
+                                                                                <span class="populer">Most popular</span>
+                                                                            {% elsif forloop.index == 3 %}
+                                                                                    <span class="populer">Best Value</span>
+                                                                            {% elsif forloop.index == 4 %}
+                                                                                <span class="populer">Super Value</span>     
+                                                                            {% endif %}
+                                                                        </div>
+                                                                    {% endif %}
+                                                                </div>
+                                                            </label>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            {% endfor %}
                                         {% endfor %}
                                     </div>
                                 {% endif %}
@@ -232,8 +266,8 @@
                                         <div class="frq_info">
                                             <p>Subscribe & save 20%</p>
                                         </div>
-                                        {% comment %} <div class="frequancy_details">
-                                            <select name="select_frequancy" id="frquancy">
+                                        <div class="frequancy_details">
+                                            {% comment %} <select name="select_frequancy" id="frquancy">
                                                     {% for group in selected_product.selling_plan_groups %}
                                                     {% for plan in group.selling_plans %}
                                                         {% assign subloop = forloop.index %}
@@ -242,13 +276,13 @@
                                                             </option>
                                                     {% endfor %}
                                                 {% endfor %}
-                                            </select>
+                                            </select> {% endcomment %}
                                             {% if section.settings.subsbenifit != blank %}
                                                 <div class="ss_info_wrapper">
                                                     {{ section.settings.subsbenifit  }}
                                                 </div>
                                             {% endif %}
-                                        </div> {% endcomment %}
+                                        </div> 
                                     </label>
                                 </div>
                                 <div class="bbfreq_radio_wrapper">
@@ -303,6 +337,49 @@
 </script>
 
 <script>
+   
+   function filterFlockOptions(){
+
+        let chicken = $('.chicken_size input:checked').val();
+
+        $('.bag_size .gt-prod-var-box-sub').hide();
+
+        let freqType = $('.bb_frequancy_inner input:checked').val();
+
+        let radios;
+
+        if(freqType == 'subscribe'){
+            radios = $('.flock_options.subscribe input');
+        }else{
+            radios = $('.flock_options.one_time input');
+        }
+
+        let firstVisible = null;
+
+        radios.each(function(){
+
+            let optionChicken = $(this).data('chicken');
+
+            if(optionChicken == chicken){
+
+                $(this).closest('.gt-prod-var-box-sub').show();
+
+                if(!firstVisible){
+                    firstVisible = this;
+                }
+            }
+
+        });
+
+        if(firstVisible){
+            $(firstVisible).prop('checked', true);
+            $('.bag_size .gt-prod-var-box-sub').removeClass('active');
+            $(firstVisible)
+            .closest('.gt-prod-var-box-sub')
+            .addClass('active');
+        }
+    }
+
     function updateProductUI(){
         // page load variant select
         updateVariant();
@@ -366,7 +443,7 @@
     function updateVariant(){
 
         let chicken_size = $('.chicken_size input:checked').val();
-        let flock_input  = $('.bag_size .flock_options:visible input:checked');
+        let flock_input  = $('.bag_size .gt-prod-var-box-sub:visible input:checked');
         let flock_size   = flock_input.val();
 
         if(!chicken_size || !flock_size) return;
@@ -404,9 +481,14 @@
         }
     }
     $(document).ready(function(){
-
+        filterFlockOptions();
         updateProductUI();
-        $('.v_radio, .f_radio').on('change', function(){
+        $('.f_radio').on('change', function(){
+            updateProductUI();
+        });
+
+        $('.v_radio').on('change', function(){
+            filterFlockOptions();
             updateProductUI();
         });
                                     
@@ -424,6 +506,7 @@
             updateVariant();
             updatePrice();
             updateProductUI(); // important
+            filterFlockOptions();
         });
 
         $('.product-form__submit').on('click',function(e){
@@ -514,6 +597,12 @@
             "type": "product",
             "id": "product",
             "label": "product"
+        },
+         {
+            "type": "textarea",
+            "id": "subsbenifit",
+            "label": "Subscription benifit Info",
+            "default": "<p>🎁 Bonus First Order Discount, Then 10% Off For Life</p><p>🔄 No Contract – Easily Pause Or Cancel</p><p>🚚 Free Shipping Protection</p><p>🐔 Exclusive Access To New Products</p><p>💰 30 Day Money-Back Guarantee</p>"
         }
     ],
     "presets": [
