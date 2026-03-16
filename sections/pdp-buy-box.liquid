@@ -412,17 +412,7 @@ $(document).ready(function(){
            fetch(`${window.location.pathname}?sections=cart-drawer,cart-icon-bubble`)
               .then(response => response.json())
               .then((sections) => {
-
-                const cartDrawer = document.querySelector('cart-drawer');
-
-                cartDrawer.renderContents({
-                  id: data.id,
-                  sections: {
-                    'cart-drawer': sections['cart-drawer'],
-                    'cart-icon-bubble': sections['cart-icon-bubble']
-                  }
-                });
-
+                document.querySelector('#cart-icon-bubble').click();
             });
 
           $this.find('.loader').removeClass('show');

@@ -35,6 +35,7 @@
                                                     name="{{ option.name | replace: ' ','-' |  downcase }}"
                                                     id="{{ value | downcase | replace: ' ','-' }}"
                                                     value="{{ value }}"
+                                                    data-variant-id="{% for variant in selected_product.variants %}{% if variant.option1 == value %}{{ variant.id }}{% break %}{% endif %}{% endfor %}"
                                                     {% if forloop.first %}checked{% endif %}
                                                     >
 
@@ -193,8 +194,7 @@
                                                         data-instock="true" 
                                                         {% else %}
                                                             data-instock="false" 
-                                                        {% endif %}
-                                                        data-selling-plan="{{ selling_plan.id  }}"
+                                                        {% endif %}                                                        
                                                         data-chicken="{{ matched_variant.option1 }}"
                                                         >
 
@@ -207,7 +207,7 @@
                                                                                 <p>{{ value }}</p> 
                                                                                 <span>{{ matched_variant.option1 }} Flocks</span>
                                                                             </div>
-                                                                            <span class="frequency">{{ selling_plan.name | remove: 'Delivery '  }}</span> 
+                                                                            {% comment %} <span class="frequency">{{ selling_plan.name | remove: 'Delivery '  }}</span>  {% endcomment %}
                                                                         </div>
                                                                         <div class="f_price">  
                                                                             {% assign parts = value | split: ' ' %}
@@ -215,7 +215,7 @@
                                                                             {% assign weight = weight_part | split: 'lbs' | first | plus: 0 %}
                                                                             {% assign multiplier = weight | divided_by: 5 %}
                                                                             {% assign price_per_5lbs = subscription_price | divided_by: multiplier %}
-                                                                            <p class="price">{{ price_per_5lbs | money }} <span>for 5lbs</span></p>
+                                                                            <p class="price">{{ price_per_5lbs | money }} <span>per 5lbs</span></p>
                                                                         </div>  
                                                                     </div>
                                                                     
@@ -267,16 +267,21 @@
                                             <p>Subscribe & save 20%</p>
                                         </div>
                                         <div class="frequancy_details">
-                                            {% comment %} <select name="select_frequancy" id="frquancy">
-                                                    {% for group in selected_product.selling_plan_groups %}
-                                                    {% for plan in group.selling_plans %}
-                                                        {% assign subloop = forloop.index %}
-                                                            <option value="{{ plan.id }}" {% if subloop == 1 %} selected="selected"{% endif %}>
-                                                                {{ plan.name }}
-                                                            </option>
+                                            <select name="select_frequancy" id="frquancy">
+                                                {% for variant in selected_product.variants %}
+                                                    {% if variant.selling_plan_allocations.size > 0 %}
+                                                    {% for allocation in variant.selling_plan_allocations %}
+                                                        <option 
+                                                        value="{{ allocation.selling_plan.id }}" 
+                                                        data-variant="{{ variant.id }}"
+                                                        {% if forloop.first and forloop.parentloop.first %}selected{% endif %}
+                                                        >
+                                                        {{ allocation.selling_plan.name |  remove: 'Delivery '   }}
+                                                        </option>
                                                     {% endfor %}
-                                                {% endfor %}
-                                            </select> {% endcomment %}
+                                                    {% endif %}
+                                                {% endfor %} 
+                                            </select>
                                             {% if section.settings.subsbenifit != blank %}
                                                 <div class="ss_info_wrapper">
                                                     {{ section.settings.subsbenifit  }}
@@ -474,107 +479,145 @@
             }
         }
     }
-window.addEventListener("load", function(){
-    setTimeout(function(){
-        // default state
-        $('.flock_options.one_time').hide();
-        $('.flock_options.subscribe').show();
-        console.log('FULL PAGE LOADED');
-        filterFlockOptions();
-        updateProductUI();
-        $(document).on('change', '.f_radio', function(){
-            updateProductUI();
-        });
 
-        $(document).on('change', '.v_radio', function(){
+    function filterFrequencyOptions(variantId){
+
+        let select = $('#frquancy');
+        let allOptions = select.find('option');
+        
+        // store original options first time
+        if(!select.data('all-options')){
+            select.data('all-options', allOptions.clone());
+        }
+
+        let options = select.data('all-options');
+
+        select.empty();
+
+        options.each(function(){
+            if($(this).data('variant') == variantId){
+                select.append($(this).clone());
+            }
+        });
+    }
+
+    // After page load all data sync
+    window.addEventListener("load", function(){
+        setTimeout(function(){
+            // default state
+            $('.flock_options.one_time').hide();
+            $('.flock_options.subscribe').show();
+            console.log('FULL PAGE LOADED');
             filterFlockOptions();
             updateProductUI();
-        });
-                                    
-        $(document).on('click', '.bb_frequancy_inner .bbfreq_radio_wrapper input', function(){
-            let type = $(this).val();
 
-            if(type == 'onetime'){
-                $('.flock_options.one_time').show();
-                $('.flock_options.subscribe').hide();
-            }else{
-                $('.flock_options.one_time').hide();
-                $('.flock_options.subscribe').show();
-            }
-            filterFlockOptions();
-            updateVariant();
-            updatePrice();
-            updateProductUI(); // important            
-        });
 
-        $('.product-form__submit').on('click',function(e){
-            e.preventDefault();
-            let $this = $(this);
-            if($this.is(':disabled')) return;
-
-            $this.prop('disabled',true);
-            $this.find('.loader').addClass('show');
-
-            var itemsArray = [];
-            let var_id = $('.product-variant-id').val();
-            var fre_op =  $('.bb_frequancy_inner .bbfreq_radio_wrapper input:checked').val();
-
-            if(fre_op == 'onetime'){
-                itemsArray.push({
-                    id: var_id,
-                    quantity: 1
-                });
-            }else{
-             let selling_plan_id = $('.bag_size .flock_options.subscribe input:checked').data('selling-plan');
-
-                itemsArray.push({
-                    id: var_id,
-                    quantity: 1,
-                    selling_plan: selling_plan_id
-                });
-            }
-
-            $.ajax({
-                url: '/cart/add.js',
-                method: "POST",
-                dataType: "JSON",
-                data: { items: itemsArray },
-                success: function (data) {
-                    fetch(`${window.location.pathname}?sections=cart-drawer,cart-icon-bubble`)
-                        .then(response => response.json())
-                        .then((sections) => {
-
-                        const cartDrawer = document.querySelector('cart-drawer');
-
-                        cartDrawer.renderContents({
-                            id: data.id,
-                            sections: {
-                                'cart-drawer': sections['cart-drawer'],
-                                'cart-icon-bubble': sections['cart-icon-bubble']
-                            }
-                        });
-
-                    });
-
-                },
-
-                error: function () {
-
-                    alert('Something went wrong. Please try again.');
-
-                },
-
-                complete: function(){
-
-                    $this.find('.loader').removeClass('show');
-                    $this.prop('disabled', false);
-
-                }
-
+            $(document).on('change', '.f_radio', function(){
+                updateProductUI();
             });
 
-        });
-    },200);
+            $(document).on('change', '.v_radio', function(){
+                filterFlockOptions();
+                updateProductUI();
+                let variantId = $(this).data('variant-id');
+                filterFrequencyOptions(variantId);
+            });
+                                        
+            $(document).on('click', '.bb_frequancy_inner .bbfreq_radio_wrapper input', function(){
+                let type = $(this).val();
+
+                if(type == 'onetime'){
+                    $('.flock_options.one_time').show();
+                    $('.flock_options.subscribe').hide();
+                }else{
+                    $('.flock_options.one_time').hide();
+                    $('.flock_options.subscribe').show();
+                }
+                filterFlockOptions();
+                updateVariant();
+                updatePrice();
+                updateProductUI(); // important            
+            });
+
+            $('.product-form__submit').on('click',function(e){
+                e.preventDefault();
+                let $this = $(this);
+                if($this.is(':disabled')) return;
+
+                $this.prop('disabled',true);
+                $this.find('.loader').addClass('show');
+
+                var itemsArray = [];
+                let var_id = $('.product-variant-id').val();
+                var fre_op =  $('.bb_frequancy_inner .bbfreq_radio_wrapper input:checked').val();
+
+                if(fre_op == 'onetime'){
+                    itemsArray.push({
+                        id: var_id,
+                        quantity: 1
+                    });
+                }else{
+                var selling_plan_id = $('#frquancy option:selected').val();     
+                    itemsArray.push({
+                        id: var_id,
+                        quantity: 1,
+                        selling_plan: selling_plan_id
+                    });
+                }
+
+                $.ajax({
+                    url: '/cart/add.js',
+                    method: "POST",
+                    dataType: "JSON",
+                    data: { items: itemsArray },
+                    success: function (data) {
+                        fetch(`${window.location.pathname}?sections=cart-drawer,cart-icon-bubble`)
+                            .then(response => response.json())
+                            .then((sections) => {
+                                // Update cart bubble
+                                const cartBubble = document.querySelector('#cart-icon-bubble');
+                                const newBubble = new DOMParser()
+                                    .parseFromString(sections['cart-icon-bubble'], 'text/html')
+                                    .querySelector('#cart-icon-bubble');
+
+                                if (cartBubble && newBubble) {
+                                    cartBubble.innerHTML = newBubble.innerHTML;
+                                }
+
+                                // Update cart drawer
+                                const cartDrawer = document.querySelector('cart-drawer');
+                                if (cartDrawer) {
+                                    cartDrawer.renderContents({
+                                        sections: sections
+                                    });
+                                }
+                                document.querySelector('#cart-icon-bubble').click();    
+                        });
+
+                    },
+
+                    error: function () {
+
+                        alert('Something went wrong. Please try again.');
+
+                    },
+
+                    complete: function(){
+
+                        $this.find('.loader').removeClass('show');
+                        $this.prop('disabled', false);
+
+                    }
+
+                });
+
+            });
+        },200);
+    });
+
+    $(document).ready(function(){
+        let variantId = $('.v_radio:checked').data('variant-id');
+        filterFrequencyOptions(variantId);
     });
 
 </script>
