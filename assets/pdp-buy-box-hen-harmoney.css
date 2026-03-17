@@ -260,14 +260,14 @@ span.ss-comp-price {
     top: -15px;
 }
 
-#buy_box_form .product-price {
+#buy_box_form .gt-product-price {
     display: flex;
     align-items: center;
     gap: 11px;
     text-decoration: none !important;
 }
 
-#buy_box_form .product-price .compare-price {
+#buy_box_form .gt-product-price .compare-price {
     text-decoration: line-through;
 }
 .frq_info p {
@@ -441,7 +441,7 @@ body .product-form__buttons {
     max-width: 100%;    
 }
 
-.product-form__buttons button, .product-form__buttons button .product-price .price {
+.product-form__buttons button, .product-form__buttons button .gt-product-price .price {
     min-height: 50px;
     border-radius: 6px;
     font-size: 23px;
@@ -450,6 +450,7 @@ body .product-form__buttons {
     display: flex;
     align-items: center;
     gap: 8px;
+    text-decoration: none !important;
 }
 .product-form__buttons button{
     background: #FF6600;    
@@ -507,7 +508,7 @@ body .product-form__buttons {
     line-height: 1;
 }
 
-.but_box_main .flock_size_wrapper.bag_size .flock_options .gt-prod-var-box-sub .gt-prod-var-content .flock_info .f_price .price{
+.but_box_main .flock_size_wrapper.bag_size .flock_options .gt-prod-var-box-sub .gt-prod-var-content .flock_info .f_price .gt-price{
     font-size: 17px;
     font-weight: 600;
     line-height: 1;
@@ -568,9 +569,6 @@ body .product-form__buttons {
     border-radius: 12px;
 }
 
-.bag_size .gt-prod-var-box-sub{
-    display:none;
-}
 @media (max-width: 768px) {  
     .gt-prod-var-content label .flock_info .f_size p,
     .gt-prod-var-content label .flock_info .f_size span{
@@ -588,7 +586,7 @@ body .product-form__buttons {
     .ss_info_wrapper p{
         font-size: 12px;
     }
-   .product-form__buttons button, .product-form__buttons button .product-price .price{
+   .product-form__buttons button, .product-form__buttons button .gt-product-price .price{
         font-size: 16px;
     }
     .frq_info p{
@@ -600,28 +598,48 @@ body .product-form__buttons {
     .but_box_main .flock_size_wrapper .flock_options .gt-prod-var-box-sub{
         width: auto;
     }
+
     .but_box_main .flock_size_wrapper .flock_options{
         row-gap: 8px;
         column-gap: 8px;
     }
+
     .gt-prod-var-content label{
-        padding: 12px 20px;
+        padding: 12px;
     }
 
-    .but_box_main .flock_size_wrapper.bag_size .flock_options .gt-prod-var-box-sub .gt-prod-var-content .flock_info .f_price .price{
+    .but_box_main .flock_size_wrapper.bag_size .flock_options .gt-prod-var-box-sub .gt-prod-var-content .flock_info .f_price .gt-price{
         font-size: 14px;
     }
 
     .but_box_main .flock_size_wrapper.bag_size .flock_options .gt-prod-var-box-sub .gt-prod-var-content .flock_info .save_price p{
        font-size: 14px;
+       padding: 5px 5px;
     }
+
     .but_box_main .flock_size_wrapper.bag_size .flock_options .gt-prod-var-box-sub .gt-prod-var-content .flock_info .save_price .populer{
-        font-size: 12px;
+        font-size: 11px;
+        width: 100px;
     }
+
     .flock_size_wrapper.chicken_size .gt-prod-var-content label {
         padding: 10px 10px;
     }
+
+
     .but_box_main .flock_size_wrapper .flock_options .gt-prod-var-box-sub {
         width: 18%;
+    }
+
+    .val_wrap{
+        flex-direction: column;
+        gap: 5px;
+        align-items: flex-start;
+        justify-content: flex-start;
+        text-align: left;
+    }
+
+    .info_wrap{
+        gap: 8px;
     }
 }

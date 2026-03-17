@@ -412,6 +412,23 @@ $(document).ready(function(){
            fetch(`${window.location.pathname}?sections=cart-drawer,cart-icon-bubble`)
               .then(response => response.json())
               .then((sections) => {
+                // Update cart bubble
+                const cartBubble = document.querySelector('#cart-icon-bubble');
+                const newBubble = new DOMParser()
+                    .parseFromString(sections['cart-icon-bubble'], 'text/html')
+                    .querySelector('#cart-icon-bubble');
+
+                if (cartBubble && newBubble) {
+                    cartBubble.innerHTML = newBubble.innerHTML;
+                }
+
+                // Update cart drawer
+                const cartDrawer = document.querySelector('cart-drawer');
+                if (cartDrawer) {
+                    cartDrawer.renderContents({
+                        sections: sections
+                    });
+                }
                 document.querySelector('#cart-icon-bubble').click();
             });
 
