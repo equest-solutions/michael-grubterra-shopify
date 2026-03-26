@@ -1,0 +1,424 @@
+{{ 'pdp-buy-box-hen-harmony-v2.css' |  asset_url |  stylesheet_tag  }}
+
+<style>
+    #buy_box_form #appstle_subscription_widget0{
+        display: none;
+    }
+    #buy_box_form .appstle_subscription_final_price,
+    #buy_box_form .appstle_subscription_save{
+        display: none;
+    }
+    
+</style>
+<section class="new_pdp_buy_box">
+    <div class="buy_box_wrapper">
+        {% assign selected_product = all_products['hen-harmony-the-daily-all-in-one-supplement-for-flock-resilience-test'] %}
+        {%- assign current_variant = selected_product.selected_or_first_available_variant -%}
+        <div class="buy_box_innerwrapper">
+            <div class="buy_box_content">
+                <div class="bb_content_inner">                        
+                    <div class="but_box_main">
+                        <div class="bb_title">
+                            <h2>1. How many chickens do you have?</h2>
+                        </div>
+                        <div class="flock_size_wrapper">
+                            <div class="flock_options">
+                                {% assign chicken_option = selected_product.options_with_values[0] %}
+                                {% for value in chicken_option.values %}
+                                    {% assign forloop_index_count1 = forloop.index %}
+                                    <div class="gt-prod-var-box-sub {% if forloop.first %} active {% endif %}">
+                                        <div class="flock_item">
+                                            <input type="radio" class="v_radio" name="flock-size" id="{{  value |  downcase |  replace:  ' ','-' }}" 
+                                                data-v-title="{{ value  }}"
+                                {% if forloop_index_count1 == 1 %}checked="checked" {% endif %}>  
+                                            <div class="gt-prod-var-content">
+                                                <label for="{{  value |  downcase |  replace:  ' ','-' }}">
+                                                    <div class="flock_info">
+                                                        <div class="f_size">
+                                                            <p>{{ value }}</p>
+                                                        </div>
+                                                    </div>
+                                                </label>
+                                            </div>                                            
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>                                
+                        </div>
+                        <div class="bb_title">
+                            <h2>2. Select Your Frequency</h2>
+                        </div>
+                        <div class="flock_size_wrapper frequancy">
+                            <div class="flock_options one-time" style="display: none">
+                                {% assign chicken_size = current_variant.option1 %}
+                                {% assign pack_option = selected_product.options_with_values[1] %}
+                                {% for value in pack_option.values %}
+                                    {% assign pack_size = value %}
+                                    {% for variant in selected_product.variants %}
+                                        {% if variant.option1 == chicken_size and variant.option2 == pack_size %}
+
+                                            {% assign discount = 0 %}
+                                            {% if variant.compare_at_price > variant.price %}
+                                                {% assign discount = variant.compare_at_price | minus: variant.price | times: 100 | divided_by: variant.compare_at_price %}
+                                            {% endif %}
+
+                                            <div class="gt-prod-var-box-sub {% if forloop.first %}active{% endif %}">
+                                                <div class="flock_item">
+                                                    <input
+                                                        type="radio"
+                                                        class="v_radio"
+                                                        name="ot-pack-size"
+                                                        id="ot-{{ value | handle }}"
+                                                        data-variant-id="{{ variant.id }}"
+                                                        data-variant-title="{{ variant.title }}"
+                                                        data-price="{{ variant.price }}"
+                                                        data-compare-price="{{ variant.compare_at_price }}"
+                                                        data-available="{{ variant.available }}"
+                                                        {% if forloop.first %}checked{% endif %}
+                                                    >
+                                                    <div class="gt-prod-var-content">
+                                                        <label for="ot-{{ value | handle }}">
+                                                            <div class="flock_info">
+                                                                <!-- Variant Image -->
+                                                                <div class="f_img">
+                                                                    <img src="{{ variant.featured_image | image_url: width: 300 }}" width="" height="">
+                                                                </div>
+                                                                <!-- Pack Size -->
+                                                                <div class="f_size">
+                                                                    <p>{{ value }}</p>
+                                                                </div>
+                                                                <!-- Price -->
+                                                                <div class="f_price">
+                                                                    {% if variant.compare_at_price > variant.price %}
+                                                                        <div class="og-pric">
+                                                                            <p>{{ variant.price | money }}</p>
+                                                                        </div>
+                                                                        <div class="com-price">
+                                                                            <p>{{ variant.compare_at_price | money }}</p>
+                                                                        </div>
+                                                                    {% else  %}
+                                                                        <div class="og-pric">
+                                                                            <p>{{ variant.price | money }}</p>
+                                                                        </div>
+                                                                    {% endif %}
+                                                                </div>
+                                                                <!-- Discount -->
+                                                                <div class="save-price">
+                                                                    {% if discount > 0 %}
+                                                                        <span class="save-badge">
+                                                                        {{ discount }}% off
+                                                                        </span>
+                                                                    {% endif %}                                                                   
+                                                                </div>
+                                                            </div>
+                                                        </label>
+                                                        {% if forloop.index == 2 %}
+                                                            <span class="populer">Most popular</span>
+                                                        {% elsif forloop.index == 3 %}
+                                                            <span class="populer best-value">Best Value</span>
+                                                        {% endif %}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {% endif %}
+                                    {% endfor %}
+                                {% endfor %}
+                            </div> 
+                           <div class="flock_options subscription">                            
+                                {% for variant in selected_product.variants %}
+                                    {% assign pack_index = variant.option2 | split: ' ' | first | minus: 1 %}
+                                    {% assign allocation = variant.selling_plan_allocations[pack_index] %}
+                                    <div class="gt-prod-var-box-sub {% if forloop.first %}active{% endif %}" 
+                                        data-chicken="{{ variant.option1 }}"
+                                        data-pack="{{ variant.option2 }}"
+                                        >
+                                        <div class="flock_item">
+                                            <input
+                                            type="radio"
+                                            class="v_radio"
+                                            name="ss-pack-size"
+                                            id="sub-{{ variant.id }}"
+                                            data-variant-id="{{ variant.id }}"
+                                            data-selling-plan-id="{{ allocation.selling_plan.id }}"
+                                            data-price="{{ allocation.price }}"
+                                            data-compare-price="{{ variant.compare_at_price }}"
+                                            data-available="{{ variant.available }}"
+                                            {% if forloop.first %}checked{% endif %}
+                                            >
+                                            <div class="gt-prod-var-content">
+                                                <label for="sub-{{ variant.id }}">
+                                                    <div class="flock_info">
+                                                        <!-- Variant Image -->
+                                                        <div class="f_img">
+                                                            <img src="{{ variant.featured_image | image_url: width: 300 }}" width="" height=""  >
+                                                        </div>
+                                                        <!-- Pack Size -->
+                                                        <div class="f_size">
+                                                            <p>{{ variant.option2 }} {{ allocation.selling_plan.name }}</p>
+                                                        </div>
+                                                        <!-- Price -->
+                                                            <div class="f_price">
+                                                            {% if variant.compare_at_price > allocation.price %}
+                                                                <div class="og-pric">                                                                        
+                                                                    <p>{{ allocation.price | money }}</p>
+                                                                </div>
+                                                                <div class="com-price">
+                                                                    <p>{{ variant.compare_at_price | money }}</p>
+                                                                </div>
+                                                            {% else %}
+                                                                <div class="og-pric">
+                                                                    <p>{{ allocation.price | money }}</p>
+                                                                </div>
+                                                            {% endif %}                                                                 
+                                                        </div>
+                                                        <!-- Discount -->
+                                                        {% assign discount = 0 %}
+                                                        {% if allocation.price < variant.price %}
+                                                            {% assign discount = variant.price | minus: allocation.price | times: 100 | divided_by: variant.price %}
+                                                        {% endif %}
+                                                        <div class="save-price">
+                                                            {% if discount > 0 %}
+                                                                <span class="save-badge">
+                                                                {{ discount }}% off
+                                                                </span>
+                                                            {% endif %}                                                                   
+                                                        </div>
+                                                    </div>
+                                                </label>
+                                                {% if pack_index == 1 %}
+                                                    <span class="populer">Most popular</span>
+                                                {% elsif pack_index == 2 %}
+                                                    <span class="populer best-value">Best Value</span>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="bb_frequancy_wrapper">
+                            <div class="bb_frequancy_inner">
+                                <div class="bbfreq_radio_wrapper">
+                                    <div class="subs_label_inner">
+                                        <img class="best_val_img" width="21" height="21" src="//cdn.shopify.com/s/files/1/0046/3716/3633/files/chicken-img.webp?v=1772692433">  
+                                    <span>Best Value</span>
+                                    </div>
+                                    <input type="radio" id="subcribe" name="frequancy-radio" checked="checked" value="subscribe">
+                                    <label for="subcribe" class="subscribe-label">
+                                        <div class="frq_info">
+                                            <p>Subscribe & save 20%</p>
+                                            <span class="ss-price">{{ current_variant.price |  money_without_trailing_zeros }}</span>
+                                            <span class="ss-comp-price">{{ current_variant.compare_at_price |  money_without_trailing_zeros }}</span>
+
+                                        </div>
+                                        <div class="frequancy_details">
+                                            <select name="select_frequancy" id="frquancy">
+                                                    {% for group in selected_product.selling_plan_groups %}
+                                                    {% for plan in group.selling_plans %}
+                                                        {% assign subloop = forloop.index %}
+                                                            <option value="{{ plan.id }}" {% if subloop == 1 %} selected="selected"{% endif %}>
+                                                                {{ plan.name }}
+                                                            </option>
+                                                    {% endfor %}
+                                                {% endfor %}
+                                            </select>
+                                            {% if section.settings.subsbenifit != blank %}
+                                                <div class="ss_info_wrapper">
+                                                    {{ section.settings.subsbenifit  }}
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                    </label>
+                                </div>
+                                <div class="bbfreq_radio_wrapper">
+                                    <input type="radio" id="one-time" name="frequancy-radio" value="onetime">
+                                    <label for="one-time" class="one-time-label">
+                                        <div class="frq_info">
+                                            <p>One Time Purchase</p>
+                                            <span class="ot-price">{{ current_variant.price |  money_without_trailing_zeros }}</span>
+                                        </div>
+                                    </label>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div> 
+                    <form method="post" action="{{ routes.cart_url }}" id="buy_box_form" accept-charset="UTF-8" class="form" enctype="multipart/form-data" novalidate="novalidate" data-type="add-to-cart-form">
+                        <input type="hidden" name="form_type" value="product">
+                        <input type="hidden" name="utf8" value="✓">
+                        <input type="hidden" name="id" value="{{  current_variant.id }}" class="product-variant-id" data-quantity="1">
+                        <div class="product-form__buttons ">
+                            <button id="ProductSubmitButton-template--19995845492930__main" type="submit" name="add" class="product-form__submit button button--full-width button--primary" aria-haspopup="dialog">
+                                {% if current_variant.available %} 
+                                    <span>Add to cart- </span>
+                                            {% else %}
+                                    <span>Sold Out-</span>
+                                {% endif %}
+                                <div class="product-price">                                            
+                                    <div class="compare-price">{{ current_variant.compare_at_price |  money_without_trailing_zeros }}</div>                                                                                          
+                                    <div class="price">{{ current_variant.price |  money_without_trailing_zeros }}</div>                                                                                            
+                                </div> 
+                                <div class="loader">
+                                    <img src="//cdn.shopify.com/s/files/1/0046/3716/3633/files/loader.gif?v=1772538563" alt="" width="" height="">
+                                </div>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.addEventListener("change", function(e) {
+        if (e.target.classList.contains("v_radio")) {
+
+            document.querySelectorAll(".gt-prod-var-box-sub")
+            .forEach(box => box.classList.remove("active"));
+
+            e.target.closest(".gt-prod-var-box-sub")
+            .classList.add("active");
+        }
+    });
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  const subscribeRadio = document.getElementById("subcribe");
+  const oneTimeRadio = document.getElementById("one-time");
+
+  const subscriptionBox = document.querySelector(".flock_options.subscription");
+  const oneTimeBox = document.querySelector(".flock_options.one-time");
+
+  function toggleFrequency() {
+
+    if (subscribeRadio.checked) {
+      subscriptionBox.style.display = "flex";
+      oneTimeBox.style.display = "none";
+    }
+
+    if (oneTimeRadio.checked) {
+      subscriptionBox.style.display = "none";
+      oneTimeBox.style.display = "flex";
+    }
+  }
+
+  subscribeRadio.addEventListener("change", toggleFrequency);
+  oneTimeRadio.addEventListener("change", toggleFrequency);
+
+  // default load
+  toggleFrequency();
+
+
+
+// change chiken size code
+
+    const chickenRadios = document.querySelectorAll('input[name="flock-size"]');
+    const variantBoxes = document.querySelectorAll('.flock_options.subscription .gt-prod-var-box-sub');
+
+    function filterVariants(chickenSize) {
+
+        variantBoxes.forEach(box => {
+
+        if (box.dataset.chicken === chickenSize) {
+            box.style.display = "block";
+        } else {
+            box.style.display = "none";
+        }
+
+        });
+
+    }
+
+    chickenRadios.forEach(radio => {
+        radio.addEventListener("change", function () {
+
+        const selectedChicken = this.dataset.vTitle;
+
+        filterVariants(selectedChicken);
+
+        });
+    });
+
+    // default load
+    const defaultChicken = document.querySelector('input[name="flock-size"]:checked').dataset.vTitle;
+    filterVariants(defaultChicken);
+});
+</script>
+ <script>
+    window.addEventListener("load", function () {
+        const sectionToMove = document.querySelector('#buy_box_form');
+        const targetSection = document.querySelector('[data-extra-section="add-on"]');
+
+        if (sectionToMove && targetSection) {
+            targetSection.after(sectionToMove);
+        }
+    });
+</script> 
+{% schema %}
+{
+    "name": "PDP Buy Box Hen-Harmony",
+    "settings": [
+        {
+            "type": "product",
+            "id": "product",
+            "label": "product"
+        },
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Product Title",
+            "default": "Peck Purity Chicken Dewormer"
+        },
+        {
+            "type": "text",
+            "id": "limitedtitle",
+            "label": "Limited Text",
+            "default": "⚠️ Limited Time Discount!"
+        },
+        {
+            "type": "textarea",
+            "id": "past_bought",
+            "label": "Past Bought Text",
+            "default": "<p>🔥<strong>300+ bought</strong> in past month</p>"
+        },
+        {
+            "type": "text",
+            "id": "point1",
+            "label": "Point 1",
+            "default": "Supports Gut Health"
+        },
+        {
+            "type": "text",
+            "id": "point2",
+            "label": "Point 2",
+            "default": "Strength During Stress"
+        },
+        {
+            "type": "text",
+            "id": "point3",
+            "label": "Point 3",
+            "default": "Made In USA"
+        },
+        {
+            "type": "textarea",
+            "id": "description",
+            "label": "Prouct Description",
+            "default": "<p>Environmental stress, temperature swings, and daily laying demands place constant strain on your hens’ internal systems. HenHarmony™ supports hydration, digestive function, and gut balance to help your flock remain resilient and consistent through seasonal and environmental stress.</p>"
+        },
+        {
+            "type": "textarea",
+            "id": "subsbenifit",
+            "label": "Subscription benifit Info",
+            "default": "<p>🎁 Bonus First Order Discount, Then 10% Off For Life</p><p>🔄 No Contract – Easily Pause Or Cancel</p><p>🚚 Free Shipping Protection</p><p>🐔 Exclusive Access To New Products</p><p>💰 30 Day Money-Back Guarantee</p>"
+        }
+    ],
+    "presets": [
+        {
+        "name": "PDP Buy Box Hen-Harmony"
+        }
+    ]
+}
+{% endschema %}

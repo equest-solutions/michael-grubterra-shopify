@@ -9,6 +9,30 @@
  */
 {
   "sections": {
+    "pdp_buy_box_new_hen_harmony_NLLyJF": {
+      "type": "pdp-buy-box-new-hen-harmony",
+      "name": "PDP Buy Box Hen-Harmony",
+      "settings": {
+        "product": "",
+        "title": "Peck Purity Chicken Dewormer",
+        "limitedtitle": "⚠️ Limited Time Discount!",
+        "past_bought": "<p>🔥<strong>300+ bought</strong> in past month</p>",
+        "point1": "Supports Gut Health",
+        "point2": "Strength During Stress",
+        "point3": "Made In USA",
+        "description": "<p>Environmental stress, temperature swings, and daily laying demands place constant strain on your hens’ internal systems. HenHarmony™ supports hydration, digestive function, and gut balance to help your flock remain resilient and consistent through seasonal and environmental stress.</p>",
+        "subsbenifit": "<p>🎁 Bonus First Order Discount, Then 10% Off For Life</p><p>🔄 No Contract – Easily Pause Or Cancel</p><p>🚚 Free Shipping Protection</p><p>🐔 Exclusive Access To New Products</p><p>💰 30 Day Money-Back Guarantee</p>"
+      }
+    },
+    "pdp_buy_box_hen_harmoney_a8RyV6": {
+      "type": "pdp-buy-box-hen-harmoney",
+      "disabled": true,
+      "name": "PDP Buy Box Hen harmoney",
+      "settings": {
+        "product": "",
+        "subsbenifit": "<p>🎁 Bonus First Order Discount, Then 10% Off For Life</p><p>🔄 No Contract – Easily Pause Or Cancel</p><p>🚚 Free Shipping Protection</p><p>🐔 Exclusive Access To New Products</p><p>💰 30 Day Money-Back Guarantee</p>"
+      }
+    },
     "zp-product-header-content": {
       "type": "product-header-content-zipifypages",
       "settings": {}
@@ -506,24 +530,10 @@
     "zp-product-footer-content": {
       "type": "product-footer-content-zipifypages",
       "settings": {}
-    },
-    "pdp_buy_box_hen_harmoney_a8RyV6": {
-      "type": "pdp-buy-box-hen-harmoney",
-      "name": "PDP Buy Box Hen harmoney",
-      "settings": {
-        "product": "",
-        "title": "Peck Purity Chicken Dewormer",
-        "limitedtitle": "⚠️ Limited Time Discount!",
-        "past_bought": "<p>🔥<strong>300+ bought</strong> in past month</p>",
-        "point1": "Supports Gut Health",
-        "point2": "Strength During Stress",
-        "point3": "Made In USA",
-        "description": "<p>Environmental stress, temperature swings, and daily laying demands place constant strain on your hens’ internal systems. HenHarmony™ supports hydration, digestive function, and gut balance to help your flock remain resilient and consistent through seasonal and environmental stress.</p>",
-        "subsbenifit": "<p>🎁 Bonus First Order Discount, Then 10% Off For Life</p><p>🔄 No Contract – Easily Pause Or Cancel</p><p>🚚 Free Shipping Protection</p><p>🐔 Exclusive Access To New Products</p><p>💰 30 Day Money-Back Guarantee</p>"
-      }
     }
   },
   "order": [
+    "pdp_buy_box_new_hen_harmony_NLLyJF",
     "pdp_buy_box_hen_harmoney_a8RyV6",
     "zp-product-header-content",
     "main",
