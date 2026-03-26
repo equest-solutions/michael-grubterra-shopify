@@ -48,6 +48,52 @@
                         <div class="bb_title">
                             <h2>2. Select Your Frequency</h2>
                         </div>
+                         <div class="bb_frequancy_wrapper">
+                            <div class="bb_frequancy_inner">
+                                <div class="bbfreq_radio_wrapper">
+                                    {% comment %} <div class="subs_label_inner">
+                                        <img class="best_val_img" width="21" height="21" src="//cdn.shopify.com/s/files/1/0046/3716/3633/files/chicken-img.webp?v=1772692433">  
+                                    <span>Best Value</span>
+                                    </div> {% endcomment %}
+                                    <input type="radio" id="subcribe" name="frequancy-radio" checked="checked" value="subscribe">
+                                    <label for="subcribe" class="subscribe-label">
+                                        <div class="frq_info">
+                                            <p>Subscribe & Save 20%</p>
+                                            {% comment %} <span class="ss-price">{{ current_variant.price |  money_without_trailing_zeros }}</span>
+                                            <span class="ss-comp-price">{{ current_variant.compare_at_price |  money_without_trailing_zeros }}</span> {% endcomment %}
+
+                                        </div>
+                                        {% comment %} <div class="frequancy_details">
+                                            <select name="select_frequancy" id="frquancy">
+                                                    {% for group in selected_product.selling_plan_groups %}
+                                                    {% for plan in group.selling_plans %}
+                                                        {% assign subloop = forloop.index %}
+                                                            <option value="{{ plan.id }}" {% if subloop == 1 %} selected="selected"{% endif %}>
+                                                                {{ plan.name }}
+                                                            </option>
+                                                    {% endfor %}
+                                                {% endfor %}
+                                            </select>
+                                            {% if section.settings.subsbenifit != blank %}
+                                                <div class="ss_info_wrapper">
+                                                    {{ section.settings.subsbenifit  }}
+                                                </div>
+                                            {% endif %}
+                                        </div> {% endcomment %}
+                                    </label>
+                                </div>
+                                <div class="bbfreq_radio_wrapper">
+                                    <input type="radio" id="one-time" name="frequancy-radio" value="onetime">
+                                    <label for="one-time" class="one-time-label">
+                                        <div class="frq_info">
+                                            <p>One-Time Purchase</p>
+                                            {% comment %} <span class="ot-price">{{ current_variant.price |  money_without_trailing_zeros }}</span> {% endcomment %}
+                                        </div>
+                                    </label>
+                                </div>
+                                
+                            </div>
+                        </div>
                         <div class="flock_size_wrapper frequancy">
                             <div class="flock_options one-time" style="display: none">
                                 {% assign chicken_size = current_variant.option1 %}
@@ -71,9 +117,13 @@
                                                         id="ot-{{ value | handle }}"
                                                         data-variant-id="{{ variant.id }}"
                                                         data-variant-title="{{ variant.title }}"
-                                                        data-price="{{ variant.price }}"
-                                                        data-compare-price="{{ variant.compare_at_price }}"
-                                                        data-available="{{ variant.available }}"
+                                                        data-price="{{ variant.price | money_without_trailing_zeros }}"
+                                                        data-compare-price="{{ variant.compare_at_price | money_without_trailing_zeros }}"
+                                                        {% if variant.available %}
+                                                            data-instock="true"
+                                                        {% else %}
+                                                                data-instock="false"
+                                                        {% endif %}
                                                         {% if forloop.first %}checked{% endif %}
                                                     >
                                                     <div class="gt-prod-var-content">
@@ -136,13 +186,17 @@
                                             <input
                                             type="radio"
                                             class="v_radio"
-                                            name="ss-pack-size"
+                                            name="ss-pack-size-{{ variant.option1 }}"
                                             id="sub-{{ variant.id }}"
                                             data-variant-id="{{ variant.id }}"
                                             data-selling-plan-id="{{ allocation.selling_plan.id }}"
-                                            data-price="{{ allocation.price }}"
-                                            data-compare-price="{{ variant.compare_at_price }}"
-                                            data-available="{{ variant.available }}"
+                                            data-price="{{ allocation.price | money_without_trailing_zeros }}"
+                                            data-compare-price="{{ variant.compare_at_price | money_without_trailing_zeros  }}"
+                                           {% if variant.available %}
+                                                    data-instock="true"
+                                                {% else %}
+                                                        data-instock="false"
+                                                {% endif %}
                                             {% if forloop.first %}checked{% endif %}
                                             >
                                             <div class="gt-prod-var-content">
@@ -195,58 +249,13 @@
                                     </div>
                                 {% endfor %}
                             </div>
-                        </div>
-                        <div class="bb_frequancy_wrapper">
-                            <div class="bb_frequancy_inner">
-                                <div class="bbfreq_radio_wrapper">
-                                    <div class="subs_label_inner">
-                                        <img class="best_val_img" width="21" height="21" src="//cdn.shopify.com/s/files/1/0046/3716/3633/files/chicken-img.webp?v=1772692433">  
-                                    <span>Best Value</span>
-                                    </div>
-                                    <input type="radio" id="subcribe" name="frequancy-radio" checked="checked" value="subscribe">
-                                    <label for="subcribe" class="subscribe-label">
-                                        <div class="frq_info">
-                                            <p>Subscribe & save 20%</p>
-                                            <span class="ss-price">{{ current_variant.price |  money_without_trailing_zeros }}</span>
-                                            <span class="ss-comp-price">{{ current_variant.compare_at_price |  money_without_trailing_zeros }}</span>
-
-                                        </div>
-                                        <div class="frequancy_details">
-                                            <select name="select_frequancy" id="frquancy">
-                                                    {% for group in selected_product.selling_plan_groups %}
-                                                    {% for plan in group.selling_plans %}
-                                                        {% assign subloop = forloop.index %}
-                                                            <option value="{{ plan.id }}" {% if subloop == 1 %} selected="selected"{% endif %}>
-                                                                {{ plan.name }}
-                                                            </option>
-                                                    {% endfor %}
-                                                {% endfor %}
-                                            </select>
-                                            {% if section.settings.subsbenifit != blank %}
-                                                <div class="ss_info_wrapper">
-                                                    {{ section.settings.subsbenifit  }}
-                                                </div>
-                                            {% endif %}
-                                        </div>
-                                    </label>
-                                </div>
-                                <div class="bbfreq_radio_wrapper">
-                                    <input type="radio" id="one-time" name="frequancy-radio" value="onetime">
-                                    <label for="one-time" class="one-time-label">
-                                        <div class="frq_info">
-                                            <p>One Time Purchase</p>
-                                            <span class="ot-price">{{ current_variant.price |  money_without_trailing_zeros }}</span>
-                                        </div>
-                                    </label>
-                                </div>
-                                
-                            </div>
-                        </div>
+                        </div>                       
                     </div> 
                     <form method="post" action="{{ routes.cart_url }}" id="buy_box_form" accept-charset="UTF-8" class="form" enctype="multipart/form-data" novalidate="novalidate" data-type="add-to-cart-form">
                         <input type="hidden" name="form_type" value="product">
                         <input type="hidden" name="utf8" value="✓">
                         <input type="hidden" name="id" value="{{  current_variant.id }}" class="product-variant-id" data-quantity="1">
+                        <input type="hidden" name="selling_plan" id="selling_plan_input">
                         <div class="product-form__buttons ">
                             <button id="ProductSubmitButton-template--19995845492930__main" type="submit" name="add" class="product-form__submit button button--full-width button--primary" aria-haspopup="dialog">
                                 {% if current_variant.available %} 
@@ -271,81 +280,281 @@
 </section>
 
 <script>
-    document.addEventListener("change", function(e) {
-        if (e.target.classList.contains("v_radio")) {
+    document.addEventListener("DOMContentLoaded", function () {
 
-            document.querySelectorAll(".gt-prod-var-box-sub")
-            .forEach(box => box.classList.remove("active"));
+        // Srt sellin gid and variant on page load 
+        const defaultSubVariant = document.querySelector('.flock_options.subscription input[type="radio"]:checked');
 
-            e.target.closest(".gt-prod-var-box-sub")
-            .classList.add("active");
-        }
-    });
-</script>
+        if(defaultSubVariant){
 
-<script>
-document.addEventListener("DOMContentLoaded", function () {
+            const sellingPlan = defaultSubVariant.dataset.sellingPlanId;
+            const variantId = defaultSubVariant.dataset.variantId;
 
-  const subscribeRadio = document.getElementById("subcribe");
-  const oneTimeRadio = document.getElementById("one-time");
+            const variantInput = document.querySelector(".product-variant-id");
+            const sellingInput = document.querySelector("#selling_plan_input");
 
-  const subscriptionBox = document.querySelector(".flock_options.subscription");
-  const oneTimeBox = document.querySelector(".flock_options.one-time");
+            if(variantId){
+                variantInput.value = variantId;
+            }
 
-  function toggleFrequency() {
+            if(sellingPlan){
+                sellingInput.value = sellingPlan;
+            }
 
-    if (subscribeRadio.checked) {
-      subscriptionBox.style.display = "flex";
-      oneTimeBox.style.display = "none";
-    }
-
-    if (oneTimeRadio.checked) {
-      subscriptionBox.style.display = "none";
-      oneTimeBox.style.display = "flex";
-    }
-  }
-
-  subscribeRadio.addEventListener("change", toggleFrequency);
-  oneTimeRadio.addEventListener("change", toggleFrequency);
-
-  // default load
-  toggleFrequency();
-
-
-
-// change chiken size code
-
-    const chickenRadios = document.querySelectorAll('input[name="flock-size"]');
-    const variantBoxes = document.querySelectorAll('.flock_options.subscription .gt-prod-var-box-sub');
-
-    function filterVariants(chickenSize) {
-
-        variantBoxes.forEach(box => {
-
-        if (box.dataset.chicken === chickenSize) {
-            box.style.display = "block";
-        } else {
-            box.style.display = "none";
+            updateButtonPrice(defaultSubVariant);
+            updateStock(defaultSubVariant);
         }
 
+        const subscribeRadio = document.getElementById("subcribe");
+        const oneTimeRadio = document.getElementById("one-time");
+
+        const subscriptionBox = document.querySelector(".flock_options.subscription");
+        const oneTimeBox = document.querySelector(".flock_options.one-time");
+
+        function toggleFrequency() {
+
+            let selectedRadio;
+            if (subscribeRadio.checked) {
+                subscriptionBox.style.display = "flex";
+                oneTimeBox.style.display = "none";
+
+                // selected subscription pack
+                selectedRadio = subscriptionBox.querySelector('input.v_radio:checked');
+            }
+
+            if (oneTimeRadio.checked) {
+                subscriptionBox.style.display = "none";
+                oneTimeBox.style.display = "flex";
+                
+                // selected one-time pack
+                selectedRadio = oneTimeBox.querySelector('input.v_radio:checked');
+            }
+
+            if(selectedRadio){
+                const variantId = selectedRadio.dataset.variantId;
+                const sellingPlan = selectedRadio.dataset.sellingPlanId;
+
+                const variantInput = document.querySelector(".product-variant-id");
+                const sellingInput = document.querySelector("#selling_plan_input");
+
+                variantInput.value = variantId || "";
+
+                if(sellingPlan){
+                    sellingInput.value = sellingPlan;
+                }else{
+                    sellingInput.value = "";
+                }
+
+                updateButtonPrice(selectedRadio);
+                updateStock(selectedRadio);
+
+            }
+        }     
+                
+        subscribeRadio.addEventListener("change", toggleFrequency);
+        oneTimeRadio.addEventListener("change", toggleFrequency);
+
+        // default load
+        const defaultVariant = document.querySelector('.flock_options.subscription input[type="radio"]:checked');
+        if(defaultVariant){
+            updateButtonPrice(defaultVariant);
+            updateStock(defaultVariant);
+        }
+        toggleFrequency();
+
+        // change chiken size code
+        const chickenRadios = document.querySelectorAll('input[name="flock-size"]');
+        const variantBoxes = document.querySelectorAll('.flock_options.subscription .gt-prod-var-box-sub');
+
+        const selectedPackMemory = {};
+        function filterVariants(chickenSize) {
+            let firstVisible = null;
+            let remembered = selectedPackMemory[chickenSize];
+            variantBoxes.forEach(box => {
+                const radio = box.querySelector("input");
+                if (box.dataset.chicken === chickenSize) {
+                    box.style.display = "block";
+                    if (!firstVisible) {
+                        firstVisible = box;
+                    }
+                    // restore remembered selection
+                    if (remembered && radio.dataset.variantId === remembered) {
+                        box.classList.add("active");
+                        radio.checked = true;
+                        updateButtonPrice(radio);
+                        updateStock(radio)
+                    }
+                } else {
+                    box.style.display = "none";
+                    box.classList.remove("active");
+                    if (radio) radio.checked = false;
+                }
+            });
+
+            // if no remembered selection
+            if (!remembered && firstVisible) {
+                firstVisible.classList.add("active");
+                const radio = firstVisible.querySelector("input");
+                if (radio){
+                    radio.checked = true;
+                    updateButtonPrice(radio);
+                    updateStock(radio)
+                }
+            }
+        }
+
+        chickenRadios.forEach(radio => {
+            radio.addEventListener("change", function () {
+                const selectedChicken = this.dataset.vTitle;
+                filterVariants(selectedChicken);
+            });
         });
 
-    }
+        // page load default
+        const defaultChicken = document.querySelector('input[name="flock-size"]:checked').dataset.vTitle;
+        filterVariants(defaultChicken);
+                      
+        // Stock update
+        function updateStock(input){
+            let instock = $(input).attr('data-instock');
 
-    chickenRadios.forEach(radio => {
-        radio.addEventListener("change", function () {
+            if(instock == 'false'){
+                $('.product-form__submit').attr('disabled','disabled');
+                $('.product-form__submit span').text('Sold Out-');
+            }else{
+                $('.product-form__submit').removeAttr('disabled');
+                $('.product-form__submit span').text('Add to cart-');
+            }
+        }
 
-        const selectedChicken = this.dataset.vTitle;
+        // Update price
+        function updateButtonPrice(input){
+            const price = input.dataset.price;
+            const comparePrice = input.dataset.comparePrice;
 
-        filterVariants(selectedChicken);
+            const priceEl = document.querySelector(".product-price .price");
+            const compareEl = document.querySelector(".product-price .compare-price");
 
+            if(price){
+                priceEl.textContent = price;
+            }
+
+            if(comparePrice){
+                const priceNum = parseFloat(price.replace(/[^0-9.]/g, ""));
+                const compareNum = parseFloat(comparePrice.replace(/[^0-9.]/g, ""));
+
+                if(compareNum > priceNum){
+                    compareEl.style.display = "block";
+                    compareEl.textContent = comparePrice;
+                }else{
+                    compareEl.style.display = "none";
+                }
+
+            }else{
+                compareEl.style.display = "none";
+            }
+
+
+        }
+
+        document.addEventListener("change", function(e){
+            if(e.target.classList.contains("v_radio") && e.target.dataset.variantId){
+                const variantId = e.target.dataset.variantId;
+                const sellingPlan = e.target.dataset.sellingPlanId;
+                const variantInput = document.querySelector(".product-variant-id");
+                const sellingInput = document.querySelector("#selling_plan_input");
+                variantInput.value = variantId;
+                if(sellingPlan){
+                    sellingInput.value = sellingPlan;
+                }else{
+                    sellingInput.value = "";
+                }
+
+                // UPDATE BUTTON PRICE
+                updateButtonPrice(e.target);
+            }
+
+            if(e.target.dataset.variantId){
+                const chicken = e.target.closest(".gt-prod-var-box-sub").dataset.chicken;
+                const variantId = e.target.dataset.variantId;
+                selectedPackMemory[chicken] = variantId;
+
+            }
+        });
+
+        document.getElementById("buy_box_form").addEventListener("submit", function(e){
+            e.preventDefault();
+
+            const loader = document.querySelector(".product-form__submit .loader");
+            const button = document.querySelector(".product-form__submit");
+
+            // SHOW LOADER
+            loader.style.display = "flex";
+            button.setAttribute("disabled","disabled");
+            
+            const variantId = document.querySelector(".product-variant-id").value;
+            const sellingPlan = document.querySelector("#selling_plan_input").value;
+            let formData = {
+                items: [{
+                id: variantId,
+                quantity: 1
+                }]
+            };
+            if(sellingPlan){
+                formData.items[0].selling_plan = sellingPlan;
+            }
+            fetch("/cart/add.js",{
+                method:"POST",
+                headers:{
+                "Content-Type":"application/json"
+                },
+                body:JSON.stringify(formData)
+            })
+            .then(res => res.json())
+            .then(data => {
+                loader.style.display = "none";
+                button.removeAttribute("disabled");
+
+                const cartBubble = document.querySelector('#cart-icon-bubble');
+                const newBubble = new DOMParser()
+                    .parseFromString(sections['cart-icon-bubble'], 'text/html')
+                    .querySelector('#cart-icon-bubble');
+
+                if (cartBubble && newBubble) {
+                    cartBubble.innerHTML = newBubble.innerHTML;
+                }
+
+                // Update cart drawer
+                const cartDrawer = document.querySelector('cart-drawer');
+                if (cartDrawer) {
+                    cartDrawer.renderContents({
+                        sections: sections
+                    });
+                }
+                document.querySelector('#cart-icon-bubble').click();
+            })
+            .catch(err => console.error(err));
+        });
+
+        document.addEventListener("change", function(e) {
+            if (e.target.classList.contains("v_radio")) {
+                const parentWrapper = e.target.closest(".flock_options");
+                parentWrapper.querySelectorAll(".gt-prod-var-box-sub")
+                .forEach(box => {
+                    if (box.style.display !== "none") {
+                    box.classList.remove("active");
+                    }
+                });
+                e.target.closest(".gt-prod-var-box-sub")
+                .classList.add("active");
+
+                // Stock Check
+                if(e.target.dataset.variantId){
+                    updateStock(e.target);
+                }
+            }
         });
     });
-
-    // default load
-    const defaultChicken = document.querySelector('input[name="flock-size"]:checked').dataset.vTitle;
-    filterVariants(defaultChicken);
-});
 </script>
  <script>
     window.addEventListener("load", function () {
