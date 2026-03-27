@@ -54,9 +54,9 @@
                                     {% comment %} <div class="subs_label_inner">
                                         <img class="best_val_img" width="21" height="21" src="//cdn.shopify.com/s/files/1/0046/3716/3633/files/chicken-img.webp?v=1772692433">  
                                     <span>Best Value</span>
-                                    </div> {% endcomment %}
-                                    <input type="radio" id="subcribe" name="frequancy-radio" checked="checked" value="subscribe">
+                                    </div> {% endcomment %}                                    
                                     <label for="subcribe" class="subscribe-label">
+                                        <input type="radio" id="subcribe" name="frequancy-radio" checked="checked" value="subscribe">
                                         <div class="frq_info">
                                             <p>Subscribe & Save 20%</p>
                                             {% comment %} <span class="ss-price">{{ current_variant.price |  money_without_trailing_zeros }}</span>
@@ -82,9 +82,9 @@
                                         </div> {% endcomment %}
                                     </label>
                                 </div>
-                                <div class="bbfreq_radio_wrapper">
-                                    <input type="radio" id="one-time" name="frequancy-radio" value="onetime">
+                                <div class="bbfreq_radio_wrapper">                                  
                                     <label for="one-time" class="one-time-label">
+                                        <input type="radio" id="one-time" name="frequancy-radio" value="onetime">
                                         <div class="frq_info">
                                             <p>One-Time Purchase</p>
                                             {% comment %} <span class="ot-price">{{ current_variant.price |  money_without_trailing_zeros }}</span> {% endcomment %}
@@ -95,47 +95,47 @@
                             </div>
                         </div>
                         <div class="flock_size_wrapper frequancy">
-                            <div class="flock_options one-time" style="display: none">
-                                {% assign chicken_size = current_variant.option1 %}
-                                {% assign pack_option = selected_product.options_with_values[1] %}
-                                {% for value in pack_option.values %}
-                                    {% assign pack_size = value %}
-                                    {% for variant in selected_product.variants %}
-                                        {% if variant.option1 == chicken_size and variant.option2 == pack_size %}
+                            <div class="flock_options one-time" style="display: none">                                
+                                {% for variant in selected_product.variants %}
+                                    {% assign chicken_index = variant.option2 | split: ' ' | first | minus: 1 %}
+                                    {% assign forloopindex = forloop.index %}
+                                    {% assign discount = 0 %}
+                                    {% if variant.compare_at_price > variant.price %}
+                                        {% assign discount = variant.compare_at_price | minus: variant.price | times: 100 | divided_by: variant.compare_at_price %}
+                                    {% endif %}
 
-                                            {% assign discount = 0 %}
-                                            {% if variant.compare_at_price > variant.price %}
-                                                {% assign discount = variant.compare_at_price | minus: variant.price | times: 100 | divided_by: variant.compare_at_price %}
-                                            {% endif %}
-
-                                            <div class="gt-prod-var-box-sub {% if forloop.first %}active{% endif %}">
-                                                <div class="flock_item">
-                                                    <input
-                                                        type="radio"
-                                                        class="v_radio"
-                                                        name="ot-pack-size"
-                                                        id="ot-{{ value | handle }}"
-                                                        data-variant-id="{{ variant.id }}"
-                                                        data-variant-title="{{ variant.title }}"
-                                                        data-price="{{ variant.price | money_without_trailing_zeros }}"
-                                                        data-compare-price="{{ variant.compare_at_price | money_without_trailing_zeros }}"
-                                                        {% if variant.available %}
-                                                            data-instock="true"
-                                                        {% else %}
-                                                                data-instock="false"
-                                                        {% endif %}
-                                                        {% if forloop.first %}checked{% endif %}
-                                                    >
-                                                    <div class="gt-prod-var-content">
-                                                        <label for="ot-{{ value | handle }}">
-                                                            <div class="flock_info">
-                                                                <!-- Variant Image -->
-                                                                <div class="f_img">
-                                                                    <img src="{{ variant.featured_image | image_url: width: 300 }}" width="" height="">
-                                                                </div>
+                                    <div class="gt-prod-var-box-sub {% if forloopindex == 1 %}active{% endif %}"
+                                      data-chicken="{{ variant.option1 }}"
+                                        data-pack="{{ variant.option2 }}">
+                                        <div class="flock_item">
+                                            <input
+                                                type="radio"
+                                                class="v_radio"
+                                                name="ot-pack-size-{{ variant.option1 }}"
+                                                id="ot-{{ variant.id }}"
+                                                data-variant-id="{{ variant.id }}"
+                                                data-variant-title="{{ variant.title }}"
+                                                data-price="{{ variant.price | money_without_trailing_zeros }}"
+                                                data-compare-price="{{ variant.compare_at_price | money_without_trailing_zeros }}"
+                                                {% if variant.available %}
+                                                    data-instock="true"
+                                                {% else %}
+                                                        data-instock="false"
+                                                {% endif %}
+                                                {% if forloop.first %}checked{% endif %}
+                                            >
+                                            <div class="gt-prod-var-content">
+                                                <label for="ot-{{ variant.id }}">
+                                                    <div class="flock_info">
+                                                         <!-- Variant Image -->
+                                                        <div class="f_img">
+                                                            <img src="{{ variant.featured_image | image_url: width: 300 }}" width="" height="">
+                                                        </div>
+                                                        <div class="inner_content_wrappper">
+                                                            <div class="inner_content">                                                               
                                                                 <!-- Pack Size -->
                                                                 <div class="f_size">
-                                                                    <p>{{ value }}</p>
+                                                                    <p>{{ variant.option2 }}</p>
                                                                 </div>
                                                                 <!-- Price -->
                                                                 <div class="f_price">
@@ -152,26 +152,26 @@
                                                                         </div>
                                                                     {% endif %}
                                                                 </div>
-                                                                <!-- Discount -->
-                                                                <div class="save-price">
-                                                                    {% if discount > 0 %}
-                                                                        <span class="save-badge">
-                                                                        {{ discount }}% off
-                                                                        </span>
-                                                                    {% endif %}                                                                   
-                                                                </div>
                                                             </div>
-                                                        </label>
-                                                        {% if forloop.index == 2 %}
-                                                            <span class="populer">Most popular</span>
-                                                        {% elsif forloop.index == 3 %}
-                                                            <span class="populer best-value">Best Value</span>
-                                                        {% endif %}
+                                                            <!-- Discount -->
+                                                            <div class="save-price">
+                                                                {% if discount > 0 %}
+                                                                    <span class="save-badge">
+                                                                    {{ discount }}% off
+                                                                    </span>
+                                                                {% endif %}                                                                   
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                </div>
+                                                </label>
+                                                {% if chicken_index == 1 %}
+                                                    <span class="populer">Most popular</span>
+                                                {% elsif chicken_index == 2 %}
+                                                    <span class="populer best-value">Best Value</span>
+                                                {% endif %}
                                             </div>
-                                        {% endif %}
-                                    {% endfor %}
+                                        </div>
+                                    </div>
                                 {% endfor %}
                             </div> 
                            <div class="flock_options subscription">                            
@@ -206,36 +206,40 @@
                                                         <div class="f_img">
                                                             <img src="{{ variant.featured_image | image_url: width: 300 }}" width="" height=""  >
                                                         </div>
-                                                        <!-- Pack Size -->
-                                                        <div class="f_size">
-                                                            <p>{{ variant.option2 }} {{ allocation.selling_plan.name }}</p>
-                                                        </div>
-                                                        <!-- Price -->
-                                                            <div class="f_price">
-                                                            {% if variant.compare_at_price > allocation.price %}
-                                                                <div class="og-pric">                                                                        
-                                                                    <p>{{ allocation.price | money }}</p>
+                                                        <div class="inner_content_wrappper">
+                                                            <div class="inner_content">
+                                                                <!-- Pack Size -->
+                                                                <div class="f_size">
+                                                                    <p>{{ variant.option2 }} {{ allocation.selling_plan.name }}</p>
                                                                 </div>
-                                                                <div class="com-price">
-                                                                    <p>{{ variant.compare_at_price | money }}</p>
+                                                                <!-- Price -->
+                                                                <div class="f_price">
+                                                                    {% if variant.compare_at_price > allocation.price %}
+                                                                        <div class="og-pric">                                                                        
+                                                                            <p>{{ allocation.price | money }}</p>
+                                                                        </div>
+                                                                        <div class="com-price">
+                                                                            <p>{{ variant.compare_at_price | money }}</p>
+                                                                        </div>
+                                                                    {% else %}
+                                                                        <div class="og-pric">
+                                                                            <p>{{ allocation.price | money }}</p>
+                                                                        </div>
+                                                                    {% endif %}                                                                 
                                                                 </div>
-                                                            {% else %}
-                                                                <div class="og-pric">
-                                                                    <p>{{ allocation.price | money }}</p>
-                                                                </div>
-                                                            {% endif %}                                                                 
-                                                        </div>
-                                                        <!-- Discount -->
-                                                        {% assign discount = 0 %}
-                                                        {% if allocation.price < variant.price %}
-                                                            {% assign discount = variant.price | minus: allocation.price | times: 100 | divided_by: variant.price %}
-                                                        {% endif %}
-                                                        <div class="save-price">
-                                                            {% if discount > 0 %}
-                                                                <span class="save-badge">
-                                                                {{ discount }}% off
-                                                                </span>
-                                                            {% endif %}                                                                   
+                                                            </div>
+                                                            <!-- Discount -->
+                                                            {% assign discount = 0 %}
+                                                            {% if allocation.price < variant.price %}
+                                                                {% assign discount = variant.price | minus: allocation.price | times: 100 | divided_by: variant.price %}
+                                                            {% endif %}
+                                                            <div class="save-price">
+                                                                {% if discount > 0 %}
+                                                                    <span class="save-badge">
+                                                                    {{ discount }}% off
+                                                                    </span>
+                                                                {% endif %}                                                                   
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </label>
@@ -305,6 +309,21 @@
             updateStock(defaultSubVariant);
         }
 
+        function updateVariantInputs(input){
+            const variantId = input.dataset.variantId;
+            const sellingPlan = input.dataset.sellingPlanId;
+            const variantInput = document.querySelector(".product-variant-id");
+            const sellingInput = document.querySelector("#selling_plan_input");
+            if(variantId){
+                variantInput.value = variantId;
+            }
+            if(sellingPlan){
+                sellingInput.value = sellingPlan;
+            }else{
+                sellingInput.value = "";
+            }
+        }
+
         const subscribeRadio = document.getElementById("subcribe");
         const oneTimeRadio = document.getElementById("one-time");
 
@@ -365,6 +384,7 @@
         // change chiken size code
         const chickenRadios = document.querySelectorAll('input[name="flock-size"]');
         const variantBoxes = document.querySelectorAll('.flock_options.subscription .gt-prod-var-box-sub');
+        const oneTimeBoxes = document.querySelectorAll('.flock_options.one-time .gt-prod-var-box-sub');
 
         const selectedPackMemory = {};
         function filterVariants(chickenSize) {
@@ -381,6 +401,7 @@
                     if (remembered && radio.dataset.variantId === remembered) {
                         box.classList.add("active");
                         radio.checked = true;
+                        updateVariantInputs(radio);
                         updateButtonPrice(radio);
                         updateStock(radio)
                     }
@@ -401,12 +422,83 @@
                     updateStock(radio)
                 }
             }
+
+            let firstOneTime = null;
+
+            oneTimeBoxes.forEach(box => {
+                const radio = box.querySelector("input");
+
+                if (box.dataset.chicken === chickenSize) {
+
+                    box.style.display = "block";
+
+                    if(!firstOneTime){
+                        firstOneTime = box;
+                    }
+
+                } else {
+
+                    box.style.display = "none";
+                    box.classList.remove("active");
+
+                    if(radio){
+                        radio.checked = false;
+                    }
+                }
+            });
+
+            // select first visible one-time variant
+            if(firstOneTime){
+                const radio = firstOneTime.querySelector("input");
+                firstOneTime.classList.add("active");
+                if(radio){
+                    radio.checked = true;
+                    // run only if one-time is active
+                    if(document.getElementById("one-time").checked){
+                        updateVariantInputs(radio);
+                        updateButtonPrice(radio);
+                        updateStock(radio);
+                    }
+                }
+            }
         }
 
         chickenRadios.forEach(radio => {
             radio.addEventListener("change", function () {
+
                 const selectedChicken = this.dataset.vTitle;
+
+                // filter subscription variants
                 filterVariants(selectedChicken);
+
+                let activeRadio;
+
+                // check which frequency is active
+                if (document.getElementById("subcribe").checked) {
+
+                    activeRadio = document.querySelector(
+                        `.flock_options.subscription .gt-prod-var-box-sub[data-chicken="${selectedChicken}"] input:checked`
+                    );
+
+                } else {
+
+                    activeRadio = document.querySelector(
+                        `.flock_options.one-time input.v_radio:checked`
+                    );
+                }
+
+                if(activeRadio){
+
+                    const variantInput = document.querySelector(".product-variant-id");
+                    const sellingInput = document.querySelector("#selling_plan_input");
+
+                    variantInput.value = activeRadio.dataset.variantId || "";
+                    sellingInput.value = activeRadio.dataset.sellingPlanId || "";
+
+                    updateButtonPrice(activeRadio);
+                    updateStock(activeRadio);
+                }
+
             });
         });
 
