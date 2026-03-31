@@ -51,43 +51,35 @@
                          <div class="bb_frequancy_wrapper">
                             <div class="bb_frequancy_inner">
                                 <div class="bbfreq_radio_wrapper">
-                                    {% comment %} <div class="subs_label_inner">
+                                    <div class="subs_label_inner">
                                         <img class="best_val_img" width="21" height="21" src="//cdn.shopify.com/s/files/1/0046/3716/3633/files/chicken-img.webp?v=1772692433">  
                                     <span>Best Value</span>
-                                    </div> {% endcomment %}                                    
+                                    </div>                             
                                     <label for="subcribe" class="subscribe-label">
-                                        <input type="radio" id="subcribe" name="frequancy-radio" checked="checked" value="subscribe">
-                                        <div class="frq_info">
-                                            <p>Subscribe & Save 20%</p>
-                                            {% comment %} <span class="ss-price">{{ current_variant.price |  money_without_trailing_zeros }}</span>
-                                            <span class="ss-comp-price">{{ current_variant.compare_at_price |  money_without_trailing_zeros }}</span> {% endcomment %}
+                                        <div class="subs_wrapper">
+                                            <input type="radio" id="subcribe" name="frequancy-radio" checked="checked" value="subscribe">
+                                            <div class="frq_info">
+                                                <p>Subscribe & Save 20%</p>
+                                                {% comment %} <span class="ss-price">{{ current_variant.price |  money_without_trailing_zeros }}</span>
+                                                <span class="ss-comp-price">{{ current_variant.compare_at_price |  money_without_trailing_zeros }}</span> {% endcomment %}
 
+                                            </div>
                                         </div>
-                                        {% comment %} <div class="frequancy_details">
-                                            <select name="select_frequancy" id="frquancy">
-                                                    {% for group in selected_product.selling_plan_groups %}
-                                                    {% for plan in group.selling_plans %}
-                                                        {% assign subloop = forloop.index %}
-                                                            <option value="{{ plan.id }}" {% if subloop == 1 %} selected="selected"{% endif %}>
-                                                                {{ plan.name }}
-                                                            </option>
-                                                    {% endfor %}
-                                                {% endfor %}
-                                            </select>
-                                            {% if section.settings.subsbenifit != blank %}
-                                                <div class="ss_info_wrapper">
-                                                    {{ section.settings.subsbenifit  }}
-                                                </div>
-                                            {% endif %}
-                                        </div> {% endcomment %}
+                                        <div class="frequancy_details">
+                                            <div class="ss_info_wrapper">
+                                                {{ section.settings.subsbenifit  }}
+                                            </div>
+                                        </div> 
                                     </label>
                                 </div>
                                 <div class="bbfreq_radio_wrapper">                                  
                                     <label for="one-time" class="one-time-label">
-                                        <input type="radio" id="one-time" name="frequancy-radio" value="onetime">
-                                        <div class="frq_info">
-                                            <p>One-Time Purchase</p>
-                                            {% comment %} <span class="ot-price">{{ current_variant.price |  money_without_trailing_zeros }}</span> {% endcomment %}
+                                        <div class="subs_wrapper">
+                                            <input type="radio" id="one-time" name="frequancy-radio" value="onetime">
+                                            <div class="frq_info">
+                                                <p>One-Time Purchase</p>
+                                                {% comment %} <span class="ot-price">{{ current_variant.price |  money_without_trailing_zeros }}</span> {% endcomment %}
+                                            </div>
                                         </div>
                                     </label>
                                 </div>

@@ -21,7 +21,17 @@
 }
 
 .but_box_main .flock_size_wrapper .flock_options .gt-prod-var-box-sub .flock_item label{
-        padding: 8px 16px;
+    padding: 20px;
+}
+
+.but_box_main .flock_size_wrapper:not(.frequancy) .flock_options .gt-prod-var-box-sub.active label p {
+    color: #fff !important;
+}
+
+.but_box_main .flock_size_wrapper:not(.frequancy) .flock_options .gt-prod-var-box-sub.active label {
+    background-color: #1f6223;
+    color: #fff;
+    border-radius: 30px;
 }
 
 .gt-prod-var-box-sub:hover .gt-prod-var-content label{
@@ -48,6 +58,14 @@
 
 .but_box_main .flock_size_wrapper {
     margin-bottom: 20px;
+}
+
+.but_box_main .flock_size_wrapper .flock_options .gt-prod-var-box-sub{
+    border-radius: 30px;
+}
+
+.but_box_main .flock_size_wrapper.frequancy .flock_options .gt-prod-var-box-sub{
+    border-radius: 8px;
 }
 
 .but_box_main .flock_size_wrapper.frequancy{
@@ -138,7 +156,7 @@
 }
 
 .bb_frequancy_wrapper {
-    margin-top: 0;
+    margin-top: 35px;
 }
 
 .gt-prod-var-content label .flock_info .save-price p{
@@ -258,12 +276,12 @@
     border-radius: var(--skio-group-border-radius, 0);
     color: rgb(29,29,29);
     cursor: pointer;
-    width: calc(100% / 2);
-    border-radius: 8px;
+    width:100%;
+    border-radius: 0px;
 }
 .bb_frequancy_wrapper .bb_frequancy_inner .bbfreq_radio_wrapper label{
     cursor: pointer;
-    padding: 8px 16px;
+    padding: 15px 12px;
     display: flex;
     align-items: center;
 }
@@ -362,6 +380,18 @@ span.ss-comp-price {
     width: 100%;
 }
 
+.bb_frequancy_wrapper .bb_frequancy_inner .bbfreq_radio_wrapper label .subs_wrapper{
+    display: flex;
+}
+
+.bb_frequancy_wrapper .bb_frequancy_inner .bbfreq_radio_wrapper label.subscribe-label{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 30px 12px 10px;
+}
+
 span.ss-price, .save-price {
     color: rgb(126, 126, 126) !important;
     display: flex;
@@ -400,7 +430,8 @@ span.ss-price, .save-price {
     max-height: 1000px;
     transition: max-height 0.15s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     justify-content: flex-start;
-    margin-top: 9px;
+    margin-top: 20px;
+    margin-left: 25px;
 }
 
 .bb_frequancy_inner input {
@@ -466,6 +497,7 @@ span.ot-price {
 
 .bb_frequancy_inner .bbfreq_radio_wrapper:has(input:checked) {
     border-color: rgb(31, 98, 35);
+    background-color: #0b340e1a;
 }
 .bb_frequancy_inner {
     display: flex;
@@ -476,8 +508,8 @@ span.ot-price {
 
 .bb_frequancy_inner {
     display: flex;
-    flex-direction: row;
-    gap: 10px;
+    flex-direction: column;
+    gap: 25px;
     margin-bottom: 20px;
 }
 
@@ -629,8 +661,8 @@ body .product-form__buttons {
     .gt-prod-var-content{
         gap: 0;
     }
-
-    .bb_frequancy_wrapper .bb_frequancy_inner .bbfreq_radio_wrapper label{
-        padding: 8px 3px;
+    
+    .but_box_main .flock_size_wrapper .flock_options .gt-prod-var-box-sub .flock_item label {
+        padding: 15px;
     }
 }
