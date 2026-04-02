@@ -253,11 +253,6 @@
           "useShopMoneyFormat": false
         }
       },
-      "11348531219507317188": {
-        "type": "shopify://apps/eb-easy-bundle-builder/blocks/app-embed/05b1325c-6303-4da5-8e2f-b13ab2a50e1a",
-        "disabled": false,
-        "settings": {}
-      },
       "wholesale_gorilla": {
         "type": "shopify://apps/wholesale-gorilla/blocks/wsg-header/c48d0487-dff9-41a4-94c8-ec6173fe8b8d",
         "disabled": false,
@@ -265,6 +260,11 @@
           "embed_bg_color": "#000000",
           "embed_text_color": "#000000"
         }
+      },
+      "9323109295802554384": {
+        "type": "shopify://apps/upstackified-universal-pixel/blocks/adtScript/2ef9f833-e251-4eed-af16-8dca98b27a2f",
+        "disabled": false,
+        "settings": {}
       }
     },
     "color_schemes": {
