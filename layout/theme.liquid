@@ -331,7 +331,7 @@
     {% endstyle %}
 
     {{ 'base.css' | asset_url | stylesheet_tag }}
-
+    {{ 'custom.css' | asset_url | stylesheet_tag }}
     {%- unless settings.type_body_font.system? -%}
       <link rel="preload" as="font" href="{{ settings.type_body_font | font_url }}" type="font/woff2" crossorigin>
     {%- endunless -%}
@@ -471,5 +471,11 @@
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
-  </body>
+  {%  comment  %} Redirec page js {% endcomment %}
+  {% if page.handle == "peck-purity-chicken-dewormer" %}
+    <script>
+      window.location.replace("/products/peck-purity-chicken-dewormer");
+    </script>
+  {% endif %}
+ </body>
 </html>

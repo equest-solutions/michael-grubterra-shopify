@@ -19,21 +19,6 @@
     },
     "17093077838cdbd7b0": {
       "type": "apps",
-      "blocks": {
-        "smile_loyalty_rewards_smile_landing_page_header_QKjytR": {
-          "type": "shopify://apps/smile-loyalty-rewards/blocks/smile-landing-page-header/2fae4e25-1841-4ea2-bc02-bd548478c4f6",
-          "settings": {
-            "primary_colour": "#333",
-            "secondary_colour": "#fff",
-            "background_image": "shopify://shop_images/ezgif.com-gif-maker.gif",
-            "title_text": "Welcome to our rewards page",
-            "description_text": "Earn reward points on every purchase. Redeem for discounts on future purchases."
-          }
-        }
-      },
-      "block_order": [
-        "smile_loyalty_rewards_smile_landing_page_header_QKjytR"
-      ],
       "settings": {
         "include_margins": true
       }
@@ -147,42 +132,12 @@
     },
     "170930780532dc7c4e": {
       "type": "apps",
-      "blocks": {
-        "smile_loyalty_rewards_smile_landing_page_earning_rule_highlight_9PDE4K": {
-          "type": "shopify://apps/smile-loyalty-rewards/blocks/smile-landing-page-earning-rule-highlight/2fae4e25-1841-4ea2-bc02-bd548478c4f6",
-          "settings": {
-            "primary_colour": "#1f6223",
-            "secondary_colour": "#fff",
-            "image": "shopify://shop_images/Icon1.jpg",
-            "title_text": "Earn points for every order placed",
-            "description_text": "The more you spend, the more you save."
-          }
-        }
-      },
-      "block_order": [
-        "smile_loyalty_rewards_smile_landing_page_earning_rule_highlight_9PDE4K"
-      ],
       "settings": {
         "include_margins": true
       }
     },
     "17093088185553ef52": {
       "type": "apps",
-      "blocks": {
-        "smile_loyalty_rewards_smile_landing_page_redeeming_rule_highlight_kFK39V": {
-          "type": "shopify://apps/smile-loyalty-rewards/blocks/smile-landing-page-redeeming-rule-highlight/2fae4e25-1841-4ea2-bc02-bd548478c4f6",
-          "settings": {
-            "primary_colour": "#1f6223",
-            "secondary_colour": "#fff",
-            "image": "shopify://shop_images/Icon3_c2760adb-2456-4e5d-8ee0-ee58882eff97.png",
-            "title_text": "Redeem points for rewards",
-            "description_text": "Redeem points on your next purchase, or save them up for higher value rewards."
-          }
-        }
-      },
-      "block_order": [
-        "smile_loyalty_rewards_smile_landing_page_redeeming_rule_highlight_kFK39V"
-      ],
       "settings": {
         "include_margins": true
       }

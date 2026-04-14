@@ -99,14 +99,6 @@
             "show_gift_card_recipient": false
           }
         },
-        "wonderment_pdp_etas_3gEa4Q": {
-          "type": "shopify://apps/wonderment/blocks/pdpEtas/89d63369-6ee7-4097-ac41-8229c6f90001",
-          "settings": {
-            "eta_text_font_size": 16,
-            "hint_text_font_size": 12,
-            "custom_css": ""
-          }
-        },
         "icon_with_text_jkfH4r": {
           "type": "icon-with-text",
           "settings": {
@@ -203,7 +195,6 @@
         "appstle_subscriptions_app_appstle_subscription_product_page_widget_eTBTVQ",
         "text_77MLMf",
         "buy_buttons",
-        "wonderment_pdp_etas_3gEa4Q",
         "icon_with_text_jkfH4r",
         "share",
         "collapsible_tab_icon_Tqc9xH",
