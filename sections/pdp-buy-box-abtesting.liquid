@@ -8,7 +8,67 @@
     #buy_box_form .appstle_subscription_save{
         display: none;
     }
+
+    .but_box_main .flock_size_wrapper .flock_options .gt-prod-var-box-sub{
+        width: calc(33% - 5px);
+    }
+
+    .but_box_main .flock_size_wrapper .flock_options{
+        justify-content: space-between;
+    }
     
+    .but_box_main .flock_size_wrapper .flock_options .gt-prod-var-box-sub .flock_item{
+        position: relative;
+    }
+
+    .but_box_main .flock_size_wrapper .flock_options .gt-prod-var-box-sub .flock_item .badge {
+        position: absolute;
+        top: -15px;
+        left: 0;
+        right: 0;
+        display: flex;
+        max-width: max-content;
+        text-align: center;
+        width: max-content;
+        margin: 0 auto;
+        background-color: transparent;
+        border: 0px solid #1f6223;
+        padding: 5px 8px;
+        color: #fff;
+        font-weight: 700;
+        z-index: 333;
+        overflow: hidden;
+        letter-spacing: 0;
+        text-transform: uppercase;
+        font-size: 10px;
+    }
+
+    .but_box_main .flock_size_wrapper .flock_options .gt-prod-var-box-sub .flock_item .badge.most-popular{
+        background-color: #4182f5;
+    }
+     .but_box_main .flock_size_wrapper .flock_options .gt-prod-var-box-sub .flock_item .badge.free-shipping{
+        background-color: #4182f5;
+    }
+     .but_box_main .flock_size_wrapper .flock_options .gt-prod-var-box-sub .flock_item .badge.best-value{
+        background-color: #1ec35a;
+    }
+    .but_box_main .flock_size_wrapper .flock_options{
+        column-gap: 10px;        
+        row-gap: 35px;
+    }
+    .gt-prod-var-content{
+        padding: 12px 10px 10px 10px;
+    }
+    @media (max-width: 767px){
+        .but_box_main .flock_size_wrapper .flock_options .gt-prod-var-box-sub {
+            width: calc(50% - 5px);
+        }
+
+        .but_box_main .flock_size_wrapper .flock_options{
+            row-gap: 25px;
+            column-gap: 5px;
+        }
+    }
 </style>
 <section class="new_pdp_buy_box">
     <div class="buy_box_wrapper">
@@ -25,7 +85,7 @@
                             <div class="flock_options one_time"  style="display: none;">
                                 
                                 {% for variant in selected_product.variants %}                                  
-                                        {% assign forloop_index_count1 = forloop.index %}
+                                    {% assign forloop_index_count1 = forloop.index %}
                                     <div class="gt-prod-var-box-sub {% if forloop.first %} active {% endif %}">
                                         <div class="flock_item">
                                             <input type="radio" class="v_radio" name="flock-size" id="{{  variant.title |  downcase |  replace:  ' ','-' }}" 
@@ -61,10 +121,10 @@
                                                         {% assign first_part = variant.title | remove: last_two %}
 
                                                         <div class="f_size">
-                                                            <p>{{ first_part }}</p>
+                                                            <p>{{ last_two }}</p>
                                                         </div>
                                                         <div class="p_size">
-                                                            <p>{{ last_two }}</p>
+                                                            <p>{{ first_part }}</p>
                                                          </div>
                                                         {% comment %} <div class="f_size">
                                                             <p>{{  variant.title | replace: 'Birds ', 'Birds<br>' }}</p>
@@ -90,7 +150,24 @@
                                                         {% endif %}
                                                     </div>
                                                 </label>
-                                            </div>                                            
+                                            </div> 
+                                            {% if forloop_index_count1 == 3 %}
+                                                <div class="badge most-popular">
+                                                    Most popular
+                                                </div>    
+                                            {% elsif forloop_index_count1 == 4  %}
+                                                <div class="badge free-shipping">
+                                                    Free Shipping
+                                                </div>
+                                            {% elsif forloop_index_count1 == 5  %}
+                                                <div class="badge free-shipping">
+                                                    Free Shipping
+                                                </div>
+                                            {% elsif forloop_index_count1 == 6  %}
+                                                <div class="badge best-value">
+                                                    Free Shipping + Best Value
+                                                </div>
+                                            {% endif %}                                                                              
                                         </div>
                                     </div>
                                 {% endfor %}
@@ -102,7 +179,7 @@
                                     {% assign forloop_index_count = forloop.index %}
                                     <div class="gt-prod-var-box-sub {% if forloop.first %} active {% endif %}">
                                         <div class="flock_item">
-                                                <input type="radio" class="v_radio" name="flock-size-ss" id="ss-{{  variant.title |  downcase |  replace:  ' ','-' }}" {% if forloop.first %} checked{% endif %}
+                                            <input type="radio" class="v_radio" name="flock-size-ss" id="ss-{{  variant.title |  downcase |  replace:  ' ','-' }}" {% if forloop.first %} checked{% endif %}
                                                 data-v-title="{{ variant.title  }}"
                                                 data-v-id="{{ variant.id }}"
                                                 data-v-price="{{ variant.price | money_without_trailing_zeros }}"
@@ -137,10 +214,10 @@
                                                         {% assign first_part = variant.title | remove: last_two %}
 
                                                         <div class="f_size">
-                                                            <p>{{ first_part }}</p>
+                                                            <p>{{ last_two }}</p>
                                                         </div>
                                                         <div class="p_size">
-                                                            <p>{{ last_two }}</p>
+                                                            <p>{{ first_part }}</p>
                                                          </div>
                                                         {% comment %} <div class="f_size">
                                                              <p>{{  variant.title | replace: 'Birds ', 'Birds<br>' }}</p>
@@ -174,7 +251,24 @@
                                                         {% endfor %}
                                                     </div>
                                                 </label>
-                                            </div>                                            
+                                            </div>     
+                                            {% if forloop_index_count == 3 %}
+                                                <div class="badge most-popular">
+                                                    Most popular
+                                                </div>    
+                                            {% elsif forloop_index_count == 4  %}
+                                                <div class="badge free-shipping">
+                                                    Free Shipping
+                                                </div>
+                                            {% elsif forloop_index_count == 5  %}
+                                                <div class="badge free-shipping">
+                                                    Free Shipping
+                                                </div>
+                                            {% elsif forloop_index_count == 6  %}
+                                                <div class="badge best-value">
+                                                    Free Shipping + Best Value
+                                                </div>
+                                            {% endif %}                                       
                                         </div>
                                     </div>
                                 {% endfor %}
@@ -275,173 +369,193 @@
 <script>
 $(document).ready(function(){
 
-  $('.js-for-image-slider').slick({
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    arrows: true,
-    fade: true,
-    cssEase: 'linear',
-    asNavFor: '.js-nav-image-slider'
+  /* -----------------------------
+     UPDATE UI FUNCTION
+  ----------------------------- */
+  function updateUI($input){
+    let com_p = $input.attr('data-comp-price');
+    let sub_p = $input.attr('data-subs-price');
+    let save_p = $input.attr('data-save-price');
+    let s_price = $input.attr('data-v-price');
+    let v_id = $input.attr('data-v-id');
+    let instock = $input.attr('data-instock');
+
+    let mode = $('input[name="frequancy-radio"]:checked').val();
+
+    // Set variant ID
+    $('#buy_box_form .product-variant-id').val(v_id);
+
+    // Prices update
+    $('.subscribe-label .save-price').text(save_p);
+    $('.subscribe-label .ss-price').text(sub_p);
+    $('.subscribe-label .ss-comp-price').text(com_p);
+    $('.frq_info .ot-price').text(s_price);
+
+    if(mode == 'onetime'){
+      $('.product-form__submit .price').text(s_price);
+    } else {
+      $('.product-form__submit .price').text(sub_p);
+    }
+
+    $('.product-form__submit .compare-price').text(com_p);
+
+    // Stock handling
+    if(instock == 'false'){
+      $('.product-form__submit').attr('disabled','disabled');
+      $('.product-form__submit span').text('Sold Out-');
+    } else {
+      $('.product-form__submit').removeAttr('disabled');
+      $('.product-form__submit span').text('Add to cart-');
+    }
+  }
+
+  /* -----------------------------
+     SYNC VARIANT BETWEEN MODES
+  ----------------------------- */
+  function syncVariant(targetWrapper, variantId){
+    let target = targetWrapper.find(`input[data-v-id="${variantId}"]`);
+    if(target.length){
+      target.prop('checked', true);
+      target.closest('.gt-prod-var-box-sub').addClass('active');
+      updateUI(target);
+    }
+  }
+
+  function getSelectedVariant(wrapper){
+    return wrapper.find('.flock_item input:checked').attr('data-v-id');
+  }
+
+  /* -----------------------------
+     VARIANT CLICK
+  ----------------------------- */
+  $('.flock_options .flock_item input').on('click', function(){
+
+    $(this).closest('.flock_options')
+           .find('.gt-prod-var-box-sub')
+           .removeClass('active');
+
+    $(this).closest('.gt-prod-var-box-sub')
+           .addClass('active');
+
+    updateUI($(this));
   });
 
-  $('.js-nav-image-slider').slick({
-    slidesToShow: 7,
-    slidesToScroll: 1,
-    asNavFor: '.js-for-image-slider',
-    dots: false,
-    focusOnSelect: true,
-    arrows: true
-  });
+  /* -----------------------------
+     FREQUENCY SWITCH
+  ----------------------------- */
+  $('input[name="frequancy-radio"]').on('change', function(){
 
+    let mode = $(this).val();
 
-  // On load fill the check value
-  let subs_com_price =$('.flock_options.subscribe_save .gt-prod-var-box-sub .flock_item input:checked').attr('data-comp-price');
-  let subs_price =$('.flock_options.subscribe_save .gt-prod-var-box-sub .flock_item input:checked').attr('data-subs-price');
-  let sav_price = $('.flock_options.subscribe_save .gt-prod-var-box-sub .flock_item input:checked').attr('data-save-price');
-  let original_price = $('.flock_options.subscribe_save .gt-prod-var-box-sub .flock_item input:checked').attr('data-original-price');
-  $('.bbfreq_radio_wrapper .subscribe-label .frq_info .save-price').text(sav_price);
-  $('.bbfreq_radio_wrapper .subscribe-label .frq_info .ss-price').text(subs_price);
-  $('.bbfreq_radio_wrapper .subscribe-label .frq_info .ss-comp-price').text(subs_com_price);
-  $('.product-form__buttons .product-form__submit .product-price .price').text(subs_price);
-  $('.product-form__buttons .product-form__submit .product-price .compare-price').text(subs_com_price);
-  $('.bbfreq_radio_wrapper .frq_info .ot-price').text(original_price);
+    if(mode == 'onetime'){
 
+      let selectedId = getSelectedVariant($('.subscribe_save'));
 
-  // On subscribe button chnage prices
-  $('.flock_options .gt-prod-var-box-sub .flock_item input').on('click', function(){
-        let com_p = $(this).attr('data-comp-price');
-        let sub_p = $(this).attr('data-subs-price');
-        let save_p = $(this).attr('data-save-price');
-        let s_price = $(this).attr('data-v-price');
-        let original_price = $('.flock_options.subscribe_save .gt-prod-var-box-sub .flock_item input:checked').attr('data-original-price');
-        let v_id = $(this).attr('data-v-id');
-        //let update_quanityt = $(this).attr('data-quantity');
-        $('#buy_box_form .product-variant-id').val(v_id);
-        //$('#buy_box_form .product-variant-id').attr('data-quantity', update_quanityt);
-        $('.bbfreq_radio_wrapper .subscribe-label .frq_info .save-price').text(save_p);
-        $('.bbfreq_radio_wrapper .subscribe-label .frq_info .ss-price').text(sub_p);
-        $('.bbfreq_radio_wrapper .subscribe-label .frq_info .ss-comp-price').text(com_p);
-        let check_name = $('.bb_frequancy_inner .bbfreq_radio_wrapper input:checked').val();
-        if(check_name == 'onetime'){
-            $('.product-form__buttons .product-form__submit .product-price .price').text(s_price);
-        }else{
-            $('.product-form__buttons .product-form__submit .product-price .price').text(sub_p);
-        }     
-        $('.product-form__buttons .product-form__submit .product-price .compare-price').text(com_p);
-        $('.bbfreq_radio_wrapper .frq_info .ot-price').text(s_price);   
-        let instock = $(this).attr('data-instock');
-        if(instock == 'false'){
-            $('.product-form__submit').attr('disabled','disabled');
-            $('.product-form__submit span').text('Sold Out-');
-        }else{
-            $('.product-form__submit').removeAttr('disabled');
-            $('.product-form__submit span').text('Add to cart-');
-        }
+      $('.subscribe_save').hide();
+      $('.one_time').show();
 
-  });
+      syncVariant($('.one_time'), selectedId);
 
-  $('.bb_frequancy_inner .bbfreq_radio_wrapper input').on('click',function(){
-    let check_name  = $(this).val();
-    if(check_name == 'onetime'){
-      $('.flock_options.one_time').show();
-      $('.flock_options.subscribe_save').hide();
-      let ot_c_price = $('.flock_options.one_time .gt-prod-var-box-sub .flock_item input:checked').attr('data-comp-price');
-      let ot_original_price = $('.flock_options.one_time .gt-prod-var-box-sub .flock_item input:checked').attr('data-v-price');
-      console.log('ot_original_price',ot_original_price);
-      let ot_save_price = $('.flock_options.one_time .gt-prod-var-box-sub .flock_item input:checked').attr('data-save-price');
-      let sub_original_price = $('.flock_options.one_time .gt-prod-var-box-sub .flock_item input:checked').attr('data-subs-price');
-      $('.bbfreq_radio_wrapper .subscribe-label .frq_info .save-price').text(ot_save_price);
-      $('.bbfreq_radio_wrapper .subscribe-label .frq_info .ss-price').text(sub_original_price);
-      $('.bbfreq_radio_wrapper .subscribe-label .frq_info .ss-comp-price').text(ot_c_price);
-      $('.product-form__buttons .product-form__submit .product-price .price').text(ot_original_price);
-      $('.product-form__buttons .product-form__submit .product-price .compare-price').text(ot_c_price);
-      $('.bbfreq_radio_wrapper .frq_info .ot-price').text(ot_original_price);
-      $('.flock_options.one_time .gt-prod-var-box-sub:first-child .flock_item input').trigger('click');
-      $('.flock_options.one_time .gt-prod-var-box-sub:first-child').addClass('active');
-    }else{
-      $('.flock_options.one_time').hide();
-      $('.flock_options.subscribe_save').show();
-       let ot_c_price = $('.flock_options.subscribe_save .gt-prod-var-box-sub .flock_item input:checked').attr('data-comp-price');
-      let ot_original_price = $('.flock_options.subscribe_save .gt-prod-var-box-sub .flock_item input:checked').attr('data-v-price');
-      let ot_save_price = $('.flock_options.subscribe_save .gt-prod-var-box-sub .flock_item input:checked').attr('data-save-price');
-      let sub_original_price = $('.flock_options.subscribe_save .gt-prod-var-box-sub .flock_item input:checked').attr('data-subs-price');
-      $('.bbfreq_radio_wrapper .subscribe-label .frq_info .save-price').text(ot_save_price);
-      $('.bbfreq_radio_wrapper .subscribe-label .frq_info .ss-price').text(sub_original_price);
-      $('.bbfreq_radio_wrapper .subscribe-label .frq_info .ss-comp-price').text(ot_c_price);
-      $('.product-form__buttons .product-form__submit .product-price .price').text(ot_original_price);
-      $('.product-form__buttons .product-form__submit .product-price .compare-price').text(ot_c_price);
-      $('.bbfreq_radio_wrapper .frq_info .ot-price').text(ot_original_price);
-      $('.flock_options.subscribe_save .gt-prod-var-box-sub:first-child .flock_item input').trigger('click');
-      $('.flock_options.subscribe_save .gt-prod-var-box-sub:first-child').addClass('active');
+    } else {
+
+      let selectedId = getSelectedVariant($('.one_time'));
+
+      $('.one_time').hide();
+      $('.subscribe_save').show();
+
+      syncVariant($('.subscribe_save'), selectedId);
     }
   });
 
-  $('.product-form__submit').on('click',function(e){
+  /* -----------------------------
+     INITIAL LOAD
+  ----------------------------- */
+  let initialInput = $('.subscribe_save .flock_item input:checked');
+  updateUI(initialInput);
+
+  /* -----------------------------
+     ADD TO CART (AJAX)
+  ----------------------------- */
+  $('.product-form__submit').on('click', function(e){
     e.preventDefault();
-    let $this = $(this);
-    $this.attr('disabled','disabled');
-    $this.find('.loader').addClass('show');
-    var itemsArray = [];
-    let var_id = $('.product-variant-id').val();
-    //let qnty = $('.product-variant-id').attr('data-quantity');
-    var fre_op =  $('.bb_frequancy_inner .bbfreq_radio_wrapper input:checked').val();
-    if(fre_op == 'onetime'){
-        var customItem = [
-          {
-            id: var_id,
-            quantity: 1
-          }
-        ];
-      itemsArray.push(...customItem);
-    }else{
-        var selling_plan_id = $('#frquancy option:selected').val();     
-        var customItem = [{
-          id: var_id,
-          quantity: 1,
-          selling_plan: selling_plan_id
-        }];
-        itemsArray.push(...customItem);
+
+    let $btn = $(this);
+    $btn.attr('disabled','disabled');
+    $btn.find('.loader').addClass('show');
+
+    let itemsArray = [];
+
+    let variantId = $('#buy_box_form .product-variant-id').val();
+    let mode = $('input[name="frequancy-radio"]:checked').val();
+
+    if(mode == 'onetime'){
+
+      itemsArray.push({
+        id: variantId,
+        quantity: 1
+      });
+
+    } else {
+
+      let selling_plan_id = $('#frquancy option:selected').val();
+
+      itemsArray.push({
+        id: variantId,
+        quantity: 1,
+        selling_plan: selling_plan_id
+      });
     }
 
     $.ajax({
-        url: '/cart/add.js',
-        method: "POST",
-        dataType: "JSON",
-        data: { items: itemsArray },
-        success: function (data) {
-           fetch(`${window.location.pathname}?sections=cart-drawer,cart-icon-bubble`)
-              .then(response => response.json())
-              .then((sections) => {
-                // Update cart bubble
-                const cartBubble = document.querySelector('#cart-icon-bubble');
-                const newBubble = new DOMParser()
-                    .parseFromString(sections['cart-icon-bubble'], 'text/html')
-                    .querySelector('#cart-icon-bubble');
+      url: '/cart/add.js',
+      method: 'POST',
+      dataType: 'JSON',
+      data: { items: itemsArray },
 
-                if (cartBubble && newBubble) {
-                    cartBubble.innerHTML = newBubble.innerHTML;
-                }
+      success: function(){
 
-                // Update cart drawer
-                const cartDrawer = document.querySelector('cart-drawer');
-                if (cartDrawer) {
-                    cartDrawer.renderContents({
-                        sections: sections
-                    });
-                }
-                document.querySelector('#cart-icon-bubble').click();
-            });
+        // Refresh cart UI
+        fetch(`${window.location.pathname}?sections=cart-drawer,cart-icon-bubble`)
+          .then(res => res.json())
+          .then((sections) => {
 
-          $this.find('.loader').removeClass('show');
-          $this.removeAttr('disabled');
-        },
-          error: function (data) {
-        }
+            // Update cart bubble
+            let bubble = document.querySelector('#cart-icon-bubble');
+            let newBubble = new DOMParser()
+              .parseFromString(sections['cart-icon-bubble'], 'text/html')
+              .querySelector('#cart-icon-bubble');
+
+            if(bubble && newBubble){
+              bubble.innerHTML = newBubble.innerHTML;
+            }
+
+            // Update drawer
+            let drawer = document.querySelector('cart-drawer');
+            if(drawer){
+              drawer.renderContents({ sections });
+            }
+
+            document.querySelector('#cart-icon-bubble').click();
+          });
+
+        $btn.find('.loader').removeClass('show');
+        $btn.removeAttr('disabled');
+      },
+
+      error: function(err){
+        console.error('Cart error:', err);
+
+        $btn.find('.loader').removeClass('show');
+        $btn.removeAttr('disabled');
+
+        alert('Something went wrong. Please try again.');
+      }
+
     });
 
   });
-});
 
+});
 </script>
  <script>
     window.addEventListener("load", function () {
