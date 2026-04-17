@@ -47,10 +47,10 @@
         background-color: #4182f5;
     }
      .but_box_main .flock_size_wrapper .flock_options .gt-prod-var-box-sub .flock_item .badge.free-shipping{
-        background-color: #4182f5;
+        background-color: #36a93d;
     }
      .but_box_main .flock_size_wrapper .flock_options .gt-prod-var-box-sub .flock_item .badge.best-value{
-        background-color: #1ec35a;
+        background-color: #6e2a97;
     }
     .but_box_main .flock_size_wrapper .flock_options{
         column-gap: 10px;        
@@ -58,6 +58,14 @@
     }
     .gt-prod-var-content{
         padding: 12px 10px 10px 10px;
+    }
+
+    .gt-prod-var-content label .flock_info .f_size p{
+        font-size: 16px;
+    }
+
+    .gt-prod-var-content label .flock_info .p_size p{
+        font-size: 15px;
     }
     @media (max-width: 767px){
         .but_box_main .flock_size_wrapper .flock_options .gt-prod-var-box-sub {
@@ -67,6 +75,14 @@
         .but_box_main .flock_size_wrapper .flock_options{
             row-gap: 25px;
             column-gap: 5px;
+        }
+
+        .gt-prod-var-content label .flock_info .f_size p {
+            font-size: 15px;
+        }
+
+        .gt-prod-var-content label .flock_info .p_size p, .gt-prod-var-content label .flock_info .save-price p {
+            font-size: 14px;
         }
     }
 </style>
@@ -154,11 +170,7 @@
                                             {% if forloop_index_count1 == 3 %}
                                                 <div class="badge most-popular">
                                                     Most popular
-                                                </div>    
-                                            {% elsif forloop_index_count1 == 4  %}
-                                                <div class="badge free-shipping">
-                                                    Free Shipping
-                                                </div>
+                                                </div>   
                                             {% elsif forloop_index_count1 == 5  %}
                                                 <div class="badge free-shipping">
                                                     Free Shipping
@@ -256,10 +268,6 @@
                                                 <div class="badge most-popular">
                                                     Most popular
                                                 </div>    
-                                            {% elsif forloop_index_count == 4  %}
-                                                <div class="badge free-shipping">
-                                                    Free Shipping
-                                                </div>
                                             {% elsif forloop_index_count == 5  %}
                                                 <div class="badge free-shipping">
                                                     Free Shipping
