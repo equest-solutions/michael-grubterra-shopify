@@ -1,5 +1,6 @@
 {{ 'pdp-buy-box.css' |  asset_url |  stylesheet_tag  }}
 
+
 <style>
     #buy_box_form #appstle_subscription_widget0{
         display: none;
@@ -8,7 +9,83 @@
     #buy_box_form .appstle_subscription_save{
         display: none;
     }
+
+    .but_box_main .flock_size_wrapper .flock_options .gt-prod-var-box-sub{
+        width: calc(33% - 5px);
+    }
+
+    .but_box_main .flock_size_wrapper .flock_options{
+        justify-content: space-between;
+    }
     
+    .but_box_main .flock_size_wrapper .flock_options .gt-prod-var-box-sub .flock_item{
+        position: relative;
+    }
+
+    .but_box_main .flock_size_wrapper .flock_options .gt-prod-var-box-sub .flock_item .badge {
+        position: absolute;
+        top: -15px;
+        left: 0;
+        right: 0;
+        display: flex;
+        max-width: max-content;
+        text-align: center;
+        width: max-content;
+        margin: 0 auto;
+        background-color: transparent;
+        border: 0px solid #1f6223;
+        padding: 5px 8px;
+        color: #fff;
+        font-weight: 700;
+        z-index: 333;
+        overflow: hidden;
+        letter-spacing: 0;
+        text-transform: uppercase;
+        font-size: 10px;
+    }
+
+    .but_box_main .flock_size_wrapper .flock_options .gt-prod-var-box-sub .flock_item .badge.most-popular{
+        background-color: #4182f5;
+    }
+     .but_box_main .flock_size_wrapper .flock_options .gt-prod-var-box-sub .flock_item .badge.free-shipping{
+        background-color: #36a93d;
+    }
+     .but_box_main .flock_size_wrapper .flock_options .gt-prod-var-box-sub .flock_item .badge.best-value{
+        background-color: #6e2a97;
+    }
+    .but_box_main .flock_size_wrapper .flock_options{
+        column-gap: 10px;        
+        row-gap: 35px;
+    }
+    .gt-prod-var-content{
+        padding: 12px 10px 10px 10px;
+    }
+
+    .gt-prod-var-content label .flock_info .f_size p{
+        font-size: 16px;
+    }
+
+    .gt-prod-var-content label .flock_info .p_size p{
+        font-size: 15px;
+    }
+    @media (max-width: 767px){
+        .but_box_main .flock_size_wrapper .flock_options .gt-prod-var-box-sub {
+            width: calc(50% - 5px);
+        }
+
+        .but_box_main .flock_size_wrapper .flock_options{
+            row-gap: 25px;
+            column-gap: 5px;
+        }
+
+        .gt-prod-var-content label .flock_info .f_size p {
+            font-size: 15px;
+        }
+
+        .gt-prod-var-content label .flock_info .p_size p, .gt-prod-var-content label .flock_info .save-price p {
+            font-size: 14px;
+        }
+    }
 </style>
 <section class="new_pdp_buy_box">
     <div class="buy_box_wrapper">
@@ -25,7 +102,7 @@
                             <div class="flock_options one_time"  style="display: none;">
                                 
                                 {% for variant in selected_product.variants %}                                  
-                                        {% assign forloop_index_count1 = forloop.index %}
+                                    {% assign forloop_index_count1 = forloop.index %}
                                     <div class="gt-prod-var-box-sub {% if forloop.first %} active {% endif %}">
                                         <div class="flock_item">
                                             <input type="radio" class="v_radio" name="flock-size" id="{{  variant.title |  downcase |  replace:  ' ','-' }}" 
@@ -90,7 +167,16 @@
                                                         {% endif %}
                                                     </div>
                                                 </label>
-                                            </div>                                            
+                                            </div> 
+                                            {% if forloop_index_count1 == 3 %}
+                                                <div class="badge most-popular">
+                                                    Best Seller
+                                                </div>   
+                                            {% elsif forloop_index_count1 == 4  %}
+                                                <div class="badge best-value">
+                                                    Best Value
+                                                </div>
+                                            {% endif %}                                            
                                         </div>
                                     </div>
                                 {% endfor %}
@@ -174,7 +260,16 @@
                                                         {% endfor %}
                                                     </div>
                                                 </label>
-                                            </div>                                            
+                                            </div>   
+                                            {% if forloop_index_count == 3 %}
+                                                <div class="badge most-popular">
+                                                    Best Seller
+                                                </div>   
+                                            {% elsif forloop_index_count == 4  %}
+                                                <div class="badge best-value">
+                                                    Best Value
+                                                </div>
+                                            {% endif %}                                            
                                         </div>
                                     </div>
                                 {% endfor %}
